@@ -11,6 +11,8 @@ package {
 		public var level:FlxTilemap;
 		public var player:FlxSprite;
 		public var exit:FlxSprite;
+		public var key:FlxSprite;
+		public var hasKey:Boolean = false;
 		
 		// Groups that will allow us to make gate and water tiles
 		public var gateTiles:FlxGroup = new FlxGroup();
@@ -77,8 +79,13 @@ package {
 			// Make the exit door
 			exit = new FlxSprite(35*8+1,25*8);
 			exit.makeGraphic(14,16,0xff3f3f3f);
-			exit.exists = true;
 			add(exit);
+			
+			// Create the key that needs to be collected before exiting the level
+			key = new FlxSprite(38*8+3,17*8+2);
+			key.makeGraphic(5,5,0xffffff00);
+			add(key);
+			
 			
 			// Create different color gates
 			createGate(21, 4, 1);
@@ -127,7 +134,7 @@ package {
 				status.text = "popped bubble";
 			}
 			if(FlxG.keys.SPACE){
-				// action key
+				// action key, only works if player is in water
 				if(FlxG.overlap(waterTiles,player))
 					usePower(player, curPow);
 			}
@@ -135,6 +142,12 @@ package {
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			FlxG.overlap(gateTiles,player,getGate);
+			
+			// Receive key 
+			FlxG.overlap(key,player,getKey);
+			
+			// If player has the key and touchs the exit, they win
+			if(hasKey && FlxG.overlap(exit,player)) {win(exit,player);}
 			
 			FlxG.collide(level, player);
 			
@@ -208,6 +221,11 @@ package {
 			}
 		}
 		
+		public function getKey(key:FlxSprite, player:FlxSprite):void{
+			key.kill();
+			hasKey = true;
+		}
+		
 		public function usePower(Player:FlxSprite, curPow:int):void{
 			switch (curPow) {
 				case 1:
@@ -229,8 +247,9 @@ package {
 			}
 		}
 		
-		public function win(Exit:FlxSprite, Player:FlxSprite):void{
-			
+		public function win(Exit:FlxSprite, Player:FlxSprite):void{			
+			// Below is for now, when we have more levels this will change 
+			FlxG.resetState();
 		}
 	}
 	
