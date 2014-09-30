@@ -105,9 +105,15 @@ package {
 				player.velocity.x = -player.maxVelocity.x;
 			if(FlxG.keys.RIGHT || FlxG.keys.D)
 				player.velocity.x = player.maxVelocity.x;
-			if((FlxG.keys.SPACE || FlxG.keys.W || FlxG.keys.UP) && player.isTouching(FlxObject.FLOOR))
+			if((FlxG.keys.W || FlxG.keys.UP) && player.isTouching(FlxObject.FLOOR))
 				player.velocity.y = -player.maxVelocity.y;
-			if(FlxG.keys.SHIFT){
+			if((FlxG.keys.W || FlxG.keys.UP || FlxG.keys.S || FlxG.keys.DOWN) && bubble){
+				player.velocity.y = 0;
+				player.acceleration.y = 600;
+				bubble = false;
+				status.text = "popped bubble";
+			}
+			if(FlxG.keys.SPACE){
 				// action key
 				usePower(player, curPow);
 			}
@@ -128,6 +134,7 @@ package {
 			//Check for player lose conditions
 			if(player.y > FlxG.height)
 			{
+				curPow=0;
 				FlxG.resetState();
 			}
 		}
@@ -141,11 +148,9 @@ package {
 			switch (power){
 				// blue, freeze
 				case 1: gate.color = (BLUE);
-					curPow = 1;
 					break;
 				// red, heat
 				case 2: gate.color = (RED);
-					curPow = 2;
 					break;
 				// flash, neutral
 				case 3: gate.color = (0x00FFFF00);
@@ -183,27 +188,48 @@ package {
 		}
 		
 		public function usePower(Player:FlxSprite, curPow:int):void{
+				switch (curPow) {
+					case 1:
+						// freeze, create temp platform here
+						break;
+					case 2:
+						// heat, bubble up until you hit something, will need to add check for in water later
+						player.velocity.y = -player.maxVelocity.y/10;
+						player.acceleration.y = 0;
+						status.text = "used bubble";
+						bubble = true;				
+						break;
+					case 3:
+						status.text = "flash frozen";
+						break;
+					case 4:
+						status.text = "flash heated";
+						break;
+				}
 			
+			
+			/*
 				if(curPow == 1){
 					// freeze, create temporary platform here
 				}
-				else if(curPow == 2){
+				else if(curPow == 2 && bubble == false){
 					// heat, bubble up until you hit something, will need to add check for in water later
-					if(bubble == false){
 						player.velocity.y = -player.maxVelocity.y/10;
 						player.acceleration.y = 0;
 						status.text = "used bubble";
 						bubble = true;
-					}
 					// already in a bubble, pop it...something is a bit wrong here
 					/*else if(player.velocity.y < 0){
 						player.velocity.y = 0;
 						player.acceleration.y = 600;
 						bubble = false;
 						status.text = "pop bubble";
-					}	*/
+					}
 
 				}
+				else{
+					status.text = "you have no power";
+				}*/
 				// need more going on for flash abilities
 		}
 		
