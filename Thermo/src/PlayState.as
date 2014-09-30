@@ -11,7 +11,11 @@ package {
 		public var level:FlxTilemap;
 		public var player:FlxSprite;
 		public var exit:FlxSprite;
-		public var gates:FlxGroup = new FlxGroup();
+		
+		// Groups that will allow us to make gate and water tiles
+		public var gateTiles:FlxGroup = new FlxGroup();
+		public var waterTiles:FlxGroup = new FlxGroup();
+		
 		public var bubble:Boolean = false;
 		
 		// This is currently being used as a method of debugging
@@ -80,7 +84,15 @@ package {
 			createGate(21, 4, 1);
 			createGate(26,2, 2);
 			createGate(31,5,3);
-			add(gates);
+			add(gateTiles);
+			
+			// Places water tiles
+			createWater(4,23);
+			createWater(5,23);
+			createWater(12,26);
+			createWater(34,5);
+			add(waterTiles);
+
 			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width-160-2,2,160);
@@ -97,6 +109,7 @@ package {
 			player.acceleration.y = 600;
 			player.drag.x = int.MAX_VALUE;
 			add(player);
+			
 		}
 		
 		override public function update():void {
@@ -115,12 +128,13 @@ package {
 			}
 			if(FlxG.keys.SPACE){
 				// action key
-				usePower(player, curPow);
+				if(FlxG.overlap(waterTiles,player))
+					usePower(player, curPow);
 			}
 			super.update();
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			FlxG.overlap(gates,player,getGate);
+			FlxG.overlap(gateTiles,player,getGate);
 			
 			FlxG.collide(level, player);
 			
@@ -139,8 +153,8 @@ package {
 			}
 		}
 		
-		/*Creates gate based on the specified x and y coordinates and the power we want them to be
-		Power is consistent with curPow properties*/
+		/**Creates gate based on the specified x and y coordinates and the power we want them to be
+		Power is consistent with curPow properties**/
 		public function createGate(X:uint,Y:uint,power:uint):void {
 			var gate:FlxSprite = new FlxSprite(X*8+3,Y*8-4);
 			gate.makeGraphic(2,12,0xffffff00);
@@ -156,7 +170,14 @@ package {
 				case 3: gate.color = (0x00FFFF00);
 					break;
 			}
-			gates.add(gate);
+			gateTiles.add(gate);
+		}
+		
+		/**Creates water tiles based on the specified x and y coordinates **/
+		public function createWater(X:uint, Y:uint):void {
+			var wat:FlxSprite = new FlxSprite(X*8+3, Y*8-4);
+			wat.makeGraphic(10,12,FlxG.BLUE);
+			waterTiles.add(wat);
 		}
 		
 		// What happens when you enter a gate, updates player power
@@ -188,49 +209,24 @@ package {
 		}
 		
 		public function usePower(Player:FlxSprite, curPow:int):void{
-				switch (curPow) {
-					case 1:
-						// freeze, create temp platform here
-						break;
-					case 2:
-						// heat, bubble up until you hit something, will need to add check for in water later
-						player.velocity.y = -player.maxVelocity.y/10;
-						player.acceleration.y = 0;
-						status.text = "used bubble";
-						bubble = true;				
-						break;
-					case 3:
-						status.text = "flash frozen";
-						break;
-					case 4:
-						status.text = "flash heated";
-						break;
-				}
-			
-			
-			/*
-				if(curPow == 1){
-					// freeze, create temporary platform here
-				}
-				else if(curPow == 2 && bubble == false){
+			switch (curPow) {
+				case 1:
+					// freeze, create temp platform here
+					break;
+				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later
-						player.velocity.y = -player.maxVelocity.y/10;
-						player.acceleration.y = 0;
-						status.text = "used bubble";
-						bubble = true;
-					// already in a bubble, pop it...something is a bit wrong here
-					/*else if(player.velocity.y < 0){
-						player.velocity.y = 0;
-						player.acceleration.y = 600;
-						bubble = false;
-						status.text = "pop bubble";
-					}
-
-				}
-				else{
-					status.text = "you have no power";
-				}*/
-				// need more going on for flash abilities
+					player.velocity.y = -player.maxVelocity.y/10;
+					player.acceleration.y = 0;
+					status.text = "used bubble";
+					bubble = true;				
+					break;
+				case 3:
+					status.text = "flash frozen";
+					break;
+				case 4:
+					status.text = "flash heated";
+					break;
+			}
 		}
 		
 		public function win(Exit:FlxSprite, Player:FlxSprite):void{
