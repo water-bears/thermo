@@ -14,8 +14,11 @@ package {
 		public var key:FlxSprite;
 		
 		// Groups that will allow us to make gate and water tiles
-		public var gateTiles:FlxGroup = new FlxGroup();
+		public var freezeTiles:FlxGroup = new FlxGroup();
+		public var heatTiles:FlxGroup = new FlxGroup();
+		public var flashTiles:FlxGroup = new FlxGroup();
 		public var waterTiles:FlxGroup = new FlxGroup();
+		public var groundTiles:FlxGroup = new FlxGroup();
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
@@ -29,41 +32,6 @@ package {
 		override public function create():void {
 			FlxG.bgColor = 0xffaaaaaa;
 			
-			var data:Array = new Array (
-				1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-				1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1,
-				1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-				1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
-				1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-				1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1,
-				1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1,
-				1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 );
-			level = new FlxTilemap();
-			level.loadMap(FlxTilemap.arrayToCSV(data,40), FlxTilemap.ImgAuto, 0, 0, FlxTilemap.AUTO);
-			add(level);
-			
 			// Make the exit door
 			exit = new FlxSprite(35*8+1,25*8);
 			exit.makeGraphic(14,16,0xff3f3f3f);
@@ -74,28 +42,26 @@ package {
 			key.makeGraphic(5,5,0xffffff00);
 			add(key);
 			
+			//load the level
+			var level:Level_TestWGates = new Level_TestWGates(false);
 			
-			// Create different color gates
-			createGate(21, 4, 1);
-			createGate(26,2, 2);
-			createGate(31,5,3);
-			add(gateTiles);
+			//add the ground
+			groundTiles.add(level.layerGroup1Ground);
+			add(groundTiles);
 			
-			// Places water tiles
-			createWater(4,23);
-			createWater(5,23);
-			createWater(12,26);
-			createWater(34,5);
-			createWater(20,20);
-			createWater(21, 20);
-			createWater(22,20);
-			createWater(23,20);
-			createWater(20,19);
-			createWater(21,19);
-			createWater(22,19);
-			createWater(23,19);
+			//add the water
+			waterTiles.add(level.layerGroup1Water);
 			add(waterTiles);
 			
+			//add the gates
+			freezeTiles.add(level.layerGroup1FreezeGates);
+			add(freezeTiles);
+			
+			heatTiles.add(level.layerGroup1HeatGates);
+			add(heatTiles);
+			
+			flashTiles.add(level.layerGroup1FlashGates);
+			add(flashTiles);			
 			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width-160-2,2,160);
@@ -105,7 +71,7 @@ package {
 			add(status);
 			
 			// Create and add the player
-			player = new Player(10,12,waterTiles,gateTiles, key, exit);
+			player = new Player(10, 12, waterTiles, key, exit);
 			add(player);
 			
 		}
@@ -115,23 +81,23 @@ package {
 			status.text = player.stat;
 			
 			// Slow player down if they are in water
-			if(FlxG.overlap(waterTiles,player) && !player.bubble){
+			if (FlxG.collide(waterTiles, player) && !player.bubble) {
 				slowPlayer(player);
 			}
-			
 			// Put player back to normal speed in air
-			if(!FlxG.overlap(waterTiles,player) && !player.bubble){
+			else if (!player.bubble) {
 				fastPlayer(player);
 			}
-			
 			
 			// Receive key 
 			FlxG.overlap(key,player,getKey);
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			FlxG.overlap(gateTiles,player,getGate);
+			FlxG.collide(freezeTiles, player, getFreeze);
+			FlxG.collide(heatTiles, player, getHeat);
+			FlxG.collide(flashTiles, player, getFlash);
 			
-			// If player has the key and touchs the exit, they win
+			// If player has the key and touches the exit, they win
 			if(player.hasKey && FlxG.overlap(exit, player)) {win(exit,player);}
 			
 			//Check for player lose conditions
@@ -142,7 +108,7 @@ package {
 			}
 			
 			// Make Player Collide With Level
-			FlxG.collide(level,player);
+			FlxG.collide(groundTiles,player);
 			status.text=player.stat;
 		}
 		
@@ -163,7 +129,7 @@ package {
 				case 3: gate.color = (0x00FFFF00);
 					break;
 			}
-			gateTiles.add(gate);
+			//gateTiles.add(gate);
 		}
 		
 		/**Creates water tiles based on the specified x and y coordinates **/
@@ -205,11 +171,43 @@ package {
 			}
 		}
 		
+		/**What happens when you enter a freeze gate, updates player power**/
+		public function getFreeze(x:FlxTilemap, p:FlxSprite):void
+		{
+			player.curPow = 1; 
+			status.text = "freeze";
+			player.stat = status.text;
+		}
+		
+		/**What happens when you enter a heat gate, updates player power**/
+		public function getHeat(x:FlxTilemap, p:FlxSprite):void
+		{
+			player.curPow = 2;
+			status.text = "heat";
+			player.stat = status.text;			
+		}
+		
+		/**What happens when you enter a flash gate, updates player power**/
+		public function getFlash(x:FlxTilemap, p:FlxSprite):void
+		{
+			if(player.curPow == 1) {
+				player.curPow = 3;
+				status.text = "flash freeze";
+				player.stat = status.text;
+			}
+			if(player.curPow == 2) {
+				player.curPow = 4;
+				status.text = "flash heat";
+				player.stat = status.text;
+			}
+		}
+		
 		/** Slows player down in water */
 		public function slowPlayer(player:Player):void{
 			player.maxVelocity.x = 100;
 			player.maxVelocity.y = 100;
 			player.acceleration.y = 300;
+			player.underwater = true;
 		}
 		
 		/** Player back to normal speed outside of water */
@@ -217,6 +215,7 @@ package {
 			player.maxVelocity.x = 200;
 			player.maxVelocity.y = 200;
 			player.acceleration.y = 600;
+			player.underwater = false;
 		}
 		
 		/** when player retrieves key **/

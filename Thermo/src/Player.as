@@ -18,30 +18,29 @@ package {
 		public var curPow:int = 0;
 		
 		public var bubble:Boolean = false;
+		public var underwater:Boolean = false;
+		public var waterTiles:FlxGroup;
 		public var hasKey:Boolean = false;
 		public var stat:String = "none";
-		public var waterT:FlxGroup;
-		public var gateT:FlxGroup;
 		public var key:FlxSprite;
 		public var exit:FlxSprite;
 		
 		
-		public function Player(X:Number, Y:Number, waterTiles:FlxGroup, gateTiles:FlxGroup, k:FlxSprite, e:FlxSprite):void{
+		public function Player(X:Number, Y:Number, waterT:FlxGroup, k:FlxSprite, e:FlxSprite):void{
 			super(X,Y);
-			waterT = waterTiles;
-			gateT = gateTiles;
 			key = k;
 			exit = e;
+			
 			// Right now makeGraphic is a placeholder until we actually get a character asset
 			makeGraphic(X, Y, FlxG.WHITE);
 			maxVelocity.x = 200;
 			maxVelocity.y = 200;
 			acceleration.y = 600;
 			drag.x = int.MAX_VALUE;
+			waterTiles = waterT;
 			
 			// Add animations in the space right below this when we get them
-			
-			
+						
 			// After animations are set, set  facing = RIGHT;
 		}
 		
@@ -50,6 +49,7 @@ package {
 			
 			if(FlxG.keys.LEFT || FlxG.keys.A)
 				velocity.x = -maxVelocity.x;
+			
 			
 			if(FlxG.keys.RIGHT || FlxG.keys.D)
 				velocity.x = maxVelocity.x;
@@ -66,8 +66,8 @@ package {
 			
 			if(FlxG.keys.SPACE){
 				// action key, only works if Player is in water
-				FlxG.overlap(waterT,this,usePower);
-					//usePower();
+				if(underwater)
+					usePower(waterTiles, this);
 			}
 			// "Pops" bubbles when they hit the ceiling
 			if(bubble == true && isTouching(FlxObject.CEILING)){
@@ -75,11 +75,13 @@ package {
 				acceleration.y = 600;
 				bubble = false;
 			}
+			
+			//update this
 			super.update();
 			
 		}
 		
-		public function usePower(currentWater:FlxSprite, player:Player):void{
+		public function usePower(currentWater:FlxGroup, player:Player):void{
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here
