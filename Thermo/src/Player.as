@@ -22,11 +22,11 @@ package {
 		public var waterTiles:FlxTilemap;
 		public var hasKey:Boolean = false;
 		public var stat:String = "none";
-		public var key:FlxSprite;
-		public var exit:FlxSprite;
+		public var key:FlxTilemap;
+		public var exit:FlxTilemap;
 		
 		
-		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxSprite, e:FlxSprite):void{
+		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxTilemap, e:FlxTilemap):void{
 			super(X,Y);
 			key = k;
 			exit = e;

@@ -8,10 +8,10 @@ package {
 	
 	public class PlayState extends FlxState {
 		
-		public var level:FlxTilemap;
+		//public var level:FlxTilemap;
 		private var player:Player;
-		public var exit:FlxSprite;
-		public var key:FlxSprite;
+		//public var exit:FlxSprite;
+		//public var key:FlxSprite;
 		
 		// Groups that will allow us to make gate and water tiles
 		public var freezeTiles:FlxTilemap;
@@ -19,6 +19,8 @@ package {
 		public var flashTiles:FlxTilemap;
 		public var waterTiles:FlxTilemap;
 		public var groundTiles:FlxTilemap;
+		public var exitTiles:FlxTilemap;
+		public var keyTiles:FlxTilemap;
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
@@ -32,18 +34,8 @@ package {
 		override public function create():void {
 			FlxG.bgColor = 0xffaaaaaa;
 			
-			// Make the exit door
-			exit = new FlxSprite(35*8+1,25*8);
-			exit.makeGraphic(14,16,0xff3f3f3f);
-			add(exit);
-			
-			// Create the key that needs to be collected before exiting the level
-			key = new FlxSprite(38*8+3,17*8+2);
-			key.makeGraphic(5,5,0xffffff00);
-			add(key);
-			
 			//load the level
-			var level:Level_TestWGates = new Level_TestWGates(false);
+			var level:Level_TestWDoor = new Level_TestWDoor(false);
 			
 			//add the ground
 			groundTiles = level.layerGroup1Ground;
@@ -61,7 +53,15 @@ package {
 			add(heatTiles);
 			
 			flashTiles = level.layerGroup1FlashGates;
-			add(flashTiles);			
+			add(flashTiles);		
+			
+			//add the exit
+			exitTiles = level.layerGroup1Door;
+			add(exitTiles);
+			
+			//add the keyssss
+			keyTiles = level.layerGroup1Key;
+			add(keyTiles);
 			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width-160-2,2,160);
@@ -71,7 +71,7 @@ package {
 			add(status);
 			
 			// Create and add the player
-			player = new Player(10, 12, waterTiles, key, exit);
+			player = new Player(10, 12, waterTiles, keyTiles, exitTiles);
 			add(player);
 			
 		}
@@ -90,7 +90,10 @@ package {
 			}
 			
 			// Receive key 
-			FlxG.overlap(key,player,getKey);
+			if (keyTiles.overlaps(player))
+			{
+				getKey(keyTiles, player);
+			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			if (freezeTiles.overlaps(player)) {
@@ -104,7 +107,7 @@ package {
 			}
 			
 			// If player has the key and touches the exit, they win
-			if(player.hasKey && FlxG.overlap(exit, player)) {win(exit,player);}
+			if(player.hasKey && exitTiles.overlaps(player)) {win(exitTiles,player);}
 			
 			//Check for player lose conditions
 			if(player.y > FlxG.height)
@@ -225,13 +228,13 @@ package {
 		}
 		
 		/** when player retrieves key **/
-		public function getKey(key:FlxSprite, player:Player):void{
+		public function getKey(key:FlxTilemap, player:Player):void{
 			key.kill();
 			player.hasKey = true;
 		}
 		
 		/** Win function **/
-		public function win(Exit:FlxSprite, player:Player):void{			
+		public function win(Exit:FlxTilemap, player:Player):void{			
 			// Below is for now, when we have more levels this will change 
 			FlxG.resetState();
 		}
