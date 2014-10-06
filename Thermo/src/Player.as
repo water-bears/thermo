@@ -24,7 +24,7 @@ package {
 		public var gateT:FlxGroup;
 		public var key:FlxSprite;
 		public var exit:FlxSprite;
-
+		
 		
 		public function Player(X:Number, Y:Number, waterTiles:FlxGroup, gateTiles:FlxGroup, k:FlxSprite, e:FlxSprite):void{
 			super(X,Y);
@@ -66,8 +66,8 @@ package {
 			
 			if(FlxG.keys.SPACE){
 				// action key, only works if Player is in water
-				if(FlxG.overlap(waterT,this))
-					usePower();
+				FlxG.overlap(waterT,this,usePower);
+					//usePower();
 			}
 			// "Pops" bubbles when they hit the ceiling
 			if(bubble == true && isTouching(FlxObject.CEILING)){
@@ -76,10 +76,10 @@ package {
 				bubble = false;
 			}
 			super.update();
-					
+			
 		}
 		
-		public function usePower():void{
+		public function usePower(currentWater:FlxSprite, player:Player):void{
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here
@@ -87,7 +87,7 @@ package {
 					break;
 				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later
-					velocity.y = -maxVelocity.y/10;
+					velocity.y = -200/10;
 					acceleration.y = 0;
 					stat = "used bubble";
 					bubble = true;				
@@ -97,10 +97,11 @@ package {
 					break;
 				case 4:
 					stat = "flash heated";
+					//FlxG.overlap(waterT, currentWater, kill)
+					currentWater.kill();
 					break;
 			}
 		}
-
+		
 	}
 }
-	

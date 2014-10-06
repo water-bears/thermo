@@ -16,7 +16,7 @@ package {
 		// Groups that will allow us to make gate and water tiles
 		public var gateTiles:FlxGroup = new FlxGroup();
 		public var waterTiles:FlxGroup = new FlxGroup();
-				
+		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
 		
@@ -86,8 +86,16 @@ package {
 			createWater(5,23);
 			createWater(12,26);
 			createWater(34,5);
+			createWater(20,20);
+			createWater(21, 20);
+			createWater(22,20);
+			createWater(23,20);
+			createWater(20,19);
+			createWater(21,19);
+			createWater(22,19);
+			createWater(23,19);
 			add(waterTiles);
-
+			
 			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width-160-2,2,160);
@@ -105,6 +113,17 @@ package {
 		override public function update():void {
 			super.update();
 			status.text = player.stat;
+			
+			// Slow player down if they are in water
+			if(FlxG.overlap(waterTiles,player) && !player.bubble){
+				slowPlayer(player);
+			}
+			
+			// Put player back to normal speed in air
+			if(!FlxG.overlap(waterTiles,player) && !player.bubble){
+				fastPlayer(player);
+			}
+			
 			
 			// Receive key 
 			FlxG.overlap(key,player,getKey);
@@ -128,7 +147,7 @@ package {
 		}
 		
 		/**Creates gate based on the specified x and y coordinates and the power we want them to be
-		Power is consistent with curPow properties**/
+		 Power is consistent with curPow properties**/
 		public function createGate(X:uint,Y:uint,power:uint):void {
 			var gate:FlxSprite = new FlxSprite(X*8+3,Y*8-4);
 			gate.makeGraphic(2,12,0xffffff00);
@@ -184,6 +203,20 @@ package {
 					}
 					break;
 			}
+		}
+		
+		/** Slows player down in water */
+		public function slowPlayer(player:Player):void{
+			player.maxVelocity.x = 100;
+			player.maxVelocity.y = 100;
+			player.acceleration.y = 300;
+		}
+		
+		/** Player back to normal speed outside of water */
+		public function fastPlayer(player:Player):void{
+			player.maxVelocity.x = 200;
+			player.maxVelocity.y = 200;
+			player.acceleration.y = 600;
 		}
 		
 		/** when player retrieves key **/
