@@ -19,14 +19,14 @@ package {
 		
 		public var bubble:Boolean = false;
 		public var underwater:Boolean = false;
-		public var waterTiles:FlxGroup;
+		public var waterTiles:FlxTilemap;
 		public var hasKey:Boolean = false;
 		public var stat:String = "none";
 		public var key:FlxSprite;
 		public var exit:FlxSprite;
 		
 		
-		public function Player(X:Number, Y:Number, waterT:FlxGroup, k:FlxSprite, e:FlxSprite):void{
+		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxSprite, e:FlxSprite):void{
 			super(X,Y);
 			key = k;
 			exit = e;
@@ -81,7 +81,7 @@ package {
 			
 		}
 		
-		public function usePower(currentWater:FlxGroup, player:Player):void{
+		public function usePower(currentWater:FlxTilemap, player:Player):void{
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here

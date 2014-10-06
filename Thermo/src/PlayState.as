@@ -14,11 +14,11 @@ package {
 		public var key:FlxSprite;
 		
 		// Groups that will allow us to make gate and water tiles
-		public var freezeTiles:FlxGroup = new FlxGroup();
-		public var heatTiles:FlxGroup = new FlxGroup();
-		public var flashTiles:FlxGroup = new FlxGroup();
-		public var waterTiles:FlxGroup = new FlxGroup();
-		public var groundTiles:FlxGroup = new FlxGroup();
+		public var freezeTiles:FlxTilemap;
+		public var heatTiles:FlxTilemap;
+		public var flashTiles:FlxTilemap;
+		public var waterTiles:FlxTilemap;
+		public var groundTiles:FlxTilemap;
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
@@ -46,21 +46,21 @@ package {
 			var level:Level_TestWGates = new Level_TestWGates(false);
 			
 			//add the ground
-			groundTiles.add(level.layerGroup1Ground);
+			groundTiles = level.layerGroup1Ground;
 			add(groundTiles);
 			
 			//add the water
-			waterTiles.add(level.layerGroup1Water);
+			waterTiles = level.layerGroup1Water;
 			add(waterTiles);
 			
 			//add the gates
-			freezeTiles.add(level.layerGroup1FreezeGates);
+			freezeTiles = level.layerGroup1FreezeGates;
 			add(freezeTiles);
 			
-			heatTiles.add(level.layerGroup1HeatGates);
+			heatTiles = level.layerGroup1HeatGates;
 			add(heatTiles);
 			
-			flashTiles.add(level.layerGroup1FlashGates);
+			flashTiles = level.layerGroup1FlashGates;
 			add(flashTiles);			
 			
 			// This will be essentially for debugging or other info we want
@@ -81,7 +81,7 @@ package {
 			status.text = player.stat;
 			
 			// Slow player down if they are in water
-			if (FlxG.collide(waterTiles, player) && !player.bubble) {
+			if (waterTiles.overlaps(player) && !player.bubble) {
 				slowPlayer(player);
 			}
 			// Put player back to normal speed in air
@@ -93,9 +93,15 @@ package {
 			FlxG.overlap(key,player,getKey);
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			FlxG.collide(freezeTiles, player, getFreeze);
-			FlxG.collide(heatTiles, player, getHeat);
-			FlxG.collide(flashTiles, player, getFlash);
+			if (freezeTiles.overlaps(player)) {
+				getFreeze(freezeTiles, player);
+			}
+			if (heatTiles.overlaps(player)) {
+				getHeat(heatTiles, player);
+			}
+			if (flashTiles.overlaps(player)) {
+				getFlash(flashTiles, player);
+			}
 			
 			// If player has the key and touches the exit, they win
 			if(player.hasKey && FlxG.overlap(exit, player)) {win(exit,player);}
@@ -136,7 +142,7 @@ package {
 		public function createWater(X:uint, Y:uint):void {
 			var wat:FlxSprite = new FlxSprite(X*8+3, Y*8-4);
 			wat.makeGraphic(10,12,FlxG.BLUE);
-			waterTiles.add(wat);
+			//waterTiles.add(wat);
 		}
 		
 		/**What happens when you enter a gate, updates player power**/
