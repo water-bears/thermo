@@ -84,7 +84,7 @@ package {
 			if (waterTiles.overlaps(player) && !player.bubble) {
 				slowPlayer(player);
 			}
-			// Put player back to normal speed in air
+				// Put player back to normal speed in air
 			else if (!player.bubble) {
 				fastPlayer(player);
 			}

@@ -40,7 +40,7 @@ package {
 			waterTiles = waterT;
 			
 			// Add animations in the space right below this when we get them
-						
+			
 			// After animations are set, set  facing = RIGHT;
 		}
 		
@@ -74,6 +74,10 @@ package {
 				velocity.y = 0;
 				acceleration.y = 600;
 				bubble = false;
+			}
+			
+			if(FlxG.keys.R){
+				FlxG.resetState();
 			}
 			
 			//update this
