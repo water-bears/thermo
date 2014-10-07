@@ -32,7 +32,8 @@ package {
 			exit = e;
 			
 			// Right now makeGraphic is a placeholder until we actually get a character asset
-			makeGraphic(X, Y, FlxG.WHITE);
+			//makeGraphic(X, Y, FlxG.WHITE);
+			loadGraphic(Assets.player_sprite);
 			maxVelocity.x = 200;
 			maxVelocity.y = 200;
 			acceleration.y = 600;
@@ -62,6 +63,9 @@ package {
 				velocity.y = 0;
 				acceleration.y = 600;
 				bubble = false;
+				loadGraphic(Assets.player_sprite);
+				x += 11;
+				y += 4;
 			}
 			
 			if(FlxG.keys.SPACE){
@@ -74,6 +78,9 @@ package {
 				velocity.y = 0;
 				acceleration.y = 600;
 				bubble = false;
+				x += 11;
+				y += 4;
+				loadGraphic(Assets.player_sprite);
 			}
 			
 			if(FlxG.keys.R){
@@ -93,10 +100,15 @@ package {
 					break;
 				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later
-					velocity.y = -200/10;
-					acceleration.y = 0;
-					stat = "used bubble";
-					bubble = true;				
+					if (!bubble) {
+						velocity.y = -200/10;
+						acceleration.y = 0;
+						stat = "used bubble";
+						bubble = true;
+						x -= 11;
+						y -= 4;
+						loadGraphic(Assets.bubble_sprite);
+					}
 					break;
 				case 3:
 					stat = "flash frozen";
