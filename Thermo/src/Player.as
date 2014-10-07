@@ -50,16 +50,17 @@ package {
 		
 		override public function update():void {
 			acceleration.x = 0;
+			if(!bubble){
+				if(FlxG.keys.LEFT || FlxG.keys.A)
+					velocity.x = -maxVelocity.x;
 			
-			if(FlxG.keys.LEFT || FlxG.keys.A)
-				velocity.x = -maxVelocity.x;
 			
+				if(FlxG.keys.RIGHT || FlxG.keys.D)
+					velocity.x = maxVelocity.x;
 			
-			if(FlxG.keys.RIGHT || FlxG.keys.D)
-				velocity.x = maxVelocity.x;
-			
-			if((FlxG.keys.W || FlxG.keys.UP) && isTouching(FlxObject.FLOOR))
-				velocity.y = -maxVelocity.y;
+				if((FlxG.keys.W || FlxG.keys.UP) && isTouching(FlxObject.FLOOR))
+					velocity.y = -maxVelocity.y;
+			}
 			
 			// pops bubble when one of these are pressed
 			if((FlxG.keys.W || FlxG.keys.UP || FlxG.keys.S || FlxG.keys.DOWN) && bubble){
@@ -108,7 +109,7 @@ package {
 				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later
 					if (!bubble) {
-						velocity.y = -200/10;
+						velocity.y = -200/5;
 						acceleration.y = 0;
 						stat = "used bubble";
 						bubble = true;
@@ -127,7 +128,7 @@ package {
 			}
 		}
 		
-		public function evaporateWater(x:uint, y:uint)
+		public function evaporateWater(x:uint, y:uint):void
 		{
 			waterTiles.setTile(x, y, 0, true);
 			if (waterTiles.getTile(x + 1, y) > 0) {

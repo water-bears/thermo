@@ -217,8 +217,8 @@ package {
 		
 		/** Slows player down in water */
 		public function slowPlayer(player:Player):void{
-			player.maxVelocity.x = 100;
-			player.maxVelocity.y = 100;
+			player.maxVelocity.x = 150;
+			player.maxVelocity.y = 150;
 			player.acceleration.y = 300;
 			player.underwater = true;
 		}
