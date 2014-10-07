@@ -57,7 +57,7 @@ package {
 			//title.y = titleY + 5 * Math.cos(time / 40.0);
 			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			menu.update();
-			if (FlxG.keys.SPACE)
+			if (FlxG.keys.ENTER)
 			{
 				var className:String = "Level_" + levelNames[menu.getSelectedIndex()];
 				var nextLevel:Class = getDefinitionByName(className) as Class;
