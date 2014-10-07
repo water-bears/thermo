@@ -24,8 +24,8 @@ package
 		//Sprites
 		
 		//Player Start Position
-		public var start_x:int = 1;
-		public var start_y:int = 2;
+		public var start_x_:int = 1;
+		public var start_y_:int = 2;
 
 		public function Level_1(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
 		{
