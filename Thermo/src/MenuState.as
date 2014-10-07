@@ -43,7 +43,7 @@ package {
 			prompt.color = 0xff0099ff;
 			prompt.shadow = 0xff003399;
 			prompt.alignment = "center";
-			prompt.text = "Press SPACE";
+			prompt.text = "Press TAB";
 			promptY = prompt.y;
 			add(prompt);
 			
@@ -54,7 +54,7 @@ package {
 			time++;
 			title.y = titleY + 5 * Math.cos(time / 40.0);
 			prompt.y = promptY - 4 * Math.cos(time / 25.0);
-			if (FlxG.keys.SPACE)
+			if (FlxG.keys.TAB)
 			{
 				var p : PlayState = new PlayState();
 				p.setLevel(new Level_1(false));
