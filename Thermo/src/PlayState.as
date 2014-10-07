@@ -86,6 +86,12 @@ package {
 			status.text = "none";
 			add(status);
 			
+			// Display a message that TAB takes you to the level select screen.
+			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
+			levelSelectMessage.setOriginToCorner();
+			levelSelectMessage.scale = new FlxPoint(2, 2);
+			add(levelSelectMessage);
+			
 			// Create and add the player
 			player = new Player(level.start_x*32, level.start_y*32, waterTiles, keyTiles, exitTiles, this);
 			add(player);
