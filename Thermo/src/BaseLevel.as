@@ -5,6 +5,14 @@ package
 	import org.flixel.*;
 	public class BaseLevel
 	{
+		public var layerGroup1Ground:FlxTilemap;
+		public var layerGroup1Water:FlxTilemap;
+		public var layerGroup1FreezeGates:FlxTilemap;
+		public var layerGroup1HeatGates:FlxTilemap;
+		public var layerGroup1FlashGates:FlxTilemap;
+		public var layerGroup1Door:FlxTilemap;
+		public var layerGroup1Key:FlxTilemap;
+		
 		public var masterLayer:FlxGroup = new FlxGroup;
 
 		public var mainLayer:FlxTilemap;

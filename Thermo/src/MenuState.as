@@ -2,7 +2,6 @@
 
 package {
 	import flash.display.Graphics;
-	import flash.display.GradientType;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
@@ -25,9 +24,7 @@ package {
 			var dimensions:FlxPoint = new FlxPoint(4.0 * zoom, 3.0 * zoom);
 			
 			// Create background gradient
-			backgroundTile = new FlxSprite();
-			backgroundTile.makeGraphic(dimensions.x, dimensions.y, 0xffffffff);
-			createVerticalGradient(backgroundTile, 0x0066cc, 0x003333);
+			backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
 			add(backgroundTile);
 			
 			// Initialize Title Text
@@ -59,25 +56,10 @@ package {
 			prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			if (FlxG.keys.SPACE)
 			{
-				FlxG.switchState(new PlayState());
+				var p : PlayState = new PlayState();
+				p.setLevel(new Level_TestWDoor(false));
+				FlxG.switchState(p);
 			}
-		}
-		
-		public function createVerticalGradient(Sprite:FlxSprite, TopColor:uint, BottomColor:uint): void
-		{
-			var gfx:Graphics = FlxG.flashGfx;
-			gfx.clear();
-			
-			var colors:Array = new Array(TopColor, BottomColor);
-			var alphas:Array = new Array(1, 1);
-			var ratios:Array = new Array(0x00, 0xff);
-			var matr:Matrix = new Matrix();
-			matr.createGradientBox(Sprite.frameWidth, Sprite.frameHeight, Math.PI / 2);
-			gfx.beginGradientFill(GradientType.LINEAR, colors, alphas, ratios, matr);
-			gfx.drawRect(0, 0, Sprite.frameWidth, Sprite.frameHeight);
-			
-			Sprite.pixels.draw(FlxG.flashGfxSprite);
-			Sprite.dirty = true;
 		}
 	}
 	

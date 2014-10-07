@@ -17,13 +17,6 @@ package
 		[Embed(source="../assets/mapCSV_Group1_FlashGates.csv", mimeType="application/octet-stream")] public var CSV_Group1FlashGates:Class;
 		[Embed(source="../assets/gatesflash.png")] public var Img_Group1FlashGates:Class;
 
-		//Tilemaps
-		public var layerGroup1Ground:FlxTilemap;
-		public var layerGroup1Water:FlxTilemap;
-		public var layerGroup1FreezeGates:FlxTilemap;
-		public var layerGroup1HeatGates:FlxTilemap;
-		public var layerGroup1FlashGates:FlxTilemap;
-
 		//Sprites
 
 
