@@ -3,6 +3,8 @@
 package {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
+	import flash.utils.Timer;
+	import flash.utils.getTimer;
 	
 	import org.flixel.*;
 	
@@ -27,6 +29,7 @@ package {
 		public var playState:PlayState;
 		
 		public var icePlat:FlxSprite;
+		public var t1:int;
 		
 		
 		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxTilemap, e:FlxTilemap, ps:PlayState):void{
@@ -86,6 +89,9 @@ package {
 			if(bubble == true && isTouching(FlxObject.CEILING)){
 				popBubble();
 			}
+
+			if(getTimer()-t1 >= 500 && !isTouching(FLOOR) && icePlat != null){icePlat.kill();}
+
 			
 			if(FlxG.keys.R){
 				FlxG.resetState();
@@ -107,8 +113,8 @@ package {
 					maxVelocity.y = 0;
 					playState.add(icePlat);
 					playState.iceGroup.add(icePlat);
-					if(!isTouching(FLOOR)){icePlat.kill();}
 					
+					t1 = getTimer();
 					break;
 				case 2:
 					if (!bubble) {
@@ -124,7 +130,7 @@ package {
 				case 3:
 					stat = "flash frozen";
 					var plat:FlxSprite = new FlxSprite(x, y+height);
-					plat.makeGraphic(25,5,FlxG.WHITE);
+					plat.makeGraphic(25,10,FlxG.WHITE);
 					plat.immovable = true;
 					playState.add(plat);
 					playState.iceGroup.add(plat);
