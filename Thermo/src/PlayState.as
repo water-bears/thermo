@@ -7,6 +7,8 @@ package {
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
+		//aesthetics (aka gradient background)
+		private var background:FlxSprite;
 		
 		//public var level:FlxTilemap;
 		private var player:Player;
@@ -34,11 +36,22 @@ package {
 		public var WHITE:uint = 0xffffffff;
 		public var BLACK:uint = 0x000000;
 		
+		private var level:BaseLevel;
+		
+		public function setLevel(inputLevel:BaseLevel): void {
+			level = inputLevel;
+		}
+		
 		override public function create():void {
-			FlxG.bgColor = 0xffaaaaaa;
+			// Make the background
+			background = MenuUtils.CreateVerticalGradient(new FlxPoint(FlxG.width, FlxG.height), 0xbbbbbb, 0x999999);
+			add(background);
 			
 			//load the level
-			var level:Level_3 = new Level_3(false);
+			if (level == null)
+			{
+				level = new Level_1(false);
+			}
 			
 			//add the ground
 			groundTiles = level.layerGroup1Ground;
@@ -76,7 +89,6 @@ package {
 			// Create and add the player
 			player = new Player(level.start_x*32, level.start_y*32, waterTiles, keyTiles, exitTiles, this);
 			add(player);
-			
 		}
 		
 		override public function update():void {
@@ -123,6 +135,12 @@ package {
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
 			status.text=player.stat;
+			
+			// If we press a button like um TAB we can go to level select
+			if (FlxG.keys.TAB)
+			{
+				FlxG.switchState(new LevelSelectState());
+			}
 		}
 		
 		/**Creates gate based on the specified x and y coordinates and the power we want them to be

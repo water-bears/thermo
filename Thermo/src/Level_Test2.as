@@ -11,10 +11,6 @@ package
 		[Embed(source="../assets/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] public var CSV_Group1Water:Class;
 		[Embed(source="../assets/waterflash.png")] public var Img_Group1Water:Class;
 
-		//Tilemaps
-		public var layerGroup1Ground:FlxTilemap;
-		public var layerGroup1Water:FlxTilemap;
-
 		//Sprites
 
 
