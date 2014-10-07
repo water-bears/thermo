@@ -26,6 +26,8 @@ package {
 		public var exit:FlxTilemap;
 		public var playState:PlayState;
 		
+		public var icePlat:FlxSprite;
+		
 		
 		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxTilemap, e:FlxTilemap, ps:PlayState):void{
 			super(X,Y);
@@ -63,7 +65,7 @@ package {
 			}
 			
 			// pops bubble when one of these are pressed
-			if((FlxG.keys.W || FlxG.keys.UP || FlxG.keys.S || FlxG.keys.DOWN) && bubble){
+			if((FlxG.keys.S || FlxG.keys.DOWN) && bubble){
 				velocity.y = 0;
 				acceleration.y = 600;
 				bubble = false;
@@ -72,10 +74,18 @@ package {
 				y += 4;
 			}
 			
-			if(FlxG.keys.justPressed("SPACE")){
+			if(FlxG.keys.justPressed("SPACE") && !bubble){
 				// action key, only works if Player is in water
 				if(underwater)
 					usePower(waterTiles, this);
+			}
+			else if(FlxG.keys.justPressed("SPACE") && bubble){
+				velocity.y = 0;
+				acceleration.y = 600;
+				bubble = false;
+				loadGraphic(Assets.player_sprite);
+				x += 11;
+				y += 4;
 			}
 			// "Pops" bubbles when they hit the ceiling
 			if(bubble == true && isTouching(FlxObject.CEILING)){
@@ -100,11 +110,14 @@ package {
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here
-					var plat:FlxSprite = new FlxSprite(x, y + height);
-					plat.makeGraphic(20, 5, FlxG.WHITE);
-					plat.immovable = true;
-					playState.add(plat);
-					playState.iceGroup.add(plat);
+					if(icePlat != null){icePlat.kill();}
+					icePlat = new FlxSprite(x, y + height);
+					icePlat.makeGraphic(25, 5, FlxG.WHITE);
+					icePlat.immovable = true;
+					//maxVelocity.y = 0;
+					playState.add(icePlat);
+					playState.iceGroup.add(icePlat);
+					
 					break;
 				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later
@@ -120,6 +133,11 @@ package {
 					break;
 				case 3:
 					stat = "flash frozen";
+					var plat:FlxSprite = new FlxSprite(x, y+height);
+					plat.makeGraphic(25,5,FlxG.WHITE);
+					plat.immovable = true;
+					playState.add(plat);
+					playState.iceGroup.add(plat);
 					break;
 				case 4:
 					stat = "flash heated";
