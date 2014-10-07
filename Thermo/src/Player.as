@@ -24,9 +24,10 @@ package {
 		public var stat:String = "none";
 		public var key:FlxTilemap;
 		public var exit:FlxTilemap;
+		public var playState:PlayState;
 		
 		
-		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxTilemap, e:FlxTilemap):void{
+		public function Player(X:Number, Y:Number, waterT:FlxTilemap, k:FlxTilemap, e:FlxTilemap, ps:PlayState):void{
 			super(X,Y);
 			key = k;
 			exit = e;
@@ -39,6 +40,8 @@ package {
 			acceleration.y = 600;
 			drag.x = int.MAX_VALUE;
 			waterTiles = waterT;
+			
+			playState = ps;
 			
 			// Add animations in the space right below this when we get them
 			
@@ -68,7 +71,7 @@ package {
 				y += 4;
 			}
 			
-			if(FlxG.keys.SPACE){
+			if(FlxG.keys.justPressed("SPACE")){
 				// action key, only works if Player is in water
 				if(underwater)
 					usePower(waterTiles, this);
@@ -96,7 +99,11 @@ package {
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here
-					
+					var plat:FlxSprite = new FlxSprite(x, y + height);
+					plat.makeGraphic(20, 5, FlxG.WHITE);
+					plat.immovable = true;
+					playState.add(plat);
+					playState.iceGroup.add(plat);
 					break;
 				case 2:
 					// heat, bubble up until you hit something, will need to add check for in water later

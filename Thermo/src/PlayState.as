@@ -22,6 +22,9 @@ package {
 		public var exitTiles:FlxTilemap;
 		public var keyTiles:FlxTilemap;
 		
+		// Group for ice blocks
+		public var iceGroup:FlxGroup = new FlxGroup;
+		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
 		
@@ -71,7 +74,7 @@ package {
 			add(status);
 			
 			// Create and add the player
-			player = new Player(10, 12, waterTiles, keyTiles, exitTiles);
+			player = new Player(10, 12, waterTiles, keyTiles, exitTiles, this);
 			add(player);
 			
 		}
@@ -117,7 +120,8 @@ package {
 			}
 			
 			// Make Player Collide With Level
-			FlxG.collide(groundTiles,player);
+			FlxG.collide(groundTiles, player);
+			FlxG.collide(iceGroup, player);
 			status.text=player.stat;
 		}
 		
