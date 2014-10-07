@@ -31,6 +31,7 @@ package
 		public var layerGroup1Key:FlxTilemap;
 
 		//Sprites
+		public var Group1PlayerGroup:FlxGroup = new FlxGroup;
 
 
 		public function Level_TestWDoor(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
@@ -87,6 +88,7 @@ package
 			masterLayer.add(layerGroup1FlashGates);
 			masterLayer.add(layerGroup1Door);
 			masterLayer.add(layerGroup1Key);
+			masterLayer.add(Group1PlayerGroup);
 
 
 			if ( addToStage )
