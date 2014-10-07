@@ -1,5 +1,5 @@
-package
-{
+package {
+	
 	import org.flixel.*;
 	[SWF(width="640", height="480", backgroundColor="#000000")]
 	
@@ -7,7 +7,7 @@ package
 	{
 		public function Thermo()
 		{
-			super(320,240,PlayState,2);
+			super(640,480,PlayState,1);
 		}
 	}
 }
