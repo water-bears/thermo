@@ -124,20 +124,14 @@ package {
 			// If player has the key and touches the exit, they win
 			if(player.hasKey && exitTiles.overlaps(player)) {win(exitTiles,player);}
 			
-			//Check for player lose conditions
-			if(player.y > FlxG.height)
-			{
-				player.curPow=0;
-				FlxG.resetState();
-			}
-			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
 			status.text=player.stat;
 			
+			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (FlxG.keys.TAB)
+			if (player.y > FlxG.height || FlxG.keys.TAB)
 			{
 				FlxG.switchState(new LevelSelectState());
 			}
@@ -256,9 +250,8 @@ package {
 		}
 		
 		/** Win function **/
-		public function win(Exit:FlxTilemap, player:Player):void{			
-			// Below is for now, when we have more levels this will change 
-			FlxG.resetState();
+		public function win(Exit:FlxTilemap, player:Player):void{
+			FlxG.switchState(new LevelSelectState());
 		}
 		
 	}
