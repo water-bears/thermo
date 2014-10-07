@@ -115,10 +115,27 @@ package {
 					break;
 				case 4:
 					stat = "flash heated";
-					//FlxG.overlap(waterT, currentWater, kill)
-					currentWater.kill();
+					evaporateWater(int(x / 32), int(y / 32));
 					break;
 			}
+		}
+		
+		public function evaporateWater(x:uint, y:uint)
+		{
+			waterTiles.setTile(x, y, 0, true);
+			if (waterTiles.getTile(x + 1, y) > 0) {
+				evaporateWater(x + 1, y);
+			}
+			if (waterTiles.getTile(x - 1, y) > 0) {
+				evaporateWater(x - 1, y);
+			}
+			if (waterTiles.getTile(x, y + 1) > 0) {
+				evaporateWater(x, y + 1);
+			}
+			if (waterTiles.getTile(x, y - 1) > 0) {
+				evaporateWater(x, y - 1);
+			}
+					
 		}
 		
 	}
