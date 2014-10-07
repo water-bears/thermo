@@ -3,22 +3,22 @@
 package 
 {
 	import org.flixel.*;
-	public class Level_TestWDoor extends BaseLevel
+	public class Level_1 extends BaseLevel
 	{
 		//Embedded media...
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] public var CSV_Group1Ground:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] public var CSV_Group1Ground:Class;
 		[Embed(source="../assets/groundpaint.png")] public var Img_Group1Ground:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] public var CSV_Group1Water:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] public var CSV_Group1Water:Class;
 		[Embed(source="../assets/waterflash.png")] public var Img_Group1Water:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_FreezeGates.csv", mimeType="application/octet-stream")] public var CSV_Group1FreezeGates:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_FreezeGates.csv", mimeType="application/octet-stream")] public var CSV_Group1FreezeGates:Class;
 		[Embed(source="../assets/gatesflash.png")] public var Img_Group1FreezeGates:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_HeatGates.csv", mimeType="application/octet-stream")] public var CSV_Group1HeatGates:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_HeatGates.csv", mimeType="application/octet-stream")] public var CSV_Group1HeatGates:Class;
 		[Embed(source="../assets/gatesflash.png")] public var Img_Group1HeatGates:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_FlashGates.csv", mimeType="application/octet-stream")] public var CSV_Group1FlashGates:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_FlashGates.csv", mimeType="application/octet-stream")] public var CSV_Group1FlashGates:Class;
 		[Embed(source="../assets/gatesflash.png")] public var Img_Group1FlashGates:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_Door.csv", mimeType="application/octet-stream")] public var CSV_Group1Door:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_Door.csv", mimeType="application/octet-stream")] public var CSV_Group1Door:Class;
 		[Embed(source="../assets/doorflash.png")] public var Img_Group1Door:Class;
-		[Embed(source="../assets/TestWDoor/mapCSV_Group1_Key.csv", mimeType="application/octet-stream")] public var CSV_Group1Key:Class;
+		[Embed(source="../assets/1/mapCSV_Group1_Key.csv", mimeType="application/octet-stream")] public var CSV_Group1Key:Class;
 		[Embed(source="../assets/doorflash.png")] public var Img_Group1Key:Class;
 
 		//Tilemaps
@@ -31,9 +31,12 @@ package
 		public var layerGroup1Key:FlxTilemap;
 
 		//Sprites
+		
+		//Player Start Position
+		public var start_x:float = 1;
+		public var start_y:float = 2;
 
-
-		public function Level_TestWDoor(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
+		public function Level_1(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
 		{
 			// Generate maps.
 			layerGroup1Ground = new FlxTilemap;

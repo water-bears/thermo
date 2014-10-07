@@ -38,7 +38,7 @@ package {
 			FlxG.bgColor = 0xffaaaaaa;
 			
 			//load the level
-			var level:Level_TestWDoor = new Level_TestWDoor(false);
+			var level:Level_1 = new Level_1(false);
 			
 			//add the ground
 			groundTiles = level.layerGroup1Ground;
@@ -74,7 +74,7 @@ package {
 			add(status);
 			
 			// Create and add the player
-			player = new Player(10, 12, waterTiles, keyTiles, exitTiles, this);
+			player = new Player(level.start_x*32, level.start_y*32, waterTiles, keyTiles, exitTiles, this);
 			add(player);
 			
 		}
