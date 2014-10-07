@@ -38,7 +38,7 @@ package {
 			FlxG.bgColor = 0xffaaaaaa;
 			
 			//load the level
-			var level:Level_1 = new Level_1(false);
+			var level:Level_3 = new Level_3(false);
 			
 			//add the ground
 			groundTiles = level.layerGroup1Ground;

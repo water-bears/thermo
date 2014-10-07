@@ -107,7 +107,6 @@ package {
 					maxVelocity.y = 0;
 					playState.add(icePlat);
 					playState.iceGroup.add(icePlat);
-					if(!isTouching(FLOOR)){icePlat.kill();}
 					
 					break;
 				case 2:
