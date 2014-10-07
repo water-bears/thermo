@@ -25,17 +25,13 @@ package {
 			add(backgroundTile);
 			
 			levelNames = new Vector.<String>();
-			levelNames.push("Test2");
-			levelNames.push("Test3");
+			levelNames.push("1");
 			levelNames.push("TestWDoor");
-			levelNames.push("TestWGates");
 						
 			//this is stupid and hacky but it must happen
 			//because actionscript is stupid and hacky
-			Level_Test2;
-			Level_Test3;
+			Level_1;
 			Level_TestWDoor;
-			Level_TestWGates;
 			
 			menu = new ListMenu(100, 100);
 			var i:uint;

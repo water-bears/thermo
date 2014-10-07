@@ -24,6 +24,9 @@ package {
 		public var exitTiles:FlxTilemap;
 		public var keyTiles:FlxTilemap;
 		
+		// Group for ice blocks
+		public var iceGroup:FlxGroup = new FlxGroup;
+		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
 		
@@ -47,7 +50,7 @@ package {
 			//load the level
 			if (level == null)
 			{
-				level = new Level_TestWDoor(false);
+				level = new Level_1(false);
 			}
 			
 			//add the ground
@@ -84,7 +87,7 @@ package {
 			add(status);
 			
 			// Create and add the player
-			player = new Player(10, 12, waterTiles, keyTiles, exitTiles);
+			player = new Player(level.start_x*32, level.start_y*32, waterTiles, keyTiles, exitTiles, this);
 			add(player);
 		}
 		
@@ -129,8 +132,9 @@ package {
 			}
 			
 			// Make Player Collide With Level
-			FlxG.collide(groundTiles,player);
-			status.text = player.stat;
+			FlxG.collide(groundTiles, player);
+			FlxG.collide(iceGroup, player);
+			status.text=player.stat;
 			
 			// If we press a button like um TAB we can go to level select
 			if (FlxG.keys.TAB)
@@ -231,8 +235,8 @@ package {
 		
 		/** Slows player down in water */
 		public function slowPlayer(player:Player):void{
-			player.maxVelocity.x = 100;
-			player.maxVelocity.y = 100;
+			player.maxVelocity.x = 150;
+			player.maxVelocity.y = 150;
 			player.acceleration.y = 300;
 			player.underwater = true;
 		}

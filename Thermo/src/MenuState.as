@@ -57,7 +57,7 @@ package {
 			if (FlxG.keys.SPACE)
 			{
 				var p : PlayState = new PlayState();
-				p.setLevel(new Level_TestWDoor(false));
+				p.setLevel(new Level_1(false));
 				FlxG.switchState(p);
 			}
 		}
