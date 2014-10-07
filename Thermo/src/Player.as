@@ -107,6 +107,7 @@ package {
 				case 1:
 					// freeze, create temp platform here
 					if(icePlat != null){icePlat.kill();}
+					if(!isTouching(FLOOR)){
 					icePlat = new FlxSprite(x, y + height);
 					icePlat.makeGraphic(25, 5, FlxG.WHITE);
 					icePlat.immovable = true;
@@ -115,10 +116,11 @@ package {
 					playState.iceGroup.add(icePlat);
 					
 					t1 = getTimer();
+					}
 					break;
 				case 2:
 					if (!bubble) {
-						velocity.y = -200/5;
+						velocity.y = -80;
 						acceleration.y = 0;
 						stat = "used bubble";
 						bubble = true;
@@ -128,12 +130,14 @@ package {
 					}
 					break;
 				case 3:
+					if(!isTouching(FLOOR)){
 					stat = "flash frozen";
 					var plat:FlxSprite = new FlxSprite(x, y+height);
 					plat.makeGraphic(25,10,FlxG.WHITE);
 					plat.immovable = true;
 					playState.add(plat);
 					playState.iceGroup.add(plat);
+					}
 					break;
 				case 4:
 					stat = "flash heated";
