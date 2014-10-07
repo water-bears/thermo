@@ -80,21 +80,11 @@ package {
 					usePower(waterTiles, this);
 			}
 			else if(FlxG.keys.justPressed("SPACE") && bubble){
-				velocity.y = 0;
-				acceleration.y = 600;
-				bubble = false;
-				loadGraphic(Assets.player_sprite);
-				x += 11;
-				y += 4;
+				popBubble();
 			}
 			// "Pops" bubbles when they hit the ceiling
 			if(bubble == true && isTouching(FlxObject.CEILING)){
-				velocity.y = 0;
-				acceleration.y = 600;
-				bubble = false;
-				x += 11;
-				y += 4;
-				loadGraphic(Assets.player_sprite);
+				popBubble();
 			}
 			
 			if(FlxG.keys.R){
@@ -114,13 +104,13 @@ package {
 					icePlat = new FlxSprite(x, y + height);
 					icePlat.makeGraphic(25, 5, FlxG.WHITE);
 					icePlat.immovable = true;
-					//maxVelocity.y = 0;
+					maxVelocity.y = 0;
 					playState.add(icePlat);
 					playState.iceGroup.add(icePlat);
+					if(!isTouching(FLOOR)){icePlat.kill();}
 					
 					break;
 				case 2:
-					// heat, bubble up until you hit something, will need to add check for in water later
 					if (!bubble) {
 						velocity.y = -200/5;
 						acceleration.y = 0;
@@ -162,6 +152,15 @@ package {
 				evaporateWater(x, y - 1);
 			}
 					
+		}
+		
+		public function popBubble():void {
+			velocity.y = 0;
+			acceleration.y = 600;
+			bubble = false;
+			x += 11;
+			y += 4;
+			loadGraphic(Assets.player_sprite);
 		}
 		
 	}
