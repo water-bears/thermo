@@ -14,7 +14,7 @@ package
 		public var layerGroup1Key:FlxTilemap;
 		
 		//Player Start Position
-		public var start_x:Number = 1;
+		public var start_x:Number = 2;
 		public var start_y:Number = 2;
 		
 		public var masterLayer:FlxGroup = new FlxGroup;

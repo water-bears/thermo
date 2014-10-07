@@ -26,11 +26,15 @@ package {
 			
 			levelNames = new Vector.<String>();
 			levelNames.push("1");
+			levelNames.push("2");
+			levelNames.push("3");
 			levelNames.push("TestWDoor");
 						
 			//this is stupid and hacky but it must happen
 			//because actionscript is stupid and hacky
 			Level_1;
+			Level_2;
+			Level_3;
 			Level_TestWDoor;
 			
 			menu = new ListMenu(100, 100);

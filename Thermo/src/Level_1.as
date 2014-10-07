@@ -22,13 +22,11 @@ package
 		[Embed(source="../assets/doorflash.png")] public var Img_Group1Key:Class;
 
 		//Sprites
-		
-		//Player Start Position
-		public var start_x:int = 1;
-		public var start_y:int = 2;
 
 		public function Level_1(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
 		{
+			start_x = 1;
+			start_y = 2;
 			// Generate maps.
 			layerGroup1Ground = new FlxTilemap;
 			layerGroup1Ground.loadMap( new CSV_Group1Ground, Img_Group1Ground, 32,32, FlxTilemap.OFF, 0, 1, 1 );

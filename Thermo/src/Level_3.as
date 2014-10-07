@@ -21,24 +21,10 @@ package
 		[Embed(source="../assets/3/mapCSV_Group1_Key.csv", mimeType="application/octet-stream")] public var CSV_Group1Key:Class;
 		[Embed(source="../assets/doorflash.png")] public var Img_Group1Key:Class;
 
-		//Tilemaps
-		public var layerGroup1Ground:FlxTilemap;
-		public var layerGroup1Water:FlxTilemap;
-		public var layerGroup1FreezeGates:FlxTilemap;
-		public var layerGroup1HeatGates:FlxTilemap;
-		public var layerGroup1FlashGates:FlxTilemap;
-		public var layerGroup1Door:FlxTilemap;
-		public var layerGroup1Key:FlxTilemap;
-
-		//Sprites
-		
-		//Player Start Position
-		public var start_x:int = 5;
-		public var start_y:int = 7;
-
-
 		public function Level_3(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
 		{
+			start_x = 5;
+			start_y = 7;
 			// Generate maps.
 			layerGroup1Ground = new FlxTilemap;
 			layerGroup1Ground.loadMap( new CSV_Group1Ground, Img_Group1Ground, 32,32, FlxTilemap.OFF, 0, 1, 1 );
