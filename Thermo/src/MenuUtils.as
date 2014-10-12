@@ -1,19 +1,13 @@
-package  
-{
+package {
 	import flash.display.Graphics;
 	import flash.display.GradientType;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	
 	import org.flixel.*;
-	/**
-	 * ...
-	 * @author KJin
-	 */
-	public class MenuUtils 
-	{
-		public static function CreateVerticalGradient(Dimensions:FlxPoint, TopColor:uint, BottomColor:uint): FlxSprite
-		{
+
+	public class MenuUtils {
+		public static function CreateVerticalGradient(Dimensions:FlxPoint, TopColor:uint, BottomColor:uint): FlxSprite {
 			var Sprite:FlxSprite = new FlxSprite();
 			Sprite.makeGraphic(Dimensions.x, Dimensions.y, 0xffffffff);
 			
@@ -34,5 +28,4 @@ package
 			return Sprite;
 		}
 	}
-
 }

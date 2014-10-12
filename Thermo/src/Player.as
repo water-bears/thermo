@@ -1,5 +1,3 @@
-// ActionScript file
-
 package {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
@@ -11,14 +9,15 @@ package {
 	public class Player extends FlxSprite {
 		
 		/* curPow (fake enumeration, as3 has annoying enumerations) 
-		Initialized to 0 for no power
-		1 for freeze
-		2 for heat
-		3 for flash freeze
-		4 for flash heat
+			Initialized to 0 for no power
+			1 for freeze
+			2 for heat
+			3 for flash freeze
+			4 for flash heat
 		*/
 		public var curPow:int = 0;
 		
+		public var superBubble:Boolean = false;
 		public var bubble:Boolean = false;
 		public var underwater:Boolean = false;
 		public var waterTiles:FlxTilemap;
@@ -55,10 +54,9 @@ package {
 		
 		override public function update():void {
 			acceleration.x = 0;
-			if(!bubble){
+			if(!bubble) {
 				if(FlxG.keys.LEFT || FlxG.keys.A)
 					velocity.x = -maxVelocity.x;
-			
 			
 				if(FlxG.keys.RIGHT || FlxG.keys.D)
 					velocity.x = maxVelocity.x;
@@ -67,55 +65,45 @@ package {
 					velocity.y = -maxVelocity.y;
 			}
 			
-			// pops bubble when one of these are pressed
-			if((FlxG.keys.S || FlxG.keys.DOWN) && bubble){
-				velocity.y = 0;
-				acceleration.y = 600;
-				bubble = false;
-				loadGraphic(Assets.player_sprite);
-				x += 11;
-				y += 4;
-			}
-			
-			if(FlxG.keys.justPressed("SPACE") && !bubble){
+			if(FlxG.keys.justPressed("SPACE") && !bubble && !superBubble) {
 				// action key, only works if Player is in water
 				if(underwater)
 					usePower(waterTiles, this);
-			}
-			else if(FlxG.keys.justPressed("SPACE") && bubble){
+			} else if(FlxG.keys.justPressed("SPACE") && (bubble || superBubble)) {
 				popBubble();
 			}
 			// "Pops" bubbles when they hit the ceiling
-			if(bubble == true && isTouching(FlxObject.CEILING)){
+			if((bubble || superBubble) && isTouching(FlxObject.CEILING)) {
 				popBubble();
 			}
 
-			if(getTimer()-t1 >= 500 && !isTouching(FLOOR) && icePlat != null){icePlat.kill();}
+			if (getTimer() - t1 >= 500 && !isTouching(FLOOR) && icePlat != null) {
+				icePlat.kill();
+			}
 
-			
 			if(FlxG.keys.R){
 				FlxG.resetState();
 			}
 			
-			//update this
 			super.update();
-			
 		}
 		
-		public function usePower(currentWater:FlxTilemap, player:Player):void{
+		public function usePower(currentWater:FlxTilemap, player:Player):void {
 			switch (curPow) {
 				case 1:
 					// freeze, create temp platform here
-					if(icePlat != null){icePlat.kill();}
-					if(!isTouching(FLOOR)){
-					icePlat = new FlxSprite(x, y + height);
-					icePlat.makeGraphic(25, 5, FlxG.WHITE);
-					icePlat.immovable = true;
-					maxVelocity.y = 0;
-					playState.add(icePlat);
-					playState.iceGroup.add(icePlat);
-					
-					t1 = getTimer();
+					if (icePlat != null) {
+						icePlat.kill();
+					}
+					if (!isTouching(FLOOR)) {
+						icePlat = new FlxSprite(x, y + height);
+						icePlat.makeGraphic(25, 5, FlxG.WHITE);
+						icePlat.immovable = true;
+						maxVelocity.y = 0;
+						playState.add(icePlat);
+						playState.iceGroup.add(icePlat);
+						
+						t1 = getTimer();
 					}
 					break;
 				case 2:
@@ -124,6 +112,7 @@ package {
 						acceleration.y = 0;
 						stat = "used bubble";
 						bubble = true;
+						superBubble = false;
 						x -= 11;
 						y -= 4;
 						loadGraphic(Assets.bubble_sprite);
@@ -131,23 +120,31 @@ package {
 					break;
 				case 3:
 					if(!isTouching(FLOOR)){
-					stat = "flash frozen";
-					var plat:FlxSprite = new FlxSprite(x, y+height);
-					plat.makeGraphic(25,10,FlxG.WHITE);
-					plat.immovable = true;
-					playState.add(plat);
-					playState.iceGroup.add(plat);
+						stat = "flash frozen";
+						var plat:FlxSprite = new FlxSprite(x, y + height);
+						plat.makeGraphic(25, 10, FlxG.WHITE);
+						plat.immovable = true;
+						playState.add(plat);
+						playState.iceGroup.add(plat);
 					}
 					break;
 				case 4:
-					stat = "flash heated";
-					evaporateWater(int(x / 32), int(y / 32));
+					if (!superBubble) {
+						bubble = false;
+						velocity.y = -80;
+						acceleration.y = 0;
+						stat = "super bubble";
+						superBubble = true;
+						x -= 11;
+						y -= 4;
+						loadGraphic(Assets.bubble_sprite);
+					}
+					//evaporateWater(int(x / 32), int(y / 32));
 					break;
 			}
 		}
 		
-		public function evaporateWater(x:uint, y:uint):void
-		{
+		/*public function evaporateWater(x:uint, y:uint):void {
 			waterTiles.setTile(x, y, 0, true);
 			if (waterTiles.getTile(x + 1, y) > 0) {
 				evaporateWater(x + 1, y);
@@ -161,17 +158,16 @@ package {
 			if (waterTiles.getTile(x, y - 1) > 0) {
 				evaporateWater(x, y - 1);
 			}
-					
-		}
+		}*/
 		
 		public function popBubble():void {
 			velocity.y = 0;
 			acceleration.y = 600;
+			superBubble = false;
 			bubble = false;
 			x += 11;
 			y += 4;
 			loadGraphic(Assets.player_sprite);
 		}
-		
 	}
 }

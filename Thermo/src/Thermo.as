@@ -1,13 +1,11 @@
 package {
 	
 	import org.flixel.*;
-	[SWF(width="640", height="480", backgroundColor="#000000")]
+	[SWF(width="1024", height="768", backgroundColor="#000000")]
 	
-	public class Thermo extends FlxGame
-	{
-		public function Thermo()
-		{
-			super(640, 480, MenuState, 1);
+	public class Thermo extends FlxGame {
+		public function Thermo() {
+			super(1024, 768, MenuState, 2);
 			
 			// Optional debug tools
 			// FlxG.debug = true;

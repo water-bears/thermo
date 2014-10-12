@@ -1,5 +1,3 @@
-// ActionScript file
-
 package {
 	import flash.display.Graphics;
 	import flash.display.Shape;
@@ -54,13 +52,11 @@ package {
 			time++;
 			title.y = titleY + 5 * Math.cos(time / 40.0);
 			prompt.y = promptY - 4 * Math.cos(time / 25.0);
-			if (FlxG.keys.TAB)
-			{
+			if (FlxG.keys.TAB) {
 				var p : PlayState = new PlayState();
 				p.setLevel(new Level_1(false));
 				FlxG.switchState(p);
 			}
 		}
 	}
-	
 }

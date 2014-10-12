@@ -1,5 +1,3 @@
-// ActionScript file
-
 package {
 	import flash.display.Graphics;
 	import flash.display.Shape;
@@ -39,13 +37,13 @@ package {
 			
 			menu = new ListMenu(100, 100);
 			var i:uint;
-			for (i = 0; i < levelNames.length; i++)
-			{
+			for (i = 0; i < levelNames.length; i++) {
 				var ft:FlxText = new FlxText(0, 0, 100, levelNames[i]);
 				ft.setOriginToCorner();
 				ft.scale = new FlxPoint(2, 2);
 				menu.add(ft);
 			}
+			
 			menu.setActive(true);
 			add(menu);
 			
@@ -57,8 +55,7 @@ package {
 			//title.y = titleY + 5 * Math.cos(time / 40.0);
 			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			menu.update();
-			if (FlxG.keys.ENTER)
-			{
+			if (FlxG.keys.ENTER) {
 				var className:String = "Level_" + levelNames[menu.getSelectedIndex()];
 				var nextLevel:Class = getDefinitionByName(className) as Class;
 				var nextLevelInstance:* = new nextLevel(false);
@@ -68,5 +65,4 @@ package {
 			}
 		}
 	}
-	
 }

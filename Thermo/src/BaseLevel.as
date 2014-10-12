@@ -1,10 +1,6 @@
-//Code generated with DAME. http://www.dambots.com
-
-package 
-{
+package {
 	import org.flixel.*;
-	public class BaseLevel
-	{
+	public class BaseLevel {
 		public var layerGroup1Ground:FlxTilemap;
 		public var layerGroup1Water:FlxTilemap;
 		public var layerGroup1FreezeGates:FlxTilemap;
@@ -28,8 +24,7 @@ package
 
 		public function BaseLevel() { }
 /*
-		public function addSpriteToLayer(type:Class, group:FlxGroup, x:Number, y:Number, angle:Number, flipped:Boolean, onAddCallback:Function = null):FlxSprite
-		{
+		public function addSpriteToLayer(type:Class, group:FlxGroup, x:Number, y:Number, angle:Number, flipped:Boolean, onAddCallback:Function = null):FlxSprite {
 			var obj:FlxSprite = new type(x, y);
 			obj.x += obj.offset.x;
 			obj.y += obj.offset.y;
@@ -43,6 +38,5 @@ package
 			return obj;
 		}
 		*/
-
 	}
 }

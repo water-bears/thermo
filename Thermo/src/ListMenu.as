@@ -1,5 +1,3 @@
-// ActionScript file
-
 package {
 	import flash.display.Graphics;
 	import flash.display.Shape;
@@ -37,10 +35,8 @@ package {
 			super.add(cursor);
 		}
 		
-		override public function add(Object:FlxBasic):FlxBasic 
-		{
-			if (Object is FlxSprite)
-			{
+		override public function add(Object:FlxBasic):FlxBasic {
+			if (Object is FlxSprite) {
 				var Sprite:FlxSprite = FlxSprite(Object);
 				Sprite.x = X;
 				Sprite.y = Y + this.height;
@@ -49,9 +45,7 @@ package {
 				this.width = Math.max(this.width, Sprite.width * Sprite.scale.x);
 				this.height += Sprite.height * Sprite.scale.y;
 				return super.add(Object);
-			}
-			else
-			{
+			} else {
 				throw new ArgumentError("You may only add FlxSprites to a ListMenu.");
 			}
 		}
@@ -65,36 +59,29 @@ package {
 		}
 		
 		override public function update():void {
-			if (menuActive)
-			{
+			if (menuActive) {
 				var keyDown:Boolean = false;
-				if (FlxG.keys.DOWN)
-				{
-					if (currentItem < menuYVals.length - 1 && keyFramesDown % 10 == 0)
-					{
+				if (FlxG.keys.DOWN) {
+					if (currentItem < menuYVals.length - 1 && keyFramesDown % 10 == 0) {
 						currentItem++;
 					}
 					keyDown = true;
 				}
-				if (FlxG.keys.UP)
-				{
-					if (currentItem > 0 && keyFramesDown % 10 == 0)
-					{
+				
+				if (FlxG.keys.UP) {
+					if (currentItem > 0 && keyFramesDown % 10 == 0) {
 						currentItem--;
 					}
 					keyDown = true;
 				}
-				if (keyDown)
-				{
+				
+				if (keyDown) {
 					keyFramesDown++;
-				}
-				else
-				{
+				} else {
 					keyFramesDown = 0;
 				}
 				cursor.y = Y + menuYVals[currentItem];
 			}
 		}
 	}
-	
 }

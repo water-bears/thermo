@@ -1,5 +1,3 @@
-// ActionScript file
-
 package {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
@@ -48,8 +46,7 @@ package {
 			add(background);
 			
 			//load the level
-			if (level == null)
-			{
+			if (level == null) {
 				level = new Level_1(false);
 			}
 			
@@ -80,7 +77,7 @@ package {
 			add(keyTiles);
 			
 			// This will be essentially for debugging or other info we want
-			status = new FlxText(FlxG.width-160-2,2,160);
+			status = new FlxText(FlxG.width - 158, 2, 160);
 			status.shadow = 0xff000000;
 			status.alignment = "right";
 			status.text = "none";
@@ -93,7 +90,7 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			player = new Player(level.start_x*32, level.start_y*32, waterTiles, keyTiles, exitTiles, this);
+			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, keyTiles, exitTiles, this);
 			add(player);
 		}
 		
@@ -102,17 +99,16 @@ package {
 			status.text = player.stat;
 			
 			// Slow player down if they are in water
-			if (waterTiles.overlaps(player) && !player.bubble) {
+			if (waterTiles.overlaps(player) && (!player.bubble && !player.superBubble)) {
 				slowPlayer(player);
 			}
 				// Put player back to normal speed in air
-			else if (!player.bubble) {
+			else if (!player.bubble && !player.superBubble) {
 				fastPlayer(player);
 			}
 			
 			// Receive key 
-			if (keyTiles.overlaps(player))
-			{
+			if (keyTiles.overlaps(player)) {
 				getKey(keyTiles, player);
 			}
 			
@@ -128,7 +124,9 @@ package {
 			}
 			
 			// If player has the key and touches the exit, they win
-			if(player.hasKey && exitTiles.overlaps(player)) {win(exitTiles,player);}
+			if (player.hasKey && exitTiles.overlaps(player)) {
+				win(exitTiles, player);
+			}
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
@@ -137,8 +135,7 @@ package {
 			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (player.y > FlxG.height || FlxG.keys.TAB)
-			{
+			if (player.y > FlxG.height || FlxG.keys.TAB) {
 				FlxG.switchState(new LevelSelectState());
 			}
 		}
@@ -146,8 +143,8 @@ package {
 		/**Creates gate based on the specified x and y coordinates and the power we want them to be
 		 Power is consistent with curPow properties**/
 		public function createGate(X:uint,Y:uint,power:uint):void {
-			var gate:FlxSprite = new FlxSprite(X*8+3,Y*8-4);
-			gate.makeGraphic(2,12,0xffffff00);
+			var gate:FlxSprite = new FlxSprite(X * 8 + 3, Y * 8 - 4);
+			gate.makeGraphic(2, 12, 0xffffff00);
 			
 			switch (power){
 				// blue, freeze
@@ -165,13 +162,13 @@ package {
 		
 		/**Creates water tiles based on the specified x and y coordinates **/
 		public function createWater(X:uint, Y:uint):void {
-			var wat:FlxSprite = new FlxSprite(X*8+3, Y*8-4);
-			wat.makeGraphic(10,12,FlxG.BLUE);
+			var wat:FlxSprite = new FlxSprite(X * 8 + 3, Y * 8 - 4);
+			wat.makeGraphic(10, 12, FlxG.BLUE);
 			//waterTiles.add(wat);
 		}
 		
 		/**What happens when you enter a gate, updates player power**/
-		public function getGate(Gate:FlxSprite,player:Player):void{
+		public function getGate(Gate:FlxSprite,player:Player):void {
 			var col:uint = Gate.color;
 			switch (col) {
 				// Player hit freeze gate
@@ -203,24 +200,21 @@ package {
 		}
 		
 		/**What happens when you enter a freeze gate, updates player power**/
-		public function getFreeze(x:FlxTilemap, p:FlxSprite):void
-		{
+		public function getFreeze(x:FlxTilemap, p:FlxSprite):void {
 			player.curPow = 1; 
 			status.text = "freeze";
 			player.stat = status.text;
 		}
 		
 		/**What happens when you enter a heat gate, updates player power**/
-		public function getHeat(x:FlxTilemap, p:FlxSprite):void
-		{
+		public function getHeat(x:FlxTilemap, p:FlxSprite):void {
 			player.curPow = 2;
 			status.text = "heat";
 			player.stat = status.text;			
 		}
 		
 		/**What happens when you enter a flash gate, updates player power**/
-		public function getFlash(x:FlxTilemap, p:FlxSprite):void
-		{
+		public function getFlash(x:FlxTilemap, p:FlxSprite):void {
 			if(player.curPow == 1) {
 				player.curPow = 3;
 				status.text = "flash freeze";
@@ -234,7 +228,7 @@ package {
 		}
 		
 		/** Slows player down in water */
-		public function slowPlayer(player:Player):void{
+		public function slowPlayer(player:Player):void {
 			player.maxVelocity.x = 150;
 			player.maxVelocity.y = 150;
 			player.acceleration.y = 300;
@@ -242,7 +236,7 @@ package {
 		}
 		
 		/** Player back to normal speed outside of water */
-		public function fastPlayer(player:Player):void{
+		public function fastPlayer(player:Player):void {
 			player.maxVelocity.x = 200;
 			player.maxVelocity.y = 200;
 			player.acceleration.y = 600;
@@ -250,16 +244,14 @@ package {
 		}
 		
 		/** when player retrieves key **/
-		public function getKey(key:FlxTilemap, player:Player):void{
+		public function getKey(key:FlxTilemap, player:Player):void {
 			key.kill();
 			player.hasKey = true;
 		}
 		
 		/** Win function **/
-		public function win(Exit:FlxTilemap, player:Player):void{
+		public function win(Exit:FlxTilemap, player:Player):void {
 			FlxG.switchState(new LevelSelectState());
 		}
-		
 	}
-	
 }

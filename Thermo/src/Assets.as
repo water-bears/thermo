@@ -1,10 +1,8 @@
-package  {
-	
+package {
 	/**
 	 * Utility class for importing sprites and sounds
 	 */
-	public class Assets 
-	{
+	public class Assets {
 		/* Sprites */
 		
 		/* Basic standing character sprite */
@@ -17,5 +15,4 @@ package  {
 		
 		/* Sounds */
 	}
-
 }

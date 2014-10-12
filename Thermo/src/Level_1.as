@@ -1,10 +1,6 @@
-//Code generated with DAME. http://www.dambots.com
-
-package 
-{
+package {
 	import org.flixel.*;
-	public class Level_1 extends BaseLevel
-	{
+	public class Level_1 extends BaseLevel {
 		//Embedded media...
 		[Embed(source="../assets/1/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] public var CSV_Group1Ground:Class;
 		[Embed(source="../assets/groundpaint.png")] public var Img_Group1Ground:Class;
@@ -23,8 +19,7 @@ package
 
 		//Sprites
 
-		public function Level_1(addToStage:Boolean = true, onAddSpritesCallback:Function = null)
-		{
+		public function Level_1(addToStage:Boolean = true, onAddSpritesCallback:Function = null) {
 			start_x = 1;
 			start_y = 2;
 			// Generate maps.
@@ -81,8 +76,7 @@ package
 			masterLayer.add(layerGroup1Key);
 
 
-			if ( addToStage )
-			{
+			if (addToStage) {
 				FlxG.state.add(masterLayer);
 			}
 
@@ -92,7 +86,5 @@ package
 			boundsMaxY = 320;
 
 		}
-
-
 	}
 }
