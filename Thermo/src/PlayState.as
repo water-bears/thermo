@@ -98,12 +98,11 @@ package {
 			super.update();
 			status.text = player.stat;
 			
-			// Slow player down if they are in water
-			if (waterTiles.overlaps(player) && (!player.bubble && !player.superBubble)) {
+			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
+				// Slow player down if they are in water
 				slowPlayer(player);
-			}
+			} else if (!player.bubble && !player.superBubble) {
 				// Put player back to normal speed in air
-			else if (!player.bubble && !player.superBubble) {
 				fastPlayer(player);
 			}
 			
@@ -131,7 +130,7 @@ package {
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
-			status.text=player.stat;
+			status.text = player.stat;
 			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select

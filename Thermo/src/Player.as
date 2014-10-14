@@ -77,7 +77,7 @@ package {
 				popBubble();
 			}
 
-			if (getTimer() - t1 >= 500 && !isTouching(FLOOR) && icePlat != null) {
+			if (getTimer() - t1 >= 100 && !isTouching(FLOOR) && icePlat != null) {
 				icePlat.kill();
 			}
 
@@ -96,8 +96,8 @@ package {
 						icePlat.kill();
 					}
 					if (!isTouching(FLOOR)) {
-						icePlat = new FlxSprite(x, y + height);
-						icePlat.makeGraphic(25, 5, FlxG.WHITE);
+						icePlat = new FlxSprite(x + 1 - (width / 2), y + height);
+						icePlat.makeGraphic(16, 5, FlxG.WHITE);
 						icePlat.immovable = true;
 						maxVelocity.y = 0;
 						playState.add(icePlat);
@@ -168,6 +168,10 @@ package {
 			x += 11;
 			y += 4;
 			loadGraphic(Assets.player_sprite);
+		}
+		
+		public function getHeight():Number {
+			return height;
 		}
 	}
 }
