@@ -7,15 +7,15 @@ package {
 		
 		/* Basic standing character sprite */
 		[Embed(source = "../assets/character.png")]
-		public static var player_sprite:Class;
+		public static var playerSprite:Class;
 		
 		/* Bubble sprite */
 		[Embed(source = "../assets/bubble.png")]
-		public static var bubble_sprite:Class;
+		public static var bubbleSprite:Class;
 		
 		/* Background sprite */
 		[Embed(source = "../assets/backgrounds/background.png")]
-		public static var background_sprite:Class;
+		public static var backgroundSprite:Class;
 		
 		/* Sounds */
 	}

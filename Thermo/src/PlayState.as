@@ -5,13 +5,9 @@ package {
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
-		//aesthetics (aka gradient background)
 		private var background:FlxSprite;
 		
-		//public var level:FlxTilemap;
 		private var player:Player;
-		//public var exit:FlxSprite;
-		//public var key:FlxSprite;
 		
 		// Groups that will allow us to make gate and water tiles
 		public var freezeTiles:FlxTilemap;
@@ -36,6 +32,10 @@ package {
 		
 		private var level:BaseLevel;
 		
+		private const FREEZE:int = 1;
+		private const HEAT:int = 2;
+		private const FLASH:int = 3;
+		
 		public function setLevel(inputLevel:BaseLevel): void {
 			level = inputLevel;
 		}
@@ -44,7 +44,7 @@ package {
 			// Make the background
 			//background = MenuUtils.CreateVerticalGradient(new FlxPoint(FlxG.width, FlxG.height), 0x000033, 0x003366);
 			background = new FlxSprite(0, 0);
-			background.loadGraphic(Assets.background_sprite);
+			background.loadGraphic(Assets.backgroundSprite);
 			add(background);
 			
 			//load the level
@@ -92,20 +92,23 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, keyTiles, exitTiles, this);
+			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
 			add(player);
 		}
 		
 		override public function update():void {
 			super.update();
-			status.text = player.stat;
+			
+			// Make Player Collide With Level
+			FlxG.collide(groundTiles, player);
+			FlxG.collide(iceGroup, player);
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
 				// Slow player down if they are in water
-				slowPlayer(player);
+				player.slowSpeed();
 			} else if (!player.bubble && !player.superBubble) {
 				// Put player back to normal speed in air
-				fastPlayer(player);
+				player.normalSpeed();
 			}
 			
 			// Receive key 
@@ -115,13 +118,13 @@ package {
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			if (freezeTiles.overlaps(player)) {
-				getFreeze(freezeTiles, player);
+				player.updatePower(FREEZE);
 			}
 			if (heatTiles.overlaps(player)) {
-				getHeat(heatTiles, player);
+				player.updatePower(HEAT);
 			}
 			if (flashTiles.overlaps(player)) {
-				getFlash(flashTiles, player);
+				player.updatePower(FLASH);
 			}
 			
 			// If player has the key and touches the exit, they win
@@ -129,119 +132,13 @@ package {
 				win(exitTiles, player);
 			}
 			
-			// Make Player Collide With Level
-			FlxG.collide(groundTiles, player);
-			FlxG.collide(iceGroup, player);
-			status.text = player.stat;
-			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
 			if (player.y > FlxG.height || FlxG.keys.TAB) {
 				FlxG.switchState(new LevelSelectState());
 			}
-		}
-		
-		/**Creates gate based on the specified x and y coordinates and the power we want them to be
-		 Power is consistent with curPow properties**/
-		public function createGate(X:uint,Y:uint,power:uint):void {
-			var gate:FlxSprite = new FlxSprite(X * 8 + 3, Y * 8 - 4);
-			gate.makeGraphic(2, 12, 0xffffff00);
 			
-			switch (power){
-				// blue, freeze
-				case 1: gate.color = (BLUE);
-					break;
-				// red, heat
-				case 2: gate.color = (RED);
-					break;
-				// flash, neutral
-				case 3: gate.color = (0x00FFFF00);
-					break;
-			}
-			//gateTiles.add(gate);
-		}
-		
-		/**Creates water tiles based on the specified x and y coordinates **/
-		public function createWater(X:uint, Y:uint):void {
-			var wat:FlxSprite = new FlxSprite(X * 8 + 3, Y * 8 - 4);
-			wat.makeGraphic(10, 12, FlxG.BLUE);
-			//waterTiles.add(wat);
-		}
-		
-		/**What happens when you enter a gate, updates player power**/
-		public function getGate(Gate:FlxSprite,player:Player):void {
-			var col:uint = Gate.color;
-			switch (col) {
-				// Player hit freeze gate
-				case BLUE: 
-					player.curPow = 1; 
-					status.text = "freeze";
-					player.stat = status.text;
-					break;
-				// Player hit heat gate
-				case RED: 
-					player.curPow = 2;
-					status.text = "heat";
-					player.stat = status.text;
-					break;
-				//Player hit neutral gate TBC WHEN FREEZE/HEAT DONE
-				case 0x00FFFF00:
-					if(player.curPow == 1) {
-						player.curPow = 3;
-						status.text = "flash freeze";
-						player.stat = status.text;
-					}
-					if(player.curPow == 2) {
-						player.curPow = 4;
-						status.text = "flash heat";
-						player.stat = status.text;
-					}
-					break;
-			}
-		}
-		
-		/**What happens when you enter a freeze gate, updates player power**/
-		public function getFreeze(x:FlxTilemap, p:FlxSprite):void {
-			player.curPow = 1; 
-			status.text = "freeze";
-			player.stat = status.text;
-		}
-		
-		/**What happens when you enter a heat gate, updates player power**/
-		public function getHeat(x:FlxTilemap, p:FlxSprite):void {
-			player.curPow = 2;
-			status.text = "heat";
-			player.stat = status.text;			
-		}
-		
-		/**What happens when you enter a flash gate, updates player power**/
-		public function getFlash(x:FlxTilemap, p:FlxSprite):void {
-			if(player.curPow == 1) {
-				player.curPow = 3;
-				status.text = "flash freeze";
-				player.stat = status.text;
-			}
-			if(player.curPow == 2) {
-				player.curPow = 4;
-				status.text = "flash heat";
-				player.stat = status.text;
-			}
-		}
-		
-		/** Slows player down in water */
-		public function slowPlayer(player:Player):void {
-			player.maxVelocity.x = 150;
-			player.maxVelocity.y = 150;
-			player.acceleration.y = 300;
-			player.underwater = true;
-		}
-		
-		/** Player back to normal speed outside of water */
-		public function fastPlayer(player:Player):void {
-			player.maxVelocity.x = 200;
-			player.maxVelocity.y = 200;
-			player.acceleration.y = 600;
-			player.underwater = false;
+			status.text = player.stat;
 		}
 		
 		/** when player retrieves key **/
