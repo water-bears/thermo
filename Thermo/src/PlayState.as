@@ -19,7 +19,7 @@ package {
 		public var keyTiles:FlxTilemap;
 		
 		// Group for ice blocks
-		public var iceGroup:FlxGroup = new FlxGroup(3);
+		public var iceGroup:FlxGroup = new FlxGroup(4);
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;

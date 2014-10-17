@@ -26,7 +26,6 @@ package {
 		public var stat:String = "none";
 		public var playState:PlayState;
 		
-		public var icePlat:FlxSprite;
 		public var t1:int;
 		
 		private var ice:Array;
@@ -41,7 +40,7 @@ package {
 			this.acceleration.y = 600;
 			this.drag.x = int.MAX_VALUE;
 			this.waterTiles = waterT;
-			this.curPow = 3;
+			this.curPow = 0;
 			this.iceCount = 0;
 			
 			this.playState = playState;
@@ -49,11 +48,16 @@ package {
 			this.ice = new Array();
 			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
 			for (var i:int = 0; i <= 3; i++) {
-				icePlat = new FlxSprite();
+				var icePlat:FlxSprite = new FlxSprite();
 				icePlat.makeGraphic(25, 10, FlxG.WHITE);
 				icePlat.immovable = true;				
 				this.ice.push(icePlat);
 			}
+			
+			var tempPlat:FlxSprite = new FlxSprite();
+			tempPlat.makeGraphic(16, 5, FlxG.WHITE);
+			tempPlat.immovable = true;
+			this.ice[3] = tempPlat;
 			
 			// Add animations in the space right below this when we get them
 			
@@ -92,8 +96,8 @@ package {
 				popBubble();
 			}
 
-			if (getTimer() - t1 >= 100 && !isTouching(FLOOR) && icePlat != null) {
-				icePlat.kill();
+			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
+				this.ice[3].kill();
 			}
 
 			if (FlxG.keys.R){
@@ -124,16 +128,10 @@ package {
 			switch (curPow) {
 				// Freeze
 				case 1:
-					if (icePlat != null) {
-						icePlat.kill();
-					}
 					if (!isTouching(FLOOR)) {
-						icePlat = new FlxSprite(x + 1 - (width / 2), y + height);
-						icePlat.makeGraphic(16, 5, FlxG.WHITE);
-						icePlat.immovable = true;
-						maxVelocity.y = 0;
-						playState.add(icePlat);
-						playState.iceGroup.add(icePlat);
+						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
+						this.maxVelocity.y = 0;
+						playState.iceGroup.add(this.ice[3]);
 						
 						t1 = getTimer();
 					}
@@ -155,28 +153,23 @@ package {
 				case 3:
 					if (!isTouching(FLOOR)){
 						stat = "flash frozen";
-						/*var plat:FlxSprite = new FlxSprite(x, y + height);
-						plat.makeGraphic(25, 10, FlxG.WHITE);
-						plat.immovable = true;
-						playState.add(plat);
-						playState.iceGroup.add(plat);*/
 						switch (iceCount % 3) {
 							case 0:
-								ice[0].x = this.x;
-								ice[0].y = this.y + this.height;
-								playState.iceGroup.add(ice[0]);
+								this.ice[0].x = this.x;
+								this.ice[0].y = this.y + this.height;
+								playState.iceGroup.add(this.ice[0]);
 								this.maxVelocity.y = 0;
 								break;
 							case 1:
-								ice[1].x = this.x;
-								ice[1].y = this.y + this.height;
-								playState.iceGroup.add(ice[1]);
+								this.ice[1].x = this.x;
+								this.ice[1].y = this.y + this.height;
+								playState.iceGroup.add(this.ice[1]);
 								this.maxVelocity.y = 0;
 								break;
 							case 2:
-								ice[2].x = this.x;
-								ice[2].y = this.y + this.height;
-								playState.iceGroup.add(ice[2]);
+								this.ice[2].x = this.x;
+								this.ice[2].y = this.y + this.height;
+								playState.iceGroup.add(this.ice[2]);
 								this.maxVelocity.y = 0;
 								break;
 						}
