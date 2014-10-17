@@ -13,6 +13,10 @@ package {
 		[Embed(source = "../assets/bubble.png")]
 		public static var bubble_sprite:Class;
 		
+		/* Background sprite */
+		[Embed(source = "../assets/backgrounds/background.png")]
+		public static var background_sprite:Class;
+		
 		/* Sounds */
 	}
 }

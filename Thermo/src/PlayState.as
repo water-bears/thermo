@@ -42,7 +42,9 @@ package {
 		
 		override public function create():void {
 			// Make the background
-			background = MenuUtils.CreateVerticalGradient(new FlxPoint(FlxG.width, FlxG.height), 0x000033, 0x003366);
+			//background = MenuUtils.CreateVerticalGradient(new FlxPoint(FlxG.width, FlxG.height), 0x000033, 0x003366);
+			background = new FlxSprite(0, 0);
+			background.loadGraphic(Assets.background_sprite);
 			add(background);
 			
 			//load the level
