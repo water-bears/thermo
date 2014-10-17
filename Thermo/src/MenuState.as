@@ -22,8 +22,8 @@ package {
 			var dimensions:FlxPoint = new FlxPoint(4.0 * zoom, 3.0 * zoom);
 			
 			// Create background gradient
-			backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
-			add(backgroundTile);
+			//backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
+			//add(backgroundTile);
 			
 			// Initialize Title Text
 			title = new FlxText(0.425 * dimensions.x, 0.167 * dimensions.y, 0.15 * dimensions.x);

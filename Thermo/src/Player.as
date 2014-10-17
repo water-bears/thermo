@@ -29,6 +29,8 @@ package {
 		public var icePlat:FlxSprite;
 		public var t1:int;
 		
+		private var ice:Array;
+		private var iceCount:int;
 		
 		public function Player(x:Number, y:Number, waterT:FlxTilemap, playState:PlayState):void{
 			super(x, y);
@@ -39,9 +41,19 @@ package {
 			this.acceleration.y = 600;
 			this.drag.x = int.MAX_VALUE;
 			this.waterTiles = waterT;
-			this.curPow = 0;
+			this.curPow = 3;
+			this.iceCount = 0;
 			
 			this.playState = playState;
+			
+			this.ice = new Array();
+			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
+			for (var i:int = 0; i <= 3; i++) {
+				icePlat = new FlxSprite();
+				icePlat.makeGraphic(25, 10, FlxG.WHITE);
+				icePlat.immovable = true;				
+				this.ice.push(icePlat);
+			}
 			
 			// Add animations in the space right below this when we get them
 			
@@ -143,11 +155,32 @@ package {
 				case 3:
 					if (!isTouching(FLOOR)){
 						stat = "flash frozen";
-						var plat:FlxSprite = new FlxSprite(x, y + height);
+						/*var plat:FlxSprite = new FlxSprite(x, y + height);
 						plat.makeGraphic(25, 10, FlxG.WHITE);
 						plat.immovable = true;
 						playState.add(plat);
-						playState.iceGroup.add(plat);
+						playState.iceGroup.add(plat);*/
+						switch (iceCount % 3) {
+							case 0:
+								ice[0].x = this.x;
+								ice[0].y = this.y + this.height;
+								playState.iceGroup.add(ice[0]);
+								this.maxVelocity.y = 0;
+								break;
+							case 1:
+								ice[1].x = this.x;
+								ice[1].y = this.y + this.height;
+								playState.iceGroup.add(ice[1]);
+								this.maxVelocity.y = 0;
+								break;
+							case 2:
+								ice[2].x = this.x;
+								ice[2].y = this.y + this.height;
+								playState.iceGroup.add(ice[2]);
+								this.maxVelocity.y = 0;
+								break;
+						}
+						iceCount++;
 					}
 					break;
 				// Flash Heat

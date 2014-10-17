@@ -19,7 +19,7 @@ package {
 		public var keyTiles:FlxTilemap;
 		
 		// Group for ice blocks
-		public var iceGroup:FlxGroup = new FlxGroup;
+		public var iceGroup:FlxGroup = new FlxGroup(3);
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
@@ -94,6 +94,8 @@ package {
 			// Create and add the player
 			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
 			add(player);
+			
+			this.add(iceGroup);
 		}
 		
 		override public function update():void {
