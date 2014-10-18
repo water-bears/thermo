@@ -3,6 +3,7 @@ package {
 	import flash.geom.ColorTransform;
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
+	import org.flixel.system.FlxTile;
 	
 	import org.flixel.*;
 	
@@ -50,7 +51,7 @@ package {
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
 				icePlat.makeGraphic(25, 10, FlxG.WHITE);
-				icePlat.immovable = true;				
+				icePlat.immovable = true;
 				this.ice.push(icePlat);
 			}
 			
@@ -151,7 +152,7 @@ package {
 					break;
 				// Flash Freeze
 				case 3:
-					if (!isTouching(FLOOR)){
+					if (!isTouching(FLOOR)) {
 						stat = "flash frozen";
 						switch (iceCount % 3) {
 							case 0:

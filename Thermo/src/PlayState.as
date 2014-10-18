@@ -106,10 +106,8 @@ package {
 			FlxG.collide(iceGroup, player);
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
-				// Slow player down if they are in water
 				player.slowSpeed();
 			} else if (!player.bubble && !player.superBubble) {
-				// Put player back to normal speed in air
 				player.normalSpeed();
 			}
 			

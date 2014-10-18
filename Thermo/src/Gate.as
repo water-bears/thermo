@@ -14,4 +14,13 @@ package {
 			
 			this.type = type;
 		}
+		
+		public function triggered() {
+			// Play triggered animation
+		}
+		
+		override public function update():void {
+			// Play standard animation (needed in update?)
+		}
 	}
+}
