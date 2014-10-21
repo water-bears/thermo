@@ -50,13 +50,15 @@ package {
 			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
-				icePlat.makeGraphic(25, 10, FlxG.WHITE);
+				//icePlat.makeGraphic(25, 10, FlxG.WHITE);
+				icePlat.loadGraphic(Assets.flashSprite);
 				icePlat.immovable = true;
 				this.ice.push(icePlat);
 			}
 			
 			var tempPlat:FlxSprite = new FlxSprite();
-			tempPlat.makeGraphic(16, 5, FlxG.WHITE);
+			//tempPlat.makeGraphic(16, 5, FlxG.WHITE);
+			tempPlat.loadGraphic(Assets.iceSprite);
 			tempPlat.immovable = true;
 			this.ice[3] = tempPlat;
 			

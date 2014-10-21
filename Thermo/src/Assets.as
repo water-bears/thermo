@@ -13,6 +13,12 @@ package {
 		[Embed(source = "../assets/character/bubble.png")]
 		public static var bubbleSprite:Class;
 		
+		/* Ice platform sprites */
+		[Embed(source = "../assets/ice_platform.png")]
+		public static var iceSprite:Class;
+		[Embed(source = "../assets/flash_platform.png")]
+		public static var flashSprite:Class;
+		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]
 		private static var b_1:Class;
