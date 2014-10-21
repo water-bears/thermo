@@ -42,9 +42,8 @@ package {
 		
 		override public function create():void {
 			// Make the background
-			//background = MenuUtils.CreateVerticalGradient(new FlxPoint(FlxG.width, FlxG.height), 0x000033, 0x003366);
-			background = new FlxSprite(0, 0);
-			background.loadGraphic(Assets.backgroundSprite);
+			if (background == null)
+				setBackground(0);
 			add(background);
 			
 			//load the level
@@ -150,6 +149,14 @@ package {
 		/** Win function **/
 		public function win(Exit:FlxTilemap, player:Player):void {
 			FlxG.switchState(new LevelSelectState());
+		}
+		
+		/** Sets the background based on the level index **/
+		public function setBackground(level:int):void {
+			level %= Assets.b_list.length;
+			if (background == null)
+				background = new FlxSprite(0, 0);
+			background.loadGraphic(Assets.b_list[level]);
 		}
 	}
 }

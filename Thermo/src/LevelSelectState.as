@@ -56,11 +56,13 @@ package {
 			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			menu.update();
 			if (FlxG.keys.ENTER) {
-				var className:String = "Level_" + levelNames[menu.getSelectedIndex()];
+				var level:int = menu.getSelectedIndex();
+				var className:String = "Level_" + levelNames[level];
 				var nextLevel:Class = getDefinitionByName(className) as Class;
 				var nextLevelInstance:* = new nextLevel(false);
 				var p : PlayState = new PlayState();
 				p.setLevel(nextLevelInstance);
+				p.setBackground(level);
 				FlxG.switchState(p);
 			}
 		}
