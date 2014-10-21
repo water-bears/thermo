@@ -29,13 +29,24 @@ package {
 		
 		public var t1:int;
 		
+		/** Animation frames per second */
+		private static const FR:int = 10;
+		
 		private var ice:Array;
 		private var iceCount:int;
 		
 		public function Player(x:Number, y:Number, waterT:FlxTilemap, playState:PlayState):void{
 			super(x, y);
 		
-			this.loadGraphic(Assets.playerSprite);
+			this.addAnimation("stand", [0]);
+			this.addAnimation("walk", [0, 1, 2, 3], FR, true);
+			this.addAnimation("jump", [4]);
+			this.addAnimation("bubble", [4]);
+			this.facing = FlxObject.RIGHT;
+			this.loadGraphic(Assets.playerSprite, true, true, 23, 28);
+			
+			this.play("stand");
+			
 			this.maxVelocity.x = 200;
 			this.maxVelocity.y = 200;
 			this.acceleration.y = 600;
@@ -77,11 +88,15 @@ package {
 			acceleration.x = 0;
 			
 			if (!bubble) {
-				if (FlxG.keys.LEFT || FlxG.keys.A)
+				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;
+					this.facing = FlxObject.LEFT;
+				}
 			
-				if (FlxG.keys.RIGHT || FlxG.keys.D)
+				if (FlxG.keys.RIGHT || FlxG.keys.D) {
 					velocity.x = maxVelocity.x;
+					this.facing = FlxObject.RIGHT;
+				}
 			
 				if ((FlxG.keys.W || FlxG.keys.UP) && isTouching(FlxObject.FLOOR))
 					velocity.y = -maxVelocity.y;
@@ -103,6 +118,21 @@ package {
 
 			if (FlxG.keys.R){
 				FlxG.resetState();
+			}
+			
+			// Play the appropriate animation
+			if (bubble || superBubble) {
+				play("bubble");
+			} else {
+				if (velocity.y == 0) {
+					if (velocity.x == 0) {
+						play("stand");
+					} else {
+						play("walk");
+					}
+				} else {
+					play("jump");
+				}
 			}
 			
 			super.update();
@@ -145,9 +175,6 @@ package {
 						stat = "used bubble";
 						bubble = true;
 						superBubble = false;
-						x -= 11;
-						y -= 4;
-						loadGraphic(Assets.bubbleSprite);
 					}
 					break;
 				// Flash Freeze
@@ -185,9 +212,6 @@ package {
 						acceleration.y = 0;
 						stat = "super bubble";
 						superBubble = true;
-						x -= 11;
-						y -= 4;
-						loadGraphic(Assets.bubbleSprite);
 					}
 					//evaporateWater(int(x / 32), int(y / 32));
 					break;
@@ -199,9 +223,6 @@ package {
 			acceleration.y = 600;
 			superBubble = false;
 			bubble = false;
-			x += 11;
-			y += 4;
-			loadGraphic(Assets.playerSprite);
 		}
 		
 		public function slowSpeed():void {

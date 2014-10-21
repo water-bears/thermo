@@ -6,7 +6,7 @@ package {
 		/* Sprites */
 		
 		/* Basic standing character sprite */
-		[Embed(source = "../assets/character/character.png")]
+		[Embed(source = "../assets/character/sprite.png")]
 		public static var playerSprite:Class;
 		
 		/* Bubble sprite */
