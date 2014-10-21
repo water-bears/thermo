@@ -14,9 +14,9 @@ package {
 		public static var bubbleSprite:Class;
 		
 		/* Ice platform sprites */
-		[Embed(source = "../assets/ice_platform.png")]
+		[Embed(source = "../assets/objects/ice_platform.png")]
 		public static var iceSprite:Class;
-		[Embed(source = "../assets/flash_platform.png")]
+		[Embed(source = "../assets/objects/flash_platform.png")]
 		public static var flashSprite:Class;
 		
 		/* Background sprites */
