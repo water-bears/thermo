@@ -22,6 +22,8 @@ package {
 		public var superBubble:Boolean = false;
 		public var bubble:Boolean = false;
 		public var underwater:Boolean = false;
+		public var floatUp:Boolean = false;
+		
 		public var waterTiles:FlxTilemap;
 		public var hasKey:Boolean = false;
 		public var stat:String = "none";
@@ -83,6 +85,7 @@ package {
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
 				icePlat.loadGraphic(Assets.flashSprite);
+				icePlat.allowCollisions = UP;
 				icePlat.immovable = true;
 				this.ice.push(icePlat);
 			}
@@ -106,7 +109,7 @@ package {
 		override public function update():void {
 			acceleration.x = 0;
 			
-			if (!bubble || (isTouching(CEILING) && !superBubble)) {
+			if (!bubble && !floatUp) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;
 					this.facing = FlxObject.LEFT;
@@ -131,21 +134,25 @@ package {
 				popBubble();
 			}
 			
+			// Reverses gravity in superbubble on ceiling
 			if (superBubble && isTouching(FlxObject.CEILING)) {
+				floatUp = false;
 				acceleration.y = -500;
 				if (FlxG.keys.DOWN || FlxG.keys.UP){
 					velocity.y = maxVelocity.y;
 				}
 			}
 
+			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
 				this.ice[3].kill();
 			}
 
-			if (FlxG.keys.R){
+			// If player restarts or overlaps with any spikeTiles, they restart level
+			//if (FlxG.keys.R || this.overlaps(playState.spikeTiles)){
+			if(FlxG.keys.R){
 				FlxG.resetState();
 			}
-			
 			// Play the appropriate animation
 			if (bubble || superBubble) {
 				play("bubble" + curPow);
@@ -242,6 +249,7 @@ package {
 						acceleration.y = 0;
 						stat = "super bubble";
 						superBubble = true;
+						floatUp = true;
 					}
 					//evaporateWater(int(x / 32), int(y / 32));
 					break;

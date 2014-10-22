@@ -1,5 +1,6 @@
 package {
 	import Menu.LevelSelectState;
+	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	
@@ -18,6 +19,7 @@ package {
 		public var groundTiles:FlxTilemap;
 		public var exitTiles:FlxTilemap;
 		public var keyTiles:FlxTilemap;
+		public var spikeTiles:FlxTilemap;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -94,6 +96,14 @@ package {
 			// Create and add the player
 			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
 			add(player);
+			
+			// TEST for moving platform
+			//add(new MovingPlatform((level.start_x) * 32, (level.start_y+5) * 32, (level.start_x) * 32, (level.start_x + 5) * 32, 1));
+			
+			// create and add any spikes (tileset isnt here yet, so commented out)
+			/* spiketiles = level.layerSpiketiles;
+			add(spikeTiles); */
+			
 			
 			this.add(iceGroup);
 		}
