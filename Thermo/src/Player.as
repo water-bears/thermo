@@ -261,6 +261,7 @@ package {
 			acceleration.y = 600;
 			superBubble = false;
 			bubble = false;
+			floatUp = false;
 		}
 		
 		public function slowSpeed():void {

@@ -19,19 +19,18 @@ package {
 			
 			
 			this.dir = direction;
-			switch(dir) {
+			
+			// loading the spike image in the correct orientation
+			// Right now this is iceSprite just as a filler 
+			switch(dir){
 				case 1:
-					// load spike up image
-					break;
+					this.loadRotatedGraphic(Assets.iceSprite, 4, 0);
 				case 2:
-					// load spike down image
-					break;
+					this.loadRotatedGraphic(Assets.iceSprite, 4, 1);
 				case 3:
-					// load spike left image
-					break;
+					this.loadRotatedGraphic(Assets.iceSprite, 4, 2);
 				case 4:
-					// load spike right image
-					break;
+					this.loadRotatedGraphic(Assets.iceSprite, 4, 3);
 			}
 			
 			

@@ -23,6 +23,8 @@ package {
 		public var spikeTiles:FlxTilemap;
 		public var movingPlatTiles:FlxTilemap;
 		
+		public var spikeTest:FlxSprite;
+		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
 		
@@ -99,6 +101,9 @@ package {
 			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
 			add(player);
 			
+			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
+			add(spikeTest);
+			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
 			// Create and add moving platforms
@@ -122,6 +127,8 @@ package {
 			
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
+			
+			if(player.overlaps(spikeTest)){ FlxG.resetState();}
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
