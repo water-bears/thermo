@@ -28,6 +28,9 @@ package Menu {
 			levelNames.push("1");
 			levelNames.push("2");
 			levelNames.push("3");
+			levelNames.push("4aaa");
+			levelNames.push("5bbb");
+			levelNames.push("6ccc");
 			//levelNames.push("TestWDoor");
 						
 			//this is stupid and hacky but it must happen
@@ -37,13 +40,15 @@ package Menu {
 			Level_3;
 			//Level_TestWDoor;
 			
-			menu = new ListMenu(100, 100);
+			menu = new ListMenu(100, 100, 2);
 			var i:uint;
 			for (i = 0; i < levelNames.length; i++) {
 				var ft:FlxText = new FlxText(0, 0, 100, levelNames[i]);
 				ft.setOriginToCorner();
-				ft.scale = new FlxPoint(2, 2);
-				menu.AddComponent(new MenuComponent(ft));
+				var rmc:ReactiveMenuComponent = new ReactiveMenuComponent(ft);
+				rmc.AddMotion(new UniformScaleComponentMotion());
+				rmc.AddMotion(new XShiftComponentMotion(5));
+				menu.AddComponent(rmc);
 			}
 			
 			menu.SetIsActive(true);
@@ -54,8 +59,6 @@ package Menu {
 		
 		override public function update():void {
 			time++;
-			//title.y = titleY + 5 * Math.cos(time / 40.0);
-			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			menu.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId();

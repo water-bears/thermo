@@ -1,5 +1,6 @@
 package Menu 
 {
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxState;
 	/**
 	 * ...
@@ -12,6 +13,7 @@ package Menu
 		protected var isActive:Boolean;
 		protected var X:Number;
 		protected var Y:Number;
+		protected var scale:FlxPoint;
 		protected var width:Number;
 		protected var height:Number;
 		
@@ -22,6 +24,7 @@ package Menu
 			isActive = false;
 			this.X = X;
 			this.Y = Y;
+			scale = new FlxPoint(1, 1);
 			width = 0;
 			height = 0;
 		}

@@ -13,8 +13,9 @@ package Menu {
 		
 		private var cursor:FlxSprite;
 		
-		public function ListMenu(X:Number = 0, Y:Number = 0) {
+		public function ListMenu(X:Number = 0, Y:Number = 0, scale:Number = 1) {
 			super(X, Y);
+			this.scale = new FlxPoint(scale, scale);
 			menuYVals = new Vector.<uint>();
 			keyFramesDown = 0;
 			
@@ -61,11 +62,15 @@ package Menu {
 			for (var i:uint = 0; i < this.menuItems.length; i++)
 			{
 				var sprite : FlxSprite = menuItems[i].GetSprite();
-				sprite.x = X;
-				sprite.y = Y + this.height;
+				var localPosition : FlxPoint = menuItems[i].GetLocalPosition();
+				var localScale : FlxPoint = menuItems[i].GetLocalScale();
+				sprite.x = X + localPosition.x;
+				sprite.y = Y + localPosition.y + this.height;
+				sprite.scale.x = scale.x * localScale.x;
+				sprite.scale.y = scale.y * localScale.y;
 				menuYVals[i] = this.height;
 				this.width = Math.max(this.width, sprite.width * sprite.scale.x);
-				this.height += sprite.height * sprite.scale.y;
+				this.height += sprite.height * sprite.scale.y + localPosition.y;
 			}
 			cursor.y = Y + menuYVals[selectedID];
 		}
