@@ -1,4 +1,4 @@
-package {
+package Menu {
 	import flash.display.Graphics;
 	import flash.display.GradientType;
 	import flash.geom.ColorTransform;
