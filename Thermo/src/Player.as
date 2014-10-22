@@ -92,9 +92,7 @@ package {
 			tempPlat.immovable = true;
 			this.ice[3] = tempPlat;
 			
-			// Add animations in the space right below this when we get them
-			
-			// After animations are set, set  facing = RIGHT;
+
 		}
 		
 		public function getHeight():Number {
@@ -108,7 +106,7 @@ package {
 		override public function update():void {
 			acceleration.x = 0;
 			
-			if (!bubble) {
+			if (!bubble || (isTouching(CEILING) && !superBubble)) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;
 					this.facing = FlxObject.LEFT;
@@ -129,8 +127,15 @@ package {
 				popBubble();
 			}
 			
-			if ((bubble || superBubble) && isTouching(FlxObject.CEILING)) {
+			if (bubble && isTouching(FlxObject.CEILING)) {
 				popBubble();
+			}
+			
+			if (superBubble && isTouching(FlxObject.CEILING)) {
+				acceleration.y = -500;
+				if (FlxG.keys.DOWN || FlxG.keys.UP){
+					velocity.y = maxVelocity.y;
+				}
 			}
 
 			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
