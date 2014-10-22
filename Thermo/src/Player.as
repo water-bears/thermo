@@ -39,9 +39,9 @@ package {
 			super(x, y);
 		
 			this.addAnimation("stand", [0]);
-			this.addAnimation("walk", [0, 1, 2, 3], FR, true);
-			this.addAnimation("jump", [4]);
-			this.addAnimation("bubble", [4]);
+			this.addAnimation("walk", [0, 1, 2], FR, true);
+			this.addAnimation("jump", [3]);
+			this.addAnimation("bubble", [5]);
 			this.facing = FlxObject.RIGHT;
 			this.loadGraphic(Assets.playerSprite, true, true, 23, 28);
 			
