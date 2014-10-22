@@ -1,5 +1,6 @@
 package Menu 
 {
+	import org.flixel.FlxState;
 	/**
 	 * ...
 	 * @author KJin
@@ -7,12 +8,12 @@ package Menu
 	public class MenuComponentCollection 
 	{
 		protected var menuItems:Vector.<MenuComponent>;
-		protected var selectedID;
-		protected var isActive;
-		protected var X;
-		protected var Y;
-		private var width:Number;
-		private var height:Number;
+		protected var selectedID:uint;
+		protected var isActive:Boolean;
+		protected var X:Number;
+		protected var Y:Number;
+		protected var width:Number;
+		protected var height:Number;
 		
 		public function MenuComponentCollection(X:Number=0, Y:Number=0) 
 		{
@@ -33,7 +34,7 @@ package Menu
 		
 		public function Register(state:FlxState) : void
 		{
-			for (var i:uint = 0; i < menuItems; i++)
+			for (var i:uint = 0; i < menuItems.length; i++)
 			{
 				menuItems[i].Register(state);
 			}
@@ -43,7 +44,7 @@ package Menu
 		public function Update() : void
 		{
 			Preprocess();
-			for (var i:uint = 0; i < menuItems; i++)
+			for (var i:uint = 0; i < menuItems.length; i++)
 			{
 				menuItems[i].Update(i == selectedID);
 			}
@@ -60,7 +61,7 @@ package Menu
 			this.isActive = isActive;
 		}
 		
-		public function GetNumComponents() : void
+		public function GetNumComponents() : uint
 		{
 			return menuItems.length;
 		}

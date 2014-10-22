@@ -1,8 +1,4 @@
 package Menu {
-	import Engine.PlayState;
-	import Engine.Level_3;
-	import Engine.Level_2;
-	import Engine.Level_1;
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
@@ -47,11 +43,11 @@ package Menu {
 				var ft:FlxText = new FlxText(0, 0, 100, levelNames[i]);
 				ft.setOriginToCorner();
 				ft.scale = new FlxPoint(2, 2);
-				menu.add(ft);
+				menu.AddComponent(new MenuComponent(ft));
 			}
 			
-			menu.setActive(true);
-			add(menu);
+			menu.SetIsActive(true);
+			menu.Register(this);
 			
 			time = 0.0;
 		}
@@ -60,9 +56,9 @@ package Menu {
 			time++;
 			//title.y = titleY + 5 * Math.cos(time / 40.0);
 			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
-			menu.update();
+			menu.Update();
 			if (FlxG.keys.ENTER) {
-				var level:int = menu.getSelectedIndex();
+				var level:int = menu.GetSelectedId();
 				var className:String = "Level_" + levelNames[level];
 				var nextLevel:Class = getDefinitionByName(className) as Class;
 				var nextLevelInstance:* = new nextLevel(false);

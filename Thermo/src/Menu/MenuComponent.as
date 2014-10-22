@@ -25,12 +25,17 @@ package Menu
 			this.collection = collection;
 		}
 		
+		public function GetSprite() : FlxSprite
+		{
+			return sprite;
+		}
+		
 		public function Register(state:FlxState) : void
 		{
 			state.add(sprite);
 		}
 		
-		public function Update() : void
+		public function Update(selected:Boolean) : void
 		{
 			// Implement
 		}

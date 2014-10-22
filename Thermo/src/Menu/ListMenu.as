@@ -3,7 +3,7 @@ package Menu {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
-	import mx.core.FlexSprite;
+	import org.flixel.FlxSprite;
 	
 	import org.flixel.*;
 	
@@ -31,15 +31,15 @@ package Menu {
 		{
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
-				if (currentItem < menuYVals.length - 1 && keyFramesDown % 10 == 0) {
-					currentItem++;
+				if (selectedID < menuYVals.length - 1 && keyFramesDown % 10 == 0) {
+					selectedID++;
 				}
 				keyDown = true;
 			}
 			
 			if (FlxG.keys.UP) {
-				if (currentItem > 0 && keyFramesDown % 10 == 0) {
-					currentItem--;
+				if (selectedID > 0 && keyFramesDown % 10 == 0) {
+					selectedID--;
 				}
 				keyDown = true;
 			}
@@ -54,19 +54,20 @@ package Menu {
 		public override function Postprocess() : void
 		{
 			this.width = this.height = 0;
-			while (menuItems.length > menuYVals)
+			while (menuItems.length > menuYVals.length)
 			{
 				menuYVals.push(0);
 			}
 			for (var i:uint = 0; i < this.menuItems.length; i++)
 			{
-				Sprite.x = X;
-				Sprite.y = Y + this.height;
+				var sprite : FlxSprite = menuItems[i].GetSprite();
+				sprite.x = X;
+				sprite.y = Y + this.height;
 				menuYVals[i] = this.height;
-				this.width = Math.max(this.width, Sprite.width * Sprite.scale.x);
-				this.height += Sprite.height * Sprite.scale.y;
+				this.width = Math.max(this.width, sprite.width * sprite.scale.x);
+				this.height += sprite.height * sprite.scale.y;
 			}
-			cursor.y = Y + menuYVals[currentItem];
+			cursor.y = Y + menuYVals[selectedID];
 		}
 	}
 }
