@@ -22,7 +22,7 @@ package {
 			this.startPos = startPos;
 			this.endPos = endPos;
 			
-			this.solid = true;
+			this.immovable = true;
 			
 			this.direction = direction;
 			switch (direction) {

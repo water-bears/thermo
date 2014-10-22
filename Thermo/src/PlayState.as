@@ -19,7 +19,9 @@ package {
 		public var groundTiles:FlxTilemap;
 		public var exitTiles:FlxTilemap;
 		public var keyTiles:FlxTilemap;
+		
 		public var spikeTiles:FlxTilemap;
+		public var movingPlatTiles:FlxTilemap;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -97,10 +99,13 @@ package {
 			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
 			add(player);
 			
-			// TEST for moving platform
-			//add(new MovingPlatform((level.start_x) * 32, (level.start_y+5) * 32, (level.start_x) * 32, (level.start_x + 5) * 32, 1));
+			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
-			// create and add any spikes (tileset isnt here yet, so commented out)
+			// Create and add moving platforms
+			/*movingPlatTiles = level.layerMovingTiles;
+			add(level.layerMovingTiles);*/
+			
+			// create and add any spikes
 			/* spiketiles = level.layerSpiketiles;
 			add(spikeTiles); */
 			
@@ -114,6 +119,9 @@ package {
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
+			
+			// Uncomment this when we have this tileMap set up
+			//FlxG.collide(movingPlatTiles, player);
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
