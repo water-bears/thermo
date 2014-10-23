@@ -9,14 +9,16 @@ package {
 		public function Button(x:Number, y:Number, door:Door) {
 			super(x, y);
 			
+			this.loadGraphic(Assets.buttonSprite);
 			this.door = door;
 			this.isPressed = false;
 		}
 		
 		public function pushed():void {
+			if (!isPressed)
+				door.open();
 			this.isPressed = true;
-			// Notify door that it should open
-			door.open();
+			this.kill();
 			// Change button to buttonPushed sprite
 		}
 	}

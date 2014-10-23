@@ -20,12 +20,23 @@ package {
 		/* Gate sprite sheet */
 		[Embed(source = "../assets/tilesheets/gates.png")]
 		public static var gateSprite:Class;
+		[Embed(source = "../assets/tilesheets/door.png")]
+		public static var exitSprite:Class;
 		
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
 		public static var iceSprite:Class;
 		[Embed(source = "../assets/objects/flash_platform.png")]
 		public static var flashSprite:Class;
+		
+		/* Other stuff */
+		[Embed(source = "../assets/objects/spike.png")]
+		public static var spikeSprite:Class;
+		[Embed(source = "../assets/objects/button.png")]
+		public static var buttonSprite:Class;
+		[Embed(source = "../assets/objects/door.png")]
+		public static var doorSprite:Class;
+		
 		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]

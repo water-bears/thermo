@@ -46,6 +46,7 @@ package context {
 			var i:uint;
 			
 			levelNames = new Vector.<String>();
+
 			for (i = 0; i < TransitionState.numLevels; i++)
 				levelNames.push(String(i + 1));
 			//levelNames.push("TestWDoor");

@@ -3,9 +3,6 @@ bin/
 bin-debug/
 bin-release/
 
-# Settings File
-obj/
-
 # Other files and folders
 .settings/
 
@@ -15,4 +12,4 @@ obj/
 
 Flixel/
 
-*.DS_Store
+*.old
