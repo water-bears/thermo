@@ -32,8 +32,10 @@ package context {
 		{
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
-				if (selectedID < menuYVals.length - 1 && keyFramesDown % 10 == 0) {
+				if (keyFramesDown % 10 == 0) {
 					selectedID++;
+					if (selectedID >= menuYVals.length - 1)
+						selectedID = 0;
 				}
 				keyDown = true;
 			}
@@ -41,6 +43,8 @@ package context {
 			if (FlxG.keys.UP) {
 				if (selectedID > 0 && keyFramesDown % 10 == 0) {
 					selectedID--;
+					if (selectedID < 0)
+						selectedID = menuYVals.length - 1;
 				}
 				keyDown = true;
 			}

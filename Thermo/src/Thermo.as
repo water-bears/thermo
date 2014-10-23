@@ -2,8 +2,8 @@ package {
 	import context.MenuState;
 	import org.flixel.*;
 	
-	//[SWF(width="1024", height="768", backgroundColor="#000000")]
-	[SWF(width="2560", height="1920", backgroundColor="#000000")]
+	[SWF(width="1024", height="768", backgroundColor="#000000")]
+	//[SWF(width="2560", height="1920", backgroundColor="#000000")]
 	
 	public class Thermo extends FlxGame {
 		public function Thermo() {
