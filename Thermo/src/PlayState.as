@@ -44,15 +44,11 @@ package {
 		
 		private var level:Level;
 		
-<<<<<<< HEAD
 		private const FREEZE:int = 1;
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
-		
-=======
->>>>>>> 42d33957bea1b4f99baedc7003f99896dce08fe4
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
