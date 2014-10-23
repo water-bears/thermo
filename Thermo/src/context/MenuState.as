@@ -9,13 +9,10 @@ package context {
 	public class MenuState extends FlxState {
 		
 		private var backgroundTile:FlxSprite;
-		public var title:FlxText;
-		public var prompt:FlxText;
-		public var time:Number;
+		public var title:FloatingText;
+		public var prompt:FloatingText;
 		
 		public var zoom:Number;
-		public var titleY:Number;
-		public var promptY:Number;
 		
 		public var bubbles:BubbleBackground;
 		
@@ -28,38 +25,35 @@ package context {
 			add(backgroundTile);
 			
 			// Initialize bubbles
-			bubbles = new BubbleBackground(dimensions);
+			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
 			// Initialize Title Text
-			title = new FlxText(0.425 * dimensions.x, 0.167 * dimensions.y, 0.15 * dimensions.x);
+			title = new FloatingText(0.4 * dimensions.x, 0.167 * dimensions.y, 0.15 * dimensions.x);
+			title.SetOscillationSettings(5, 40);
 			title.scale = new FlxPoint(dimensions.x / 64, dimensions.x / 64);
 			title.color = 0xff0099ff;
 			title.shadow = 0xff003399;
 			title.alignment = "center";
 			title.text = "Thermo";
-			titleY = title.y;
 			add(title);
 			
 			// Initialize Prompt
-			prompt = new FlxText(0.375 * dimensions.x, 0.667 * dimensions.y, 0.25 * dimensions.x);
+			prompt = new FloatingText(0.375 * dimensions.x, 0.667 * dimensions.y, 0.25 * dimensions.x);
+			prompt.SetOscillationSettings(-4, 25);
 			prompt.scale = new FlxPoint(dimensions.x / 160, dimensions.x / 160);
 			prompt.color = 0xff0099ff;
 			prompt.shadow = 0xff003399;
 			prompt.alignment = "center";
-			prompt.text = "Press TAB";
-			promptY = prompt.y;
+			prompt.text = "Press ENTER";
 			add(prompt);
-			
-			time = 0.0;
 		}
 		
 		override public function update():void {
-			time++;
-			title.y = titleY + 5 * Math.cos(time / 40.0);
-			prompt.y = promptY - 4 * Math.cos(time / 25.0);
+			title.update();
+			prompt.update();
 			bubbles.Update();
-			if (FlxG.keys.TAB) {
+			if (FlxG.keys.ENTER) {
 				var p : PlayState = new PlayState();
 				FlxG.switchState(p);
 			}

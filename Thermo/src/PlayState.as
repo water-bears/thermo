@@ -7,6 +7,7 @@ package {
 	import levelgen.*;
 	
 	import org.flixel.*;
+	import context.BubbleBackground;
 	
 	public class PlayState extends FlxState {
 		private var background:FlxSprite;
@@ -48,6 +49,7 @@ package {
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
+		public var bubbles:BubbleBackground;
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
@@ -57,6 +59,10 @@ package {
 			if (background == null)
 				setBackground(0);
 			add(background);
+			
+			// Initialize bubbles
+			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			bubbles.Register(this);
 			
 			//load the level
 			if (level == null) {
@@ -106,11 +112,11 @@ package {
 			add(solidGroup);
 			
 			// This will be essentially for debugging or other info we want
-			status = new FlxText(FlxG.width - 158, 2, 160);
+			/*status = new FlxText(FlxG.width - 158, 2, 160);
 			status.shadow = 0xff000000;
 			status.alignment = "right";
 			status.text = "none";
-			add(status);
+			add(status);*/
 			
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
@@ -151,6 +157,8 @@ package {
 		override public function update():void {
 			super.update();
 			
+			bubbles.Update();
+			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
@@ -173,6 +181,9 @@ package {
 			
 			// Receive key 
 			if (FlxG.overlap(keyGroup, player)) {
+				for (var i:int = 0; i < exitGroup.members.length; i++) {
+					(exitGroup.members[i] as Door).open();
+				}
 				getKey(keyGroup, player);
 			}
 			
@@ -223,7 +234,7 @@ package {
 				FlxG.switchState(new TransitionState(0));
 			}
 			
-			status.text = player.stat;
+			//status.text = player.stat;
 		}
 		
 		/** when player retrieves key **/

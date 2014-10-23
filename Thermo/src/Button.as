@@ -17,7 +17,6 @@ package {
 		public function pushed():void {
 			if (!isPressed)
 				door.open();
-				
 			this.isPressed = true;
 			this.kill();
 			// Change button to buttonPushed sprite

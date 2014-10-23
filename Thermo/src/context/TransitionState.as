@@ -11,7 +11,7 @@ package context
 	public class TransitionState extends FlxState
 	{
 		private var level:uint;
-		private var numLevels:uint = 10;
+		public static const numLevels:uint = 10;
 		
 		public function TransitionState(level:uint)
 		{

@@ -13,6 +13,10 @@ package {
 		[Embed(source = "../assets/character/character.png")]
 		public static var playerSprite:Class;
 		
+		/* Door and key sprite sheet */
+		[Embed(source = "../assets/tilesheets/door.png")]
+		public static var doorSprite:Class;
+		
 		/* Gate sprite sheet */
 		[Embed(source = "../assets/tilesheets/gates.png")]
 		public static var gateSprite:Class;

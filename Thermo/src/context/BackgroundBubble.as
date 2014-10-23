@@ -7,7 +7,7 @@ package context
 	 * ...
 	 * @author KJin
 	 */
-	public class BackgroundBubble 
+	public class BackgroundBubble
 	{
 		private var bubble:FlxSprite;
 		private var start:FlxPoint;
@@ -22,7 +22,7 @@ package context
 			start = new FlxPoint();
 			end = new FlxPoint();
 			Reset();
-			bubble = MenuUtils.CreateBubble(uint(Math.random() * 8 + 8));
+			bubble = MenuUtils.CreateBubble(uint(Math.random() * (bubbleBackground.maxRadius - bubbleBackground.minRadius) + bubbleBackground.minRadius));
 		}
 		
 		public function Reset() : void
