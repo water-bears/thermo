@@ -120,21 +120,21 @@ package levelgen {
 						break;
 						
 					case "HeatGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 2;
-						heatGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 2;
+						heatGates.add(new Gate(sprite, Gate.HEAT));
 						break;
 						
 					case "FreezeGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 1;
-						freezeGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 1;
+						freezeGates.add(new Gate(sprite, Gate.FREEZE));
 						break;
 						
 					case "FlashGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 3;
-						flashGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 3;
+						flashGates.add(new Gate(sprite, Gate.FLASH));
 						break;
 						
 					case "Key":

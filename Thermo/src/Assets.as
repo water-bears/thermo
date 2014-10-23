@@ -3,11 +3,19 @@ package {
 	 * Utility class for importing sprites and sounds
 	 */
 	public class Assets {
+		
+		/* Framerate for animations */
+		public static const FRAME_RATE:int = 10;
+		
 		/* Sprites */
 		
-		/* Basic standing character sprite */
+		/* Character sprite sheet */
 		[Embed(source = "../assets/character/character.png")]
 		public static var playerSprite:Class;
+		
+		/* Gate sprite sheet */
+		[Embed(source = "../assets/tilesheets/gates.png")]
+		public static var gateSprite:Class;
 		
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]

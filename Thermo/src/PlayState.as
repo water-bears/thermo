@@ -156,13 +156,28 @@ package {
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			if (FlxG.overlap(freezeGroup, player)) {
-				player.updatePower(FREEZE);
+				for (var i:int = 0; i < freezeGroup.members.length; i++) {
+					if (FlxG.overlap(freezeGroup.members[i], player)) {
+						(freezeGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.FREEZE);
 			}
 			if (FlxG.overlap(heatGroup, player)) {
-				player.updatePower(HEAT);
+				for (var i:int = 0; i < heatGroup.members.length; i++) {
+					if (FlxG.overlap(heatGroup.members[i], player)) {
+						(heatGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.HEAT);
 			}
-			if (FlxG.overlap(flashGroup,player)) {
-				player.updatePower(FLASH);
+			if (FlxG.overlap(flashGroup, player)) {
+				for (var i:int = 0; i < flashGroup.members.length; i++) {
+					if (FlxG.overlap(flashGroup.members[i], player)) {
+						(flashGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.FLASH);
 			}
 			
 			// If player has the key and touches the exit, they win
