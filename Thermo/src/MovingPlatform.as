@@ -15,8 +15,11 @@ package {
 		 */
 		private var direction:int;
 		
-		public function MovingPlatform(x:int, y:int, startPos:int, endPos:int, direction:int):void {
-			super(x, y);
+		public function MovingPlatform(sprite:FlxSprite, startPos:int, endPos:int, direction:int):void {
+			super(sprite.x, sprite.y);
+			loadGraphic(Assets.movingSprite);
+			angle = sprite.angle;
+			scale = sprite.scale;
 			// load sprite image
 			
 			this.startPos = startPos;
