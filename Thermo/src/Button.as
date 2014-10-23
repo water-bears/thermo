@@ -13,7 +13,7 @@ package {
 			this.isPressed = false;
 		}
 		
-		public function pushed() {
+		public function pushed():void {
 			this.isPressed = true;
 			// Notify door that it should open
 			door.open();
