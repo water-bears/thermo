@@ -1,4 +1,6 @@
 package {
+	import Menu.LevelSelectState;
+	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import levelgen.*;
@@ -19,6 +21,11 @@ package {
 		public var flashGroup:FlxGroup;
 		public var keyGroup:FlxGroup;
 		public var exitGroup:FlxGroup;
+		
+		public var spikeTiles:FlxTilemap;
+		public var movingPlatTiles:FlxTilemap;
+		
+		public var spikeTest:FlxSprite;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -98,6 +105,20 @@ package {
 			player = new Player(level.player.x, level.player.y, waterTiles, this);
 			add(player);
 			
+			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
+			add(spikeTest);
+			
+			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
+			
+			// Create and add moving platforms
+			/*movingPlatTiles = level.layerMovingTiles;
+			add(level.layerMovingTiles);*/
+			
+			// create and add any spikes
+			/* spiketiles = level.layerSpiketiles;
+			add(spikeTiles); */
+			
+			
 			this.add(iceGroup);
 		}
 		
@@ -107,6 +128,11 @@ package {
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
+			
+			// Uncomment this when we have this tileMap set up
+			//FlxG.collide(movingPlatTiles, player);
+			
+			if(player.overlaps(spikeTest)){ FlxG.resetState();}
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();

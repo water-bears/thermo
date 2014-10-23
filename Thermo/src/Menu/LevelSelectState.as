@@ -1,9 +1,11 @@
-package {
+package Menu {
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.*;
+	import Menu.ListMenu;
+	import Menu.MenuUtils;
 	
 	import org.flixel.*;
 	
@@ -26,30 +28,33 @@ package {
 			levelNames.push("1");
 			levelNames.push("2");
 			levelNames.push("3");
+			levelNames.push("4aaa");
+			levelNames.push("5bbb");
+			levelNames.push("6ccc");
 			//levelNames.push("TestWDoor");
 			
-			menu = new ListMenu(100, 100);
+			menu = new ListMenu(100, 100, 2);
 			var i:uint;
 			for (i = 0; i < levelNames.length; i++) {
 				var ft:FlxText = new FlxText(0, 0, 100, levelNames[i]);
 				ft.setOriginToCorner();
-				ft.scale = new FlxPoint(2, 2);
-				menu.add(ft);
+				var rmc:ReactiveMenuComponent = new ReactiveMenuComponent(ft);
+				rmc.AddMotion(new UniformScaleComponentMotion());
+				rmc.AddMotion(new XShiftComponentMotion(5));
+				menu.AddComponent(rmc);
 			}
 			
-			menu.setActive(true);
-			add(menu);
+			menu.SetIsActive(true);
+			menu.Register(this);
 			
 			time = 0.0;
 		}
 		
 		override public function update():void {
 			time++;
-			//title.y = titleY + 5 * Math.cos(time / 40.0);
-			//prompt.y = promptY - 4 * Math.cos(time / 25.0);
-			menu.update();
+			menu.Update();
 			if (FlxG.keys.ENTER) {
-				var level:int = menu.getSelectedIndex();
+				var level:int = menu.GetSelectedId();
 				var className:String = "Level_" + levelNames[level];
 				var nextLevel:Class = getDefinitionByName(className) as Class;
 				var nextLevelInstance:* = new nextLevel(false);

@@ -1,4 +1,4 @@
-package {
+package Menu {
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;

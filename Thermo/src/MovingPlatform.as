@@ -1,6 +1,6 @@
 package {
 	import org.flixel.FlxSprite;
-	import data.Library;
+	//import data.Library;
 	
 	public class MovingPlatform extends FlxSprite {
 		
@@ -21,6 +21,8 @@ package {
 			
 			this.startPos = startPos;
 			this.endPos = endPos;
+			
+			this.immovable = true;
 			
 			this.direction = direction;
 			switch (direction) {

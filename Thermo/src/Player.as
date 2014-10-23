@@ -22,6 +22,8 @@ package {
 		public var superBubble:Boolean = false;
 		public var bubble:Boolean = false;
 		public var underwater:Boolean = false;
+		public var floatUp:Boolean = false;
+		
 		public var waterTiles:FlxTilemap;
 		public var hasKey:Boolean = false;
 		public var stat:String = "none";
@@ -38,14 +40,35 @@ package {
 		public function Player(x:Number, y:Number, waterT:FlxTilemap, playState:PlayState):void{
 			super(x, y);
 		
-			this.addAnimation("stand", [0]);
-			this.addAnimation("walk", [0, 1, 2, 3], FR, true);
-			this.addAnimation("jump", [4]);
-			this.addAnimation("bubble", [4]);
+			this.addAnimation("stand0", [0]);
+			this.addAnimation("walk0", [0, 1, 2], FR, true);
+			this.addAnimation("jump0", [3]);
+			this.addAnimation("bubble0", [5]);
+			
+			this.addAnimation("stand1", [14]);
+			this.addAnimation("walk1", [14, 15, 16], FR, true);
+			this.addAnimation("jump1", [17]);
+			this.addAnimation("bubble1", [19]);
+			
+			this.addAnimation("stand2", [7]);
+			this.addAnimation("walk2", [7, 8, 9], FR, true);
+			this.addAnimation("jump2", [10]);
+			this.addAnimation("bubble2", [12]);
+			
+			this.addAnimation("stand3", [14, 0], FR, true);
+			this.addAnimation("walk3", [14, 1, 16, 0, 15, 2], FR, true);
+			this.addAnimation("jump3", [17, 3], FR, true);
+			this.addAnimation("bubble3", [19, 5], FR, true);
+			
+			this.addAnimation("stand4", [7, 0], FR, true);
+			this.addAnimation("walk4", [7, 1, 9, 0, 8, 2], FR, true);
+			this.addAnimation("jump4", [10, 3], FR, true);
+			this.addAnimation("bubble4", [12, 5], FR, true);
+			
 			this.facing = FlxObject.RIGHT;
 			this.loadGraphic(Assets.playerSprite, true, true, 23, 28);
 			
-			this.play("stand");
+			this.play("stand" + curPow);
 			
 			this.maxVelocity.x = 200;
 			this.maxVelocity.y = 200;
@@ -62,6 +85,7 @@ package {
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
 				icePlat.loadGraphic(Assets.flashSprite);
+				icePlat.allowCollisions = UP;
 				icePlat.immovable = true;
 				this.ice.push(icePlat);
 			}
@@ -71,9 +95,7 @@ package {
 			tempPlat.immovable = true;
 			this.ice[3] = tempPlat;
 			
-			// Add animations in the space right below this when we get them
-			
-			// After animations are set, set  facing = RIGHT;
+
 		}
 		
 		public function getHeight():Number {
@@ -87,7 +109,7 @@ package {
 		override public function update():void {
 			acceleration.x = 0;
 			
-			if (!bubble) {
+			if (!bubble && !floatUp) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;
 					this.facing = FlxObject.LEFT;
@@ -108,30 +130,41 @@ package {
 				popBubble();
 			}
 			
-			if ((bubble || superBubble) && isTouching(FlxObject.CEILING)) {
+			if (bubble && isTouching(FlxObject.CEILING)) {
 				popBubble();
 			}
+			
+			// Reverses gravity in superbubble on ceiling
+			if (superBubble && isTouching(FlxObject.CEILING)) {
+				floatUp = false;
+				acceleration.y = -500;
+				if (FlxG.keys.DOWN || FlxG.keys.UP){
+					velocity.y = maxVelocity.y;
+				}
+			}
 
+			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
 				this.ice[3].kill();
 			}
 
-			if (FlxG.keys.R){
+			// If player restarts or overlaps with any spikeTiles, they restart level
+			//if (FlxG.keys.R || this.overlaps(playState.spikeTiles)){
+			if(FlxG.keys.R){
 				FlxG.resetState();
 			}
-			
 			// Play the appropriate animation
 			if (bubble || superBubble) {
-				play("bubble");
+				play("bubble" + curPow);
 			} else {
 				if (velocity.y == 0) {
 					if (velocity.x == 0) {
-						play("stand");
+						play("stand" + curPow);
 					} else {
-						play("walk");
+						play("walk" + curPow);
 					}
 				} else {
-					play("jump");
+					play("jump" + curPow);
 				}
 			}
 			
@@ -149,8 +182,12 @@ package {
 					this.curPow = 2;
 					break;
 				case 3:
-					if (this.curPow == 1) this.curPow = 3;
-					else if (this.curPow == 2) this.curPow = 4;
+					if (this.curPow == 1) {
+						this.curPow = 3;
+					}
+					else if (this.curPow == 2) {
+						this.curPow = 4;
+					}
 					break;
 			}
 		}
@@ -212,6 +249,7 @@ package {
 						acceleration.y = 0;
 						stat = "super bubble";
 						superBubble = true;
+						floatUp = true;
 					}
 					//evaporateWater(int(x / 32), int(y / 32));
 					break;
@@ -223,6 +261,7 @@ package {
 			acceleration.y = 600;
 			superBubble = false;
 			bubble = false;
+			floatUp = false;
 		}
 		
 		public function slowSpeed():void {
