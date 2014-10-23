@@ -46,8 +46,17 @@ package context {
 			var i:uint;
 			
 			levelNames = new Vector.<String>();
+<<<<<<< HEAD
 			for (i = 0; i < TransitionState.numLevels; i++)
 				levelNames.push(String(i + 1));
+=======
+			levelNames.push("1");
+			levelNames.push("2");
+			levelNames.push("3");
+			levelNames.push("4");
+			levelNames.push("5aa");
+			levelNames.push("6bb");
+>>>>>>> 42d33957bea1b4f99baedc7003f99896dce08fe4
 			//levelNames.push("TestWDoor");
 			
 			menu = new ListMenu(480, 300, 2);

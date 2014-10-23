@@ -3,6 +3,9 @@ bin/
 bin-debug/
 bin-release/
 
+# Settings File
+obj/
+
 # Other files and folders
 .settings/
 
@@ -11,5 +14,3 @@ bin-release/
 # information for Eclipse / Flash Builder.
 
 Flixel/
-
-*.old

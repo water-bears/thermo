@@ -44,12 +44,15 @@ package {
 		
 		private var level:Level;
 		
+<<<<<<< HEAD
 		private const FREEZE:int = 1;
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
 		
+=======
+>>>>>>> 42d33957bea1b4f99baedc7003f99896dce08fe4
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
@@ -96,11 +99,11 @@ package {
 			add(keyGroup);
 			
 			// This will be essentially for debugging or other info we want
-			status = new FlxText(FlxG.width - 158, 2, 160);
+			/*status = new FlxText(FlxG.width - 158, 2, 160);
 			status.shadow = 0xff000000;
 			status.alignment = "right";
 			status.text = "none";
-			add(status);
+			add(status);*/
 			
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
@@ -160,18 +163,36 @@ package {
 			
 			// Receive key 
 			if (FlxG.overlap(keyGroup, player)) {
+				for (var i:int = 0; i < exitGroup.members.length; i++) {
+					(exitGroup.members[i] as Door).open();
+				}
 				getKey(keyGroup, player);
 			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			if (FlxG.overlap(freezeGroup, player)) {
-				player.updatePower(FREEZE);
+				for (var i:int = 0; i < freezeGroup.members.length; i++) {
+					if (FlxG.overlap(freezeGroup.members[i], player)) {
+						(freezeGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.FREEZE);
 			}
 			if (FlxG.overlap(heatGroup, player)) {
-				player.updatePower(HEAT);
+				for (var i:int = 0; i < heatGroup.members.length; i++) {
+					if (FlxG.overlap(heatGroup.members[i], player)) {
+						(heatGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.HEAT);
 			}
-			if (FlxG.overlap(flashGroup,player)) {
-				player.updatePower(FLASH);
+			if (FlxG.overlap(flashGroup, player)) {
+				for (var i:int = 0; i < flashGroup.members.length; i++) {
+					if (FlxG.overlap(flashGroup.members[i], player)) {
+						(flashGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.FLASH);
 			}
 			
 			// If player has the key and touches the exit, they win
@@ -188,7 +209,7 @@ package {
 				FlxG.switchState(new TransitionState(0));
 			}
 			
-			status.text = player.stat;
+			//status.text = player.stat;
 		}
 		
 		/** when player retrieves key **/
@@ -211,7 +232,6 @@ package {
 			}
 			
 			background.loadGraphic(Assets.b_list[level]);
-			
 			
 			// Scale and reposition background
 			background.x -= background.width / 2;

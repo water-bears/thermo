@@ -26,44 +26,41 @@ package {
 		
 		public var waterTiles:FlxTilemap;
 		public var hasKey:Boolean = false;
-		public var stat:String = "none";
-		public var playState:PlayState;
+		//public var stat:String = "none";
+		public var playstate:PlayState;
 		
 		public var t1:int;
-		
-		/** Animation frames per second */
-		private static const FR:int = 10;
 		
 		private var ice:Array;
 		private var iceCount:int;
 		
-		public function Player(x:Number, y:Number, waterT:FlxTilemap, playState:PlayState):void{
+		public function Player(x:Number, y:Number, waterT:FlxTilemap, playstate:PlayState):void{
 			super(x, y);
 		
 			this.addAnimation("stand0", [0]);
-			this.addAnimation("walk0", [0, 1, 2], FR, true);
+			this.addAnimation("walk0", [0, 1, 2], Assets.FRAME_RATE, true);
 			this.addAnimation("jump0", [3]);
 			this.addAnimation("bubble0", [5]);
 			
 			this.addAnimation("stand1", [14]);
-			this.addAnimation("walk1", [14, 15, 16], FR, true);
+			this.addAnimation("walk1", [14, 15, 16], Assets.FRAME_RATE, true);
 			this.addAnimation("jump1", [17]);
 			this.addAnimation("bubble1", [19]);
 			
 			this.addAnimation("stand2", [7]);
-			this.addAnimation("walk2", [7, 8, 9], FR, true);
+			this.addAnimation("walk2", [7, 8, 9], Assets.FRAME_RATE, true);
 			this.addAnimation("jump2", [10]);
 			this.addAnimation("bubble2", [12]);
 			
-			this.addAnimation("stand3", [14, 0], FR, true);
-			this.addAnimation("walk3", [14, 1, 16, 0, 15, 2], FR, true);
-			this.addAnimation("jump3", [17, 3], FR, true);
-			this.addAnimation("bubble3", [19, 5], FR, true);
+			this.addAnimation("stand3", [14, 0], Assets.FRAME_RATE, true);
+			this.addAnimation("walk3", [14, 1, 16, 0, 15, 2], Assets.FRAME_RATE, true);
+			this.addAnimation("jump3", [17, 3], Assets.FRAME_RATE, true);
+			this.addAnimation("bubble3", [19, 5], Assets.FRAME_RATE, true);
 			
-			this.addAnimation("stand4", [7, 0], FR, true);
-			this.addAnimation("walk4", [7, 1, 9, 0, 8, 2], FR, true);
-			this.addAnimation("jump4", [10, 3], FR, true);
-			this.addAnimation("bubble4", [12, 5], FR, true);
+			this.addAnimation("stand4", [7, 0], Assets.FRAME_RATE, true);
+			this.addAnimation("walk4", [7, 1, 9, 0, 8, 2], Assets.FRAME_RATE, true);
+			this.addAnimation("jump4", [10, 3], Assets.FRAME_RATE, true);
+			this.addAnimation("bubble4", [12, 5], Assets.FRAME_RATE, true);
 			
 			this.facing = FlxObject.RIGHT;
 			this.loadGraphic(Assets.playerSprite, true, true, 23, 28);
@@ -78,7 +75,7 @@ package {
 			this.curPow = 0;
 			this.iceCount = 0;
 			
-			this.playState = playState;
+			this.playstate = playstate;
 			
 			this.ice = new Array();
 			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
@@ -142,6 +139,9 @@ package {
 					velocity.y = maxVelocity.y;
 				}
 			}
+			/*else if (superBubble && floatUp == false){
+				velocity.y -= 80;
+			}*/
 
 			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
@@ -194,7 +194,7 @@ package {
 					if (!isTouching(FLOOR)) {
 						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
 						this.maxVelocity.y = 0;
-						playState.iceGroup.add(this.ice[3]);
+						playstate.iceGroup.add(this.ice[3]);
 						
 						t1 = getTimer();
 					}
@@ -202,9 +202,9 @@ package {
 				// Heat
 				case 2:
 					if (!bubble) {
-						velocity.y = -80;
-						acceleration.y = 0;
-						stat = "used bubble";
+						//velocity.y = -80;
+						acceleration.y = -500;
+						//stat = "used bubble";
 						bubble = true;
 						superBubble = false;
 					}
@@ -212,24 +212,24 @@ package {
 				// Flash Freeze
 				case 3:
 					if (!isTouching(FLOOR)) {
-						stat = "flash frozen";
+						//stat = "flash frozen";
 						switch (iceCount % 3) {
 							case 0:
 								this.ice[0].x = this.x;
 								this.ice[0].y = this.y + this.height;
-								playState.iceGroup.add(this.ice[0]);
+								playstate.iceGroup.add(this.ice[0]);
 								this.maxVelocity.y = 0;
 								break;
 							case 1:
 								this.ice[1].x = this.x;
 								this.ice[1].y = this.y + this.height;
-								playState.iceGroup.add(this.ice[1]);
+								playstate.iceGroup.add(this.ice[1]);
 								this.maxVelocity.y = 0;
 								break;
 							case 2:
 								this.ice[2].x = this.x;
 								this.ice[2].y = this.y + this.height;
-								playState.iceGroup.add(this.ice[2]);
+								playstate.iceGroup.add(this.ice[2]);
 								this.maxVelocity.y = 0;
 								break;
 						}
@@ -240,9 +240,9 @@ package {
 				case 4:
 					if (!superBubble) {
 						bubble = false;
-						velocity.y = -80;
-						acceleration.y = 0;
-						stat = "super bubble";
+						//velocity.y = -500;
+						acceleration.y = -500;
+						//stat = "super bubble";
 						superBubble = true;
 						floatUp = true;
 					}

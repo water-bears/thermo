@@ -23,6 +23,10 @@ package levelgen {
 		public var exits:FlxGroup = new FlxGroup;
 		public var keys:FlxGroup = new FlxGroup;
 		
+		public var spikes:FlxGroup = new FlxGroup;
+		public var door:Door;
+		public var button:Button;
+		
 		public var otherSprites:FlxGroup = new FlxGroup;
 		
 		public var levelNum:uint;
@@ -115,26 +119,26 @@ package levelgen {
 					var spritetype:String = xmlSprite[spriteNum].@name;
 					switch(spritetype)
 					{
-					case "Character":
+					case "Player":
 						player = sprite; //this is just to get the player's x y location
 						break;
 						
 					case "HeatGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 2;
-						heatGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 2;
+						heatGates.add(new Gate(sprite, Gate.HEAT));
 						break;
 						
 					case "FreezeGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 1;
-						freezeGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 1;
+						freezeGates.add(new Gate(sprite, Gate.FREEZE));
 						break;
 						
 					case "FlashGate":
-						sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 3;
-						flashGates.add(sprite);
+						//sprite.loadGraphic(gatesAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 3;
+						flashGates.add(new Gate(sprite, Gate.FLASH));
 						break;
 						
 					case "Key":
@@ -144,10 +148,28 @@ package levelgen {
 						break;
 						
 					case "Exit":
-						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 1;
-						exits.add(sprite);
+						//sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 1;
+						exits.add(new Door(sprite));
 						break;
+						
+					case "Spike":
+						var spike:Spike = new Spike(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, int((xmlSprite[spriteNum].@angle / 360)*4));
+						break;
+					/*
+					case "MovingPlatform":
+						var movingplatform:MovingPlatform = new MovingPlatform(x, y, startPos, endpos, direction);
+						break;
+						*/
+						
+					case "Button":
+						var button:Button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, door);
+						break;
+						
+					case "Door":
+						//var door:Door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+						break;
+						
 						
 					default:
 						otherSprites.add(sprite);						
