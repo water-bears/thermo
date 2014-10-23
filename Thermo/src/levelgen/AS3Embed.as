@@ -27,12 +27,15 @@ public class AS3Embed
 [Embed(source = "../../assets/levels/5/Level_5.xml", mimeType="application/octet-stream")] private static var Level_510:Class;
 [Embed(source = "../../assets/levels/5/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground10:Class;
 [Embed(source = "../../assets/levels/5/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water10:Class;
-[Embed(source = "../../assets/levels/7/Level_7.xml", mimeType="application/octet-stream")] private static var Level_711:Class;
-[Embed(source = "../../assets/levels/7/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
-[Embed(source = "../../assets/levels/7/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
-[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_812:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground12:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water12:Class;
+[Embed(source = "../../assets/levels/6/Level_6.xml", mimeType="application/octet-stream")] private static var Level_611:Class;
+[Embed(source = "../../assets/levels/6/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
+[Embed(source = "../../assets/levels/6/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
+[Embed(source = "../../assets/levels/7/Level_7.xml", mimeType="application/octet-stream")] private static var Level_712:Class;
+[Embed(source = "../../assets/levels/7/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground12:Class;
+[Embed(source = "../../assets/levels/7/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water12:Class;
+[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_813:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground13:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water13:Class;
 
 public static function GetTextAsset(filename:String):String{
 if(filename == "levels/1/Level_1.xml") { return new Level_15; }
@@ -59,12 +62,15 @@ if(filename == "levels/4/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Wa
 if(filename == "levels/5/Level_5.xml") { return new Level_510; }
 if(filename == "levels/5/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground10; }
 if(filename == "levels/5/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water10; }
-if(filename == "levels/7/Level_7.xml") { return new Level_711; }
-if(filename == "levels/7/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
-if(filename == "levels/7/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
-if(filename == "levels/8/Level_8.xml") { return new Level_812; }
-if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground12; }
-if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water12; }
+if(filename == "levels/6/Level_6.xml") { return new Level_611; }
+if(filename == "levels/6/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
+if(filename == "levels/6/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
+if(filename == "levels/7/Level_7.xml") { return new Level_712; }
+if(filename == "levels/7/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground12; }
+if(filename == "levels/7/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water12; }
+if(filename == "levels/8/Level_8.xml") { return new Level_813; }
+if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground13; }
+if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water13; }
 
 return "error";
 }

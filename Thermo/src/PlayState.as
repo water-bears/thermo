@@ -188,9 +188,12 @@ package {
 				player.normalSpeed();
 			}
 			
+			// Our beloved iteration variable (i)
+			var i:int;
+			
 			// Receive key 
 			if (FlxG.overlap(keyGroup, player)) {
-				for (var i:int = 0; i < exitGroup.members.length; i++) {
+				for (i = 0; i < exitGroup.members.length; i++) {
 					(exitGroup.members[i] as Door).open();
 				}
 				getKey(keyGroup, player);
@@ -198,7 +201,7 @@ package {
 			
 			// Calls getGate function when we touch/cross/etc. a gate
 			if (FlxG.overlap(freezeGroup, player)) {
-				for (var i:int = 0; i < freezeGroup.members.length; i++) {
+				for (i = 0; i < freezeGroup.members.length; i++) {
 					if (FlxG.overlap(freezeGroup.members[i], player)) {
 						(freezeGroup.members[i] as Gate).trigger();
 					}
@@ -206,7 +209,7 @@ package {
 				player.updatePower(Gate.FREEZE);
 			}
 			if (FlxG.overlap(heatGroup, player)) {
-				for (var i:int = 0; i < heatGroup.members.length; i++) {
+				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
 						(heatGroup.members[i] as Gate).trigger();
 					}
@@ -214,7 +217,7 @@ package {
 				player.updatePower(Gate.HEAT);
 			}
 			if (FlxG.overlap(flashGroup, player)) {
-				for (var i:int = 0; i < flashGroup.members.length; i++) {
+				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
 						(flashGroup.members[i] as Gate).trigger();
 					}
@@ -222,7 +225,7 @@ package {
 				player.updatePower(Gate.FLASH);
 			}
 			if (FlxG.overlap(neutralGroup, player)) {
-				for (var i:int = 0; i < neutralGroup.members.length; i++) {
+				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
 						(neutralGroup.members[i] as Gate).trigger();
 					}
@@ -230,7 +233,7 @@ package {
 				player.updatePower(Gate.NEUTRAL);
 			}
 			if (FlxG.overlap(buttonGroup, player)) {
-				for (var i:int = 0; i < buttonGroup.members.length; i++) {
+				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
 						(buttonGroup.members[i] as Button).pushed();
 					}

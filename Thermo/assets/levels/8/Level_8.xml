@@ -27,7 +27,7 @@
 		<sprite clas="Exit" name="Exit" x="632.00" y="61.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Trapdoor" name="Trapdoor" x="398.00" y="480.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Button" name="Button" x="603.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Spikes" name="Spikes" x="698.00" y="159.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Spikes" name="Spikes" x="633.00" y="159.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Spikes" name="Spikes" x="701.00" y="287.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Spikes" name="Spikes" x="640.00" y="287.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 	</layer>
 </level>
