@@ -7,7 +7,7 @@ package context
 	 * ...
 	 * @author KJin
 	 */
-	public class BackgroundBubble 
+	public class BackgroundBubble
 	{
 		private var bubble:FlxSprite;
 		private var start:FlxPoint;
