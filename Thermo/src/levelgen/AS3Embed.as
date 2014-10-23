@@ -24,12 +24,12 @@ public class AS3Embed
 [Embed(source = "../../assets/levels/5/Level_5.xml", mimeType="application/octet-stream")] private static var Level_59:Class;
 [Embed(source = "../../assets/levels/5/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground9:Class;
 [Embed(source = "../../assets/levels/5/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water9:Class;
-[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_810:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground10:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water10:Class;
-[Embed(source = "../../assets/levels/9/Level_9.xml", mimeType="application/octet-stream")] private static var Level_911:Class;
-[Embed(source = "../../assets/levels/9/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
-[Embed(source = "../../assets/levels/9/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
+[Embed(source = "../../assets/levels/6/Level_6.xml", mimeType="application/octet-stream")] private static var Level_610:Class;
+[Embed(source = "../../assets/levels/6/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground10:Class;
+[Embed(source = "../../assets/levels/6/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water10:Class;
+[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_811:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
 
 public static function GetTextAsset(filename:String):String{
 if(filename == "levels/1/Level_1.xml") { return new Level_15; }
@@ -53,12 +53,12 @@ if(filename == "levels/4/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Wa
 if(filename == "levels/5/Level_5.xml") { return new Level_59; }
 if(filename == "levels/5/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground9; }
 if(filename == "levels/5/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water9; }
-if(filename == "levels/8/Level_8.xml") { return new Level_810; }
-if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground10; }
-if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water10; }
-if(filename == "levels/9/Level_9.xml") { return new Level_911; }
-if(filename == "levels/9/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
-if(filename == "levels/9/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
+if(filename == "levels/6/Level_6.xml") { return new Level_610; }
+if(filename == "levels/6/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground10; }
+if(filename == "levels/6/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water10; }
+if(filename == "levels/8/Level_8.xml") { return new Level_811; }
+if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
+if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
 
 return "error";
 }
