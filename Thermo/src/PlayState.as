@@ -118,7 +118,7 @@ package {
 			add(spikeTest);*/
 			
 			FlxG.camera.follow(player);
-			FlxG.camera.zoom = 2;
+			FlxG.camera.zoom = 1.5;
 			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
