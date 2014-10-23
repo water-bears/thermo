@@ -113,8 +113,8 @@ package {
 			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
 			add(spikeTest);*/
 			
-			FlxG.camera.follow(player);
-			FlxG.camera.zoom = 1.5;
+			//FlxG.camera.follow(player);
+			//FlxG.camera.zoom = 1.5;
 			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
