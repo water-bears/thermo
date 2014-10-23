@@ -13,3 +13,4 @@ bin-release/
 Flixel/
 
 *.old
+*.bak

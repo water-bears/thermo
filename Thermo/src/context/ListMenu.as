@@ -33,18 +33,20 @@ package context {
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
 				if (keyFramesDown % 10 == 0) {
-					selectedID++;
-					if (selectedID >= menuYVals.length - 1)
+					if (selectedID >= menuYVals.length)
 						selectedID = 0;
+					else
+						selectedID++;
 				}
 				keyDown = true;
 			}
 			
 			if (FlxG.keys.UP) {
-				if (selectedID > 0 && keyFramesDown % 10 == 0) {
-					selectedID--;
-					if (selectedID < 0)
+				if (keyFramesDown % 10 == 0) {
+					if (selectedID == 0)
 						selectedID = menuYVals.length - 1;
+					else
+						selectedID--;
 				}
 				keyDown = true;
 			}

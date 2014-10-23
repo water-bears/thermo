@@ -1,13 +1,14 @@
 package {
+	import context.BubbleBackground;
 	import context.LevelSelectState;
+	import context.TransitionState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
-	import context.TransitionState;
+	
 	import levelgen.*;
 	
 	import org.flixel.*;
-	import context.BubbleBackground;
 	
 	public class PlayState extends FlxState {
 		private var background:FlxSprite;
@@ -21,6 +22,7 @@ package {
 		public var freezeGroup:FlxGroup = new FlxGroup;
 		public var heatGroup:FlxGroup = new FlxGroup;
 		public var flashGroup:FlxGroup = new FlxGroup;
+		public var neutralGroup:FlxGroup = new FlxGroup;
 
 		public var exitGroup:FlxGroup = new FlxGroup;
 		public var keyGroup:FlxGroup = new FlxGroup;
@@ -78,14 +80,17 @@ package {
 			add(waterTiles);
 			
 			//add the gates
-			freezeGroup = level.freezeGates
+			freezeGroup = level.freezeGates;
 			add(freezeGroup);
 			
-			heatGroup = level.heatGates
+			heatGroup = level.heatGates;
 			add(heatGroup);
 			
-			flashGroup = level.flashGates
-			add(flashGroup);		
+			flashGroup = level.flashGates;
+			add(flashGroup);
+			
+			neutralGroup = level.neutralGates;
+			add(neutralGroup);
 			
 			//add the exit
 			exitGroup = level.exits;
@@ -212,6 +217,14 @@ package {
 				}
 				player.updatePower(Gate.FLASH);
 			}
+			if (FlxG.overlap(neutralGroup, player)) {
+				for (var i:int = 0; i < neutralGroup.members.length; i++) {
+					if (FlxG.overlap(neutralGroup.members[i], player)) {
+						(neutralGroup.members[i] as Gate).trigger();
+					}
+				}
+				player.updatePower(Gate.NEUTRAL);
+			}
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (var i:int = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
@@ -219,6 +232,10 @@ package {
 					}
 				}
 			}
+			/*
+			if (FlxG.overlap(neutralGroup, player)){
+				player.updatePower(0);
+			}*/
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {

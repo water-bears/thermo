@@ -19,6 +19,7 @@ package levelgen {
 		public var freezeGates:FlxGroup = new FlxGroup;
 		public var heatGates:FlxGroup = new FlxGroup;
 		public var flashGates:FlxGroup = new FlxGroup;
+		public var neutralGates:FlxGroup = new FlxGroup;
 		
 		public var exits:FlxGroup = new FlxGroup;
 		public var keys:FlxGroup = new FlxGroup;
@@ -141,6 +142,10 @@ package levelgen {
 						flashGates.add(new Gate(sprite, Gate.FLASH));
 						break;
 						
+					case "NeutralGate":
+						neutralGates.add(new Gate(sprite, Gate.NEUTRAL));
+						break;
+						
 					case "Key":
 						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 						sprite.frame = 2;
@@ -154,7 +159,7 @@ package levelgen {
 						break;
 						
 					case "Spikes":
-						var spike:Spike = new Spike(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, int((xmlSprite[spriteNum].@angle / 360) * 4));
+						var spike:Spike = new Spike(sprite);
 						spikes.add(spike);
 						break;
 					/*
