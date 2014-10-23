@@ -3,13 +3,6 @@ package {
 	
 	public class Door extends FlxSprite {
 		
-/*
-		public function TrapDoor(x:Number, y:Number) {
-        
-			super(x, y);
-			this.loadGraphic(Assets.doorSprite);
-			immovable = true;
-            */
 		public function Door(sprite:FlxSprite) {
 			super(sprite.x, sprite.y);
 			
@@ -27,10 +20,6 @@ package {
 		}
 		
 		public function open():void {
-			// Change door to open sprite
-/*
-			this.kill();
-            */
 			play("open");
 		}
 	}

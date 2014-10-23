@@ -34,8 +34,8 @@ package {
 		public static var spikeSprite:Class;
 		[Embed(source = "../assets/objects/button.png")]
 		public static var buttonSprite:Class;
-		[Embed(source = "../assets/objects/door.png")]
-		public static var doorSprite:Class;
+		[Embed(source = "../assets/objects/trapdoor.png")]
+		public static var trapdoorSprite:Class;
 		
 		
 		/* Background sprites */

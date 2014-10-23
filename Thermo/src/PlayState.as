@@ -99,9 +99,9 @@ package {
 			spikeGroup = level.spikes;
 			add(spikeGroup);
 			
-			if (level.door != null)
+			if (level.trapdoor != null)
 			{
-				solidGroup.add(level.door);
+				solidGroup.add(level.trapdoor);
 				if (level.button != null)
 				{
 					buttonGroup.add(level.button);

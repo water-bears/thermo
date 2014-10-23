@@ -10,7 +10,7 @@
 		<clas name="" file="backgrounds/background.png" width="516" height="516" index="0" />
 		<clas name="Spikes" file="objects/spike.png" width="100" height="100" index="0" />
 		<clas name="Button" file="objects/button.png" width="32" height="32" index="0" />
-		<clas name="Door" file="objects/door.png" width="32" height="32" index="0" />
+		<clas name="Trapdoor" file="objects/trapdoor.png" width="32" height="32" index="0" />
 	</spriteclasses>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/8/mapCSV_Group1_Water.csv" tiles="tilesheets/water.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
@@ -25,7 +25,7 @@
 		<sprite clas="Player" name="Player" x="411.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="FlashGate" name="FlashGate" x="99.00" y="57.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Spikes" name="Spikes" x="254.00" y="27.00" angle="0.00" flip="false" xScale="1.00" yScale="0.57" />
-		<sprite clas="Door" name="Door" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Trapdoor" name="Trapdoor" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Button" name="Button" x="375.00" y="207.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 	</layer>
 </level>

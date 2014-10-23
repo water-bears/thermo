@@ -24,7 +24,7 @@ package levelgen {
 		public var keys:FlxGroup = new FlxGroup;
 		
 		public var spikes:FlxGroup = new FlxGroup;
-		public var door:Door;
+		public var trapdoor:Trapdoor;
 		public var button:Button;
 		
 		public var otherSprites:FlxGroup = new FlxGroup;
@@ -164,12 +164,11 @@ package levelgen {
 						*/
 						
 					case "Button":
-						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, door);
+						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, trapdoor);
 						break;
 						
-					case "Door":
-						//door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
-						//var door:Door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+					case "Trapdoor":
+						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 						break;
 						
 						
