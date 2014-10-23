@@ -200,38 +200,50 @@ package {
 			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			if (FlxG.overlap(freezeGroup, player)) {
+			//if (FlxG.overlap(freezeGroup, player)) {
 				for (i = 0; i < freezeGroup.members.length; i++) {
 					if (FlxG.overlap(freezeGroup.members[i], player)) {
 						(freezeGroup.members[i] as Gate).trigger();
+						player.updatePower(Gate.FREEZE);
+					} else {
+						(freezeGroup.members[i] as Gate).untrigger();
 					}
 				}
-				player.updatePower(Gate.FREEZE);
-			}
-			if (FlxG.overlap(heatGroup, player)) {
+				
+			//}
+			//if (FlxG.overlap(heatGroup, player)) {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
 						(heatGroup.members[i] as Gate).trigger();
+						player.updatePower(Gate.HEAT);
+					} else {
+						(heatGroup.members[i] as Gate).untrigger();
 					}
 				}
-				player.updatePower(Gate.HEAT);
-			}
-			if (FlxG.overlap(flashGroup, player)) {
+				
+			//}
+			//if (FlxG.overlap(flashGroup, player)) {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
 						(flashGroup.members[i] as Gate).trigger();
+						player.updatePower(Gate.FLASH);
+					} else {
+						(flashGroup.members[i] as Gate).untrigger();
 					}
 				}
-				player.updatePower(Gate.FLASH);
-			}
-			if (FlxG.overlap(neutralGroup, player)) {
+				
+			//}
+			//if (FlxG.overlap(neutralGroup, player)) {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
 						(neutralGroup.members[i] as Gate).trigger();
+						player.updatePower(Gate.NEUTRAL);
+					} else {
+						(neutralGroup.members[i] as Gate).untrigger();
 					}
 				}
-				player.updatePower(Gate.NEUTRAL);
-			}
+				
+			//}
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {

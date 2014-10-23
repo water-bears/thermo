@@ -16,6 +16,8 @@ package {
 		 */
 		private var type:int;
 		
+		private var triggered:Boolean = false;
+		
 		public function Gate(sprite:FlxSprite, type:int) {
 			super(sprite.x, sprite.y);
 			
@@ -27,8 +29,14 @@ package {
 		
 			this.type = type;
 			
-			addAnimation("normal", [type]);
-			addAnimation("trigger", [type+5, type, 5, type], Assets.FRAME_RATE, false);
+			if (type == FLASH) {
+				addAnimation("normal", [type, 5], Assets.FRAME_RATE / 2, true);
+				addAnimation("trigger", [type+5, type], Assets.FRAME_RATE, false);
+			} else {
+				addAnimation("normal", [type]);
+				addAnimation("trigger", [type+5, type, 5, type], Assets.FRAME_RATE, false);
+			}
+			
 			loadGraphic(Assets.gateSprite, true, false, 16, 64);
 			
 			play("normal");
@@ -36,11 +44,22 @@ package {
 		
 		public function trigger():void {
 			// Play triggered animation
-			play("trigger");
+			triggered = true;
+			//play("trigger");
 		}
 		
 		override public function update():void {
 			// Play standard animation (needed in update?)
+			if (triggered)
+				play("trigger");
+			else
+				play("normal");
+		}
+		
+		public function untrigger():void {
+			// Play triggered animation
+			triggered = false;
+			//play("normal");
 		}
 	}
 }
