@@ -39,6 +39,6 @@ output += artassetstring + "\nreturn background2;\n}\n"
 """
 output += "}\n}";
 
-file_object = open("../src/levelgen/AS3Embed.as",'w')
+file_object = open("..\src\levelgen\AS3Embed.as",'w')
 file_object.write(output)
 file_object.close()

@@ -119,7 +119,7 @@ package levelgen {
 					var spritetype:String = xmlSprite[spriteNum].@name;
 					switch(spritetype)
 					{
-					case "Character":
+					case "Player":
 						player = sprite; //this is just to get the player's x y location
 						break;
 						
@@ -144,7 +144,7 @@ package levelgen {
 					case "Key":
 						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 						sprite.frame = 2;
-						keys.add(sprite);
+						keys.add(new Key(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, false));
 						break;
 						
 					case "Exit":
@@ -153,8 +153,9 @@ package levelgen {
 						exits.add(sprite);
 						break;
 						
-					case "Spike":
-						var spike:Spike = new Spike(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, int((xmlSprite[spriteNum].@angle / 360)*4));
+					case "Spikes":
+						var spike:Spike = new Spike(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, int((xmlSprite[spriteNum].@angle / 360) * 4));
+						spikes.add(spike);
 						break;
 					/*
 					case "MovingPlatform":
@@ -163,11 +164,11 @@ package levelgen {
 						*/
 						
 					case "Button":
-						var button:Button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, door);
+						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, door);
 						break;
 						
 					case "Door":
-						var door:Door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+						door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 						break;
 						
 						

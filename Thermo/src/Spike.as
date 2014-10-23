@@ -15,23 +15,13 @@ package {
 		public var dir:int;
 		
 		public function Spike(x:Number, y:Number, direction:int) {
-			super(x,y);
-			
+			super(x,y);		
 			
 			this.dir = direction;
 			
 			// loading the spike image in the correct orientation
-			// Right now this is iceSprite just as a filler 
-			switch(dir){
-				case 1:
-					this.loadRotatedGraphic(Assets.iceSprite, 4, 0);
-				case 2:
-					this.loadRotatedGraphic(Assets.iceSprite, 4, 1);
-				case 3:
-					this.loadRotatedGraphic(Assets.iceSprite, 4, 2);
-				case 4:
-					this.loadRotatedGraphic(Assets.iceSprite, 4, 3);
-			}
+			// Right now this is iceSprite just as a filler
+			this.loadRotatedGraphic(Assets.spikeSprite, 4, 0);
 			
 			
 		}

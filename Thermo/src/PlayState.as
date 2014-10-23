@@ -17,17 +17,18 @@ package {
 		public var waterTiles:FlxTilemap;
 		public var groundTiles:FlxTilemap;
 		
-		public var freezeGroup:FlxGroup;
-		public var heatGroup:FlxGroup;
-		public var flashGroup:FlxGroup;
+		public var freezeGroup:FlxGroup = new FlxGroup;
+		public var heatGroup:FlxGroup = new FlxGroup;
+		public var flashGroup:FlxGroup = new FlxGroup;
 
-		public var exitGroup:FlxGroup;
-		public var keyGroup:FlxGroup;
+		public var exitGroup:FlxGroup = new FlxGroup;
+		public var keyGroup:FlxGroup = new FlxGroup;
 		
-		public var spikeTiles:FlxTilemap;
+		public var buttonGroup:FlxGroup = new FlxGroup;
+		public var solidGroup:FlxGroup = new FlxGroup;
+		
+		public var spikeGroup:FlxGroup = new FlxGroup;
 		public var movingPlatTiles:FlxTilemap;
-		
-		public var spikeTest:FlxSprite;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -88,6 +89,22 @@ package {
 			keyGroup = level.keys;
 			add(keyGroup);
 			
+			//add morrrre stuff
+			spikeGroup = level.spikes;
+			add(spikeGroup);
+			
+			if (level.door != null)
+			{
+				solidGroup.add(level.door);
+				if (level.button != null)
+				{
+					buttonGroup.add(level.button);
+					add(buttonGroup);
+				}
+			}
+			
+			add(solidGroup);
+			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width - 158, 2, 160);
 			status.shadow = 0xff000000;
@@ -137,11 +154,16 @@ package {
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
+			FlxG.collide(solidGroup, player);
 			
+			// Make Keys Collide With level
+			FlxG.collide(groundTiles, keyGroup);
+			FlxG.collide(iceGroup, keyGroup);
+			FlxG.collide(solidGroup, keyGroup);
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
-			/*if(player.overlaps(spikeTest)){ FlxG.resetState();}*/
+			if(FlxG.overlap(player, spikeGroup)){ FlxG.switchState(new TransitionState(level.levelNum)); }
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
@@ -178,6 +200,13 @@ package {
 					}
 				}
 				player.updatePower(Gate.FLASH);
+			}
+			if (FlxG.overlap(buttonGroup, player)) {
+				for (var i:int = 0; i < buttonGroup.members.length; i++) {
+					if (FlxG.overlap(buttonGroup.members[i], player)) {
+						(buttonGroup.members[i] as Button).pushed();
+					}
+				}
 			}
 			
 			// If player has the key and touches the exit, they win

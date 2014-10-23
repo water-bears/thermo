@@ -21,6 +21,9 @@ public class AS3Embed
 [Embed(source = "../../assets/levels/4/Level_4.xml", mimeType="application/octet-stream")] private static var Level_48:Class;
 [Embed(source = "../../assets/levels/4/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground8:Class;
 [Embed(source = "../../assets/levels/4/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water8:Class;
+[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_89:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground9:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water9:Class;
 
 public static function GetTextAsset(filename:String):String{
 if(filename == "levels/1/Level_1.xml") { return new Level_15; }
@@ -41,6 +44,9 @@ if(filename == "levels/3/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Wa
 if(filename == "levels/4/Level_4.xml") { return new Level_48; }
 if(filename == "levels/4/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground8; }
 if(filename == "levels/4/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water8; }
+if(filename == "levels/8/Level_8.xml") { return new Level_89; }
+if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground9; }
+if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water9; }
 
 return "error";
 }

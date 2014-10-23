@@ -32,6 +32,8 @@ package context {
 			levelNames.push("4aaa");
 			levelNames.push("5bbb");
 			levelNames.push("6ccc");
+			levelNames.push("7");
+			levelNames.push("8");
 			//levelNames.push("TestWDoor");
 			
 			menu = new ListMenu(100, 100, 2);
