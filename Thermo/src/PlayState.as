@@ -1,13 +1,14 @@
 package {
+	import context.BubbleBackground;
 	import context.LevelSelectState;
+	import context.TransitionState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
-	import context.TransitionState;
+	
 	import levelgen.*;
 	
 	import org.flixel.*;
-	import context.BubbleBackground;
 	
 	public class PlayState extends FlxState {
 		private var background:FlxSprite;
@@ -231,6 +232,10 @@ package {
 					}
 				}
 			}
+			/*
+			if (FlxG.overlap(neutralGroup, player)){
+				player.updatePower(0);
+			}*/
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
