@@ -148,9 +148,9 @@ package levelgen {
 						break;
 						
 					case "Exit":
-						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
-						sprite.frame = 1;
-						exits.add(sprite);
+						//sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+						//sprite.frame = 1;
+						exits.add(new Door(sprite));
 						break;
 						
 					case "Spike":
@@ -167,7 +167,7 @@ package levelgen {
 						break;
 						
 					case "Door":
-						var door:Door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+						//var door:Door = new Door(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 						break;
 						
 						

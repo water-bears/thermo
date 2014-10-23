@@ -147,6 +147,9 @@ package {
 			
 			// Receive key 
 			if (FlxG.overlap(keyGroup, player)) {
+				for (var i:int = 0; i < exitGroup.members.length; i++) {
+					(exitGroup.members[i] as Door).open();
+				}
 				getKey(keyGroup, player);
 			}
 			
