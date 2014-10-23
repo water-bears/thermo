@@ -102,12 +102,9 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			if (level.player == null)
-			{
+			if (level.player == null) {
 				player = new Player(0, 0, waterTiles, this);
-			}
-			else
-			{
+			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this);
 			}
 			add(player);
@@ -115,6 +112,10 @@ package {
 			/*
 			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
 			add(spikeTest);*/
+			
+			FlxG.camera.follow(player);
+			FlxG.camera.zoom = 1.5;
+			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
@@ -142,7 +143,7 @@ package {
 			
 			/*if(player.overlaps(spikeTest)){ FlxG.resetState();}*/
 			
-			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
+			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
