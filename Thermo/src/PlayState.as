@@ -103,12 +103,9 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			if (level.player == null)
-			{
+			if (level.player == null) {
 				player = new Player(0, 0, waterTiles, this);
-			}
-			else
-			{
+			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this);
 			}
 			add(player);
