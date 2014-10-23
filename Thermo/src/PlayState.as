@@ -1,13 +1,14 @@
 package {
+	import context.BubbleBackground;
 	import context.LevelSelectState;
+	import context.TransitionState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
-	import context.TransitionState;
+	
 	import levelgen.*;
 	
 	import org.flixel.*;
-	import context.BubbleBackground;
 	
 	public class PlayState extends FlxState {
 		private var background:FlxSprite;
@@ -21,7 +22,8 @@ package {
 		public var freezeGroup:FlxGroup = new FlxGroup;
 		public var heatGroup:FlxGroup = new FlxGroup;
 		public var flashGroup:FlxGroup = new FlxGroup;
-
+		public var neutralGroup:FlxGroup = new FlxGroup;
+		
 		public var exitGroup:FlxGroup = new FlxGroup;
 		public var keyGroup:FlxGroup = new FlxGroup;
 		
@@ -86,6 +88,11 @@ package {
 			
 			flashGroup = level.flashGates
 			add(flashGroup);		
+
+			/*
+			neutralGroup = level.neutralGates
+			add(neutralGroup);
+			*/
 			
 			//add the exit
 			exitGroup = level.exits;
@@ -219,6 +226,10 @@ package {
 					}
 				}
 			}
+			/*
+			if (FlxG.overlap(neutralGroup, player)){
+				player.updatePower(0);
+			}*/
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
