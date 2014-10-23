@@ -28,7 +28,7 @@ package context {
 			add(backgroundTile);
 			
 			// Initialize bubbles
-			bubbles = new BubbleBackground(dimensions);
+			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
 			// Initialize Title Text

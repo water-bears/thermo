@@ -11,12 +11,17 @@ package context {
 		private var numBubbles:uint;
 		private var bubbles:Vector.<BackgroundBubble>;
 		
+		public var minRadius:uint;
+		public var maxRadius:uint;
+		
 		private var width:uint;
 		private var height:uint;
 		
-		public function BubbleBackground(dimensions:FlxPoint) 
+		public function BubbleBackground(dimensions:FlxPoint, numBubbles:uint, minRadius:uint, maxRadius:uint) 
 		{
-			numBubbles = 50;
+			this.numBubbles = numBubbles;
+			this.minRadius = minRadius;
+			this.maxRadius = maxRadius;
 			bubbles = new Vector.<BackgroundBubble>(numBubbles);
 			width = dimensions.x;
 			height = dimensions.y;

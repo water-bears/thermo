@@ -7,6 +7,7 @@ package {
 	import levelgen.*;
 	
 	import org.flixel.*;
+	import context.BubbleBackground;
 	
 	public class PlayState extends FlxState {
 		private var background:FlxSprite;
@@ -47,6 +48,8 @@ package {
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
+		public var bubbles:BubbleBackground;
+		
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
@@ -56,6 +59,10 @@ package {
 			if (background == null)
 				setBackground(0);
 			add(background);
+			
+			// Initialize bubbles
+			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			bubbles.Register(this);
 			
 			//load the level
 			if (level == null) {
@@ -113,8 +120,8 @@ package {
 			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
 			add(spikeTest);*/
 			
-			FlxG.camera.follow(player);
-			FlxG.camera.zoom = 1.5;
+			//FlxG.camera.follow(player);
+			//FlxG.camera.zoom = 1.5;
 			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
@@ -133,6 +140,8 @@ package {
 		
 		override public function update():void {
 			super.update();
+			
+			bubbles.Update();
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
