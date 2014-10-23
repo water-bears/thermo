@@ -30,11 +30,10 @@ package levelgen {
 		public function Level(levelNum:int) 
 		{
 			var file:String = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
-			var test:String = AS3Embed.GetTextAsset(file);
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			
 			//if we can't find the xml file, just use level 1
-			if (xmlFile == null)
+			if (AS3Embed.GetTextAsset(file) == "error")
 			{
 				levelNum = 1;
 				file = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";

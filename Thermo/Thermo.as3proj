@@ -16,7 +16,11 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
+<<<<<<< HEAD
     <class path="..\..\Flixel" />
+=======
+    <class path="..\Flixel" />
+>>>>>>> d94011bab3401c1e3f971a842b6a0ce581ae4cef
   </classpaths>
   <!-- Build options -->
   <build>

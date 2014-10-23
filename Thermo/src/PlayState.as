@@ -5,6 +5,8 @@ package {
 	import flash.geom.ColorTransform;
 	import levelgen.*;
 	
+	import levelgen.*;
+	
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
@@ -19,8 +21,9 @@ package {
 		public var freezeGroup:FlxGroup;
 		public var heatGroup:FlxGroup;
 		public var flashGroup:FlxGroup;
-		public var keyGroup:FlxGroup;
+
 		public var exitGroup:FlxGroup;
+		public var keyGroup:FlxGroup;
 		
 		public var spikeTiles:FlxTilemap;
 		public var movingPlatTiles:FlxTilemap;
@@ -39,13 +42,13 @@ package {
 		public var WHITE:uint = 0xffffffff;
 		public var BLACK:uint = 0x000000;
 		
-		private var level:BaseLevel;
+		private var level:Level;
 		
 		private const FREEZE:int = 1;
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
-		public function setLevel(inputLevel:BaseLevel): void {
+		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
 		
@@ -55,9 +58,11 @@ package {
 				setBackground(0);
 			add(background);
 			
-			//make the level
-			var level:Level = new Level(1);
-			
+			//load the level
+			if (level == null) {
+				level = new Level(1);
+			}
+
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
@@ -84,9 +89,6 @@ package {
 			keyGroup = level.keys;
 			add(keyGroup);
 			
-			//and any additional sprites
-			add(level.otherSprites);
-			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width - 158, 2, 160);
 			status.shadow = 0xff000000;
@@ -101,9 +103,16 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			//player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
-			player = new Player(level.player.x, level.player.y, waterTiles, this);
+			if (level.player == null)
+			{
+				player = new Player(0, 0, waterTiles, this);
+			}
+			else
+			{
+				player = new Player(level.player.x, level.player.y, waterTiles, this);
+			}
 			add(player);
+			
 			/*
 			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
 			add(spikeTest);*/
@@ -153,7 +162,7 @@ package {
 			if (FlxG.overlap(freezeGroup, player)) {
 				player.updatePower(FREEZE);
 			}
-			if (FlxG.overlap(heatGroup,player)) {
+			if (FlxG.overlap(heatGroup, player)) {
 				player.updatePower(HEAT);
 			}
 			if (FlxG.overlap(flashGroup,player)) {

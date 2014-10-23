@@ -4,6 +4,7 @@ package Menu {
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.*;
+	import levelgen.Level;
 	import Menu.ListMenu;
 	import Menu.MenuUtils;
 	
@@ -55,11 +56,8 @@ package Menu {
 			menu.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId();
-				var className:String = "Level_" + levelNames[level];
-				var nextLevel:Class = getDefinitionByName(className) as Class;
-				var nextLevelInstance:* = new nextLevel(false);
 				var p : PlayState = new PlayState();
-				p.setLevel(nextLevelInstance);
+				p.setLevel(new Level(level));
 				p.setBackground(level);
 				FlxG.switchState(p);
 			}
