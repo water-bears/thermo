@@ -8,7 +8,7 @@
 		<clas name="Key" file="tilesheets/door.png" width="32" height="32" index="2" />
 		<clas name="Exit" file="tilesheets/door.png" width="32" height="32" index="1" />
 		<clas name="" file="backgrounds/background.png" width="516" height="516" index="0" />
-		<clas name="NeutralGate" file="../../../../Dropbox/Fall 2014/CS 4154/Assignments/thermo/Thermo/assets/tilesheets/gates.png" width="16" height="64" index="4" />
+		<clas name="NeutralGate" file="tilesheets/gates.png" width="16" height="64" index="4" />
 	</spriteclasses>
 	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/6/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
