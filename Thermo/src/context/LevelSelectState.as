@@ -34,7 +34,7 @@ package context {
 			bubbles.Register(this);
 			
 			// Initialize Title Text
-			title = new FloatingText(0.425 * dimensions.x, 0.1 * dimensions.y, 0.15 * dimensions.x);
+			title = new FloatingText(0.4 * dimensions.x, 0.1 * dimensions.y, 0.15 * dimensions.x);
 			title.SetOscillationSettings(5, 40);
 			title.scale = new FlxPoint(dimensions.x / 64, dimensions.x / 64);
 			title.color = 0xff0099ff;
