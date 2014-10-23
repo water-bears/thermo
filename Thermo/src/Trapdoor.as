@@ -1,5 +1,5 @@
 package {
-	import org.flixel.FlxSprite;
+	import org.flixel.*;
 	
 	public class Trapdoor extends FlxSprite {
 		
@@ -7,7 +7,7 @@ package {
 		public function Trapdoor(x:Number, y:Number) {
         
 			super(x, y);
-			this.loadGraphic(Assets.trapdoorSprite);
+			this.makeGraphic(32, 32, FlxG.WHITE);
 			immovable = true;
             
 		}
