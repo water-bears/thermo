@@ -119,7 +119,7 @@ package levelgen {
 					var spritetype:String = xmlSprite[spriteNum].@name;
 					switch(spritetype)
 					{
-					case "Character":
+					case "Player":
 						player = sprite; //this is just to get the player's x y location
 						break;
 						
