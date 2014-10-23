@@ -4,9 +4,9 @@
   <bgColor>0x777777</bgColor>
   <viewPos x="96" y="47"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="11">
+  <spriteEntries currentId="12">
     <sprite name="Player" idx="1" className="Player" image="character/character.png" width="28" height="28" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="28" boundsHeight="28" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
-    <sprite name="HeatGate" idx="2" className="HeatGate" image="tilesheets/gates.png" width="16" height="64" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="2" canEditFrames="true" lockRotation="false" selected="true"/>
+    <sprite name="HeatGate" idx="2" className="HeatGate" image="tilesheets/gates.png" width="16" height="64" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="2" canEditFrames="true" lockRotation="false"/>
     <sprite name="FreezeGate" idx="3" className="FreezeGate" image="tilesheets/gates.png" width="16" height="64" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="1" canEditFrames="true" lockRotation="false"/>
     <sprite name="FlashGate" idx="4" className="FlashGate" image="tilesheets/gates.png" width="16" height="64" preview="3" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="Key" idx="5" className="Key" image="tilesheets/door.png" width="32" height="32" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
@@ -14,7 +14,7 @@
     <sprite name="" idx="7" className="" image="backgrounds/background.png" width="516" height="516" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="516" boundsHeight="516" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="Button" idx="8" className="Button" image="objects/button.png" width="32" height="32" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="Trapdoor" idx="9" className="Trapdoor" image="objects/trapdoor.png" width="32" height="32" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false"/>
-    <sprite name="Spikes" idx="10" className="Spikes" image="objects/spike.png" width="200" height="100" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="200" boundsHeight="100" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Spikes" idx="11" className="Spikes" image="objects/spike.png" width="64" height="24" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="24" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
   </spriteEntries>
   <layers>
     <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
@@ -71,8 +71,8 @@
         <sprite guid="5FBC0BA4-01F3-FE9A-0EF4-A41E3EA78149" x="632" y="61" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
         <sprite guid="E90A1C56-6B2C-E840-CB0E-F94A4FFB456C" x="398" y="480" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9" frame="0"/>
         <sprite guid="A4E5999D-FF90-4820-1C71-759D06E21173" x="603" y="479" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
-        <sprite guid="C4B0AD0B-3B44-DDBF-16BC-EAAC54CB43C1" x="-249" y="572" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10"/>
-        <sprite guid="4B92A940-8C9A-705D-F71D-A93E25654A11" x="539" y="153" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10"/>
+        <sprite guid="8F402519-E64A-4070-92D3-DC54A133B889" x="698" y="159" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="11"/>
+        <sprite guid="C3D92A3F-B933-65C1-D081-756A4924DC60" x="633" y="159" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="11"/>
       </spritelayer>
     </group>
   </layers>
