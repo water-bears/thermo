@@ -4,6 +4,8 @@ package {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	
+	import levelgen.*;
+	
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
@@ -12,13 +14,14 @@ package {
 		private var player:Player;
 		
 		// Groups that will allow us to make gate and water tiles
-		public var freezeTiles:FlxTilemap;
-		public var heatTiles:FlxTilemap;
-		public var flashTiles:FlxTilemap;
 		public var waterTiles:FlxTilemap;
 		public var groundTiles:FlxTilemap;
-		public var exitTiles:FlxTilemap;
-		public var keyTiles:FlxTilemap;
+		
+		public var freezeGroup:FlxGroup;
+		public var heatGroup:FlxGroup;
+		public var flashGroup:FlxGroup;
+		public var exitGroup:FlxGroup;
+		public var keyGroup:FlxGroup;
 		
 		public var spikeTiles:FlxTilemap;
 		public var movingPlatTiles:FlxTilemap;
@@ -37,13 +40,13 @@ package {
 		public var WHITE:uint = 0xffffffff;
 		public var BLACK:uint = 0x000000;
 		
-		private var level:BaseLevel;
+		private var level:Level;
 		
 		private const FREEZE:int = 1;
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
-		public function setLevel(inputLevel:BaseLevel): void {
+		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
 		
@@ -55,34 +58,34 @@ package {
 			
 			//load the level
 			if (level == null) {
-				level = new Level_1(false);
+				level = new Level(1);
 			}
 			
 			//add the ground
-			groundTiles = level.layerGroup1Ground;
+			groundTiles = level.ground;
 			add(groundTiles);
 			
 			//add the water
-			waterTiles = level.layerGroup1Water;
+			waterTiles = level.water;
 			add(waterTiles);
 			
 			//add the gates
-			freezeTiles = level.layerGroup1FreezeGates;
-			add(freezeTiles);
+			freezeGroup = level.freezeGates;
+			add(freezeGroup);
 			
-			heatTiles = level.layerGroup1HeatGates;
-			add(heatTiles);
+			heatGroup = level.heatGates;
+			add(heatGroup);
 			
-			flashTiles = level.layerGroup1FlashGates;
-			add(flashTiles);		
+			flashGroup = level.flashGates;
+			add(flashGroup);		
 			
 			//add the exit
-			exitTiles = level.layerGroup1Door;
-			add(exitTiles);
+			exitGroup = level.exits;
+			add(exitGroup);
 			
 			//add the keyssss
-			keyTiles = level.layerGroup1Key;
-			add(keyTiles);
+			keyGroup = level.keys;
+			add(keyGroup);
 			
 			// This will be essentially for debugging or other info we want
 			status = new FlxText(FlxG.width - 158, 2, 160);
@@ -98,10 +101,17 @@ package {
 			add(levelSelectMessage);
 			
 			// Create and add the player
-			player = new Player(level.start_x * 32, level.start_y * 32, waterTiles, this);
+			if (level.player == null)
+			{
+				player = new Player(0, 0, waterTiles, this);
+			}
+			else
+			{
+				player = new Player(level.player.x, level.player.y, waterTiles, this);
+			}
 			add(player);
 			
-			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
+			spikeTest = new Spike(100, 90, 1)
 			add(spikeTest);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
@@ -137,24 +147,24 @@ package {
 			}
 			
 			// Receive key 
-			if (keyTiles.overlaps(player)) {
-				getKey(keyTiles, player);
+			if (FlxG.overlap(keyGroup, player)) {
+				getKey(keyGroup, player);
 			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			if (freezeTiles.overlaps(player)) {
+			if (FlxG.overlap(freezeGroup, player)) {
 				player.updatePower(FREEZE);
 			}
-			if (heatTiles.overlaps(player)) {
+			if (FlxG.overlap(heatGroup, player)) {
 				player.updatePower(HEAT);
 			}
-			if (flashTiles.overlaps(player)) {
+			if (FlxG.overlap(flashGroup, player)) {
 				player.updatePower(FLASH);
 			}
 			
 			// If player has the key and touches the exit, they win
-			if (player.hasKey && exitTiles.overlaps(player)) {
-				win(exitTiles, player);
+			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+				win(exitGroup, player);
 			}
 			
 			//Check for player lose conditions
@@ -167,13 +177,13 @@ package {
 		}
 		
 		/** when player retrieves key **/
-		public function getKey(key:FlxTilemap, player:Player):void {
+		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
 		}
 		
 		/** Win function **/
-		public function win(Exit:FlxTilemap, player:Player):void {
+		public function win(Exit:FlxGroup, player:Player):void {
 			FlxG.switchState(new LevelSelectState());
 		}
 		

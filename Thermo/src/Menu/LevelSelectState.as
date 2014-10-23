@@ -4,6 +4,7 @@ package Menu {
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.*;
+	import levelgen.Level;
 	import Menu.ListMenu;
 	import Menu.MenuUtils;
 	
@@ -33,12 +34,7 @@ package Menu {
 			levelNames.push("6ccc");
 			//levelNames.push("TestWDoor");
 						
-			//this is stupid and hacky but it must happen
-			//because actionscript is stupid and hacky
-			Level_1;
-			Level_2;
-			Level_3;
-			//Level_TestWDoor;
+
 			
 			menu = new ListMenu(100, 100, 2);
 			var i:uint;
@@ -62,11 +58,8 @@ package Menu {
 			menu.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId();
-				var className:String = "Level_" + levelNames[level];
-				var nextLevel:Class = getDefinitionByName(className) as Class;
-				var nextLevelInstance:* = new nextLevel(false);
 				var p : PlayState = new PlayState();
-				p.setLevel(nextLevelInstance);
+				p.setLevel(new Level(level));
 				p.setBackground(level);
 				FlxG.switchState(p);
 			}
