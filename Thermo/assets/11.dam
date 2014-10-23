@@ -2,7 +2,7 @@
 <project>
   <version>3.1.6</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="203.5" y="-198.5"/>
+  <viewPos x="203" y="-198"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="13">
     <sprite name="Player" idx="1" className="Player" image="character/character.png" width="28" height="28" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="28" boundsHeight="28" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
