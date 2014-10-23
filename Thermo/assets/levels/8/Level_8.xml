@@ -12,6 +12,7 @@
 		<clas name="Spikes" file="objects/spike.png" width="100" height="100" index="0" />
 		<clas name="Button" file="objects/button.png" width="32" height="32" index="0" />
 		<clas name="Trapdoor" file="objects/trapdoor.png" width="32" height="32" index="0" />
+		<clas name="MovingPlatform" file="objects/movingplatform.png" width="32" height="32" index="0" />
 	</spriteclasses>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/8/mapCSV_Group1_Water.csv" tiles="tilesheets/water.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
@@ -29,5 +30,6 @@
 		<sprite clas="Trapdoor" name="Trapdoor" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Button" name="Button" x="375.00" y="207.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="NeutralGate" name="NeutralGate" x="299.00" y="410.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="355.00" y="361.00" angle="0.00" flip="false" xScale="2.82" yScale="0.63" />
 	</layer>
 </level>
