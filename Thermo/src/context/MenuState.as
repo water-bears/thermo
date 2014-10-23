@@ -8,7 +8,7 @@ package context {
 	
 	public class MenuState extends FlxState {
 		
-		public var backgroundTile:FlxSprite;
+		private var backgroundTile:FlxSprite;
 		public var title:FlxText;
 		public var prompt:FlxText;
 		public var time:Number;
@@ -17,13 +17,19 @@ package context {
 		public var titleY:Number;
 		public var promptY:Number;
 		
+		public var bubbles:BubbleBackground;
+		
 		override public function create():void {
-			zoom = 640 / 4;
+			zoom = 1024 / 4;
 			var dimensions:FlxPoint = new FlxPoint(4.0 * zoom, 3.0 * zoom);
 			
 			// Create background gradient
-			//backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
-			//add(backgroundTile);
+			backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
+			add(backgroundTile);
+			
+			// Initialize bubbles
+			bubbles = new BubbleBackground(dimensions);
+			bubbles.Register(this);
 			
 			// Initialize Title Text
 			title = new FlxText(0.425 * dimensions.x, 0.167 * dimensions.y, 0.15 * dimensions.x);
@@ -52,6 +58,7 @@ package context {
 			time++;
 			title.y = titleY + 5 * Math.cos(time / 40.0);
 			prompt.y = promptY - 4 * Math.cos(time / 25.0);
+			bubbles.Update();
 			if (FlxG.keys.TAB) {
 				var p : PlayState = new PlayState();
 				FlxG.switchState(p);

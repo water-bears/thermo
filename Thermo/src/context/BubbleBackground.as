@@ -1,6 +1,7 @@
 package context {
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxState;
 	/**
 	 * ...
 	 * @author KJin
@@ -8,39 +9,68 @@ package context {
 	public class BubbleBackground 
 	{
 		private var numBubbles:uint;
-		private var bubbles:Vector.<FlxSprite>;
+		private var bubbles:Vector.<BackgroundBubble>;
 		
 		private var width:uint;
 		private var height:uint;
 		
-		public function BubbleBackground() 
+		public function BubbleBackground(dimensions:FlxPoint) 
 		{
 			numBubbles = 50;
-			bubbles = new Vector.<FlxSprite>(numBubbles);
+			bubbles = new Vector.<BackgroundBubble>(numBubbles);
+			width = dimensions.x;
+			height = dimensions.y;
 			for (var i:uint = 0; i < numBubbles; i++)
 			{
-				bubbles[i] = new FlxSprite(0, 0);
+				bubbles[i] = new BackgroundBubble(this);
 			}
 		}
 		
-		// 0 or 1 = top left
-		// 0.5 = bottom right
-		public static function GetEdgePosition(percent:Number, pointOut:FlxPoint)
+		public function Register(state:FlxState) : void
 		{
+			for (var i:uint = 0; i < numBubbles; i++)
+			{
+				bubbles[i].Register(state);
+			}
+		}
+		
+		public function GetEdgePosition(pointOut:FlxPoint) : void
+		{
+			pointOut.x = width * Math.random();
+			pointOut.y = height * Math.random();
+			/*if (distance < 0) distance = 0;
+			if (distance > 1) distance = 1;
 			var distance:Number = percent * 2 * (width + height);
 			if (distance <= width)
 			{
 				pointOut.x = distance;
 				pointOut.y = 0;
+				return;
 			}
-			else if (distance <= width + height)
+			distance -= width;
+			if (distance <= height)
 			{
 				pointOut.x = width;
-				pointOut.y = distance - width;
+				pointOut.y = distance;
+				return;
 			}
-			else if (distance <= 2 * width + height)
+			distance -= height;
+			if (distance <= width)
 			{
-				pointOut.x = 2 * width - distance + height;
+				pointOut.x = width - distance;
+				pointOut.y = height;
+				return;
+			}
+			distance -= width;
+			pointOut.x = 0;
+			pointOut.y = height - distance;*/
+		}
+		
+		public function Update() : void
+		{
+			for (var i:uint = 0; i < numBubbles; i++)
+			{
+				bubbles[i].Update();
 			}
 		}
 	}

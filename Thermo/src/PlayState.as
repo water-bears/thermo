@@ -172,7 +172,10 @@ package {
 			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (player.y > FlxG.height || FlxG.keys.TAB) {
+			if (player.y > FlxG.height || FlxG.keys.R) {
+				FlxG.switchState(new TransitionState(level.levelNum));
+			}
+			if (FlxG.keys.TAB) {
 				FlxG.switchState(new TransitionState(0));
 			}
 			

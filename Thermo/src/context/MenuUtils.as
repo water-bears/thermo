@@ -27,5 +27,26 @@ package context {
 			
 			return Sprite;
 		}
+		
+		public static function CreateBubble(Size:Number): FlxSprite {
+			var Sprite:FlxSprite = new FlxSprite();
+			Sprite.makeGraphic(Size, Size, 0x00ffffff);
+			
+			var gfx:Graphics = FlxG.flashGfx;
+			gfx.clear();
+			
+			var colors:Array = new Array(0xccccff, 0xffffff);
+			var alphas:Array = new Array(1, 1);
+			var ratios:Array = new Array(0x00, 0xff);
+			var matr:Matrix = new Matrix();
+			matr.createGradientBox(Sprite.frameWidth, Sprite.frameHeight, Math.PI / 2);
+			gfx.beginGradientFill(GradientType.RADIAL, colors, alphas, ratios, matr);
+			gfx.drawCircle(Sprite.frameWidth / 2, Sprite.frameHeight / 2, Sprite.frameWidth / 2 - 2);
+			
+			Sprite.pixels.draw(FlxG.flashGfxSprite);
+			Sprite.dirty = true;
+			
+			return Sprite;
+		}
 	}
 }

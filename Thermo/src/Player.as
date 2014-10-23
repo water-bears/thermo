@@ -148,11 +148,6 @@ package {
 				this.ice[3].kill();
 			}
 
-			// If player restarts or overlaps with any spikeTiles, they restart level
-			//if (FlxG.keys.R || this.overlaps(playState.spikeTiles)){
-			if(FlxG.keys.R){
-				FlxG.resetState();
-			}
 			// Play the appropriate animation
 			if (bubble || superBubble) {
 				play("bubble" + curPow);
