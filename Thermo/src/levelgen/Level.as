@@ -159,7 +159,7 @@ package levelgen {
 						break;
 						
 					case "Spikes":
-						var spike:Spike = new Spike(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, int((xmlSprite[spriteNum].@angle / 360) * 4));
+						var spike:Spike = new Spike(sprite);
 						spikes.add(spike);
 						break;
 					/*
