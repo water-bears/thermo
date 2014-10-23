@@ -25,6 +25,8 @@ package levelgen {
 		public var keys:FlxGroup = new FlxGroup;
 		
 		public var spikes:FlxGroup = new FlxGroup;
+		public var movingplatforms:FlxGroup = new FlxGroup;
+		
 		public var trapdoor:Trapdoor;
 		public var button:Button;
 		
@@ -162,11 +164,11 @@ package levelgen {
 						var spike:Spike = new Spike(sprite);
 						spikes.add(spike);
 						break;
-					/*
+					
 					case "MovingPlatform":
-						var movingplatform:MovingPlatform = new MovingPlatform(x, y, startPos, endpos, direction);
-						break;
-						*/
+						var movingplatform:MovingPlatform = new MovingPlatform(sprite, sprite.y, sprite.y + 96, 4);
+						movingplatforms.add(movingplatform);
+						break;				
 						
 					case "Button":
 						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, trapdoor);

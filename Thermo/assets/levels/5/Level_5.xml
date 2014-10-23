@@ -18,7 +18,7 @@
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Player" name="Player" x="577.00" y="351.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="FreezeGate" name="FreezeGate" x="471.00" y="283.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="FlashGate" name="FlashGate" x="120.00" y="118.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="FlashGate" name="FlashGate" x="129.00" y="151.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Key" name="Key" x="262.00" y="313.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 		<sprite clas="Exit" name="Exit" x="511.00" y="414.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
 	</layer>

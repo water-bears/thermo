@@ -36,6 +36,8 @@ package {
 		public static var buttonSprite:Class;
 		[Embed(source = "../assets/objects/trapdoor.png")]
 		public static var trapdoorSprite:Class;
+		[Embed(source = "../assets/objects/movingplatform.png")]
+		public static var movingSprite:Class;
 		
 		
 		/* Background sprites */

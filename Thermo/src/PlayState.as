@@ -31,7 +31,7 @@ package {
 		public var solidGroup:FlxGroup = new FlxGroup;
 		
 		public var spikeGroup:FlxGroup = new FlxGroup;
-		public var movingPlatTiles:FlxTilemap;
+		public var movingGroup:FlxGroup = new FlxGroup;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -104,6 +104,9 @@ package {
 			spikeGroup = level.spikes;
 			add(spikeGroup);
 			
+			movingGroup = level.movingplatforms;
+			add(movingGroup);
+			
 			if (level.trapdoor != null)
 			{
 				solidGroup.add(level.trapdoor);
@@ -168,6 +171,7 @@ package {
 			FlxG.collide(groundTiles, player);
 			FlxG.collide(iceGroup, player);
 			FlxG.collide(solidGroup, player);
+			FlxG.collide(movingGroup, player);
 			
 			// Make Keys Collide With level
 			FlxG.collide(groundTiles, keyGroup);
