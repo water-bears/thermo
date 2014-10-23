@@ -6,11 +6,13 @@ package {
 		public static const FREEZE:int = 1;
 		public static const HEAT:int = 2;
 		public static const FLASH:int = 3;
+		public static const NEUTRAL:int = 4;
 		
 		/* Gate types
 		 * 1 - Freeze
 		 * 2 - Heat
 		 * 3 - Flash
+		 * 4 - Neutral
 		 */
 		private var type:int;
 		
@@ -26,7 +28,7 @@ package {
 			this.type = type;
 			
 			addAnimation("normal", [type]);
-			addAnimation("trigger", [type+4, type, 4, type], Assets.FRAME_RATE, false);
+			addAnimation("trigger", [type+5, type, 5, type], Assets.FRAME_RATE, false);
 			loadGraphic(Assets.gateSprite, true, false, 16, 64);
 			
 			play("normal");
