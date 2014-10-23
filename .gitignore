@@ -13,3 +13,5 @@ bin-release/
 Flixel/
 
 *.old
+*.bak
+*.DS_Store

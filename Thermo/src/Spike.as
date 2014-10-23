@@ -10,7 +10,8 @@ package {
 			loadGraphic(Assets.spikeSprite);
 			
 			angle = sprite.angle;
-			scale = sprite.scale;			
+			scale = sprite.scale;
+			this.setOriginToCorner();
 		}
 		
 	}
