@@ -3,6 +3,8 @@ package {
 	
 	public class Gate extends FlxSprite {
 		
+		public static const SHEET_WIDTH:int = 6;
+		
 		public static const FREEZE:int = 1;
 		public static const HEAT:int = 2;
 		public static const FLASH:int = 3;
@@ -30,11 +32,11 @@ package {
 			this.type = type;
 			
 			if (type == FLASH) {
-				addAnimation("normal", [type, 5], Assets.FRAME_RATE / 2, true);
-				addAnimation("trigger", [type+5, type], Assets.FRAME_RATE, false);
+				addAnimation("normal", [type, SHEET_WIDTH], Assets.FRAME_RATE / 2, true);
+				addAnimation("trigger", [type+SHEET_WIDTH, type], Assets.FRAME_RATE, false);
 			} else {
 				addAnimation("normal", [type]);
-				addAnimation("trigger", [type+5, type, 5, type], Assets.FRAME_RATE, false);
+				addAnimation("trigger", [type+SHEET_WIDTH, type, SHEET_WIDTH, type], Assets.FRAME_RATE, false);
 			}
 			
 			loadGraphic(Assets.gateSprite, true, false, 16, 64);
