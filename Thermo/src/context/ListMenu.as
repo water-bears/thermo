@@ -33,7 +33,7 @@ package context {
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
 				if (keyFramesDown % 10 == 0) {
-					if (selectedID >= menuYVals.length - 1)
+					if (selectedID >= menuYVals.length)
 						selectedID = 0;
 					else
 						selectedID++;
