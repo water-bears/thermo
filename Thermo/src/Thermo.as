@@ -1,5 +1,5 @@
 package {
-	import Menu.MenuState;
+	import context.MenuState;
 	import org.flixel.*;
 	[SWF(width="1024", height="768", backgroundColor="#000000")]
 	

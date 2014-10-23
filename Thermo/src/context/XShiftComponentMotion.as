@@ -1,5 +1,4 @@
-package Menu 
-{
+package context {
 	import org.flixel.FlxParticle;
 	import org.flixel.FlxPoint;
 	/**

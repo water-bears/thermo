@@ -1,12 +1,12 @@
-package Menu {
+package context {
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.*;
 	import levelgen.Level;
-	import Menu.ListMenu;
-	import Menu.MenuUtils;
+	import context.ListMenu;
+	import context.MenuUtils;
 	
 	import org.flixel.*;
 	
@@ -55,11 +55,8 @@ package Menu {
 			time++;
 			menu.Update();
 			if (FlxG.keys.ENTER) {
-				var level:int = menu.GetSelectedId();
-				var p : PlayState = new PlayState();
-				p.setLevel(new Level(level));
-				p.setBackground(level);
-				FlxG.switchState(p);
+				var level:int = menu.GetSelectedId() + 1;
+				FlxG.switchState(new TransitionState(level));
 			}
 		}
 	}

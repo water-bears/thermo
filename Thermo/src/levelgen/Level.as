@@ -25,10 +25,13 @@ package levelgen {
 		
 		public var otherSprites:FlxGroup = new FlxGroup;
 		
+		public var levelNum:uint;
+		
 		private const fileLocation:String = "levels/"
 		
-		public function Level(levelNum:int) 
+		public function Level(levelNum:uint) 
 		{
+			this.levelNum = levelNum;
 			var file:String = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			

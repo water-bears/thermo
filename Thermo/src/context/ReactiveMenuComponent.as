@@ -1,5 +1,4 @@
-package Menu 
-{
+package context {
 	import adobe.utils.CustomActions;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;

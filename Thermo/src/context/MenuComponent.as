@@ -1,5 +1,4 @@
-package Menu 
-{
+package context {
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;

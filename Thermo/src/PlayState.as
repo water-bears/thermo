@@ -1,9 +1,9 @@
 package {
-	import Menu.LevelSelectState;
+	import context.LevelSelectState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
-	import Menu.TransitionState;
+	import context.TransitionState;
 	import levelgen.*;
 	
 	import org.flixel.*;
@@ -172,7 +172,7 @@ package {
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
 			if (player.y > FlxG.height || FlxG.keys.TAB) {
-				FlxG.switchState(new LevelSelectState());
+				FlxG.switchState(new TransitionState(0));
 			}
 			
 			status.text = player.stat;
@@ -186,7 +186,7 @@ package {
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
-			FlxG.switchState(new TransitionState(level + 1));
+			FlxG.switchState(new TransitionState(level.levelNum + 1));
 		}
 		
 		/** Sets the background based on the level index **/
