@@ -2,7 +2,7 @@
 <project>
   <version>3.1.6</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="277" y="302"/>
+  <viewPos x="244" y="53"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="8">
     <sprite name="Player" idx="1" className="" image="character/character.png" width="28" height="28" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="28" boundsHeight="28" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
@@ -10,61 +10,46 @@
     <sprite name="FreezeGate" idx="3" className="" image="tilesheets/gates.png" width="16" height="64" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="1" canEditFrames="true" lockRotation="false"/>
     <sprite name="FlashGate" idx="4" className="" image="tilesheets/gates.png" width="16" height="64" preview="3" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="16" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="Key" idx="5" className="" image="tilesheets/door.png" width="32" height="32" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
-    <sprite name="Exit" idx="6" className="" image="tilesheets/door.png" width="32" height="32" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
-    <sprite name="" idx="7" className="" image="backgrounds/background.png" width="516" height="516" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="516" boundsHeight="516" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Exit" idx="6" className="" image="tilesheets/door.png" width="32" height="32" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="" idx="7" className="" image="backgrounds/background.png" width="516" height="516" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="516" boundsHeight="516" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
   </spriteEntries>
   <layers>
     <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <imagelayer name="Background" id="0" file="backgrounds/background.png" xScroll="0.5" yScroll="0.5" x="-100" y="-100" visible="true" opacity="1" locked="false" exports="false"/>
-      <maplayer name="Water" id="1" xScroll="1" yScroll="1" x="-139" y="-278" width="20" height="18" tileset="tilesheets/water.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,1,1,1,1,1,1,1,7,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,1,6,7,8,9,1,1,1,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,6,1,1,1,1,9,1,1,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,1,1,9,1,1,1,1,9,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <imagelayer name="Background" id="5" file="backgrounds/background.png" xScroll="0.5" yScroll="0.5" x="-100" y="-100" visible="true" opacity="1" locked="false" exports="false"/>
+      <maplayer name="Water" id="3" xScroll="1" yScroll="1" x="0" y="0" width="10" height="10" tileset="tilesheets/water.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,1,1</row>
+        <row>0,0,0,0,0,0,0,0,1,1</row>
+        <row>0,0,0,0,0,0,0,0,1,1</row>
+        <row>0,0,0,0,0,0,0,0,1,1</row>
+        <row>0,0,6,1,7,0,0,0,8,1</row>
+        <row>0,0,8,1,9,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,6,1,7,0,0,0,0,0,0</row>
       </maplayer>
-      <maplayer name="Ground" id="2" xScroll="1" yScroll="1" x="-139" y="-278" width="20" height="18" tileset="tilesheets/ground.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
-        <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
-        <row>1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,1,1,1,6,1,1,1,1,1,1,1,1,1,1,7,0,0,0,1</row>
-        <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1</row>
-        <row>1,1,1,1,8,1,1,1,1,1,1,1,1,1,1,9,0,0,0,1</row>
-        <row>1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,1,1,7,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1</row>
-        <row>1,1,1,9,1,1,1,0,0,0,0,0,6,1,1,1,7,1,1,1</row>
-        <row>1,1,1,9,1,1,1,0,0,0,0,0,8,1,1,1,1,1,1,1</row>
-        <row>1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1</row>
-        <row>1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1</row>
-        <row>1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1</row>
-        <row>1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,8,9,1,1,1</row>
-        <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
+      <maplayer name="Ground" id="11" xScroll="1" yScroll="1" x="0" y="0" width="10" height="10" tileset="tilesheets/ground.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0</row>
+        <row>1,1,7,0,0,0,0,0,0,0</row>
+        <row>1,1,9,0,0,6,1,7,0,0</row>
+        <row>0,0,0,0,0,1,1,1,0,0</row>
+        <row>0,0,0,0,0,1,1,1,0,0</row>
+        <row>0,0,0,0,0,8,1,9,0,0</row>
+        <row>1,1,7,0,0,0,0,0,0,0</row>
+        <row>1,1,1,1,9,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,6</row>
+        <row>0,0,0,0,0,6,1,1,1,1</row>
         <tileProperties>
           <properties/>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Objects" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
-        <sprite guid="6681FB6E-AEAD-65BA-0DEE-B05476089F79" x="-63" y="-183" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
-        <sprite guid="CF22CF13-90C1-4CCA-ED34-6F12EA8B8E08" x="347" y="-214" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2" frame="1"/>
-        <sprite guid="573E0D1F-FDD5-9B70-D872-429AA8AD37FC" x="-579" y="-186" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
-        <sprite guid="93E8FE15-3824-299D-FBAE-69AC9BD4B281" x="301" y="178" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
-        <sprite guid="653A529B-79F8-6848-0F6B-7B26536C8B43" x="-7" y="11" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+      <spritelayer name="Objects" id="10" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
+        <sprite guid="D7A99CCF-49A4-CDF0-B44E-65A44DBE9D43" x="13" y="2" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
+        <sprite guid="A2FCD2CE-AB9A-9C92-CD85-796F444CED3B" x="17" y="124" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+        <sprite guid="F656525B-46D9-2733-0FDF-68AED49C0D51" x="296" y="181" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3" frame="1"/>
+        <sprite guid="24C5CF08-1B97-B177-82AD-419C076D3A21" x="268" y="18" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4"/>
+        <sprite guid="E405438A-62DE-2602-285C-9962873C6057" x="96" y="188" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
+        <sprite guid="06D52447-7512-12E1-D03B-1B32DAC920F6" x="228" y="255" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
       </spritelayer>
     </group>
   </layers>

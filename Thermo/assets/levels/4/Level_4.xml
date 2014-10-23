@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level name="Group1" minx="0" miny="0" maxx="640" maxy="576" bgColor = "0xff777777" >
+	<spriteclasses>
+		<clas name="Player" file="character/character.png" width="28" height="28" index="0" />
+		<clas name="HeatGate" file="tilesheets/gates.png" width="16" height="64" index="2" />
+		<clas name="FreezeGate" file="tilesheets/gates.png" width="16" height="64" index="1" />
+		<clas name="FlashGate" file="tilesheets/gates.png" width="16" height="64" index="3" />
+		<clas name="Key" file="tilesheets/door.png" width="32" height="32" index="2" />
+		<clas name="Exit" file="tilesheets/door.png" width="32" height="32" index="1" />
+		<clas name="" file="backgrounds/background.png" width="516" height="516" index="0" />
+	</spriteclasses>
+	<layer name="Water" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/4/mapCSV_Group1_Water.csv" tiles="tilesheets/water.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/4/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Exit" name="Exit" x="557.00" y="449.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Key" name="Key" x="63.00" y="449.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="HeatGate" name="HeatGate" x="216.00" y="382.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Player" name="Player" x="411.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="FlashGate" name="FlashGate" x="99.00" y="57.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+	</layer>
+</level>
