@@ -2,6 +2,7 @@ package {
 	import Menu.LevelSelectState;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
+	import Menu.TransitionState;
 	
 	import org.flixel.*;
 	
@@ -149,7 +150,7 @@ package {
 		
 		/** Win function **/
 		public function win(Exit:FlxTilemap, player:Player):void {
-			FlxG.switchState(new LevelSelectState());
+			FlxG.switchState(new TransitionState(level + 1));
 		}
 		
 		/** Sets the background based on the level index **/
