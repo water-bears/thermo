@@ -33,7 +33,7 @@
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>C:\Users\Danny\Documents\Assignments\Fall2014\CS4154\Thermo\thermo\Thermo\src</path-element>
-      <path-element>C:\Users\Danny\Documents\Assignments\Fall2014\CS4154\Thermo\thermo\Flixel</path-element>
+      <path-element>C:\Users\Danny\Documents\Assignments\Fall2014\CS4154\Thermo\thermo\flixel</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>

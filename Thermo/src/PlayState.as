@@ -3,6 +3,7 @@ package {
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
+	import levelgen.*;
 	
 	import levelgen.*;
 	
@@ -20,6 +21,7 @@ package {
 		public var freezeGroup:FlxGroup;
 		public var heatGroup:FlxGroup;
 		public var flashGroup:FlxGroup;
+
 		public var exitGroup:FlxGroup;
 		public var keyGroup:FlxGroup;
 		
@@ -60,7 +62,7 @@ package {
 			if (level == null) {
 				level = new Level(1);
 			}
-			
+
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
@@ -70,13 +72,13 @@ package {
 			add(waterTiles);
 			
 			//add the gates
-			freezeGroup = level.freezeGates;
+			freezeGroup = level.freezeGates
 			add(freezeGroup);
 			
-			heatGroup = level.heatGates;
+			heatGroup = level.heatGates
 			add(heatGroup);
 			
-			flashGroup = level.flashGates;
+			flashGroup = level.flashGates
 			add(flashGroup);		
 			
 			//add the exit
@@ -111,8 +113,9 @@ package {
 			}
 			add(player);
 			
-			spikeTest = new Spike(100, 90, 1)
-			add(spikeTest);
+			/*
+			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
+			add(spikeTest);*/
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
@@ -138,7 +141,7 @@ package {
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
-			if(player.overlaps(spikeTest)){ FlxG.resetState();}
+			/*if(player.overlaps(spikeTest)){ FlxG.resetState();}*/
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight(), waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
@@ -158,7 +161,7 @@ package {
 			if (FlxG.overlap(heatGroup, player)) {
 				player.updatePower(HEAT);
 			}
-			if (FlxG.overlap(flashGroup, player)) {
+			if (FlxG.overlap(flashGroup,player)) {
 				player.updatePower(FLASH);
 			}
 			

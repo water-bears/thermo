@@ -54,7 +54,6 @@ package Menu {
 			prompt.y = promptY - 4 * Math.cos(time / 25.0);
 			if (FlxG.keys.TAB) {
 				var p : PlayState = new PlayState();
-				//p.setLevel(null);
 				FlxG.switchState(p);
 			}
 		}
