@@ -70,9 +70,9 @@ package {
 			
 			this.play("stand" + curPow);
 			
-			this.maxVelocity.x = 200;
-			this.maxVelocity.y = 200;
-			this.acceleration.y = 600;
+			this.maxVelocity.x = 400;
+			this.maxVelocity.y = 300;
+			this.acceleration.y = 1000;
 			this.drag.x = int.MAX_VALUE;
 			this.waterTiles = waterT;
 			this.curPow = 0;
@@ -267,14 +267,14 @@ package {
 		public function slowSpeed():void {
 			this.maxVelocity.x = 150;
 			this.maxVelocity.y = 150;
-			this.acceleration.y = 300;
+			this.acceleration.y = 200;
 			this.underwater = true;
 		}
 		
 		public function normalSpeed():void {
-			this.maxVelocity.x = 200;
-			this.maxVelocity.y = 200;
-			this.acceleration.y = 600;
+			this.maxVelocity.x = 400;
+			this.maxVelocity.y = 300;
+			this.acceleration.y = 1000;
 			this.underwater = false;
 		}
 				
