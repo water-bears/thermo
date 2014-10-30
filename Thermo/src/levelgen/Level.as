@@ -30,7 +30,8 @@ package levelgen {
 		public var trapdoor:Trapdoor;
 		public var button:Button;
 		
-		public var otherSprites:FlxGroup = new FlxGroup;
+		public var frontSprites:FlxGroup = new FlxGroup;
+		public var backSprites:FlxGroup = new FlxGroup;
 		
 		public var levelNum:uint;
 		
@@ -112,6 +113,7 @@ package levelgen {
 					var xmlSpriteClass:XML = classMap[xmlSprite[spriteNum].@clas]
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+					sprite.setOriginToCorner();
 					
 					sprite.angle = xmlSprite[spriteNum].@angle;
 					sprite.scale.x = xmlSprite[spriteNum].@xScale;
@@ -119,7 +121,6 @@ package levelgen {
 					sprite.scrollFactor.x = xmlLayer[layerNum].@xScroll;
 					sprite.scrollFactor.y = xmlLayer[layerNum].@yScroll;
 					
-					//var test = xmlSpriteClass.@file
 					var asset:Class = AS3Embed.GetArtAsset(xmlSpriteClass.@file);
 					sprite.loadGraphic(asset, true, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 					
@@ -181,10 +182,16 @@ package levelgen {
 					case "Trapdoor":
 						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 						break;
-						
-						
+							
 					default:
-						otherSprites.add(sprite);						
+						var frontorback:String = xmlLayer[layerNum].@name;
+						switch(frontorback)
+						{
+						case "Front":
+							frontSprites.add(sprite);
+						default:
+							backSprites.add(sprite);
+						}					
 					}
 				}
 			}

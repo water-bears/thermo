@@ -8,7 +8,11 @@
 		<clas name="Key" file="tilesheets/door.png" width="32" height="32" index="2" />
 		<clas name="Exit" file="tilesheets/door.png" width="32" height="32" index="1" />
 		<clas name="" file="backgrounds/background.png" width="516" height="516" index="0" />
+		<clas name="Sign1" file="doodles/sign1.png" width="900" height="451" index="0" />
 	</spriteclasses>
+	<layer name="Back" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Sign1" name="Sign1" x="331.00" y="294.00" angle="0.00" flip="false" xScale="0.11" yScale="0.11" >		</sprite>
+	</layer>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/1/mapCSV_Group1_Water.csv" tiles="tilesheets/water.png" x="-64.000" y="-128.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
 	</layer>
@@ -16,10 +20,13 @@
 		<map csv="levels/1/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground.png" x="-64.000" y="-128.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="HeatGate" name="HeatGate" x="424.00" y="-3.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Player" name="Player" x="8.00" y="35.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Exit" name="Exit" x="65.00" y="223.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Key" name="Key" x="382.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
+		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="424.00" y="-3.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="8.00" y="35.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Exit" name="Exit" x="65.00" y="223.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="382.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+	</layer>
+	<layer name="Front" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Sign1" name="Sign1" x="331.00" y="294.00" angle="0.00" flip="false" xScale="0.11" yScale="0.11" >		</sprite>
 	</layer>
 </level>

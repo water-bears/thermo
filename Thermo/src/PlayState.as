@@ -86,6 +86,9 @@ package {
 				level = new Level(1);
 			}
 
+			//add the background sprites
+			add(level.backSprites);
+			
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
@@ -145,6 +148,9 @@ package {
 			}
 			
 			add(solidGroup);
+			
+			//add the front sprites
+			add(level.frontSprites);
 			
 			// This will be essentially for debugging or other info we want
 			/*status = new FlxText(FlxG.width - 158, 2, 160);
