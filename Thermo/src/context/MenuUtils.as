@@ -28,6 +28,23 @@ package context {
 			return Sprite;
 		}
 		
+		public static function CreateSolid(Dimensions:FlxPoint, Color:uint): FlxSprite {
+			var Sprite:FlxSprite = new FlxSprite();
+			Sprite.makeGraphic(Dimensions.x, Dimensions.y, 0xffffffff);
+			
+			var gfx:Graphics = FlxG.flashGfx;
+			gfx.clear();
+			
+			gfx.beginFill(Color, 1);
+			gfx.drawRect(0, 0, Sprite.frameWidth, Sprite.frameHeight);
+			gfx.endFill();
+			
+			Sprite.pixels.draw(FlxG.flashGfxSprite);
+			Sprite.dirty = true;
+			
+			return Sprite;
+		}
+		
 		public static function CreateBubble(Size:Number): FlxSprite {
 			var Sprite:FlxSprite = new FlxSprite();
 			Sprite.makeGraphic(Size, Size, 0x00ffffff);
