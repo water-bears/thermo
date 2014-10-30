@@ -137,11 +137,9 @@ package {
 			movingGroup = level.movingplatforms;
 			add(movingGroup);
 			
-			if (level.trapdoor != null)
-			{
+			if (level.trapdoor != null) {
 				solidGroup.add(level.trapdoor);
-				if (level.button != null)
-				{
+				if (level.button != null) {
 					buttonGroup.add(level.button);
 					add(buttonGroup);
 				}
@@ -151,13 +149,6 @@ package {
 			
 			//add the front sprites
 			add(level.frontSprites);
-			
-			// This will be essentially for debugging or other info we want
-			/*status = new FlxText(FlxG.width - 158, 2, 160);
-			status.shadow = 0xff000000;
-			status.alignment = "right";
-			status.text = "none";
-			add(status);*/
 			
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
@@ -173,14 +164,6 @@ package {
 			}
 			add(player);
 			
-			/*
-			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
-			add(spikeTest);*/
-			
-			//FlxG.camera.follow(player);
-			//FlxG.camera.zoom = 1.5;
-			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
-			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
 			// Create and add moving platforms
@@ -195,8 +178,7 @@ package {
 			this.add(iceGroup);
 			
 			// Create and add the UI layer
-			// This NEEDS to be last. Otherwise objects will linger when
-			// the screen fades out.
+			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
 			ui = new LevelUI(level.levelNum);
 			add(ui);
 		}
@@ -216,24 +198,21 @@ package {
 			FlxG.collide(groundTiles, keyGroup);
 			FlxG.collide(iceGroup, keyGroup);
 			FlxG.collide(solidGroup, keyGroup);
+			
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
-				player.drag.x = int.MAX_VALUE;
 				if(justEntered == false) {
 					justEntered = true;
 					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
 				}
-			} 
-			else if (!player.bubble && !player.superBubble) {
+			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
-				player.drag.x = int.MAX_VALUE;
 				justEntered = false;
 			}
 			
-			// Our beloved iteration variable (i)
 			var i:int;
 			
 			// Receive key 
@@ -257,6 +236,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(heatGroup, player)) {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
@@ -269,6 +249,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(flashGroup, player)) {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
@@ -281,6 +262,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(neutralGroup, player)) {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
@@ -293,6 +275,7 @@ package {
 				}
 				
 			//}
+			
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
@@ -300,13 +283,13 @@ package {
 					}
 				}
 			}
+			
 			/*
 			if (FlxG.overlap(neutralGroup, player)){
 				player.updatePower(0);
 			}*/
 			
-			if (FlxG.keys.SPACE || FlxG.keys.ENTER)
-			{
+			if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
 				ui.FastForward();
 			}
 			
@@ -323,8 +306,6 @@ package {
 			if (FlxG.keys.TAB) {
 				ui.BeginExitSequence(levelSelect);
 			}
-			
-			//status.text = player.stat;
 		}
 		
 		/** when player retrieves key **/
