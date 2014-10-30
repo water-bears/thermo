@@ -51,7 +51,8 @@ package {
 		private const HEAT:int = 2;
 		private const FLASH:int = 3;
 		
-		public var bubbles:BubbleBackground;
+		public var bubbles:BubbleSystem;
+		
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
@@ -63,7 +64,7 @@ package {
 			add(background);
 			
 			// Initialize bubbles
-			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 6, 8);
 			bubbles.Register(this);
 			
 			//load the level
@@ -78,6 +79,10 @@ package {
 			//add the water
 			waterTiles = level.water;
 			add(waterTiles);
+			
+			FlxG.camera.bounds = groundTiles.getBounds();
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
 			
 			//add the gates
 			freezeGroup = level.freezeGates;

@@ -14,7 +14,8 @@ package context {
 		
 		public var zoom:Number;
 		
-		public var bubbles:BubbleBackground;
+		private var bubbles:BubbleBackground;
+		private var fade:FadeToBlack;
 		
 		override public function create():void {
 			zoom = 1024 / 4;
@@ -47,16 +48,29 @@ package context {
 			prompt.alignment = "center";
 			prompt.text = "Press ENTER";
 			add(prompt);
+			
+			//fade = new FadeToBlack(dimensions, 50);
+			//fade.Register(this);
+			//fade.BeginFadeIn(null);
 		}
 		
 		override public function update():void {
 			title.update();
 			prompt.update();
 			bubbles.Update();
+			//fade.Update();
 			if (FlxG.keys.ENTER) {
-				var p : PlayState = new PlayState();
-				FlxG.switchState(p);
+				//fade.BeginFadeOut(goToNextState);
+				goToNextState();
 			}
+			if (FlxG.keys.TAB) {
+				FlxG.switchState(new ExperimentalState());
+			}
+		}
+		
+		private function goToNextState():void {
+			var p : PlayState = new PlayState();
+			FlxG.switchState(p);
 		}
 	}
 }

@@ -1,4 +1,5 @@
-package context {
+package dummy {
+	import dummy.Bubble;
 	import flash.display.BitmapData;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -8,28 +9,26 @@ package context {
 	 * ...
 	 * @author KJin
 	 */
-	public class BubbleBackground 
+	public class BubbleSystem
 	{
 		private var numBubbles:uint;
-		private var bubbles:Vector.<BackgroundBubble>;
+		private var bubbles:Vector.<Bubble>;
 		
 		public var minRadius:uint;
 		public var maxRadius:uint;
 		
-		private var width:uint;
-		private var height:uint;
+		var player:Player;
 		
-		public function BubbleBackground(dimensions:FlxPoint, numBubbles:uint, minRadius:uint, maxRadius:uint) 
+		public function BubbleSystem(player:Player, numBubbles:uint, minRadius:uint, maxRadius:uint) 
 		{
 			this.numBubbles = numBubbles;
 			this.minRadius = minRadius;
 			this.maxRadius = maxRadius;
-			bubbles = new Vector.<BackgroundBubble>(numBubbles);
-			width = dimensions.x;
-			height = dimensions.y;
+			this.player = player;
+			bubbles = new Vector.<Bubble>(numBubbles);
 			for (var i:uint = 0; i < numBubbles; i++)
 			{
-				bubbles[i] = new BackgroundBubble(this);
+				bubbles[i] = new Bubble(this);
 			}
 		}
 		
@@ -43,8 +42,8 @@ package context {
 		
 		public function GetEdgePosition(pointOut:FlxPoint) : void
 		{
-			pointOut.x = width * Math.random();
-			pointOut.y = height * Math.random();
+			pointOut.x = player.x + player.width * Math.random();
+			pointOut.y = player.y + player.height * Math.random() * 0.8;
 			/*if (distance < 0) distance = 0;
 			if (distance > 1) distance = 1;
 			var distance:Number = percent * 2 * (width + height);

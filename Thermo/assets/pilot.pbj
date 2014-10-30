@@ -1,0 +1,16 @@
+<languageVersion : 1.0;>
+
+kernel PilotFill
+<   namespace : "com.adobe.example";
+    vendor : "Adobe Systems Inc.";
+    version : 1;
+    description : "A checkered field generator";
+>
+{
+    output pixel4 dst;
+    
+    void evaluatePixel()
+    {
+        dst = pixel4(0.0, 1.0, 1.0, 1.0);
+    }
+}

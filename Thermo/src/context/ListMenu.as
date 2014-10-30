@@ -18,7 +18,6 @@ package context {
 			this.scale = new FlxPoint(scale, scale);
 			menuYVals = new Vector.<uint>();
 			keyFramesDown = 0;
-			
 			cursor = new FlxSprite(X - 10, Y);
 		}
 		
@@ -33,7 +32,7 @@ package context {
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
 				if (keyFramesDown % 10 == 0) {
-					if (selectedID >= menuYVals.length)
+					if (selectedID >= menuYVals.length - 1)
 						selectedID = 0;
 					else
 						selectedID++;
