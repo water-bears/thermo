@@ -77,7 +77,7 @@ package
 			time = nodes[bracket].t;
 		}
 		
-		public function JumpToBracket(num:uint) : void
+		public function JumpToBracket(num:uint):void
 		{
 			bracket = num;
 			if (bracket > nodes.length - 1)
@@ -87,7 +87,7 @@ package
 			time = nodes[bracket].t;
 		}
 		
-		public function CallUponCompletion(callback:Function) : void
+		public function CallUponCompletion(callback:Function):void
 		{
 			completionCallback = callback;
 		}

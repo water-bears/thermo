@@ -1,5 +1,4 @@
-package  
-{
+package {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -7,11 +6,7 @@ package
 	import org.flixel.FlxG;
 	import context.MenuUtils;
 	
-	/**
-	 * ...
-	 * @author KJin
-	 */
-	public class LevelUI extends FlxGroup 
+	public class LevelUI extends FlxGroup
 	{
 		private var dimmer:FlxSprite;
 		private var levelText:FlxText;
@@ -25,7 +20,7 @@ package
 		
 		private var state:uint;
 		
-		public function LevelUI(levelNum:uint) 
+		public function LevelUI(levelNum:uint)
 		{
 			super(0);
 			
@@ -65,7 +60,7 @@ package
 				new PiecewiseInterpolationNode(null, 150, 0.4 * FlxG.height));
 		}
 		
-		override public function update():void 
+		override public function update():void
 		{
 			super.update();
 			// Adjust values depending on time.

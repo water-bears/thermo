@@ -78,6 +78,7 @@ package context {
 				this.width = Math.max(this.width, sprite.width * sprite.scale.x);
 				this.height += sprite.height * sprite.scale.y + localPosition.y;
 			}
+			//THERE IS STILL AN ERROR HERE
 			cursor.y = Y + menuYVals[selectedID];
 		}
 	}

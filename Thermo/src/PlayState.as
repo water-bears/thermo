@@ -1,23 +1,28 @@
 package {
+	import Logging;
+	
 	import context.BubbleBackground;
 	import context.LevelSelectState;
 	import context.TransitionState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
+	import flash.utils.getTimer;
 	
 	import levelgen.*;
-	import Logging;
+	
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
 		1 = went through a power gate
-		
+		2 = retrieved a key
 		*/
 		public var logger:Logging = new Logging(700, 1.0, true);
-
+		
+		// This is for checking when we JUST entered the water
+		public var justEntered:Boolean = false;
 		
 		private var background:FlxSprite;
 		
@@ -81,9 +86,24 @@ package {
 				level = new Level(1);
 			}
 
+			//add the background sprites
+			add(level.backSprites);
+			
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
+			
+			/*
+			FlxG.camera.bounds = groundTiles.getBounds();
+			//FlxG.camera.x += Thermo.WIDTH - groundTiles.getBounds().width
+			//FlxG.camera.y += Thermo.HEIGHT - groundTiles.getBounds().height
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			*/
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			FlxG.camera.x += (Thermo.WIDTH - groundTiles.getBounds().width) / 2;
+			FlxG.camera.y += (Thermo.HEIGHT - groundTiles.getBounds().height) / 2;
 			
 			//add the water
 			waterTiles = level.water;
@@ -117,11 +137,9 @@ package {
 			movingGroup = level.movingplatforms;
 			add(movingGroup);
 			
-			if (level.trapdoor != null)
-			{
+			if (level.trapdoor != null) {
 				solidGroup.add(level.trapdoor);
-				if (level.button != null)
-				{
+				if (level.button != null) {
 					buttonGroup.add(level.button);
 					add(buttonGroup);
 				}
@@ -129,12 +147,8 @@ package {
 			
 			add(solidGroup);
 			
-			// This will be essentially for debugging or other info we want
-			/*status = new FlxText(FlxG.width - 158, 2, 160);
-			status.shadow = 0xff000000;
-			status.alignment = "right";
-			status.text = "none";
-			add(status);*/
+			//add the front sprites
+			add(level.frontSprites);
 			
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
@@ -144,19 +158,11 @@ package {
 			
 			// Create and add the player
 			if (level.player == null) {
-				player = new Player(0, 0, waterTiles, this);  //logger);
+				player = new Player(0, 0, waterTiles, this, logger, level);  //logger);
 			} else {
-				player = new Player(level.player.x, level.player.y, waterTiles, this); //logger);
+				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
 			add(player);
-			
-			/*
-			spikeTest = new Spike((level.start_x+4)*32, (level.start_y)*32, 1)
-			add(spikeTest);*/
-			
-			//FlxG.camera.follow(player);
-			//FlxG.camera.zoom = 1.5;
-			//FlxG.camera.deadzone(FlxCamera.STYLE_PLATFORMER);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
@@ -172,8 +178,7 @@ package {
 			this.add(iceGroup);
 			
 			// Create and add the UI layer
-			// This NEEDS to be last. Otherwise objects will linger when
-			// the screen fades out.
+			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
 			ui = new LevelUI(level.levelNum);
 			add(ui);
 		}
@@ -193,17 +198,21 @@ package {
 			FlxG.collide(groundTiles, keyGroup);
 			FlxG.collide(iceGroup, keyGroup);
 			FlxG.collide(solidGroup, keyGroup);
+			
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
-				//logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
-			} 
-			else if (!player.bubble && !player.superBubble) {
+				if(justEntered == false) {
+					justEntered = true;
+					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
+				}
+			} else if (!player.bubble && !player.superBubble) {
+				player.normalSpeed();
+				justEntered = false;
 			}
 			
-			// Our beloved iteration variable (i)
 			var i:int;
 			
 			// Receive key 
@@ -227,6 +236,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(heatGroup, player)) {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
@@ -239,6 +249,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(flashGroup, player)) {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
@@ -251,6 +262,7 @@ package {
 				}
 				
 			//}
+			
 			//if (FlxG.overlap(neutralGroup, player)) {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
@@ -263,6 +275,7 @@ package {
 				}
 				
 			//}
+			
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
@@ -270,13 +283,13 @@ package {
 					}
 				}
 			}
+			
 			/*
 			if (FlxG.overlap(neutralGroup, player)){
 				player.updatePower(0);
 			}*/
 			
-			if (FlxG.keys.SPACE || FlxG.keys.ENTER)
-			{
+			if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
 				ui.FastForward();
 			}
 			
@@ -293,31 +306,28 @@ package {
 			if (FlxG.keys.TAB) {
 				ui.BeginExitSequence(levelSelect);
 			}
-			
-			//status.text = player.stat;
 		}
 		
 		/** when player retrieves key **/
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
+			logger.recordEvent(level.levelNum, 2, getTimer().toString());
 		}
 		
 		/** Win function **/
-		public function win():void {
-			//logger.recordLevelEnd();
+		public function win(Exit:FlxGroup, player:Player):void {
+			logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
 		}
 		
 		/** Reset function **/
 		public function reset():void {
-			//logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum,logger));
 		}
 		
 		/** Level select function **/
 		public function levelSelect():void {
-			//logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(0,logger));
 		}
 		

@@ -1,19 +1,14 @@
-package  
-{
-	/**
-	 * ...
-	 * @author KJin
-	 */
-	public class Utils 
-	{
-		public static function Clamp(value:Number, min:Number, max:Number) : Number
+package {
+
+	public class Utils {
+		public static function Clamp(value:Number, min:Number, max:Number):Number
 		{
 			value = ((value > max) ? max : value);
 			value = ((value < min) ? min : value);
 			return value;
 		}
 		
-		public static function ReverseLerp(a:Number, b:Number, v:Number) : Number
+		public static function ReverseLerp(a:Number, b:Number, v:Number):Number
 		{
 			if (a == b) return Number.NaN;
 			return (v - a) / (b - a);
@@ -76,5 +71,4 @@ package
 				new PiecewiseInterpolationNode(null, period, dc));
 		}
 	}
-
 }
