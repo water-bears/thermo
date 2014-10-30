@@ -1,23 +1,28 @@
 package {
+	import Logging;
+	
 	import context.BubbleBackground;
 	import context.LevelSelectState;
 	import context.TransitionState;
 	
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
+	import flash.utils.getTimer;
 	
 	import levelgen.*;
-	import Logging;
+	
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
 		1 = went through a power gate
-		
+		2 = retrieved a key
 		*/
 		public var logger:Logging = new Logging(700, 1.0, true);
-
+		
+		// This is for checking when we JUST entered the water
+		public var justEntered:Boolean = false;
 		
 		private var background:FlxSprite;
 		
@@ -143,9 +148,9 @@ package {
 			
 			// Create and add the player
 			if (level.player == null) {
-				player = new Player(0, 0, waterTiles, this);  //logger);
+				player = new Player(0, 0, waterTiles, this, logger, level);  //logger);
 			} else {
-				player = new Player(level.player.x, level.player.y, waterTiles, this); //logger);
+				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
 			add(player);
 			
@@ -194,9 +199,16 @@ package {
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
-				//logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
+				player.drag.x = int.MAX_VALUE;
+				if(justEntered == false) {
+					justEntered = true;
+					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
+				}
 			} 
 			else if (!player.bubble && !player.superBubble) {
+				player.normalSpeed();
+				player.drag.x = int.MAX_VALUE;
+				justEntered = false;
 			}
 			
 			// Our beloved iteration variable (i)
@@ -292,11 +304,12 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
+			logger.recordEvent(level.levelNum, 2, getTimer().toString());
 		}
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
-			//logger.recordLevelEnd();
+			logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
 		}
 		
