@@ -9,16 +9,13 @@ package context {
 	public class MenuState extends FlxState {
 		
 		private var backgroundTile:FlxSprite;
-		public var title:FloatingText;
-		public var prompt:FloatingText;
-		
-		public var zoom:Number;
 		
 		public var bubbles:BubbleBackground;
+		private var ui:MenuUI;
 		
 		override public function create():void {
-			zoom = 1024 / 4;
-			var dimensions:FlxPoint = new FlxPoint(4.0 * zoom, 3.0 * zoom);
+			
+			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
 			// Create background gradient
 			backgroundTile = MenuUtils.CreateVerticalGradient(dimensions, 0x0066cc, 0x003333);
@@ -28,35 +25,21 @@ package context {
 			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
-			// Initialize Title Text
-			title = new FloatingText(0.4 * dimensions.x, 0.167 * dimensions.y, 0.15 * dimensions.x);
-			title.SetOscillationSettings(5, 40);
-			title.scale = new FlxPoint(dimensions.x / 64, dimensions.x / 64);
-			title.color = 0xff0099ff;
-			title.shadow = 0xff003399;
-			title.alignment = "center";
-			title.text = "Thermo";
-			add(title);
-			
-			// Initialize Prompt
-			prompt = new FloatingText(0.375 * dimensions.x, 0.667 * dimensions.y, 0.25 * dimensions.x);
-			prompt.SetOscillationSettings(-4, 25);
-			prompt.scale = new FlxPoint(dimensions.x / 160, dimensions.x / 160);
-			prompt.color = 0xff0099ff;
-			prompt.shadow = 0xff003399;
-			prompt.alignment = "center";
-			prompt.text = "Press ENTER";
-			add(prompt);
+			ui = new MenuUI(0);
+			add(ui);
 		}
 		
 		override public function update():void {
-			title.update();
-			prompt.update();
+			super.update();
 			bubbles.Update();
 			if (FlxG.keys.ENTER) {
-				var p : PlayState = new PlayState();
-				FlxG.switchState(p);
+				ui.BeginExitSequence(goToNextState);
 			}
+		}
+		
+		public function goToNextState():void {
+			var p : PlayState = new PlayState();
+			FlxG.switchState(p);
 		}
 	}
 }

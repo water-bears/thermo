@@ -31,12 +31,15 @@ package
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
-			// Something that helps darken the level when important UI is up
-			dimmer = MenuUtils.CreateSolid(dimensions, 0x000000);
+			// Something that helps darken the level when important UI is up.
+			// The dimensions are screwed up because ActionScript's primitive drawing
+			// methods are atrocious.
+			// 
+			dimmer = MenuUtils.CreateSolid(new FlxPoint(dimensions.x + 1, dimensions.y), 0x000000);
 			add(dimmer);
 			
 			// Level Intro Text
-			levelText = new FlxText(462, 0, 100, "Level " + levelNum);
+			levelText = new FlxText(0, 0, FlxG.width, "Level " + levelNum);
 			levelText.alignment = "center";
 			levelText.scale.x = levelText.scale.y = 5;
 			add(levelText);
@@ -56,10 +59,10 @@ package
 				new PiecewiseInterpolationNode(Utils.Lerp, 100, 1),
 				new PiecewiseInterpolationNode(null, 150, 0));
 			levelText_y0 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConcaveSine, 0, 175),
-				new PiecewiseInterpolationNode(Utils.Lerp, 30, 200),
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 100, 210),
-				new PiecewiseInterpolationNode(null, 150, 300));
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 0, 0.25 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.Lerp, 30, 0.30 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 100, 0.32 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 150, 0.4 * FlxG.height));
 		}
 		
 		override public function update():void 
