@@ -85,6 +85,18 @@ package {
 			groundTiles = level.ground;
 			add(groundTiles);
 			
+			/*
+			FlxG.camera.bounds = groundTiles.getBounds();
+			//FlxG.camera.x += Thermo.WIDTH - groundTiles.getBounds().width
+			//FlxG.camera.y += Thermo.HEIGHT - groundTiles.getBounds().height
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			*/
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			FlxG.camera.x += (Thermo.WIDTH - groundTiles.getBounds().width) / 2;
+			FlxG.camera.y += (Thermo.HEIGHT - groundTiles.getBounds().height) / 2;
+			
 			//add the water
 			waterTiles = level.water;
 			add(waterTiles);
