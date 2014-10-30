@@ -3,64 +3,88 @@ package
 	/**
 	 * ...
 	 * @author KJin
-	 */
+	 */	
 	public class PiecewiseInterpolationMachine 
 	{
 		//n
-		private var ts:Array;
-		//n
-		private var ys:Array;
-		//n-1
-		private var methods:Array;
+		private var nodes:Vector.<PiecewiseInterpolationNode>;
 		
+		private var periodic:Boolean;
 		private var time:uint;
 		private var bracket:uint;
 		private var completionCallback:Function;
 		
-		public function PiecewiseInterpolationMachine(ts:Array, ys:Array, methods:Array)
+		public function PiecewiseInterpolationMachine(periodic:Boolean, ... args)
 		{
-			this.ts = ts;
-			this.ys = ys;
-			this.methods = methods;
+			this.periodic = periodic;
 			this.time = 0;
 			this.bracket = 0;
 			completionCallback = null;
+			nodes = new Vector.<PiecewiseInterpolationNode>();
+			for (var i:uint; i < args.length; i++)
+			{
+				nodes.push(args[i]);
+				// The last argument MUST have a null method of interpolation
+				// Correct for this here.
+				if (i == args.length - 1)
+				{
+					nodes[i].NullifyInterpolationMethod();
+				}
+			}
 		}
 		
-		public function UpdateAndEvaluate() : Number
+		public function EvaluateAndUpdate() : Number
 		{
-			if (bracket == ts.length - 1)
+			var result:Number = Evaluate();
+			Update();
+			return result;
+		}
+		
+		public function Update() : void
+		{
+			if (bracket < nodes.length - 1)
+			{
+				time++;
+				if (time == nodes[bracket+1].t)
+				{
+					bracket++;
+				}
+			}
+			if (periodic && bracket == nodes.length - 1)
+			{
+				time = 0;
+				bracket = 0;
+			}
+		}
+		
+		public function Evaluate() : Number
+		{
+			if (bracket == nodes.length - 1)
 			{
 				if (completionCallback != null)
 				{
 					completionCallback();
 					completionCallback = null;
 				}
-				return ys[bracket];
+				return PiecewiseInterpolationNode.Evaluate(nodes[bracket]);
 			}
-			var result:Number = methods[bracket](ys[bracket], ys[bracket+1], Utils.ReverseLerp(ts[bracket], ts[bracket + 1], time));
-			time++;
-			if (time == ts[bracket+1])
-			{
-				bracket++;
-			}
-			return result;
+			return PiecewiseInterpolationNode.Evaluate(nodes[bracket], nodes[bracket + 1], time);
 		}
 		
 		public function FastForward() : void
 		{
-			bracket = ts.length - 1;
-			time = ts[bracket];
+			bracket = nodes.length - 1;
+			time = nodes[bracket].t;
 		}
 		
 		public function JumpToBracket(num:uint) : void
 		{
 			bracket = num;
-			if (bracket > ts.length - 1)
+			if (bracket > nodes.length - 1)
 			{
-				bracket = ts.length - 1;
+				bracket = nodes.length - 1;
 			}
-			time = ts[bracket];
+			time = nodes[bracket].t;
 		}
 		
 		public function CallUponCompletion(callback:Function) : void

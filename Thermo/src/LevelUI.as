@@ -43,23 +43,36 @@ package
 			
 			state = 0;
 			
-			dimmer_alpha0 = new PiecewiseInterpolationMachine([0, 50, 150], [1, 1, 0], [Utils.Lerp, Utils.Lerp]);
-			dimmer_alpha1 = new PiecewiseInterpolationMachine([0, 20], [0, 1], [Utils.Lerp]);
-			levelText_alpha0 = new PiecewiseInterpolationMachine([0, 30, 100, 150], [0, 1, 1, 0], [Utils.Lerp, Utils.Lerp, Utils.Lerp]);
-			levelText_y0 = new PiecewiseInterpolationMachine([0, 30, 100, 150], [175, 200, 210, 300], [Utils.SmoothStep, Utils.Lerp, Utils.SmoothStep]);
+			dimmer_alpha0 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
+				new PiecewiseInterpolationNode(Utils.Lerp, 50, 1),
+				new PiecewiseInterpolationNode(null, 150, 0));
+			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
+				new PiecewiseInterpolationNode(null, 20, 1));
+			levelText_alpha0 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
+				new PiecewiseInterpolationNode(Utils.Lerp, 30, 1),
+				new PiecewiseInterpolationNode(Utils.Lerp, 100, 1),
+				new PiecewiseInterpolationNode(null, 150, 0));
+			levelText_y0 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 0, 175),
+				new PiecewiseInterpolationNode(Utils.Lerp, 30, 200),
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 100, 210),
+				new PiecewiseInterpolationNode(null, 150, 300));
 		}
 		
 		override public function update():void 
 		{
 			super.update();
 			// Adjust values depending on time.
-			dimmer.alpha = dimmer_alpha0.UpdateAndEvaluate();
+			dimmer.alpha = dimmer_alpha0.EvaluateAndUpdate();
 			if (state == 1)
 			{
-				dimmer.alpha = dimmer_alpha1.UpdateAndEvaluate();
+				dimmer.alpha = dimmer_alpha1.EvaluateAndUpdate();
 			}
-			levelText.alpha = levelText_alpha0.UpdateAndEvaluate();
-			levelText.y = levelText_y0.UpdateAndEvaluate();
+			levelText.alpha = levelText_alpha0.EvaluateAndUpdate();
+			levelText.y = levelText_y0.EvaluateAndUpdate();
 		}
 		
 		public function FastForward():void
