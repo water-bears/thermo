@@ -9,9 +9,11 @@ package {
 	
 	public class Thermo extends FlxGame {
 		public var log:Logging = new Logging(700, 1.0, true);
+		public static const WIDTH:int = 1024;
+		public static const HEIGHT:int = 768;
 		
 		public function Thermo() {
-			super(1024, 768, MenuState, 1);
+			super(WIDTH, HEIGHT, MenuState, 1);
 			log.recordPageLoad();
 			
 			// Optional debug tools

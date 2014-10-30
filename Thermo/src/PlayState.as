@@ -51,6 +51,7 @@ package {
 		
 		// This is currently being used as a method of debugging
 		public var status:FlxText;
+		private var ui:LevelUI;
 		
 		public var BLUE:uint = 0x0000FF;
 		public var RED:uint = 0x00FF00FF;
@@ -88,6 +89,18 @@ package {
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
+			
+			/*
+			FlxG.camera.bounds = groundTiles.getBounds();
+			//FlxG.camera.x += Thermo.WIDTH - groundTiles.getBounds().width
+			//FlxG.camera.y += Thermo.HEIGHT - groundTiles.getBounds().height
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			*/
+			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
+			FlxG.camera.zoom = zoom;
+			FlxG.camera.x += (Thermo.WIDTH - groundTiles.getBounds().width) / 2;
+			FlxG.camera.y += (Thermo.HEIGHT - groundTiles.getBounds().height) / 2;
 			
 			//add the water
 			waterTiles = level.water;
@@ -175,6 +188,11 @@ package {
 			
 			this.add(iceGroup);
 			
+			// Create and add the UI layer
+			// This NEEDS to be last. Otherwise objects will linger when
+			// the screen fades out.
+			ui = new LevelUI(level.levelNum);
+			add(ui);
 		}
 		
 		override public function update():void {
@@ -194,8 +212,6 @@ package {
 			FlxG.collide(solidGroup, keyGroup);
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
-			
-			if(FlxG.overlap(player, spikeGroup)){ FlxG.switchState(new TransitionState(level.levelNum, logger)); }
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
@@ -283,18 +299,23 @@ package {
 				player.updatePower(0);
 			}*/
 			
+			if (FlxG.keys.SPACE || FlxG.keys.ENTER)
+			{
+				ui.FastForward();
+			}
+			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
-				win(exitGroup, player);
+				ui.BeginExitSequence(win);
 			}
 			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (player.y > FlxG.height || FlxG.keys.R) {
-				FlxG.switchState(new TransitionState(level.levelNum,logger));
+			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
+				ui.BeginExitSequence(reset);
 			}
 			if (FlxG.keys.TAB) {
-				FlxG.switchState(new TransitionState(0,logger));
+				ui.BeginExitSequence(levelSelect);
 			}
 			
 			//status.text = player.stat;
@@ -311,6 +332,16 @@ package {
 		public function win(Exit:FlxGroup, player:Player):void {
 			logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
+		}
+		
+		/** Reset function **/
+		public function reset():void {
+			FlxG.switchState(new TransitionState(level.levelNum,logger));
+		}
+		
+		/** Level select function **/
+		public function levelSelect():void {
+			FlxG.switchState(new TransitionState(0,logger));
 		}
 		
 		/** Sets the background based on the level index **/
