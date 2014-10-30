@@ -1,5 +1,6 @@
 package {
 	import org.flixel.FlxSprite;
+
 	
 	public class Key extends FlxSprite {
 		
