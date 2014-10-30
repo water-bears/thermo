@@ -1,6 +1,5 @@
 package {
 	import org.flixel.FlxSprite;
-
 	
 	public class Key extends FlxSprite {
 		
@@ -20,8 +19,6 @@ package {
 		
 		/*override public function update():void {
 			
-		}*/
-		
+		}*/	
 	}
-	
 }

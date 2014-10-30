@@ -1,5 +1,4 @@
-package  
-{
+package {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -7,12 +6,7 @@ package
 	import org.flixel.FlxG;
 	import context.MenuUtils;
 	
-	/**
-	 * ...
-	 * @author KJin
-	 */
-	public class LevelUI extends FlxGroup 
-	{
+	public class LevelUI extends FlxGroup {
 		private var dimmer:FlxSprite;
 		private var levelText:FlxText;
 		
@@ -25,8 +19,7 @@ package
 		
 		private var state:uint;
 		
-		public function LevelUI(levelNum:uint) 
-		{
+		public function LevelUI(levelNum:uint) {
 			super(0);
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
@@ -49,29 +42,26 @@ package
 			levelText_y0 = new PiecewiseInterpolationMachine([0, 30, 100, 150], [175, 200, 210, 300], [Utils.SmoothStep, Utils.Lerp, Utils.SmoothStep]);
 		}
 		
-		override public function update():void 
-		{
+		override public function update():void {
 			super.update();
 			// Adjust values depending on time.
 			dimmer.alpha = dimmer_alpha0.UpdateAndEvaluate();
-			if (state == 1)
-			{
+			if (state == 1) {
 				dimmer.alpha = dimmer_alpha1.UpdateAndEvaluate();
 			}
+			
 			levelText.alpha = levelText_alpha0.UpdateAndEvaluate();
 			levelText.y = levelText_y0.UpdateAndEvaluate();
 		}
 		
-		public function FastForward():void
-		{
+		public function FastForward():void {
 			dimmer_alpha0.FastForward();
 			levelText_alpha0.FastForward();
 			levelText_y0.FastForward();
 		}
 		
 		// Calls given function when finished fading out.
-		public function BeginExitSequence(callback:Function):void
-		{
+		public function BeginExitSequence(callback:Function):void {
 			state = 1;
 			dimmer_alpha1.CallUponCompletion(callback);
 		}

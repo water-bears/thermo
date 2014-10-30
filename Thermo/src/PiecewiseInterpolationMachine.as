@@ -1,11 +1,6 @@
-package  
-{
-	/**
-	 * ...
-	 * @author KJin
-	 */
-	public class PiecewiseInterpolationMachine 
-	{
+package {
+	
+	public class PiecewiseInterpolationMachine {
 		//n
 		private var ts:Array;
 		//n
@@ -17,8 +12,7 @@ package
 		private var bracket:uint;
 		private var completionCallback:Function;
 		
-		public function PiecewiseInterpolationMachine(ts:Array, ys:Array, methods:Array)
-		{
+		public function PiecewiseInterpolationMachine(ts:Array, ys:Array, methods:Array) {
 			this.ts = ts;
 			this.ys = ys;
 			this.methods = methods;
@@ -27,44 +21,40 @@ package
 			completionCallback = null;
 		}
 		
-		public function UpdateAndEvaluate() : Number
-		{
-			if (bracket == ts.length - 1)
-			{
-				if (completionCallback != null)
-				{
+		public function UpdateAndEvaluate():Number {
+			if (bracket == ts.length - 1) {
+				if (completionCallback != null) {
 					completionCallback();
 					completionCallback = null;
 				}
 				return ys[bracket];
 			}
+			
 			var result:Number = methods[bracket](ys[bracket], ys[bracket+1], Utils.ReverseLerp(ts[bracket], ts[bracket + 1], time));
 			time++;
-			if (time == ts[bracket+1])
-			{
+			
+			if (time == ts[bracket+1]) {
 				bracket++;
 			}
+			
 			return result;
 		}
 		
-		public function FastForward() : void
-		{
+		public function FastForward():void {
 			bracket = ts.length - 1;
 			time = ts[bracket];
 		}
 		
-		public function JumpToBracket(num:uint) : void
-		{
+		public function JumpToBracket(num:uint):void {
 			bracket = num;
-			if (bracket > ts.length - 1)
-			{
+			if (bracket > ts.length - 1) {
 				bracket = ts.length - 1;
 			}
+			
 			time = ts[bracket];
 		}
 		
-		public function CallUponCompletion(callback:Function) : void
-		{
+		public function CallUponCompletion(callback:Function):void {
 			completionCallback = callback;
 		}
 	}
