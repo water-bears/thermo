@@ -1,12 +1,15 @@
 package context {
+	import context.ListMenu;
+	import context.MenuUtils;
+	
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.*;
+	import Logging;
+	
 	import levelgen.Level;
-	import context.ListMenu;
-	import context.MenuUtils;
 	
 	import org.flixel.*;
 	
@@ -16,6 +19,7 @@ package context {
 		
 		public var time:Number;
 		public var zoom:Number;
+		public var logger:Logging = new Logging(700, 1.0, true);
 		
 		public var title:FloatingText;
 		
@@ -71,7 +75,7 @@ package context {
 			bubbles.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId() + 1;
-				FlxG.switchState(new TransitionState(level));
+				FlxG.switchState(new TransitionState(level, logger));
 			}
 		}
 	}

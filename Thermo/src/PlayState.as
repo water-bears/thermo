@@ -7,10 +7,18 @@ package {
 	import flash.geom.ColorTransform;
 	
 	import levelgen.*;
-	
+	import Logging;
 	import org.flixel.*;
 	
 	public class PlayState extends FlxState {
+		/* Action identifiers for //logger:
+		0 = entered a body of water
+		1 = went through a power gate
+		
+		*/
+		public var logger:Logging = new Logging(700, 1.0, true);
+
+		
 		private var background:FlxSprite;
 		
 		private var player:Player;
@@ -57,6 +65,7 @@ package {
 		}
 		
 		override public function create():void {
+			//logger.recordLevelStart(level.levelNum);
 			// Make the background
 			if (background == null)
 				setBackground(0);
@@ -134,9 +143,9 @@ package {
 			
 			// Create and add the player
 			if (level.player == null) {
-				player = new Player(0, 0, waterTiles, this);
+				player = new Player(0, 0, waterTiles, this);  //logger);
 			} else {
-				player = new Player(level.player.x, level.player.y, waterTiles, this);
+				player = new Player(level.player.x, level.player.y, waterTiles, this); //logger);
 			}
 			add(player);
 			
@@ -160,6 +169,7 @@ package {
 			
 			
 			this.add(iceGroup);
+			
 		}
 		
 		override public function update():void {
@@ -180,12 +190,13 @@ package {
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
-			if(FlxG.overlap(player, spikeGroup)){ FlxG.switchState(new TransitionState(level.levelNum)); }
+			if(FlxG.overlap(player, spikeGroup)){ FlxG.switchState(new TransitionState(level.levelNum, logger)); }
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
-			} else if (!player.bubble && !player.superBubble) {
-				player.normalSpeed();
+				//logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
+			} 
+			else if (!player.bubble && !player.superBubble) {
 			}
 			
 			// Our beloved iteration variable (i)
@@ -204,6 +215,7 @@ package {
 				for (i = 0; i < freezeGroup.members.length; i++) {
 					if (FlxG.overlap(freezeGroup.members[i], player)) {
 						(freezeGroup.members[i] as Gate).trigger();
+						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "freezeGate");
 						player.updatePower(Gate.FREEZE);
 					} else {
 						(freezeGroup.members[i] as Gate).untrigger();
@@ -215,6 +227,7 @@ package {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
 						(heatGroup.members[i] as Gate).trigger();
+						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "heatGate");
 						player.updatePower(Gate.HEAT);
 					} else {
 						(heatGroup.members[i] as Gate).untrigger();
@@ -226,6 +239,7 @@ package {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
 						(flashGroup.members[i] as Gate).trigger();
+						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "flashGate");
 						player.updatePower(Gate.FLASH);
 					} else {
 						(flashGroup.members[i] as Gate).untrigger();
@@ -237,6 +251,7 @@ package {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
 						(neutralGroup.members[i] as Gate).trigger();
+						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "neutralGate");
 						player.updatePower(Gate.NEUTRAL);
 					} else {
 						(neutralGroup.members[i] as Gate).untrigger();
@@ -264,10 +279,10 @@ package {
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
 			if (player.y > FlxG.height || FlxG.keys.R) {
-				FlxG.switchState(new TransitionState(level.levelNum));
+				FlxG.switchState(new TransitionState(level.levelNum,logger));
 			}
 			if (FlxG.keys.TAB) {
-				FlxG.switchState(new TransitionState(0));
+				FlxG.switchState(new TransitionState(0,logger));
 			}
 			
 			//status.text = player.stat;
@@ -281,7 +296,8 @@ package {
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
-			FlxG.switchState(new TransitionState(level.levelNum + 1));
+			//logger.recordLevelEnd();
+			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
 		}
 		
 		/** Sets the background based on the level index **/
