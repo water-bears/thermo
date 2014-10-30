@@ -1,4 +1,6 @@
-package {
+package uilayer {
+	import uilayer.PiecewiseInterpolationNode;
+	import uilayer.PiecewiseInterpolationMachine;
 
 	public class Utils {
 		public static function Clamp(value:Number, min:Number, max:Number):Number

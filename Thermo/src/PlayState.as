@@ -1,5 +1,6 @@
 package {
 	import Logging;
+	import uilayer.LevelUI;
 	
 	import context.BubbleBackground;
 	import context.LevelSelectState;
@@ -295,7 +296,7 @@ package {
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
-				ui.BeginExitSequence(win);
+				win(exitGroup, player);
 			}
 			
 			//Check for player lose conditions
@@ -318,6 +319,10 @@ package {
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
 			logger.recordLevelEnd();
+			ui.BeginExitSequence(goToNextLevel);
+		}
+		
+		public function goToNextLevel() : void {
 			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
 		}
 		

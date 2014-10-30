@@ -1,4 +1,4 @@
-package {
+package uilayer {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;

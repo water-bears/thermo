@@ -1,12 +1,11 @@
-package context
-{
+package uilayer {
+	import uilayer.Utils;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
-	import PiecewiseInterpolationMachine;
-	import PiecewiseInterpolationNode;
+	import context.MenuUtils;
 	
 	/**
 	 * ...
