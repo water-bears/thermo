@@ -35,7 +35,7 @@ package
 			}
 		}
 		
-		public static function Evaluate(p1:PiecewiseInterpolationNode, p2:PiecewiseInterpolationNode=null, t:Number=0)
+		public static function Evaluate(p1:PiecewiseInterpolationNode, p2:PiecewiseInterpolationNode=null, t:Number=0) : Number
 		{
 			if (p1.numArgs == 0)
 			{
@@ -53,6 +53,7 @@ package
 			{
 				return p1.method(p1.y, p2.y, Utils.ReverseLerp(p1.t, p2.t, t));
 			}
+			return 0; //shouldn't happen
 		}
 		
 		public function NullifyInterpolationMethod() : void
