@@ -119,6 +119,10 @@ package levelgen {
 					sprite.scrollFactor.x = xmlLayer[layerNum].@xScroll;
 					sprite.scrollFactor.y = xmlLayer[layerNum].@yScroll;
 					
+					//var test = xmlSpriteClass.@file
+					var asset:Class = AS3Embed.GetArtAsset(xmlSpriteClass.@file);
+					sprite.loadGraphic(asset, true, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+					
 					var spritetype:String = xmlSprite[spriteNum].@name;
 					switch(spritetype)
 					{
