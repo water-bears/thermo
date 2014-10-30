@@ -21,15 +21,18 @@
 		<map csv="levels/11/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Exit" name="Exit" x="557.00" y="449.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Key" name="Key" x="34.00" y="235.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="HeatGate" name="HeatGate" x="216.00" y="382.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Player" name="Player" x="411.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="FlashGate" name="FlashGate" x="99.00" y="57.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Spikes" name="Spikes" x="254.00" y="27.00" angle="0.00" flip="false" xScale="1.00" yScale="0.57" />
-		<sprite clas="Trapdoor" name="Trapdoor" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="Button" name="Button" x="375.00" y="207.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="NeutralGate" name="NeutralGate" x="299.00" y="410.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" />
-		<sprite clas="MovingPlatform" name="MovingPlatform" x="355.00" y="361.00" angle="0.00" flip="false" xScale="2.82" yScale="0.63" />
+		<sprite clas="Exit" name="Exit" x="557.00" y="449.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="34.00" y="235.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="216.00" y="382.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="411.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FlashGate" name="FlashGate" x="99.00" y="57.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="254.00" y="27.00" angle="0.00" flip="false" xScale="1.00" yScale="0.57" >		</sprite>
+		<sprite clas="Trapdoor" name="Trapdoor" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Button" name="Button" x="375.00" y="207.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="299.00" y="410.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="355.00" y="361.00" angle="0.00" flip="false" xScale="2.82" yScale="0.63" >
+			<prop name="distance" value="10" />
+		</sprite>
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="222.00" y="265.00" angle="0.00" flip="false" xScale="3.76" yScale="0.88" >		</sprite>
 	</layer>
 </level>
