@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level name="Group1" minx="0" miny="0" maxx="640" maxy="576" bgColor = "0xff777777" >
+	<spriteclasses>
+		<clas name="Player" file="character/character.png" width="28" height="28" index="0" />
+		<clas name="HeatGate" file="tilesheets/gates.png" width="16" height="64" index="2" />
+		<clas name="FreezeGate" file="tilesheets/gates.png" width="16" height="64" index="1" />
+		<clas name="FlashGate" file="tilesheets/gates.png" width="16" height="64" index="3" />
+		<clas name="NeutralGate" file="tilesheets/gates.png" width="16" height="64" index="4" />
+		<clas name="Key" file="tilesheets/door.png" width="32" height="32" index="2" />
+		<clas name="Exit" file="tilesheets/door.png" width="32" height="32" index="1" />
+		<clas name="" file="backgrounds/background.png" width="516" height="516" index="0" />
+		<clas name="Spikes" file="objects/spike.png" width="100" height="100" index="0" />
+		<clas name="Button" file="objects/button.png" width="32" height="32" index="0" />
+		<clas name="Trapdoor" file="objects/trapdoor.png" width="32" height="32" index="0" />
+		<clas name="MovingPlatform" file="objects/movingplatform.png" width="32" height="32" index="0" />
+	</spriteclasses>
+	<layer name="Water" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/9/mapCSV_Group1_Water.csv" tiles="tilesheets/water.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/9/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground.png" x="0.000" y="0.000" tileWidth="32" tileHeight="32" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Exit" name="Exit" x="557.00" y="449.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="34.00" y="235.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >
+			<prop name="gravity" value="false" />
+		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="216.00" y="382.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="411.00" y="479.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FlashGate" name="FlashGate" x="99.00" y="57.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="254.00" y="27.00" angle="0.00" flip="false" xScale="1.00" yScale="0.57" >		</sprite>
+		<sprite clas="Trapdoor" name="Trapdoor" x="36.00" y="278.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Button" name="Button" x="375.00" y="207.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="299.00" y="410.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="355.00" y="361.00" angle="0.00" flip="false" xScale="2.82" yScale="0.63" >		</sprite>
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="-141.00" y="650.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="MovingPlatform" name="MovingPlatform" x="222.00" y="265.00" angle="0.00" flip="false" xScale="3.76" yScale="0.88" >
+			<prop name="startPos" value="0" />
+			<prop name="endPos" value="200" />
+			<prop name="direction" value="1" />
+		</sprite>
+		<sprite clas="Key" name="Key" x="561.00" y="35.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >
+			<prop name="gravity" value="true" />
+		</sprite>
+	</layer>
+</level>

@@ -156,7 +156,25 @@ package levelgen {
 					case "Key":
 						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 						sprite.frame = 2;
-						keys.add(new Key(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, false));
+						var gravity:Boolean = false;
+						
+						var numProps:int = xmlSprite[spriteNum].prop.length();
+						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
+						for (var propNum:int = 0; propNum < numProps; propNum++)
+						{
+							var proptype:String = xmlProp[propNum].@name;
+							switch(proptype)
+							{
+							case "gravity":
+								gravity = xmlProp[propNum].@value;
+								break;
+							default:
+								break;
+							}
+							
+						}
+						
+						keys.add(new Key(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, gravity));
 						break;
 						
 					case "Exit":
@@ -171,7 +189,33 @@ package levelgen {
 						break;
 					
 					case "MovingPlatform":
-						var movingplatform:MovingPlatform = new MovingPlatform(sprite, sprite.y, sprite.y + 96, 4);
+						var startPos:int = sprite.y;
+						var endPos:int = sprite.y + 96;
+						var direction:int = 4;
+						
+						var numProps:int = xmlSprite[spriteNum].prop.length();
+						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
+						for (var propNum:int = 0; propNum < numProps; propNum++)
+						{
+							var proptype:String = xmlProp[propNum].@name;
+							switch(proptype)
+							{
+							case "startPos":
+								startPos = xmlProp[propNum].@value;
+								break;
+							case "endPos":
+								endPos = xmlProp[propNum].@value;
+								break;
+							case "direction":
+								direction = xmlProp[propNum].@value;
+								break;
+							default:
+								break;
+							}
+							
+						}
+						
+						var movingplatform:MovingPlatform = new MovingPlatform(sprite, startPos, endPos, direction);
 						movingplatforms.add(movingplatform);
 						break;				
 						
