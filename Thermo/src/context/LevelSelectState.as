@@ -19,11 +19,13 @@ package context {
 		
 		public var time:Number;
 		public var zoom:Number;
-		public var logger:Logging = new Logging(700, 1.0, true);
 		
 		public var title:FloatingText;
 		
 		public var bubbles:BubbleBackground;
+		public var logger:Logging;
+
+		//public function LevelSelectState(logger:Logging){this.logger = logger;}
 		
 		override public function create():void {
 			zoom = 1024 / 4;
@@ -75,7 +77,7 @@ package context {
 			bubbles.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId() + 1;
-				FlxG.switchState(new TransitionState(level, logger));
+				FlxG.switchState(new TransitionState(level, null));
 			}
 		}
 	}

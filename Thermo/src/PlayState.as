@@ -1,6 +1,5 @@
 package {
 	import Logging;
-	import uilayer.LevelUI;
 	
 	import context.BubbleBackground;
 	import context.LevelSelectState;
@@ -14,13 +13,15 @@ package {
 	
 	import org.flixel.*;
 	
+	import uilayer.LevelUI;
+	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
 		1 = went through a power gate
 		2 = retrieved a key
 		*/
-		public var logger:Logging = new Logging(700, 1.0, true);
+		public var logger:Logging;
 		
 		// This is for checking when we JUST entered the water
 		public var justEntered:Boolean = false;
@@ -69,6 +70,10 @@ package {
 		public var bubbles:BubbleBackground;
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
+		}
+		
+		public function PlayState(logger:Logging) {
+			this.logger=logger;
 		}
 		
 		override public function create():void {
@@ -229,7 +234,6 @@ package {
 				for (i = 0; i < freezeGroup.members.length; i++) {
 					if (FlxG.overlap(freezeGroup.members[i], player)) {
 						(freezeGroup.members[i] as Gate).trigger();
-						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "freezeGate");
 						player.updatePower(Gate.FREEZE);
 					} else {
 						(freezeGroup.members[i] as Gate).untrigger();
@@ -242,7 +246,6 @@ package {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
 						(heatGroup.members[i] as Gate).trigger();
-						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "heatGate");
 						player.updatePower(Gate.HEAT);
 					} else {
 						(heatGroup.members[i] as Gate).untrigger();
@@ -255,7 +258,6 @@ package {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
 						(flashGroup.members[i] as Gate).trigger();
-						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "flashGate");
 						player.updatePower(Gate.FLASH);
 					} else {
 						(flashGroup.members[i] as Gate).untrigger();
@@ -268,7 +270,6 @@ package {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
 						(neutralGroup.members[i] as Gate).trigger();
-						//logger.recordEvent(level.levelNum, 1, "(" + player.x +  ", " + player.y + ")" + "neutralGate");
 						player.updatePower(Gate.NEUTRAL);
 					} else {
 						(neutralGroup.members[i] as Gate).untrigger();

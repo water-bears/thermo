@@ -3,9 +3,10 @@ package context {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
-	import uilayer.MenuUI;
 	
 	import org.flixel.*;
+	
+	import uilayer.MenuUI;
 	
 	public class MenuState extends FlxState {
 		
@@ -13,9 +14,10 @@ package context {
 		
 		public var bubbles:BubbleBackground;
 		private var ui:MenuUI;
+		public var logger:Logging = new Logging(700, 2, true);
 		
 		override public function create():void {
-			
+			logger.recordPageLoad();
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
 			// Create background gradient
@@ -39,7 +41,7 @@ package context {
 		}
 		
 		public function goToNextState():void {
-			var p : PlayState = new PlayState();
+			var p : PlayState = new PlayState(logger);
 			FlxG.switchState(p);
 		}
 	}

@@ -1,8 +1,9 @@
 package context
 {
-	import org.flixel.FlxState;
-	import org.flixel.FlxG;
 	import levelgen.Level;
+	
+	import org.flixel.FlxG;
+	import org.flixel.FlxState;
 	
 	/**
 	 * ...
@@ -17,23 +18,26 @@ package context
 		public function TransitionState(level:uint,logger:Logging)
 		{
 			this.level = level;
-			this.logger = logger;
+			if(logger != null){
+				this.logger = logger;
+			}
 		}
 		
 		override public function update():void
 		{
 			if (level > 0 && level <= numLevels)
 			{
-				var p:PlayState = new PlayState();
+				var p:PlayState = new PlayState(logger);
 				p.setLevel(new Level(level));
 				p.setBackground(level);
-				logger.recordLevelStart(level);
+				if(logger != null){
+					logger.recordLevelStart(level);
+				}
 				FlxG.switchState(p);
 			}
 			else
 			{
 				FlxG.switchState(new LevelSelectState());
-				logger.recordLevelStart(0);
 			}
 		}
 	}
