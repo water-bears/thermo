@@ -22,7 +22,8 @@ package uilayer {
 		
 		private var dimmer_alpha1:PiecewiseInterpolationMachine;
 		
-		private var levelText_y0:PiecewiseInterpolationMachine;	
+		private var titleText_y0:PiecewiseInterpolationMachine;
+		private var promptText_y0:PiecewiseInterpolationMachine;
 		
 		private var state:uint;
 		
@@ -32,10 +33,6 @@ package uilayer {
 			state = initialState;
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
-			
-			// Something that helps darken the level when important UI is up
-			dimmer = MenuUtils.CreateSolid(new FlxPoint(dimensions.x + 1, dimensions.y), 0x000000);
-			add(dimmer);
 			
 			// Title Text
 			titleText = new FlxText(0, 0, FlxG.width, "Thermo");
@@ -53,6 +50,14 @@ package uilayer {
 			promptText.alignment = "center";
 			add(promptText);
 			
+			titleText_y0 = Utils.CreatePeriodic(0.2 * dimensions.y, 20, 400);
+			promptText_y0 = Utils.CreatePeriodic(0.7 * dimensions.y, 10, 200);
+			
+			// Something that helps darken the level when important UI is up
+			// This should come up last so it covers everything.
+			dimmer = MenuUtils.CreateSolid(new FlxPoint(dimensions.x + 1, dimensions.y), 0x000000);
+			add(dimmer);
+			
 			dimmer.alpha = 0;
 			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
@@ -63,6 +68,8 @@ package uilayer {
 		{
 			super.update();
 			// Adjust values depending on time.
+			titleText.y = titleText_y0.EvaluateAndUpdate();
+			promptText.y = promptText_y0.EvaluateAndUpdate();
 			if (state == 1)
 			{
 				dimmer.alpha = dimmer_alpha1.EvaluateAndUpdate();
