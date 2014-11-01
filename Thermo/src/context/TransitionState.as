@@ -37,7 +37,7 @@ package context
 			}
 			else
 			{
-				FlxG.switchState(new LevelSelectState());
+				FlxG.switchState(new LevelSelectState(logger));
 			}
 		}
 	}

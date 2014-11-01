@@ -25,7 +25,7 @@ package context {
 		public var bubbles:BubbleBackground;
 		public var logger:Logging;
 
-		//public function LevelSelectState(logger:Logging){this.logger = logger;}
+		public function LevelSelectState(logger:Logging){this.logger = logger;}
 		
 		override public function create():void {
 			zoom = 1024 / 4;
@@ -77,7 +77,7 @@ package context {
 			bubbles.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId() + 1;
-				FlxG.switchState(new TransitionState(level, null));
+				FlxG.switchState(new TransitionState(level, logger));
 			}
 		}
 	}
