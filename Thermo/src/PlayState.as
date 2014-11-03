@@ -20,6 +20,7 @@ package {
 		0 = entered a body of water
 		1 = went through a power gate
 		2 = retrieved a key
+		3 = completed the level
 		*/
 		public var logger:Logging;
 		private var startTime:int;
@@ -215,7 +216,7 @@ package {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ") ~ time = " + (getTimer() - startTime).toString());
+					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ") + ~ ~ time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -237,9 +238,11 @@ package {
 				for (i = 0; i < freezeGroup.members.length; i++) {
 					if (FlxG.overlap(freezeGroup.members[i], player)) {
 						(freezeGroup.members[i] as Gate).trigger();
+						player.gateOneTouch = true;
 						player.updatePower(Gate.FREEZE);
 					} else {
 						(freezeGroup.members[i] as Gate).untrigger();
+						player.gateOneTouch = false;
 					}
 				}
 				
@@ -249,9 +252,11 @@ package {
 				for (i = 0; i < heatGroup.members.length; i++) {
 					if (FlxG.overlap(heatGroup.members[i], player)) {
 						(heatGroup.members[i] as Gate).trigger();
+						player.gateOneTouch = true;
 						player.updatePower(Gate.HEAT);
 					} else {
 						(heatGroup.members[i] as Gate).untrigger();
+						player.gateOneTouch = false;
 					}
 				}
 				
@@ -261,9 +266,11 @@ package {
 				for (i = 0; i < flashGroup.members.length; i++) {
 					if (FlxG.overlap(flashGroup.members[i], player)) {
 						(flashGroup.members[i] as Gate).trigger();
+						player.gateOneTouch = true;
 						player.updatePower(Gate.FLASH);
 					} else {
 						(flashGroup.members[i] as Gate).untrigger();
+						player.gateOneTouch = false;
 					}
 				}
 				
@@ -273,9 +280,11 @@ package {
 				for (i = 0; i < neutralGroup.members.length; i++) {
 					if (FlxG.overlap(neutralGroup.members[i], player)) {
 						(neutralGroup.members[i] as Gate).trigger();
+						player.gateOneTouch = true;
 						player.updatePower(Gate.NEUTRAL);
 					} else {
 						(neutralGroup.members[i] as Gate).untrigger();
+						player.gateOneTouch = false;
 					}
 				}
 				
@@ -323,6 +332,7 @@ package {
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
 			logger.recordLevelEnd();
+			logger.recordEvent(level.levelNum, 3, " ~ level completion ~ time = " + getTimer().toString());
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		
