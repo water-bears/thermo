@@ -37,17 +37,51 @@ package levelgen {
 		
 		private const fileLocation:String = "levels/"
 		
+		/**
+		 * Map of level names, in game order.
+		 * Note, the strings do not need to be numbers (We just happen to use numbers a lot).
+		 * The name of the level corresponds to the name of the .dam file.
+		 */
+		private static var LEVEL_MAP:Array = new Array(
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9"
+		);
+		
+		/**
+		 * Number of levels in the game
+		 */
+		public static var NUM_LEVELS = LEVEL_MAP.length;
+		
+		/**
+		 * Helper function gets the name of the level that corresponds
+		 * to the given index, based on the LEVEL_MAP
+		 */
+		private static function levelName(levelNum:uint):String
+		{
+			if (levelNum < 1 || levelNum > NUM_LEVELS)
+				return levelNum.toString();
+			else
+				return LEVEL_MAP[levelNum - 1];
+		}
+		
 		public function Level(levelNum:uint) 
 		{
 			this.levelNum = levelNum;
-			var file:String = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
+			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			
 			//if we can't find the xml file, just use level 1
 			if (AS3Embed.GetTextAsset(file) == "error")
 			{
 				levelNum = 1;
-				file = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
+				file = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
 				xmlFile = new XML(AS3Embed.GetTextAsset(file));
 			}
 			
