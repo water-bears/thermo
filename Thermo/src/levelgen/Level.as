@@ -52,7 +52,8 @@ package levelgen {
 			"6",
 			"7",
 			"8",
-			"9"
+			"9",
+			"medium_00"
 		);
 		
 		/**
