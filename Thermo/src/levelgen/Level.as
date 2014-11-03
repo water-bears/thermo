@@ -59,7 +59,7 @@ package levelgen {
 		/**
 		 * Number of levels in the game
 		 */
-		public static var NUM_LEVELS = LEVEL_MAP.length;
+		public static var NUM_LEVELS:uint = LEVEL_MAP.length;
 		
 		/**
 		 * Helper function gets the name of the level that corresponds
