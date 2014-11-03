@@ -60,9 +60,7 @@ public class AS3Embed
 [Embed(source = "../../assets/tilesheets/door.png")] private static var door19:Class;
 [Embed(source = "../../assets/tilesheets/gates.png")] private static var gates19:Class;
 [Embed(source = "../../assets/tilesheets/ground.png")] private static var ground19:Class;
-[Embed(source = "../../assets/tilesheets/ground_128.png")] private static var ground_12819:Class;
 [Embed(source = "../../assets/tilesheets/water.png")] private static var water19:Class;
-[Embed(source = "../../assets/tilesheets/water_128.png")] private static var water_12819:Class;
 
 public static function GetTextAsset(filename:String):String{
 if(filename == "levels/1/Level_1.xml") { return new Level_16; }
@@ -127,9 +125,7 @@ if(filename == "objects/trapdoor.png") { return trapdoor18; }
 if(filename == "tilesheets/door.png") { return door19; }
 if(filename == "tilesheets/gates.png") { return gates19; }
 if(filename == "tilesheets/ground.png") { return ground19; }
-if(filename == "tilesheets/ground_128.png") { return ground_12819; }
 if(filename == "tilesheets/water.png") { return water19; }
-if(filename == "tilesheets/water_128.png") { return water_12819; }
 
 return background2;
 }
