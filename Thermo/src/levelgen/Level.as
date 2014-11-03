@@ -44,15 +44,15 @@ package levelgen {
 		 */
 		private static var LEVEL_MAP:Array = new Array(
 			"jump_tutorial",
-			"1",
-			"2",
-			"3",
-			"4",
-			"5",
-			"6",
-			"7",
-			"8",
-			"9",
+			"1", // Heat tutorial
+			"2", // Freeze tutorial
+			// "3", // Buggy Easy
+			"4", // Flash heat tutorial
+			"5", // Questionable Flash freeze tutorial
+			"6", // Easy
+			"7", // Medium
+			"8", // Medium
+			// "9", // Buggy moving platforms
 			"medium_00"
 		);
 		
