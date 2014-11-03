@@ -114,6 +114,12 @@ package levelgen {
 				var numSprites:int = xmlLayer[layerNum].sprite.length();
 				var xmlSprite:XMLList = xmlLayer[layerNum].sprite;
 				
+				//for iterating over properties (later)
+				var numProps:int;
+				var xmlProp:XMLList;
+				var propNum:int;
+				var proptype:String;
+				
 				//iterate over all maps
 				for (var mapNum:int = 0; mapNum < numMaps; mapNum++)
 				{
@@ -194,11 +200,11 @@ package levelgen {
 						sprite.frame = 2;
 						var gravity:Boolean = false;
 						
-						var numProps:int = xmlSprite[spriteNum].prop.length();
-						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
-						for (var propNum:int = 0; propNum < numProps; propNum++)
+						numProps = xmlSprite[spriteNum].prop.length();
+						xmlProp = xmlSprite[spriteNum].prop;
+						for (propNum = 0; propNum < numProps; propNum++)
 						{
-							var proptype:String = xmlProp[propNum].@name;
+							proptype = xmlProp[propNum].@name;
 							switch(proptype)
 							{
 							case "gravity":
@@ -229,11 +235,11 @@ package levelgen {
 						var endPos:int = sprite.y + 96;
 						var direction:int = 4;
 						
-						var numProps:int = xmlSprite[spriteNum].prop.length();
-						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
-						for (var propNum:int = 0; propNum < numProps; propNum++)
+						numProps = xmlSprite[spriteNum].prop.length();
+						xmlProp = xmlSprite[spriteNum].prop;
+						for (propNum = 0; propNum < numProps; propNum++)
 						{
-							var proptype:String = xmlProp[propNum].@name;
+							proptype = xmlProp[propNum].@name;
 							switch(proptype)
 							{
 							case "startPos":
