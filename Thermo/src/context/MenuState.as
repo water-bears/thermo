@@ -14,7 +14,7 @@ package context {
 		
 		public var bubbles:BubbleBackground;
 		private var ui:MenuUI;
-		public var logger:Logging = new Logging(700, 2, true);
+		public var logger:Logging = new Logging(700, 2, false);
 		
 		override public function create():void {
 			logger.recordPageLoad();

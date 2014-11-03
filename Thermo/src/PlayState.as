@@ -22,6 +22,7 @@ package {
 		2 = retrieved a key
 		*/
 		public var logger:Logging;
+		private var startTime:int;
 		
 		// This is for checking when we JUST entered the water
 		public var justEntered:Boolean = false;
@@ -182,6 +183,8 @@ package {
 			
 			
 			this.add(iceGroup);
+			startTime = getTimer();
+
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
@@ -212,7 +215,7 @@ package {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ")");
+					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ") ~ time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -314,7 +317,7 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, " ~ key retreival ~ time = " + getTimer().toString());
 		}
 		
 		/** Win function **/
