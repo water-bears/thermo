@@ -43,6 +43,7 @@ package levelgen {
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
 		private static var LEVEL_MAP:Array = new Array(
+			"jump_tutorial",
 			"1",
 			"2",
 			"3",
