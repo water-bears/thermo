@@ -97,6 +97,7 @@ package {
 			*/
 			
 			
+			
 			//load the level
 			if (level == null) {
 				level = new Level(1);
@@ -222,14 +223,15 @@ package {
 			
 			if (player.x < 0) {
 				player.setX(0);
-			} else if (player.x > FlxG.width) {
-				player.setX(FlxG.width);
+			} else if (player.x > Thermo.WIDTH-player.width) {
+				player.setX(Thermo.WIDTH-player.width);
 			}
 			
 			if (player.y <= 0 && !player.superBubble && player.bubble) {
 				player.popBubble();
 			} else if (player.y < 0) {
 				player.setY(0);
+				player.velocity.y = 0;
 			}
 			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
