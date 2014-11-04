@@ -154,15 +154,14 @@ package levelgen {
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 					
-					sprite.angle = xmlSprite[spriteNum].@angle;
-					sprite.setOriginToCorner();
-					sprite.scale.x = xmlSprite[spriteNum].@xScale;
-					sprite.scale.y = xmlSprite[spriteNum].@yScale;
-					sprite.scrollFactor.x = xmlLayer[layerNum].@xScroll;
-					sprite.scrollFactor.y = xmlLayer[layerNum].@yScroll;
-					
 					var asset:Class = AS3Embed.GetArtAsset(xmlSpriteClass.@file);
 					sprite.loadGraphic(asset, true, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
+					
+					sprite.setOriginToCorner();
+					sprite.x = xmlSprite[spriteNum].@x;
+					sprite.y = xmlSprite[spriteNum].@y;
+					sprite.scale.x = xmlSprite[spriteNum].@xScale;
+					sprite.scale.y = xmlSprite[spriteNum].@yScale;
 					
 					var spritetype:String = xmlSprite[spriteNum].@name;
 					switch(spritetype)
