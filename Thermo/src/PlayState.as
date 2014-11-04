@@ -213,6 +213,18 @@ package {
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
+			if (player.x < 0) {
+				player.setX(0);
+			} else if (player.x > FlxG.width) {
+				player.setX(FlxG.width);
+			}
+			
+			if (player.y < 0 && !player.superBubble && player.bubble) {
+				player.popBubble;
+			} else if (player.y < 0) {
+				player.setY(0);
+			}
+			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
 				if(justEntered == false) {
