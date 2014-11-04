@@ -89,9 +89,10 @@ package {
 			// Initialize bubbles
 			//bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
 			//bubbles.Register(this);
-			
+			/*
 			FlxG.debug = true;
 			FlxG.visualDebug = true;
+			*/
 			
 			
 			//load the level
