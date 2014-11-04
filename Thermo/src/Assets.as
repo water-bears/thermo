@@ -54,7 +54,7 @@ package {
 		public static var trapdoorSpriteX:int = 20;
 		public static var trapdoorSpriteY:int = 10;
 		
-		[Embed(source = "../assets/objects/moving_platform.png")]
+		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
 		
