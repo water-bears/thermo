@@ -79,7 +79,6 @@ package {
 		}
 		
 		override public function create():void {
-			//logger.recordLevelStart(level.levelNum);
 			// Make the background
 			if (background == null)
 				setBackground(0);
@@ -218,7 +217,7 @@ package {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "version 3 # (" + player.x +  ", " + player.y + ") + # # time = " + (getTimer() - startTime).toString());
+					logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -311,6 +310,8 @@ package {
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+				logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
+				logger.recordLevelEnd();
 				win(exitGroup, player);
 			}
 			
@@ -328,13 +329,11 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, "version 3 # # key retreival # time = " + getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, "version 1 $ $ key retreival $ time = " + getTimer().toString());
 		}
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
-			logger.recordEvent(level.levelNum, 3, "version 3 # # level completion # time = " + getTimer().toString());
-			logger.recordLevelEnd();
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		

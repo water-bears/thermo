@@ -188,31 +188,31 @@
 				case 0:
 
 					if(curPow != 0){
-						logger.recordEvent(level.levelNum, 1, "version 3 # (" + this.x +  ", " + this.y + "), # " + "neutralGate # time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + "), $ " + "neutralGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 0;
 					break;
 				case 1:
 
 					if(curPow != 1){
-						logger.recordEvent(level.levelNum, 1, "version 3 # (" + this.x +  ", " + this.y + ") # " + "freezeGate # time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "freezeGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 1;
 					break;
 				case 2:
 
 					if(curPow != 2){
-						logger.recordEvent(level.levelNum, 1, "version 3 # (" + this.x +  ", " + this.y + ") # " + "heatGate # time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "heatGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 2;
 					break;
 				case 3:
 					if (this.curPow == 1) {
 						this.curPow = 3;
-						logger.recordEvent(level.levelNum, 1, "version 3 # (" + this.x +  ", " + this.y + ") # " + "flashFreeze # time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "flashFreeze $ time= " + (getTimer() - startTime).toString());
 					}
 					else if (this.curPow == 2) {
-						logger.recordEvent(level.levelNum, 1, "version 3 # (" + this.x +  ", " + this.y + ") # " + "flashHeat # time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "flashHeat $ time= " + (getTimer() - startTime).toString());
 						this.curPow = 4;
 					}
 					break;
