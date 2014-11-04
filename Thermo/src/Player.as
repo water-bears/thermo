@@ -46,41 +46,117 @@
 			this.logger = logger;
 			this.level = level;
 			
-			this.addAnimation("stand0", [0]);
-			this.addAnimation("walk0", [0, 1, 2], Assets.FRAME_RATE, true);
-			this.addAnimation("jump0", [3]);
-			this.addAnimation("bubble0", [5]);
+			const f:uint = 96 * 2;
+			const h:uint = 96;
+			const n:uint = 96 * 3;
 			
-			this.addAnimation("stand1", [14]);
-			this.addAnimation("walk1", [14, 15, 16], Assets.FRAME_RATE, true);
-			this.addAnimation("jump1", [17]);
-			this.addAnimation("bubble1", [19]);
+			// Normal
+			this.addAnimation("stand0", [
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+				13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("walk0", [
+				26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+				39, 40, 41, 42, 43
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("jump0", [
+				44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+				57, 58, 59, 60, 61, 62, 63
+			], Assets.FRAME_RATE, false);
+			this.addAnimation("bubble0", [
+				64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76,
+				77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
+				90, 91, 92, 93, 94, 95
+			], Assets.FRAME_RATE, true);
 			
-			this.addAnimation("stand2", [7]);
-			this.addAnimation("walk2", [7, 8, 9], Assets.FRAME_RATE, true);
-			this.addAnimation("jump2", [10]);
-			this.addAnimation("bubble2", [12]);
+			// Freeze
+			this.addAnimation("stand1", [
+				f+0, f+1, f+2, f+3, f+4, f+5, f+6, f+7, f+8, f+9, f+10, f+11, f+12,
+				f+13, f+14, f+15, f+16, f+17, f+18, f+19, f+20, f+21, f+22, f+23, f+24, f+25
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("walk1", [
+				f+26, f+27, f+28, f+29, f+30, f+31, f+32, f+33, f+34, f+35, f+36, f+37, f+38,
+				f+39, f+40, f+41, f+42, f+43
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("jump1", [
+				f+44, f+45, f+46, f+47, f+48, f+49, f+50, f+51, f+52, f+53, f+54, f+55, f+56,
+				f+57, f+58, f+59, f+60, f+61, f+62, f+63
+			], Assets.FRAME_RATE, false);
+			this.addAnimation("bubble1", [
+				f+64, f+65, f+66, f+67, f+68, f+69, f+70, f+71, f+72, f+73, f+74, f+75, f+76,
+				f+77, f+78, f+79, f+80, f+81, f+82, f+83, f+84, f+85, f+86, f+87, f+88, f+89,
+				f+90, f+91, f+92, f+93, f+94, f+95
+			], Assets.FRAME_RATE, true);
 			
-			this.addAnimation("stand3", [14, 0], Assets.FRAME_RATE, true);
-			this.addAnimation("walk3", [14, 1, 16, 0, 15, 2], Assets.FRAME_RATE, true);
-			this.addAnimation("jump3", [17, 3], Assets.FRAME_RATE, true);
-			this.addAnimation("bubble3", [19, 5], Assets.FRAME_RATE, true);
+			// Heat
+			this.addAnimation("stand2", [
+				h+0, h+1, h+2, h+3, h+4, h+5, h+6, h+7, h+8, h+9, h+10, h+11, h+12,
+				h+13, h+14, h+15, h+16, h+17, h+18, h+19, h+20, h+21, h+22, h+23, h+24, h+25
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("walk2", [
+				h+26, h+27, h+28, h+29, h+30, h+31, h+32, h+33, h+34, h+35, h+36, h+37, h+38,
+				h+39, h+40, h+41, h+42, h+43
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("jump2", [
+				h+44, h+45, h+46, h+47, h+48, h+49, h+50, h+51, h+52, h+53, h+54, h+55, h+56,
+				h+57, h+58, h+59, h+60, h+61, h+62, h+63
+			], Assets.FRAME_RATE, false);
+			this.addAnimation("bubble2", [
+				h+64, h+65, h+66, h+67, h+68, h+69, h+70, h+71, h+72, h+73, h+74, h+75, h+76,
+				h+77, h+78, h+79, h+80, h+81, h+82, h+83, h+84, h+85, h+86, h+87, h+88, h+89,
+				h+90, h+91, h+92, h+93, h+94, h+95
+			], Assets.FRAME_RATE, true);
 			
-			this.addAnimation("stand4", [7, 0], Assets.FRAME_RATE, true);
-			this.addAnimation("walk4", [7, 1, 9, 0, 8, 2], Assets.FRAME_RATE, true);
-			this.addAnimation("jump4", [10, 3], Assets.FRAME_RATE, true);
-			this.addAnimation("bubble4", [12, 5], Assets.FRAME_RATE, true);
+			// Flash Freeze
+			this.addAnimation("stand3", [
+				f+0, f+1, f+2, f+3, n+4, n+5, n+6, n+7, f+8, f+9, f+10, f+11, n+12,
+				n+13, n+14, n+15, f+16, f+17, f+18, f+19, n+20, n+21, n+22, n+23, n+24, f+25
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("walk3", [
+				f+26, f+27, f+28, f+29, n+30, n+31, n+32, n+33, f+34, f+35, f+36, f+37, n+38,
+				n+39, n+40, n+41, n+42, f+43
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("jump3", [
+				f+44, f+45, f+46, f+47, n+48, n+49, n+50, n+51, f+52, f+53, f+54, f+55, n+56,
+				n+57, n+58, n+59, n+60, n+61, f+62, f+63
+			], Assets.FRAME_RATE, false);
+			this.addAnimation("bubble3", [
+				f+64, f+65, f+66, f+67, n+68, n+69, n+70, n+71, f+72, f+73, f+74, f+75, n+76,
+				n+77, n+78, n+79, f+80, f+81, f+82, f+83, n+84, n+85, n+86, n+87, f+88, f+89,
+				f+90, f+91, n+92, n+93, n+94, n+95
+			], Assets.FRAME_RATE, true);
 			
-			this.facing = FlxObject.RIGHT;
+			// Flash Heat
+			this.addAnimation("stand4", [
+				h+0, h+1, h+2, h+3, n+4, n+5, n+6, n+7, h+8, h+9, h+10, h+11, n+12,
+				n+13, n+14, n+15, h+16, h+17, h+18, h+19, n+20, n+21, n+22, n+23, n+24, h+25
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("walk4", [
+				h+26, h+27, h+28, h+29, n+30, n+31, n+32, n+33, h+34, h+35, h+36, h+37, n+38,
+				n+39, n+40, n+41, n+42, h+43
+			], Assets.FRAME_RATE, true);
+			this.addAnimation("jump4", [
+				h+44, h+45, h+46, h+47, n+48, n+49, n+50, n+51, h+52, h+53, h+54, h+55, n+56,
+				n+57, n+58, n+59, n+60, n+61, h+62, h+63
+			], Assets.FRAME_RATE, false);
+			this.addAnimation("bubble4", [
+				h+64, h+65, h+66, h+67, n+68, n+69, n+70, n+71, h+72, h+73, h+74, h+75, n+76,
+				n+77, n+78, n+79, h+80, h+81, h+82, h+83, n+84, n+85, n+86, n+87, h+88, h+89,
+				h+90, h+91, n+92, n+93, n+94, n+95
+			], Assets.FRAME_RATE, true);
+			
+			this.facing = FlxObject.LEFT;
 			this.loadGraphic(Assets.playerSprite, true, true, Assets.playerSpriteX, Assets.playerSpriteY);
 			
-			setOriginToCorner();
-			scale.x = 16 / Assets.playerSpriteX;
-			scale.y = 20 / Assets.playerSpriteY;
-			width = 16;
-			height = 20;
+			//setOriginToCorner();
+			//scale.x = 16 / Assets.playerSpriteX;
+			//scale.y = 20 / Assets.playerSpriteY;
+			this.offset.x = 8;
+			this.offset.y = 15;
+			width = 24;
+			height = 28;
 			this.x = x;
-			this.y = y;
+			this.y = y - 28;
 			
 			this.play("stand" + curPow);
 			
@@ -131,12 +207,12 @@
 			if (!bubble && !floatUp) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;
-					this.facing = FlxObject.LEFT;
+					this.facing = FlxObject.RIGHT;
 				}
 			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
 					velocity.x = maxVelocity.x;
-					this.facing = FlxObject.RIGHT;
+					this.facing = FlxObject.LEFT;
 				}
 			
 				if ((FlxG.keys.W || FlxG.keys.UP) && isTouching(FlxObject.FLOOR))
