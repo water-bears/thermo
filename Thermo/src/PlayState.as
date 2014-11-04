@@ -15,6 +15,8 @@ package {
 	
 	import uilayer.LevelUI;
 	
+	import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
+	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
@@ -184,6 +186,18 @@ package {
 			add(spikeTiles); */
 			
 			this.add(iceGroup);
+			
+			/*var emitter:ParticleEffects = new ParticleEffects();
+
+			var renderer:DisplayObjectRenderer = new DisplayObjectRenderer();
+			renderer.addEmitter(emitter);
+			
+			var rend:FlxSprite = new FlxSprite();
+			rend.framePixels.draw(renderer);
+			emitter.start();
+			emitter.runAhead(10);
+			FlxG.stage.addChild(renderer);*/
+			
 			startTime = getTimer();
 			
 			// Create and add the UI layer
@@ -318,6 +332,7 @@ package {
 			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup) && !player.bubble) {
 				ui.BeginExitSequence(reset);
 			}
+			
 			if (FlxG.keys.TAB) {
 				ui.BeginExitSequence(levelSelect);
 			}
