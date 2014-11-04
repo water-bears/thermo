@@ -41,10 +41,17 @@ package {
 		/* Other stuff */
 		[Embed(source = "../assets/objects/spike.png")]
 		public static var spikeSprite:Class;
+		
 		[Embed(source = "../assets/objects/button.png")]
 		public static var buttonSprite:Class;
+		public static var buttonSpriteX:int = 32;
+		public static var buttonSpriteY:int = 32;
+		
 		[Embed(source = "../assets/objects/trapdoor.png")]
 		public static var trapdoorSprite:Class;
+		public static var trapdoorSpriteX:int = 32;
+		public static var trapdoorSpriteY:int = 32;
+		
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
