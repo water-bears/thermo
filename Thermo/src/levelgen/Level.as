@@ -52,7 +52,6 @@ package levelgen {
 			"tutorial_flashheat",
 			"tutorial_flashfreeze",
 			"medium_03", // tutorial_trapdoor
-			// v here in touchups v
 			"medium_01",
 			"hard_00"
 		);
@@ -68,10 +67,7 @@ package levelgen {
 		 */
 		private static function levelName(levelNum:uint):String
 		{
-			if (levelNum < 1 || levelNum > NUM_LEVELS)
-				return levelNum.toString();
-			else
-				return LEVEL_MAP[levelNum - 1];
+			return LEVEL_MAP[(levelNum - 1) % NUM_LEVELS];
 		}
 		
 		public function Level(levelNum:uint) 
