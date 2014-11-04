@@ -111,7 +111,7 @@ package {
 			
 			//add the water
 			waterTiles = level.water;
-			add(waterTiles);
+			// adding the water after player to make it feel like player is really in the wate
 			
 			//add the gates
 			freezeGroup = level.freezeGates;
@@ -168,6 +168,7 @@ package {
 			//pb = new PixelBubbleSystem(20, player);
 			//add(pb);
 			add(player);
+			add(waterTiles);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
 			
@@ -345,12 +346,12 @@ package {
 		}
 		
 		public function goToNextLevel() : void {
-			FlxG.switchState(new TransitionState(level.levelNum + 1, logger));
+			FlxG.switchState(new TransitionState(level.levelNum + 1, logger, level.levelNum));
 		}
 		
 		/** Reset function **/
 		public function reset():void {
-			FlxG.switchState(new TransitionState(level.levelNum, logger));
+			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}
 		
 		/** Level select function **/

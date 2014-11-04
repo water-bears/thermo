@@ -77,7 +77,7 @@ package context {
 			bubbles.Update();
 			if (FlxG.keys.ENTER) {
 				var level:int = menu.GetSelectedId() + 1;
-				FlxG.switchState(new TransitionState(level, logger));
+				FlxG.switchState(new TransitionState(level, logger, level));
 			}
 		}
 	}
