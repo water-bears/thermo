@@ -24,7 +24,6 @@ package {
 			scale = sprite.scale;
 			width = width * scale.x;
 			height = height * scale.y;
-			this.setOriginToCorner();
 		}
 		
 	}
