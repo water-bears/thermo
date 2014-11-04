@@ -298,18 +298,19 @@ package {
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+				player.visible = false;
 				logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
 				logger.recordLevelEnd();
 				win(exitGroup, player);
 			}
 			
 			//Check for player lose conditions
-			// If we press a button like um TAB we can go to level select
 			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
 				ui.BeginExitSequence(reset);
 				player.visible = false;
 			}
 			
+			//Tab for level select
 			if (FlxG.keys.TAB) {
 				ui.BeginExitSequence(levelSelect);
 			}
