@@ -15,11 +15,17 @@ package {
 		public static var playerSpriteX:int = 35;
 		public static var playerSpriteY:int = 42;
 		
-		/* Door and key sprite sheet */
+		/* Door closed */
 		[Embed(source = "../assets/tilesheets/door.png")]
 		public static var doorSprite:Class;
-		public static var doorSpriteX:int = 32;
-		public static var doorSpriteY:int = 32;
+		public static var doorSpriteX:int = 128;
+		public static var doorSpriteY:int = 128;
+		
+		/* Door open */
+		[Embed(source = "../assets/tilesheets/door1.png")]
+		public static var door1Sprite:Class;
+		public static var door1SpriteX:int = 128;
+		public static var door1SpriteY:int = 128;
 		
 		/* Gate sprite sheet */
 		[Embed(source = "../assets/tilesheets/gates.png")]
