@@ -18,9 +18,9 @@ package {
 			this.x = x;
 			this.y = y;
 			
-			maxVelocity.y = 80;
+			maxVelocity.y = 500;
 			maxVelocity.x = 0;
-			acceleration.y = 600;
+			acceleration.y = 1000;
 			this.gravity = gravity;
 			this.solid = true;
 		}
