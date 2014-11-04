@@ -241,7 +241,7 @@
 			}
 
 			// Kills the ice platforms 
-			if (getTimer() - this.t1 >= 300 && !isTouching(FLOOR)) {
+			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
 				this.ice[3].kill();
 			}
 
@@ -309,7 +309,7 @@
 				case 1:
 					if (!isTouching(FLOOR)) {
 						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
-						this.maxVelocity.y = 0;
+						this.maxVelocity.y = -10;
 						playstate.iceGroup.add(this.ice[3]);
 						
 						t1 = getTimer();
