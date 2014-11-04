@@ -92,12 +92,15 @@ package {
 		private static var b_15:Class;
 		[Embed(source = "../assets/backgrounds/sunsetcloud.jpg")]
 		private static var b_16:Class;
+		[Embed(source = "../assets/backgrounds/bkgd1.png")]
+		private static var b_17:Class;
 		
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
-		public static var b_list:Array = [b_1, b_9, b_3, b_16, b_6, b_15, b_14, b_9, b_10, b_11, b_12, b_13, b_14, b_15, b_16];
+		public static var b_list:Array = [b_1, b_9, b_3, b_16, b_6, b_15, b_14, b_17,
+		b_10, b_11, b_12, b_13, b_14, b_15, b_16];
 		
 		/* Sounds */
 	}
