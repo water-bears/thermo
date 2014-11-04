@@ -16,12 +16,14 @@ package {
 			loadGraphic(Assets.doorSprite, false, false, Assets.doorSpriteX, Assets.doorSpriteY);
 			
 			//setOriginToCorner();
-			x = sprite.x - width / 2;
-			y = sprite.y - height / 2;
+			x = sprite.x;
+			y = sprite.y - 4;
 			scale.x = 20 / Assets.doorSpriteX;
 			scale.y = 20 / Assets.doorSpriteY;
-			width = 20;
-			height = 20;
+			offset.x = 52;
+			offset.y = 52;
+			width = 25;
+			height = 25;
 			
 			//play("closed");
 		}
@@ -31,7 +33,9 @@ package {
 		}
 		
 		public function open():void {
-			this.loadGraphic(Assets.door1Sprite, false, false, Assets.door1SpriteX, Assets.door1SpriteY)
+			this.loadGraphic(Assets.door1Sprite, false, false, Assets.door1SpriteX, Assets.door1SpriteY);
+			width = 25;
+			height = 25;
 		}
 	}
 }
