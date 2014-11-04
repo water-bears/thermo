@@ -372,7 +372,7 @@ package {
 				background = new FlxSprite(0, 0);
 			}
 			
-			background.loadGraphic(Assets.b_list[level]);
+			background.loadGraphic(Assets.b_list[level - 1]);
 			
 			// Scale and reposition background
 			background.x -= background.width / 2;
