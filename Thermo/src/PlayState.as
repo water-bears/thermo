@@ -72,7 +72,7 @@ package {
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
-		private var pb:PixelBubbleSystem;
+		//private var pb:PixelBubbleSystem;
 		
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
@@ -165,8 +165,8 @@ package {
 			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
-			pb = new PixelBubbleSystem(20, player);
-			add(pb);
+			//pb = new PixelBubbleSystem(20, player);
+			//add(pb);
 			add(player);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
