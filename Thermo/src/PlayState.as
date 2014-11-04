@@ -327,9 +327,14 @@ package {
 				win(exitGroup, player);
 			}
 			
+			//pop bubble if you hit spikes
+			if (player.bubble && FlxG.overlap(player, spikeGroup)) {
+				player.popBubble();
+			}
+			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
+			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup) && !player.bubble) {
 				ui.BeginExitSequence(reset);
 			}
 			if (FlxG.keys.TAB) {
