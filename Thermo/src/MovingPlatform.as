@@ -16,11 +16,15 @@ package {
 		private var direction:int;
 		
 		public function MovingPlatform(sprite:FlxSprite, startPos:int, endPos:int, direction:int):void {
-			super(sprite.x, sprite.y);
+			super();
 			loadGraphic(Assets.movingSprite);
-			angle = sprite.angle;
+			
+			setOriginToCorner();
+			this.x = sprite.x;
+			this.y = sprite.y;
 			scale = sprite.scale;
-			// load sprite image
+			width = width * scale.x;
+			height = height * scale.y;
 			
 			this.startPos = startPos;
 			this.endPos = endPos;

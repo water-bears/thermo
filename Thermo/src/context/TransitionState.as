@@ -18,9 +18,8 @@ package context
 		public function TransitionState(level:uint,logger:Logging)
 		{
 			this.level = level;
-			if(logger != null){
-				this.logger = logger;
-			}
+			this.logger = logger;
+			
 		}
 		
 		override public function update():void
@@ -30,9 +29,7 @@ package context
 				var p:PlayState = new PlayState(logger);
 				p.setLevel(new Level(level));
 				p.setBackground(level);
-				if(logger != null){
-					logger.recordLevelStart(level);
-				}
+				logger.recordLevelStart(level);
 				FlxG.switchState(p);
 			}
 			else

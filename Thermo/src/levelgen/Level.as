@@ -4,8 +4,8 @@ package levelgen {
 
 	public class Level 
 	{
-		[Embed(source = "../../assets/tilesheets/ground.png")] private static var groundAsset:Class;
-		[Embed(source = "../../assets/tilesheets/water.png")] private static var waterAsset:Class;
+		[Embed(source = "../../assets/tilesheets/ground20.png")] private static var groundAsset:Class;
+		[Embed(source = "../../assets/tilesheets/water20.png")] private static var waterAsset:Class;
 		[Embed(source = "../../assets/tilesheets/door.png")] private static var doorAsset:Class;
 		[Embed(source = "../../assets/tilesheets/gates.png")] private static var gatesAsset:Class;		
 		
@@ -43,17 +43,15 @@ package levelgen {
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
 		private static var LEVEL_MAP:Array = new Array(
-			"jump_tutorial",
-			"1", // Heat tutorial
-			"2", // Freeze tutorial
-			// "3", // Buggy Easy
-			"4", // Flash heat tutorial
-			"5", // Questionable Flash freeze tutorial
-			"6", // Easy
-			"7", // Medium
-			"8", // Medium
-			// "9", // Buggy moving platforms
-			"medium_00"
+			"tutorial_jump_00",
+			"tutorial_heat",
+			"tutorial_freeze",
+			"easy_00",
+			"tutorial_trapdoor",
+			"tutorial_flashheat",
+			"tutorial_flashfreeze",
+			"tutorial_neutral",
+			"medium_01"
 		);
 		
 		/**
@@ -155,9 +153,9 @@ package levelgen {
 					var xmlSpriteClass:XML = classMap[xmlSprite[spriteNum].@clas]
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
-					sprite.setOriginToCorner();
 					
 					sprite.angle = xmlSprite[spriteNum].@angle;
+					sprite.setOriginToCorner();
 					sprite.scale.x = xmlSprite[spriteNum].@xScale;
 					sprite.scale.y = xmlSprite[spriteNum].@yScale;
 					sprite.scrollFactor.x = xmlLayer[layerNum].@xScroll;
@@ -229,6 +227,11 @@ package levelgen {
 						var spike:Spike = new Spike(sprite);
 						spikes.add(spike);
 						break;
+						
+					case "Upspikes":
+						var spike:Spike = new Spike(sprite, true);
+						spikes.add(spike);
+						break;
 					
 					case "MovingPlatform":
 						var startPos:int = sprite.y;
@@ -262,11 +265,11 @@ package levelgen {
 						break;				
 						
 					case "Button":
-						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, trapdoor);
+						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, null);
 						break;
 						
 					case "Trapdoor":
-						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);						
 						break;
 							
 					default:
@@ -280,6 +283,9 @@ package levelgen {
 						}					
 					}
 				}
+				
+				if(button != null)
+					button.trapdoor = trapdoor;
 			}
 			
 			//done parsing the file!

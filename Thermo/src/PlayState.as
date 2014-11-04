@@ -15,6 +15,8 @@ package {
 	
 	import uilayer.LevelUI;
 	
+	import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
+	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
@@ -79,15 +81,18 @@ package {
 		}
 		
 		override public function create():void {
-			//logger.recordLevelStart(level.levelNum);
 			// Make the background
 			if (background == null)
 				setBackground(0);
 			add(background);
 			
 			// Initialize bubbles
-			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
-			bubbles.Register(this);
+			//bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			//bubbles.Register(this);
+			/*
+			FlxG.debug = true;
+			FlxG.visualDebug = true;
+			*/
 			
 			//load the level
 			if (level == null) {
@@ -100,18 +105,6 @@ package {
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
-			
-			/*
-			FlxG.camera.bounds = groundTiles.getBounds();
-			//FlxG.camera.x += Thermo.WIDTH - groundTiles.getBounds().width
-			//FlxG.camera.y += Thermo.HEIGHT - groundTiles.getBounds().height
-			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
-			FlxG.camera.zoom = zoom;
-			*/
-			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
-			FlxG.camera.zoom = zoom;
-			FlxG.camera.x += (Thermo.WIDTH - groundTiles.getBounds().width) / 2;
-			FlxG.camera.y += (Thermo.HEIGHT - groundTiles.getBounds().height) / 2;
 			
 			//add the water
 			waterTiles = level.water;
@@ -182,10 +175,20 @@ package {
 			/* spiketiles = level.layerSpiketiles;
 			add(spikeTiles); */
 			
-			
 			this.add(iceGroup);
-			startTime = getTimer();
+			
+			/*var emitter:ParticleEffects = new ParticleEffects();
 
+			var renderer:DisplayObjectRenderer = new DisplayObjectRenderer();
+			renderer.addEmitter(emitter);
+			
+			var rend:FlxSprite = new FlxSprite();
+			rend.framePixels.draw(renderer);
+			emitter.start();
+			emitter.runAhead(10);
+			FlxG.stage.addChild(renderer);*/
+			
+			startTime = getTimer();
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
@@ -196,7 +199,7 @@ package {
 		override public function update():void {
 			super.update();
 			
-			bubbles.Update();
+			//bubbles.Update();
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
@@ -212,11 +215,23 @@ package {
 			// Uncomment this when we have this tileMap set up
 			//FlxG.collide(movingPlatTiles, player);
 			
+			if (player.x < 0) {
+				player.setX(0);
+			} else if (player.x > FlxG.width) {
+				player.setX(FlxG.width);
+			}
+			
+			if (player.y <= 0 && !player.superBubble && player.bubble) {
+				player.popBubble();
+			} else if (player.y < 0) {
+				player.setY(0);
+			}
+			
 			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "version 3 # (" + player.x +  ", " + player.y + ") + # # time = " + (getTimer() - startTime).toString());
+					logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -234,62 +249,50 @@ package {
 			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			//if (FlxG.overlap(freezeGroup, player)) {
-				for (i = 0; i < freezeGroup.members.length; i++) {
-					if (FlxG.overlap(freezeGroup.members[i], player)) {
-						(freezeGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FREEZE);
-					} else {
-						(freezeGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			for (i = 0; i < freezeGroup.members.length; i++) {
+				if (FlxG.overlap(freezeGroup.members[i], player)) {
+					(freezeGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.FREEZE);
+				} else {
+					(freezeGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-
+			}
 			
-			//if (FlxG.overlap(heatGroup, player)) {
-				for (i = 0; i < heatGroup.members.length; i++) {
-					if (FlxG.overlap(heatGroup.members[i], player)) {
-						(heatGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.HEAT);
-					} else {
-						(heatGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			for (i = 0; i < heatGroup.members.length; i++) {
+				if (FlxG.overlap(heatGroup.members[i], player)) {
+					(heatGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.HEAT);
+				} else {
+					(heatGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
-			//if (FlxG.overlap(flashGroup, player)) {
-				for (i = 0; i < flashGroup.members.length; i++) {
-					if (FlxG.overlap(flashGroup.members[i], player)) {
-						(flashGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FLASH);
-					} else {
-						(flashGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			}
+							
+			for (i = 0; i < flashGroup.members.length; i++) {
+				if (FlxG.overlap(flashGroup.members[i], player)) {
+					(flashGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.FLASH);
+				} else {
+					(flashGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
-			//if (FlxG.overlap(neutralGroup, player)) {
-				for (i = 0; i < neutralGroup.members.length; i++) {
-					if (FlxG.overlap(neutralGroup.members[i], player)) {
-						(neutralGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.NEUTRAL);
-					} else {
-						(neutralGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			}
+							
+			for (i = 0; i < neutralGroup.members.length; i++) {
+				if (FlxG.overlap(neutralGroup.members[i], player)) {
+					(neutralGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.NEUTRAL);
+				} else {
+					(neutralGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
+			}
+							
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
@@ -298,25 +301,28 @@ package {
 				}
 			}
 			
-			/*
-			if (FlxG.overlap(neutralGroup, player)){
-				player.updatePower(0);
-			}*/
-			
 			if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
 				ui.FastForward();
 			}
 			
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+				logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
+				logger.recordLevelEnd();
 				win(exitGroup, player);
+			}
+			
+			//pop bubble if you hit spikes
+			if (player.bubble && FlxG.overlap(player, spikeGroup)) {
+				player.popBubble();
 			}
 			
 			//Check for player lose conditions
 			// If we press a button like um TAB we can go to level select
-			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
+			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup) && !player.bubble) {
 				ui.BeginExitSequence(reset);
 			}
+			
 			if (FlxG.keys.TAB) {
 				ui.BeginExitSequence(levelSelect);
 			}
@@ -326,13 +332,11 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, "version 3 # # key retreival # time = " + getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, "version 1 $ $ key retreival $ time = " + getTimer().toString());
 		}
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
-			logger.recordEvent(level.levelNum, 3, "version 3 # # level completion # time = " + getTimer().toString());
-			logger.recordLevelEnd();
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		
@@ -358,7 +362,7 @@ package {
 				background = new FlxSprite(0, 0);
 			}
 			
-			background.loadGraphic(Assets.b_list[level]);
+			background.loadGraphic(Assets.b_list[level - 1]);
 			
 			// Scale and reposition background
 			background.x -= background.width / 2;

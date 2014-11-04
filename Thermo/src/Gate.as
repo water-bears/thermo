@@ -21,13 +21,16 @@ package {
 		private var triggered:Boolean = false;
 		
 		public function Gate(sprite:FlxSprite, type:int) {
-			super(sprite.x, sprite.y);
+			super();
+			loadGraphic(Assets.gateSprite, true, false, Assets.gateSpriteX, Assets.gateSpriteY);
 			
-			angle = sprite.angle;
-			scale.x = sprite.scale.x;
-			scale.y = sprite.scale.y
-			scrollFactor.x = sprite.scrollFactor.x;
-			scrollFactor.y = sprite.scrollFactor.y;
+			setOriginToCorner();
+			scale.x = 10 / Assets.gateSpriteX;
+			scale.y = 40 / Assets.gateSpriteY;
+			width = 10;
+			height = 40;
+			x = sprite.x;
+			y = sprite.y;
 		
 			this.type = type;
 			
@@ -38,8 +41,6 @@ package {
 				addAnimation("normal", [type]);
 				addAnimation("trigger", [type+SHEET_WIDTH, type, SHEET_WIDTH, type], Assets.FRAME_RATE, false);
 			}
-			
-			loadGraphic(Assets.gateSprite, true, false, 16, 64);
 			
 			play("normal");
 		}
