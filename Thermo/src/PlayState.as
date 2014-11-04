@@ -90,6 +90,9 @@ package {
 			//bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
 			//bubbles.Register(this);
 			
+			FlxG.debug = true;
+			FlxG.visualDebug = true;
+			
 			//load the level
 			if (level == null) {
 				level = new Level(1);
@@ -101,20 +104,6 @@ package {
 			//add the ground
 			groundTiles = level.ground;
 			add(groundTiles);
-			
-			/*
-			FlxG.camera.bounds = groundTiles.getBounds();
-			//FlxG.camera.x += Thermo.WIDTH - groundTiles.getBounds().width
-			//FlxG.camera.y += Thermo.HEIGHT - groundTiles.getBounds().height
-			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
-			FlxG.camera.zoom = zoom;
-			*/
-			/*
-			var zoom:Number = Math.min(Thermo.HEIGHT / groundTiles.getBounds().height, Thermo.WIDTH / groundTiles.getBounds().height);
-			FlxG.camera.zoom = zoom;
-			FlxG.camera.x += (Thermo.WIDTH - groundTiles.getBounds().width) / 2;
-			FlxG.camera.y += (Thermo.HEIGHT - groundTiles.getBounds().height) / 2;
-			*/
 			
 			//add the water
 			waterTiles = level.water;

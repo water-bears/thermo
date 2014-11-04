@@ -41,6 +41,8 @@ package {
 		/* Other stuff */
 		[Embed(source = "../assets/objects/spike.png")]
 		public static var spikeSprite:Class;
+		[Embed(source = "../assets/objects/upspike.png")]
+		public static var upspikeSprite:Class;
 		
 		[Embed(source = "../assets/objects/button.png")]
 		public static var buttonSprite:Class;

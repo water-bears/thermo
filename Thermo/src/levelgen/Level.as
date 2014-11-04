@@ -153,9 +153,9 @@ package levelgen {
 					var xmlSpriteClass:XML = classMap[xmlSprite[spriteNum].@clas]
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
-					sprite.setOriginToCorner();
 					
 					sprite.angle = xmlSprite[spriteNum].@angle;
+					sprite.setOriginToCorner();
 					sprite.scale.x = xmlSprite[spriteNum].@xScale;
 					sprite.scale.y = xmlSprite[spriteNum].@yScale;
 					sprite.scrollFactor.x = xmlLayer[layerNum].@xScroll;
@@ -225,6 +225,11 @@ package levelgen {
 						
 					case "Spikes":
 						var spike:Spike = new Spike(sprite);
+						spikes.add(spike);
+						break;
+						
+					case "Upspikes":
+						var spike:Spike = new Spike(sprite, true);
 						spikes.add(spike);
 						break;
 					
