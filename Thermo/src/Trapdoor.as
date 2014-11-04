@@ -6,13 +6,13 @@ package {
 		public function Trapdoor(x:Number, y:Number) {
 			super();
 			
-			this.makeGraphic(Assets.trapdoorSpriteX, Assets.trapdoorSpriteY, FlxG.WHITE);
+			this.loadGraphic(Assets.trapdoorSprite);
 			
 			setOriginToCorner();
 			scale.x = 20 / Assets.trapdoorSpriteX;
-			scale.y = 20 / Assets.trapdoorSpriteY;
+			scale.y = 10 / Assets.trapdoorSpriteY;
 			width = 20;
-			height = 20;
+			height = 10;
 			this.x = x;
 			this.y = y;
 			
