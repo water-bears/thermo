@@ -7,8 +7,16 @@ package {
 		
 		public function Key(x:Number, y:Number, gravity:Boolean = false) {
 			super(x, y);
-			loadGraphic(Assets.exitSprite, false, false, 32, 32)
+			loadGraphic(Assets.exitSprite, false, false, 32, 32);
 			frame = 2;
+			
+			setOriginToCorner();
+			scale.x = 20 / Assets.exitSpriteX;
+			scale.y = 20 / Assets.exitSpriteY;
+			width = 20;
+			height = 20;
+			this.x = x;
+			this.y = y;
 			
 			maxVelocity.y = 80;
 			maxVelocity.x = 0;

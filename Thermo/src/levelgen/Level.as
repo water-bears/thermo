@@ -4,8 +4,8 @@ package levelgen {
 
 	public class Level 
 	{
-		[Embed(source = "../../assets/tilesheets/ground.png")] private static var groundAsset:Class;
-		[Embed(source = "../../assets/tilesheets/water.png")] private static var waterAsset:Class;
+		[Embed(source = "../../assets/tilesheets/ground20.png")] private static var groundAsset:Class;
+		[Embed(source = "../../assets/tilesheets/water20.png")] private static var waterAsset:Class;
 		[Embed(source = "../../assets/tilesheets/door.png")] private static var doorAsset:Class;
 		[Embed(source = "../../assets/tilesheets/gates.png")] private static var gatesAsset:Class;		
 		
@@ -43,17 +43,13 @@ package levelgen {
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
 		private static var LEVEL_MAP:Array = new Array(
-			"jump_tutorial",
-			"1",
-			"2",
-			"3",
-			"4",
-			"5",
-			"6",
-			"7",
-			"8",
-			"9",
-			"medium_00"
+			"tutorial_heat",
+			"tutorial_freeze",
+			"easy_00",
+			"tutorial_flashheat",
+			"tutorial_flashfreeze",
+			"tutorial_neutral",
+			"medium_01"
 		);
 		
 		/**

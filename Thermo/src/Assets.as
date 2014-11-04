@@ -16,12 +16,19 @@ package {
 		/* Door and key sprite sheet */
 		[Embed(source = "../assets/tilesheets/door.png")]
 		public static var doorSprite:Class;
+		public static var doorSpriteX:int = 32;
+		public static var doorSpriteY:int = 32;
 		
 		/* Gate sprite sheet */
 		[Embed(source = "../assets/tilesheets/gates.png")]
 		public static var gateSprite:Class;
+		public static var gateSpriteX:int = 16;
+		public static var gateSpriteY:int = 64;
+		
 		[Embed(source = "../assets/tilesheets/door.png")]
 		public static var exitSprite:Class;
+		public static var exitSpriteX:int = 32;
+		public static var exitSpriteY:int = 32;
 		
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
