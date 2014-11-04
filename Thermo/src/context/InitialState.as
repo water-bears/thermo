@@ -15,6 +15,9 @@ package context {
 		
 		override public function update():void 
 		{
+			// ****** IMPORTANT ******
+			// IF YOU ARE UPLOADING THE GAME TO THE SITE, USE "FALSE" --> LOGGING MODE
+			// IF YOU ARE WORKING ON A NEW THING FOR THE GAME, USE "TRUE" --> DEBUG MODE
 			FlxG.switchState(new MenuState(0, new Logging(700, 1, true)));
 			super.update();
 		}
