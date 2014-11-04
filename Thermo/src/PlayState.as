@@ -334,6 +334,7 @@ package {
 		
 		/** Reset function **/
 		public function reset():void {
+			logger.recordEvent(level.levelNum, 4, "version 1 $ $ reset level $ time =" + (startTime - getTimer()).toString());
 			logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}
