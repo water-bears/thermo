@@ -12,6 +12,10 @@ bin-release/
 
 Flixel/
 
+Flint_4_0_1_src/
+
+Flint_4_0_1_swc/
+
 *.old
 *.bak
 *.DS_Store
