@@ -47,6 +47,7 @@ package levelgen {
 			"tutorial_heat",
 			"tutorial_freeze",
 			"easy_00",
+			"tutorial_trapdoor",
 			"tutorial_flashheat",
 			"tutorial_flashfreeze",
 			"tutorial_neutral",
@@ -259,11 +260,11 @@ package levelgen {
 						break;				
 						
 					case "Button":
-						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, trapdoor);
+						button = new Button(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y, null);
 						break;
 						
 					case "Trapdoor":
-						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);						
 						break;
 							
 					default:
@@ -277,6 +278,9 @@ package levelgen {
 						}					
 					}
 				}
+				
+				if(button != null)
+					button.trapdoor = trapdoor;
 			}
 			
 			//done parsing the file!

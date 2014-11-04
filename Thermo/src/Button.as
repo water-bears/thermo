@@ -4,12 +4,21 @@ package {
 	public class Button extends FlxSprite {
 		
 		private var isPressed:Boolean;
-		private var trapdoor:Trapdoor;
+		public var trapdoor:Trapdoor;
 		
 		public function Button(x:Number, y:Number, trapdoor:Trapdoor) {
-			super(x, y);
+			super();
 			
 			this.loadGraphic(Assets.buttonSprite);
+			
+			setOriginToCorner();
+			scale.x = 20 / Assets.buttonSpriteX;
+			scale.y = 20 / Assets.buttonSpriteY;
+			width = 20;
+			height = 20;
+			this.x = x;
+			this.y = y;
+			
 			this.trapdoor = trapdoor;
 			this.isPressed = false;
 		}
