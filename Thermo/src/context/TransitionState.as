@@ -14,12 +14,13 @@ package context
 		private var level:uint;
 		public static const numLevels:uint =  Level.NUM_LEVELS;
 		public var logger:Logging;
+		private var currentLevel:uint;
 		
-		public function TransitionState(level:uint,logger:Logging)
+		public function TransitionState(level:uint,logger:Logging,currentLevel:uint=0)
 		{
 			this.level = level;
 			this.logger = logger;
-			
+			this.currentLevel = currentLevel;
 		}
 		
 		override public function update():void
@@ -34,7 +35,7 @@ package context
 			}
 			else
 			{
-				FlxG.switchState(new MenuState(2, logger));
+				FlxG.switchState(new MenuState(2, currentLevel - 1, logger));
 			}
 		}
 	}
