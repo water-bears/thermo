@@ -72,6 +72,8 @@ package {
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
+		//private var pb:PixelBubbleSystem;
+		
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
 		}
@@ -157,13 +159,14 @@ package {
 			levelSelectMessage.setOriginToCorner();
 			levelSelectMessage.scale = new FlxPoint(2, 2);
 			add(levelSelectMessage);
-			
 			// Create and add the player
 			if (level.player == null) {
 				player = new Player(0, 0, waterTiles, this, logger, level);  //logger);
 			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
+			//pb = new PixelBubbleSystem(20, player);
+			//add(pb);
 			add(player);
 			
 			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET

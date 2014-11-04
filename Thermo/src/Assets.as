@@ -97,7 +97,7 @@ package {
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
-		public static var b_list:Array = [b_1, b_9, b_3, b_16, b_6, b_7, b_8, b_9, b_10, b_11, b_12, b_13, b_14, b_15, b_16];
+		public static var b_list:Array = [b_1, b_9, b_3, b_16, b_6, b_15, b_14, b_9, b_10, b_11, b_12, b_13, b_14, b_15, b_16];
 		
 		/* Sounds */
 	}
