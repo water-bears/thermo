@@ -1,5 +1,6 @@
 package {
 	
+	import context.InitialState;
 	import context.MenuState;
 	
 	import org.flixel.*;
@@ -12,7 +13,7 @@ package {
 		public static const HEIGHT:int = 768;
 		
 		public function Thermo() {
-			super(WIDTH, HEIGHT, MenuState, 1);
+			super(WIDTH, HEIGHT, InitialState, 1);
 			
 			// Optional debug tools
 			// FlxG.debug = true;

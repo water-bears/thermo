@@ -12,6 +12,7 @@ package uilayer {
 		private var time:uint;
 		private var bracket:uint;
 		private var completionCallback:Function;
+		public var complete:Boolean;
 		
 		public function PiecewiseInterpolationMachine(periodic:Boolean, ... args)
 		{
@@ -19,6 +20,7 @@ package uilayer {
 			this.time = 0;
 			this.bracket = 0;
 			completionCallback = null;
+			complete = false;
 			nodes = new Vector.<PiecewiseInterpolationNode>();
 			for (var i:uint; i < args.length; i++)
 			{
@@ -32,15 +34,16 @@ package uilayer {
 			}
 		}
 		
-		public function EvaluateAndUpdate() : Number
+		public function EvaluateAndAdvance(direction:uint=1) : Number
 		{
 			var result:Number = Evaluate();
-			Update();
+			Advance(direction);
 			return result;
 		}
 		
-		public function Update() : void
+		public function Advance(direction:uint=1) : void
 		{
+			//direction argument currently does nothing
 			if (bracket < nodes.length - 1)
 			{
 				time++;
@@ -48,6 +51,10 @@ package uilayer {
 				{
 					bracket++;
 				}
+			}
+			else
+			{
+				complete = true;
 			}
 			if (periodic && bracket == nodes.length - 1)
 			{
@@ -74,6 +81,7 @@ package uilayer {
 		{
 			bracket = nodes.length - 1;
 			time = nodes[bracket].t;
+			complete = false;
 		}
 		
 		public function JumpToBracket(num:uint):void
@@ -84,6 +92,7 @@ package uilayer {
 				bracket = nodes.length - 1;
 			}
 			time = nodes[bracket].t;
+			complete = false;
 		}
 		
 		public function CallUponCompletion(callback:Function):void

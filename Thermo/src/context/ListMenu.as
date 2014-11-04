@@ -75,7 +75,7 @@ package context {
 				sprite.scale.x = scale.x * localScale.x;
 				sprite.scale.y = scale.y * localScale.y;
 				menuYVals[i] = this.height;
-				this.width = Math.max(this.width, sprite.width * sprite.scale.x);
+				this.width = Math.max(this.width, sprite.width * sprite.scale.x); 
 				this.height += sprite.height * sprite.scale.y + localPosition.y;
 			}
 			cursor.y = Y + menuYVals[selectedID];

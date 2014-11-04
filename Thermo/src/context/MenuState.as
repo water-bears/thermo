@@ -13,10 +13,15 @@ package context {
 		private var backgroundTile:FlxSprite;
 		
 		public var bubbles:BubbleBackground;
+		private var initialState:uint;
 		private var ui:MenuUI;
-		public var logger:Logging = new Logging(700, 2, true);
+		public var logger:Logging;
 		
-		override public function create():void {
+		public function MenuState(initialState:uint, logger:Logging)
+		{
+			this.initialState = initialState;
+			this.logger = logger;
+			
 			logger.recordPageLoad();
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
@@ -28,20 +33,17 @@ package context {
 			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
-			ui = new MenuUI(0);
+			ui = new MenuUI(initialState, goToNextState);
 			add(ui);
 		}
 		
 		override public function update():void {
 			super.update();
 			bubbles.Update();
-			if (FlxG.keys.ENTER) {
-				ui.BeginExitSequence(goToNextState);
-			}
 		}
 		
 		public function goToNextState():void {
-			var p : PlayState = new PlayState(logger);
+			var p : FlxState = new TransitionState(ui.selectedLevel + 1, logger);
 			FlxG.switchState(p);
 		}
 	}
