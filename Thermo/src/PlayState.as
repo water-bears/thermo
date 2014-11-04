@@ -218,7 +218,7 @@ package {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "(" + player.x +  ", " + player.y + ") + ~ ~ time = " + (getTimer() - startTime).toString());
+					logger.recordEvent(level.levelNum, 0, "version 3 # (" + player.x +  ", " + player.y + ") + # # time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -248,7 +248,7 @@ package {
 					}
 				}
 				
-			//}
+
 			
 			//if (FlxG.overlap(heatGroup, player)) {
 				for (i = 0; i < heatGroup.members.length; i++) {
@@ -328,13 +328,13 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, " ~ key retreival ~ time = " + getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, "version 3 # # key retreival # time = " + getTimer().toString());
 		}
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
+			logger.recordEvent(level.levelNum, 3, "version 3 # # level completion # time = " + getTimer().toString());
 			logger.recordLevelEnd();
-			logger.recordEvent(level.levelNum, 3, " ~ level completion ~ time = " + getTimer().toString());
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		

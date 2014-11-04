@@ -33,7 +33,7 @@ package context {
 			var keyDown:Boolean = false;
 			if (FlxG.keys.DOWN) {
 				if (keyFramesDown % 10 == 0) {
-					if (selectedID >= menuYVals.length)
+					if (selectedID >= menuYVals.length - 1)
 						selectedID = 0;
 					else
 						selectedID++;
@@ -75,10 +75,9 @@ package context {
 				sprite.scale.x = scale.x * localScale.x;
 				sprite.scale.y = scale.y * localScale.y;
 				menuYVals[i] = this.height;
-				this.width = Math.max(this.width, sprite.width * sprite.scale.x);
+				this.width = Math.max(this.width, sprite.width * sprite.scale.x); 
 				this.height += sprite.height * sprite.scale.y + localPosition.y;
 			}
-			//THERE IS STILL AN ERROR HERE
 			cursor.y = Y + menuYVals[selectedID];
 		}
 	}

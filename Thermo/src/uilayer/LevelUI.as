@@ -65,13 +65,13 @@ package uilayer {
 		{
 			super.update();
 			// Adjust values depending on time.
-			dimmer.alpha = dimmer_alpha0.EvaluateAndUpdate();
+			dimmer.alpha = dimmer_alpha0.EvaluateAndAdvance();
 			if (state == 1)
 			{
-				dimmer.alpha = dimmer_alpha1.EvaluateAndUpdate();
+				dimmer.alpha = dimmer_alpha1.EvaluateAndAdvance();
 			}
-			levelText.alpha = levelText_alpha0.EvaluateAndUpdate();
-			levelText.y = levelText_y0.EvaluateAndUpdate();
+			levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
+			levelText.y = levelText_y0.EvaluateAndAdvance();
 		}
 		
 		public function FastForward():void

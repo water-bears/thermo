@@ -11,6 +11,11 @@ bin-release/
 # information for Eclipse / Flash Builder.
 
 Flixel/
+obj/
+
+Flint_4_0_1_src/
+
+Flint_4_0_1_swc/
 
 *.old
 *.bak

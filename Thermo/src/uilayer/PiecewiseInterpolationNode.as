@@ -46,11 +46,11 @@ package uilayer {
 			}
 			if (p1.numArgs == 3)
 			{
-				return p1.method(p1.y, p2.y, Utils.ReverseLerp(p1.t, p2.t, t));
+				return p1.method(p1.y, p2.y, p1.a1, Utils.ReverseLerp(p1.t, p2.t, t));
 			}
 			if (p1.numArgs == 4)
 			{
-				return p1.method(p1.y, p2.y, Utils.ReverseLerp(p1.t, p2.t, t));
+				return p1.method(p1.y, p2.y, p1.a1, p1.a2, Utils.ReverseLerp(p1.t, p2.t, t));
 			}
 			return 0; //shouldn't happen
 		}
