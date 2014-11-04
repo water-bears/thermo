@@ -344,13 +344,13 @@ package {
 		
 		/** Sets the background based on the level index **/
 		public function setBackground(level:int):void {
-			level %= Assets.b_list.length;
+			level = (level - 1) % Assets.b_list.length;
 			
 			if (background == null) {
 				background = new FlxSprite(0, 0);
 			}
 			
-			background.loadGraphic(Assets.b_list[level - 1]);
+			background.loadGraphic(Assets.b_list[level]);
 			
 			// Scale and reposition background
 			background.x -= background.width / 2;
