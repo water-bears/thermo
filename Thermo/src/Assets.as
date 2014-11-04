@@ -33,10 +33,10 @@ package {
 		public static var gateSpriteX:int = 16;
 		public static var gateSpriteY:int = 64;
 		
-		[Embed(source = "../assets/tilesheets/door.png")]
-		public static var exitSprite:Class;
-		public static var exitSpriteX:int = 32;
-		public static var exitSpriteY:int = 32;
+		[Embed(source = "../assets/objects/key.png")]
+		public static var keySprite:Class;
+		public static var keySpriteX:int = 128;
+		public static var keySpriteY:int = 128;
 		
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
@@ -55,10 +55,15 @@ package {
 		public static var buttonSpriteX:int = 32;
 		public static var buttonSpriteY:int = 32;
 		
-		[Embed(source = "../assets/objects/trapdoor.png")]
-		public static var trapdoorSprite:Class;
-		public static var trapdoorSpriteX:int = 20;
-		public static var trapdoorSpriteY:int = 10;
+		[Embed(source = "../assets/objects/trapdoor_closed.png")]
+		public static var trapdoorClosedSprite:Class;
+		public static var trapdoorClosedSpriteX:int = 20;
+		public static var trapdoorClosedSpriteY:int = 10;
+		
+		[Embed(source = "../assets/objects/trapdoor_open.png")]
+		public static var trapdoorOpenSprite:Class;
+		public static var trapdoorOpenSpriteX:int = 10;
+		public static var trapdoorOpenSpriteY:int = 20;
 		
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;

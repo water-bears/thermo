@@ -6,11 +6,11 @@ package {
 		public function Trapdoor(x:Number, y:Number) {
 			super();
 			
-			this.loadGraphic(Assets.trapdoorSprite);
+			this.loadGraphic(Assets.trapdoorClosedSprite);
 			
 			setOriginToCorner();
-			scale.x = 20 / Assets.trapdoorSpriteX;
-			scale.y = 10 / Assets.trapdoorSpriteY;
+			scale.x = 20 / Assets.trapdoorClosedSpriteX;
+			scale.y = 10 / Assets.trapdoorClosedSpriteY;
 			width = 20;
 			height = 10;
 			this.x = x;
@@ -21,7 +21,9 @@ package {
 		
 		public function open():void {
 			// Change door to open sprite
-			this.kill();
+			this.solid = false;
+			this.loadGraphic(Assets.trapdoorOpenSprite);
+			//this.kill();
 		}
 	}
 }
