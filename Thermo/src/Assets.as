@@ -35,8 +35,8 @@ package {
 		
 		[Embed(source = "../assets/objects/key.png")]
 		public static var keySprite:Class;
-		public static var keySpriteX:int = 128;
-		public static var keySpriteY:int = 128;
+		public static var keySpriteX:int = 32;
+		public static var keySpriteY:int = 32;
 		
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
