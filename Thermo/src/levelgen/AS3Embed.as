@@ -87,6 +87,7 @@ public class AS3Embed
 [Embed(source = "../../assets/objects/button.png")] private static var button29:Class;
 [Embed(source = "../../assets/objects/flash_platform.png")] private static var flash_platform29:Class;
 [Embed(source = "../../assets/objects/grass.png")] private static var grass29:Class;
+[Embed(source = "../../assets/objects/help.png")] private static var help29:Class;
 [Embed(source = "../../assets/objects/ice_platform.png")] private static var ice_platform29:Class;
 [Embed(source = "../../assets/objects/key.png")] private static var key29:Class;
 [Embed(source = "../../assets/objects/movingplatform.png")] private static var movingplatform29:Class;
@@ -194,6 +195,7 @@ if(filename == "doodles/sign1.png") { return sign16; }
 if(filename == "objects/button.png") { return button29; }
 if(filename == "objects/flash_platform.png") { return flash_platform29; }
 if(filename == "objects/grass.png") { return grass29; }
+if(filename == "objects/help.png") { return help29; }
 if(filename == "objects/ice_platform.png") { return ice_platform29; }
 if(filename == "objects/key.png") { return key29; }
 if(filename == "objects/movingplatform.png") { return movingplatform29; }
