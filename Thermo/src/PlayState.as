@@ -341,17 +341,17 @@ package {
 		}
 		
 		public function goToNextLevel() : void {
-			FlxG.switchState(new TransitionState(level.levelNum + 1,logger));
+			FlxG.switchState(new TransitionState(level.levelNum + 1, logger));
 		}
 		
 		/** Reset function **/
 		public function reset():void {
-			FlxG.switchState(new TransitionState(level.levelNum,logger));
+			FlxG.switchState(new TransitionState(level.levelNum, logger));
 		}
 		
 		/** Level select function **/
 		public function levelSelect():void {
-			FlxG.switchState(new TransitionState(0,logger));
+			FlxG.switchState(new TransitionState(0, logger, level.levelNum));
 		}
 		
 		/** Sets the background based on the level index **/

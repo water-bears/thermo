@@ -16,10 +16,12 @@ package context {
 		private var initialState:uint;
 		private var ui:MenuUI;
 		public var logger:Logging;
+		private var initialLevel:uint;
 		
-		public function MenuState(initialState:uint, logger:Logging)
+		public function MenuState(initialState:uint, initialLevel:uint, logger:Logging)
 		{
 			this.initialState = initialState;
+			this.initialLevel = initialLevel;
 			this.logger = logger;
 			
 			logger.recordPageLoad();
@@ -34,7 +36,7 @@ package context {
 			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
-			ui = new MenuUI(initialState, goToNextState);
+			ui = new MenuUI(initialState, initialLevel, goToNextState);
 			add(ui);
 		}
 		

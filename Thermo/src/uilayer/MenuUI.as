@@ -34,7 +34,7 @@ package uilayer {
 		private var state:uint;
 		private var callback:Function;
 		
-		public function MenuUI(initialState:uint, callback:Function)
+		public function MenuUI(initialState:uint, initialLevel:uint, callback:Function)
 		{
 			super(0);
 			state = initialState;
@@ -77,8 +77,9 @@ package uilayer {
 				}
 			}
 			
-			selectedSquare = new FlxPoint();
-			selectedLevel = 0;
+			selectedLevel = initialLevel;
+			selectedSquare = new FlxPoint(selectedLevel % levelSelectWidth, int(selectedLevel / levelSelectWidth));
+			
 			keyFramesDown = 0;
 			
 			// Something that helps darken the level when important UI is up
