@@ -17,7 +17,7 @@
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Exit" name="Exit" x="21.00" y="21.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Exit" name="Exit" x="24.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="596.00" y="43.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="319.00" y="36.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FreezeGate" name="FreezeGate" x="319.00" y="119.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>

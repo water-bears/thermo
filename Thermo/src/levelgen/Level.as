@@ -48,9 +48,9 @@ package levelgen {
 			"tutorial_freeze",
 			"easy_00",
 			"tutorial_trapdoor",
+			"tutorial_neutral",
 			"tutorial_flashheat",
 			"tutorial_flashfreeze",
-			"tutorial_neutral",
 			"medium_01",
 			"hard_00"
 		);
