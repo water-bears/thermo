@@ -7,7 +7,7 @@ package {
 		
 		public function Key(x:Number, y:Number, gravity:Boolean = false) {
 			super(x, y);
-			loadGraphic(Assets.keySprite, false, false, 128, 128);
+			loadGraphic(Assets.keySprite, false, false, 32, 32);
 			frame = 2;
 			
 			setOriginToCorner();
