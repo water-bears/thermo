@@ -4,13 +4,14 @@
   <bgColor>0x777777</bgColor>
   <viewPos x="25" y="21"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="7">
+  <spriteEntries currentId="8" selected="true">
     <sprite name="Player" idx="1" className="Player" image="damesprites/character.png" width="20" height="24" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="24" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false"/>
     <sprite name="HeatGate" idx="2" className="HeatGate" image="damesprites/gates.png" width="10" height="40" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="2" canEditFrames="true" lockRotation="false"/>
     <sprite name="FreezeGate" idx="3" className="FreezeGate" image="damesprites/gates.png" width="10" height="40" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="1" canEditFrames="true" lockRotation="false"/>
     <sprite name="FlashGate" idx="4" className="FlashGate" image="damesprites/gates.png" width="10" height="40" preview="3" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
-    <sprite name="Key" idx="5" className="Key" image="damesprites/door.png" width="20" height="20" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
+    <sprite name="Key" idx="5" className="Key" image="damesprites/door.png" width="20" height="20" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="Exit" idx="6" className="Exit" image="damesprites/door.png" width="20" height="20" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="HelpText" idx="7" className="HelpText" image="objects/help.png" width="32" height="32" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
   </spriteEntries>
   <layers>
     <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
@@ -73,6 +74,7 @@
         <sprite guid="573E0D1F-FDD5-9B70-D872-429AA8AD37FC" x="-579" y="-186" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
         <sprite guid="85668070-85BA-909D-0744-7AED13E875E0" x="42" y="94" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
         <sprite guid="D71F4475-45FF-3FFF-1FF5-E927AB99E9C8" x="88" y="220" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+        <sprite guid="3990CDD4-4FD3-B0AC-07A3-474A12D6434A" x="258" y="265" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7"/>
         <sprite guid="AE69F035-3FC3-61E7-89DF-2BA353B316A2" x="221" y="329" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2" frame="2"/>
         <sprite guid="AD951C3E-8BD9-C022-5380-A966A67209FD" x="277" y="353" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
       </spritelayer>

@@ -11,10 +11,10 @@ package {
 			frame = 2;
 			
 			setOriginToCorner();
-			scale.x = 20 / Assets.keySpriteX;
-			scale.y = 20 / Assets.keySpriteY;
-			width = 20;
-			height = 20;
+			scale.x = 15 / Assets.keySpriteX;
+			scale.y = 15 / Assets.keySpriteY;
+			width = 15;
+			height = 15;
 			this.x = x;
 			this.y = y;
 			

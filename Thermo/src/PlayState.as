@@ -89,14 +89,13 @@ package {
 			add(background);
 			
 			// Initialize bubbles
-			//bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
-			//bubbles.Register(this);
+			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			bubbles.Register(this);
+			
 			/*
 			FlxG.debug = true;
 			FlxG.visualDebug = true;
 			*/
-			
-			
 			
 			//load the level
 			if (level == null) {
@@ -205,7 +204,7 @@ package {
 		override public function update():void {
 			super.update();
 			
-			//bubbles.Update();
+			bubbles.Update();
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);

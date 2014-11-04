@@ -56,7 +56,8 @@ package levelgen {
 			"medium_04",
 			"medium_01",
 			"hard_00",
-			"hard_01"
+			"hard_01",
+			"hard_02"
 		);
 		
 		/**
