@@ -242,7 +242,7 @@
 				// Heat
 				case 2:
 					if (!bubble) {
-						player.drag.x = 500;
+						player.drag.x = 900;
 						acceleration.y = -500;
 						bubble = true;
 						superBubble = false;
@@ -287,7 +287,7 @@
 				case 4:
 					if (!superBubble) {
 						bubble = false;
-						player.drag.x = 500;
+						player.drag.x = 900;
 						acceleration.y = -500;
 						superBubble = true;
 						floatUp = true;
