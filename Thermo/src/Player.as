@@ -152,11 +152,11 @@
 			//scale.x = 16 / Assets.playerSpriteX;
 			//scale.y = 20 / Assets.playerSpriteY;
 			this.offset.x = 8;
-			this.offset.y = 15;
-			width = 24;
-			height = 28;
+			this.offset.y = 22;
+			width = 19;
+			height = 19;
 			this.x = x;
-			this.y = y - 28;
+			this.y = y - this.height;
 			
 			this.play("stand" + curPow);
 			

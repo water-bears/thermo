@@ -12,8 +12,8 @@ package {
 		/* Character sprite sheet */
 		[Embed(source = "../assets/character/player.png")]
 		public static var playerSprite:Class;
-		public static var playerSpriteX:int = 40;
-		public static var playerSpriteY:int = 44;
+		public static var playerSpriteX:int = 35;
+		public static var playerSpriteY:int = 42;
 		
 		/* Door and key sprite sheet */
 		[Embed(source = "../assets/tilesheets/door.png")]
