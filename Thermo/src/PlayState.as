@@ -231,8 +231,8 @@ package {
 				player.setX(FlxG.width);
 			}
 			
-			if (player.y < 0 && !player.superBubble && player.bubble) {
-				player.popBubble;
+			if (player.y <= 0 && !player.superBubble && player.bubble) {
+				player.popBubble();
 			} else if (player.y < 0) {
 				player.setY(0);
 			}

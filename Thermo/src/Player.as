@@ -154,7 +154,7 @@
 			}
 			
 			// Reverses gravity in superbubble on ceiling
-			if (superBubble && isTouching(FlxObject.CEILING) || this.y <= 0) {
+			if (superBubble && (isTouching(FlxObject.CEILING) || this.y <= 0)) {
 				floatUp = false;
 				acceleration.y = -500;
 				this.drag.x = int.MAX_VALUE;
