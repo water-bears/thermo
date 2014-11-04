@@ -23,6 +23,6 @@
 		<sprite clas="Key" name="Key" x="277.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 	<layer name="front" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Front" name="Front" x="256.00" y="266.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Front" name="Front" x="265.00" y="303.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 </level>

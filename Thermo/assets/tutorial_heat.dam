@@ -77,8 +77,8 @@
         <sprite guid="AE69F035-3FC3-61E7-89DF-2BA353B316A2" x="221" y="329" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2" frame="2"/>
         <sprite guid="AD951C3E-8BD9-C022-5380-A966A67209FD" x="277" y="353" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
       </spritelayer>
-      <spritelayer name="front" id="4" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
-        <sprite guid="C4AB5A28-E703-E488-171F-D8B20C926C37" x="256" y="266" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7"/>
+      <spritelayer name="front" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
+        <sprite guid="C4AB5A28-E703-E488-171F-D8B20C926C37" x="265" y="303" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7"/>
       </spritelayer>
     </group>
   </layers>
