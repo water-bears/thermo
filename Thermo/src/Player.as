@@ -98,7 +98,12 @@
 			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
-				icePlat.loadGraphic(Assets.flashSprite);
+				
+				icePlat.addAnimation("state1", [0]);
+				icePlat.addAnimation("state2", [1]);
+				icePlat.addAnimation("state3", [2]);
+				
+				icePlat.loadGraphic(Assets.flashSprite, false, false, 35, 11);
 				icePlat.allowCollisions = UP;
 				icePlat.immovable = true;
 				this.ice.push(icePlat);
@@ -252,18 +257,27 @@
 								this.ice[0].y = this.y + this.height;
 								playstate.iceGroup.add(this.ice[0]);
 								this.maxVelocity.y = 0;
+								this.ice[0].play("state1");
+								this.ice[1].play("state3");
+								this.ice[2].play("state2");
 								break;
 							case 1:
 								this.ice[1].x = this.x;
 								this.ice[1].y = this.y + this.height;
 								playstate.iceGroup.add(this.ice[1]);
 								this.maxVelocity.y = 0;
+								this.ice[0].play("state2");
+								this.ice[1].play("state1");
+								this.ice[2].play("state3");
 								break;
 							case 2:
 								this.ice[2].x = this.x;
 								this.ice[2].y = this.y + this.height;
 								playstate.iceGroup.add(this.ice[2]);
 								this.maxVelocity.y = 0;
+								this.ice[0].play("state3");
+								this.ice[1].play("state2");
+								this.ice[2].play("state1");
 								break;
 						}
 						iceCount++;
