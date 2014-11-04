@@ -92,11 +92,6 @@ package {
 			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
 			bubbles.Register(this);
 			
-			/*
-			FlxG.debug = true;
-			FlxG.visualDebug = true;
-			*/
-			
 			//load the level
 			if (level == null) {
 				level = new Level(1);
@@ -130,11 +125,11 @@ package {
 			exitGroup = level.exits;
 			add(exitGroup);
 			
-			//add the keyssss
+			//add the keys
 			keyGroup = level.keys;
 			add(keyGroup);
 			
-			//add morrrre stuff
+			//spikes
 			spikeGroup = level.spikes;
 			add(spikeGroup);
 			
@@ -157,7 +152,7 @@ package {
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
 			levelSelectMessage.setOriginToCorner();
-			levelSelectMessage.scale = new FlxPoint(2, 2);
+			levelSelectMessage.scale = new FlxPoint(1, 1);
 			add(levelSelectMessage);
 			// Create and add the player
 			if (level.player == null) {
@@ -169,16 +164,6 @@ package {
 			//add(pb);
 			add(player);
 			add(waterTiles);
-			
-			//UNCOMMENT THE FOLLOWING WHEN TILEMAPS SET
-			
-			// Create and add moving platforms
-			/*movingPlatTiles = level.layerMovingTiles;
-			add(level.layerMovingTiles);*/
-			
-			// create and add any spikes
-			/* spiketiles = level.layerSpiketiles;
-			add(spikeTiles); */
 			
 			this.add(iceGroup);
 			
