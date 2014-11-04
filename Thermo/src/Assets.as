@@ -30,8 +30,8 @@ package {
 		/* Gate sprite sheet */
 		[Embed(source = "../assets/tilesheets/gates.png")]
 		public static var gateSprite:Class;
-		public static var gateSpriteX:int = 16;
-		public static var gateSpriteY:int = 64;
+		public static var gateSpriteX:int = 10;
+		public static var gateSpriteY:int = 40;
 		
 		[Embed(source = "../assets/objects/key.png")]
 		public static var keySprite:Class;
