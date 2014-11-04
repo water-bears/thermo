@@ -53,7 +53,8 @@ package levelgen {
 			"tutorial_flashfreeze",
 			"medium_03", // tutorial_trapdoor
 			"medium_01",
-			"hard_00"
+			"hard_00",
+			"hard_01"
 		);
 		
 		/**
