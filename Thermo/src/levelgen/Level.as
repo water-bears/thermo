@@ -50,6 +50,7 @@ package levelgen {
 			"medium_02",
 			"tutorial_neutral",
 			"tutorial_flashheat",
+			"medium_05",
 			"tutorial_flashfreeze",
 			"medium_03", // tutorial_trapdoor
 			"medium_01",
