@@ -256,7 +256,8 @@
 						play("walk" + curPow);
 					}
 				} else {
-					play("jump" + curPow);
+					if (_curAnim.name != "jump" + curPow)
+						play("jump" + curPow);
 				}
 			}
 			
