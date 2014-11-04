@@ -7,7 +7,7 @@
 		<clas name="FlashGate" file="damesprites/gates.png" width="10" height="40" index="3" />
 		<clas name="Key" file="damesprites/door.png" width="20" height="20" index="2" />
 		<clas name="Exit" file="damesprites/door.png" width="20" height="20" index="1" />
-		<clas name="HelpText" file="objects/help.png" width="32" height="32" index="0" />
+		<clas name="Front" file="objects/help.png" width="32" height="32" index="0" />
 	</spriteclasses>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/tutorial_heat/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
@@ -19,8 +19,10 @@
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="42.00" y="94.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="88.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="HelpText" name="HelpText" x="258.00" y="265.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="221.00" y="329.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="277.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+	</layer>
+	<layer name="front" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Front" name="Front" x="256.00" y="266.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 </level>
