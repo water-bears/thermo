@@ -52,6 +52,7 @@ package levelgen {
 			"tutorial_flashheat",
 			"tutorial_flashfreeze",
 			"medium_03", // tutorial_trapdoor
+			// v here in touchups v
 			"medium_01",
 			"hard_00"
 		);
