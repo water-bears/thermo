@@ -241,7 +241,7 @@
 			}
 
 			// Kills the ice platforms 
-			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
+			if (getTimer() - this.t1 >= 300 && !isTouching(FLOOR)) {
 				this.ice[3].kill();
 			}
 
