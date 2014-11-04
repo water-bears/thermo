@@ -85,8 +85,8 @@ package {
 			add(background);
 			
 			// Initialize bubbles
-			bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
-			bubbles.Register(this);
+			//bubbles = new BubbleBackground(new FlxPoint(FlxG.width, FlxG.height), 40, 8, 12);
+			//bubbles.Register(this);
 			
 			//load the level
 			if (level == null) {
@@ -183,10 +183,8 @@ package {
 			/* spiketiles = level.layerSpiketiles;
 			add(spikeTiles); */
 			
-			
 			this.add(iceGroup);
 			startTime = getTimer();
-
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
@@ -197,7 +195,7 @@ package {
 		override public function update():void {
 			super.update();
 			
-			bubbles.Update();
+			//bubbles.Update();
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
@@ -247,62 +245,50 @@ package {
 			}
 			
 			// Calls getGate function when we touch/cross/etc. a gate
-			//if (FlxG.overlap(freezeGroup, player)) {
-				for (i = 0; i < freezeGroup.members.length; i++) {
-					if (FlxG.overlap(freezeGroup.members[i], player)) {
-						(freezeGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FREEZE);
-					} else {
-						(freezeGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			for (i = 0; i < freezeGroup.members.length; i++) {
+				if (FlxG.overlap(freezeGroup.members[i], player)) {
+					(freezeGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.FREEZE);
+				} else {
+					(freezeGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-
+			}
 			
-			//if (FlxG.overlap(heatGroup, player)) {
-				for (i = 0; i < heatGroup.members.length; i++) {
-					if (FlxG.overlap(heatGroup.members[i], player)) {
-						(heatGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.HEAT);
-					} else {
-						(heatGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			for (i = 0; i < heatGroup.members.length; i++) {
+				if (FlxG.overlap(heatGroup.members[i], player)) {
+					(heatGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.HEAT);
+				} else {
+					(heatGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
-			//if (FlxG.overlap(flashGroup, player)) {
-				for (i = 0; i < flashGroup.members.length; i++) {
-					if (FlxG.overlap(flashGroup.members[i], player)) {
-						(flashGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FLASH);
-					} else {
-						(flashGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			}
+							
+			for (i = 0; i < flashGroup.members.length; i++) {
+				if (FlxG.overlap(flashGroup.members[i], player)) {
+					(flashGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.FLASH);
+				} else {
+					(flashGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
-			//if (FlxG.overlap(neutralGroup, player)) {
-				for (i = 0; i < neutralGroup.members.length; i++) {
-					if (FlxG.overlap(neutralGroup.members[i], player)) {
-						(neutralGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.NEUTRAL);
-					} else {
-						(neutralGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
+			}
+							
+			for (i = 0; i < neutralGroup.members.length; i++) {
+				if (FlxG.overlap(neutralGroup.members[i], player)) {
+					(neutralGroup.members[i] as Gate).trigger();
+					player.gateOneTouch = true;
+					player.updatePower(Gate.NEUTRAL);
+				} else {
+					(neutralGroup.members[i] as Gate).untrigger();
+					player.gateOneTouch = false;
 				}
-				
-			//}
-			
+			}
+							
 			if (FlxG.overlap(buttonGroup, player)) {
 				for (i = 0; i < buttonGroup.members.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
@@ -310,11 +296,6 @@ package {
 					}
 				}
 			}
-			
-			/*
-			if (FlxG.overlap(neutralGroup, player)){
-				player.updatePower(0);
-			}*/
 			
 			if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
 				ui.FastForward();
