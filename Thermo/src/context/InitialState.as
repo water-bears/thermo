@@ -15,7 +15,7 @@ package context {
 		
 		override public function update():void 
 		{
-			FlxG.switchState(new MenuState(0, new Logging(700, 2, true)));
+			FlxG.switchState(new MenuState(0, new Logging(700, 3, true)));
 			super.update();
 		}
 	}

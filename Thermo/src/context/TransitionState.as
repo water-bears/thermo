@@ -12,7 +12,7 @@ package context
 	public class TransitionState extends FlxState
 	{
 		private var level:uint;
-		public static const numLevels:uint = 9;
+		public static const numLevels:uint =  Level.NUM_LEVELS;
 		public var logger:Logging;
 		
 		public function TransitionState(level:uint,logger:Logging)

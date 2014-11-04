@@ -37,17 +37,53 @@ package levelgen {
 		
 		private const fileLocation:String = "levels/"
 		
+		/**
+		 * Map of level names, in game order.
+		 * Note, the strings do not need to be numbers (We just happen to use numbers a lot).
+		 * The name of the level corresponds to the name of the .dam file.
+		 */
+		private static var LEVEL_MAP:Array = new Array(
+			"jump_tutorial",
+			"1", // Heat tutorial
+			"2", // Freeze tutorial
+			// "3", // Buggy Easy
+			"4", // Flash heat tutorial
+			"5", // Questionable Flash freeze tutorial
+			"6", // Easy
+			"7", // Medium
+			"8", // Medium
+			// "9", // Buggy moving platforms
+			"medium_00"
+		);
+		
+		/**
+		 * Number of levels in the game
+		 */
+		public static var NUM_LEVELS:uint = LEVEL_MAP.length;
+		
+		/**
+		 * Helper function gets the name of the level that corresponds
+		 * to the given index, based on the LEVEL_MAP
+		 */
+		private static function levelName(levelNum:uint):String
+		{
+			if (levelNum < 1 || levelNum > NUM_LEVELS)
+				return levelNum.toString();
+			else
+				return LEVEL_MAP[levelNum - 1];
+		}
+		
 		public function Level(levelNum:uint) 
 		{
 			this.levelNum = levelNum;
-			var file:String = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
+			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			
 			//if we can't find the xml file, just use level 1
 			if (AS3Embed.GetTextAsset(file) == "error")
 			{
 				levelNum = 1;
-				file = fileLocation + String(levelNum) + "/" + "Level_" + String(levelNum) + ".xml";
+				file = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
 				xmlFile = new XML(AS3Embed.GetTextAsset(file));
 			}
 			
@@ -77,6 +113,12 @@ package levelgen {
 				
 				var numSprites:int = xmlLayer[layerNum].sprite.length();
 				var xmlSprite:XMLList = xmlLayer[layerNum].sprite;
+				
+				//for iterating over properties (later)
+				var numProps:int;
+				var xmlProp:XMLList;
+				var propNum:int;
+				var proptype:String;
 				
 				//iterate over all maps
 				for (var mapNum:int = 0; mapNum < numMaps; mapNum++)
@@ -158,11 +200,11 @@ package levelgen {
 						sprite.frame = 2;
 						var gravity:Boolean = false;
 						
-						var numProps:int = xmlSprite[spriteNum].prop.length();
-						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
-						for (var propNum:int = 0; propNum < numProps; propNum++)
+						numProps = xmlSprite[spriteNum].prop.length();
+						xmlProp = xmlSprite[spriteNum].prop;
+						for (propNum = 0; propNum < numProps; propNum++)
 						{
-							var proptype:String = xmlProp[propNum].@name;
+							proptype = xmlProp[propNum].@name;
 							switch(proptype)
 							{
 							case "gravity":
@@ -193,11 +235,11 @@ package levelgen {
 						var endPos:int = sprite.y + 96;
 						var direction:int = 4;
 						
-						var numProps:int = xmlSprite[spriteNum].prop.length();
-						var xmlProp:XMLList = xmlSprite[spriteNum].prop;
-						for (var propNum:int = 0; propNum < numProps; propNum++)
+						numProps = xmlSprite[spriteNum].prop.length();
+						xmlProp = xmlSprite[spriteNum].prop;
+						for (propNum = 0; propNum < numProps; propNum++)
 						{
-							var proptype:String = xmlProp[propNum].@name;
+							proptype = xmlProp[propNum].@name;
 							switch(proptype)
 							{
 							case "startPos":
