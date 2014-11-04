@@ -22,7 +22,7 @@
 		<sprite clas="HeatGate" name="HeatGate" x="221.00" y="329.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="277.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
-	<layer name="front" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Front" name="Front" x="265.00" y="303.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+	<layer name="Front" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Front" name="Sign" x="247.00" y="263.00" angle="0.00" flip="false" xScale="1.18" yScale="1.12" >		</sprite>
 	</layer>
 </level>

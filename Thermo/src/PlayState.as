@@ -150,7 +150,7 @@ package {
 			add(level.frontSprites);
 			
 			// Display a message that TAB takes you to the level select screen.
-			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen");
+			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen\nPress SPACE to use power");
 			levelSelectMessage.setOriginToCorner();
 			levelSelectMessage.scale = new FlxPoint(1, 1);
 			add(levelSelectMessage);
