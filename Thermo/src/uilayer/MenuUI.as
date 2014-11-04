@@ -13,8 +13,8 @@ package uilayer {
 	 */
 	public class MenuUI extends FlxGroup 
 	{
-		public static var levelSelectWidth:uint = 6;
-		public static var levelSelectHeight:uint = 6;
+		public static var levelSelectWidth:uint = 5;
+		public static var levelSelectHeight:uint = 3;
 		public static var levelAdvanceRate:uint = 10;
 		
 		private var dimmer:FlxSprite;
@@ -163,6 +163,7 @@ package uilayer {
 		}
 		
 		private var selectedSquare:FlxPoint;
+		private var selectedSquarePrev:FlxPoint = new FlxPoint();
 		public var selectedLevel:uint;
 		private var keyFramesDown:uint;
 		
@@ -188,6 +189,14 @@ package uilayer {
 			}
 			if (selectedSquareTemp.x != 0 || selectedSquareTemp.y != 0)
 			{
+				if (selectedSquarePrev.x == selectedSquareTemp.x && selectedSquarePrev.y == selectedSquareTemp.y)
+				{
+					keyFramesDown++;
+				}
+				else
+				{
+					keyFramesDown = 0;
+				}
 				if (keyFramesDown % levelAdvanceRate == 0)
 				{
 					selectedSquare.x += selectedSquareTemp.x;
@@ -209,11 +218,13 @@ package uilayer {
 				{
 					selectedSquare.y -= MenuUI.levelSelectHeight;
 				}
-				keyFramesDown++;
+				selectedSquarePrev.x = selectedSquareTemp.x;
+				selectedSquarePrev.y = selectedSquareTemp.y;
 			}
 			else
 			{
 				keyFramesDown = 0;
+				selectedSquarePrev.x = selectedSquarePrev.y = 0;
 			}
 		}
 	}
