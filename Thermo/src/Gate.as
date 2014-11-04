@@ -35,11 +35,11 @@ package {
 			this.type = type;
 			
 			if (type == FLASH) {
-				addAnimation("normal", [type, SHEET_WIDTH], Assets.FRAME_RATE / 2, true);
-				addAnimation("trigger", [type+SHEET_WIDTH, type], Assets.FRAME_RATE, false);
+				addAnimation("normal", [type, SHEET_WIDTH], Assets.FRAME_RATE / 5 / 2, true);
+				addAnimation("trigger", [type+SHEET_WIDTH, type], Assets.FRAME_RATE / 5, false);
 			} else {
 				addAnimation("normal", [type]);
-				addAnimation("trigger", [type+SHEET_WIDTH, type, SHEET_WIDTH, type], Assets.FRAME_RATE, false);
+				addAnimation("trigger", [type+SHEET_WIDTH, type, SHEET_WIDTH, type], Assets.FRAME_RATE / 5, false);
 			}
 			
 			play("normal");

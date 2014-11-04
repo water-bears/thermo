@@ -5,15 +5,15 @@ package {
 	public class Assets {
 		
 		/* Framerate for animations */
-		public static const FRAME_RATE:int = 10;
+		public static const FRAME_RATE:int = 25;
 		
 		/* Sprites */
 		
 		/* Character sprite sheet */
-		[Embed(source = "../assets/character/character.png")]
+		[Embed(source = "../assets/character/player.png")]
 		public static var playerSprite:Class;
-		public static var playerSpriteX:int = 23;
-		public static var playerSpriteY:int = 28;
+		public static var playerSpriteX:int = 40;
+		public static var playerSpriteY:int = 44;
 		
 		/* Door and key sprite sheet */
 		[Embed(source = "../assets/tilesheets/door.png")]
@@ -97,7 +97,7 @@ package {
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
-		public static var b_list:Array = [b_1, b_3, b_4, b_5, b_6, b_7, b_8, b_9, b_10, b_11, b_12, b_13, b_14, b_15, b_16];
+		public static var b_list:Array = [b_1, b_9, b_3, b_16, b_6, b_7, b_8, b_9, b_10, b_11, b_12, b_13, b_14, b_15, b_16];
 		
 		/* Sounds */
 	}
