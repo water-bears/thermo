@@ -1,8 +1,10 @@
 package uilayer 
 {
+	import flashx.textLayout.formats.Float;
+	
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxText;
-	import org.flixel.FlxG;
 	
 	/**
 	 * ...
@@ -10,10 +12,10 @@ package uilayer
 	 */
 	public class LevelSelectItem extends FlxGroup
 	{
-		static var xMin = 0.2 * FlxG.width;
-		static var xMax = 0.8 * FlxG.width;
-		static var yMin = 0.4 * FlxG.height;
-		static var yMax = 0.8 * FlxG.height;
+		static private var xMin:Number = 0.2 * FlxG.width;
+		static private var xMax:Number = 0.8 * FlxG.width;
+		static private var yMin:Number = 0.4 * FlxG.height;
+		static private var yMax:Number = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
 		

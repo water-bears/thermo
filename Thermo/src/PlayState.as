@@ -15,17 +15,23 @@ package {
 	
 	import uilayer.LevelUI;
 	
-	import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
+	//import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
 	
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
-		0 = entered a body of water
+		0 = used a power
 		1 = went through a power gate
 		2 = retrieved a key
 		3 = completed the level
+		4 = died
+		5 = reset level
+		6 = went to level select screen
 		*/
 		public var logger:Logging;
 		private var startTime:int;
+		
+		// Checking if we have JUST lost
+		public var alreadyLost:Boolean = false;
 		
 		// This is for checking when we JUST entered the water
 		public var justEntered:Boolean = false;
@@ -222,7 +228,7 @@ package {
 				player.slowSpeed();
 				if(justEntered == false) {
 					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
+					//logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
 				}
 			} else if (!player.bubble && !player.superBubble) {
 				player.normalSpeed();
@@ -299,19 +305,32 @@ package {
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 				player.visible = false;
-				logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
+				logger.recordEvent(level.levelNum, 3, "v2 $ $ win $ time = " + getTimer().toString());
 				logger.recordLevelEnd();
 				win(exitGroup, player);
 			}
 			
 			//Check for player lose conditions
-			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
+			if (player.y > FlxG.height || FlxG.overlap(player, spikeGroup)) {
+				if(alreadyLost == false){
+				logger.recordEvent(level.levelNum, 4, "v2 $ $ lose $ time =" + (startTime - getTimer()).toString());
+				logger.recordLevelEnd();
+				alreadyLost == true;
+				}
+				ui.BeginExitSequence(reset);
+				player.visible = false;
+			}
+			if(FlxG.keys.R){
+				logger.recordEvent(level.levelNum, 5, "v2 $ $ reset $ time =" + (startTime - getTimer()).toString());
+				logger.recordLevelEnd();
 				ui.BeginExitSequence(reset);
 				player.visible = false;
 			}
 			
 			//Tab for level select
-			if (FlxG.keys.TAB) {
+			if (FlxG.keys.ESCAPE) {
+				logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + (startTime - getTimer()).toString());
+				logger.recordLevelEnd();
 				ui.BeginExitSequence(levelSelect);
 			}
 		}
@@ -320,7 +339,7 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, "version 1 $ $ key retreival $ time = " + getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, "v2 $ $ key retreival $ time = " + getTimer().toString());
 		}
 		
 		/** Win function **/
@@ -334,8 +353,8 @@ package {
 		
 		/** Reset function **/
 		public function reset():void {
-			logger.recordEvent(level.levelNum, 4, "version 1 $ $ reset level $ time =" + (startTime - getTimer()).toString());
-			logger.recordLevelEnd();
+			//logger.recordEvent(level.levelNum, 4, "version 1 $ $ reset level $ time =" + (startTime - getTimer()).toString());
+			//logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}
 		
