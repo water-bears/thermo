@@ -244,7 +244,7 @@
 			}
 
 			// Kills the ice platforms 
-			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
+			if (getTimer() - this.t1 >= 100 && (!isTouching(FLOOR) || FlxG.keys.justPressed("SPACE"))) {
 				this.ice[3].kill();
 			}
 
