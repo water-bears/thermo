@@ -14,9 +14,7 @@ package {
 	import org.flixel.*;
 	
 	import uilayer.LevelUI;
-	
-	import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
-	
+		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
@@ -166,17 +164,6 @@ package {
 			add(waterTiles);
 			
 			this.add(iceGroup);
-			
-			/*var emitter:ParticleEffects = new ParticleEffects();
-
-			var renderer:DisplayObjectRenderer = new DisplayObjectRenderer();
-			renderer.addEmitter(emitter);
-			
-			var rend:FlxSprite = new FlxSprite();
-			rend.framePixels.draw(renderer);
-			emitter.start();
-			emitter.runAhead(10);
-			FlxG.stage.addChild(renderer);*/
 			
 			startTime = getTimer();
 			
