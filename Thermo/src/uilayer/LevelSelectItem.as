@@ -10,10 +10,10 @@ package uilayer
 	 */
 	public class LevelSelectItem extends FlxGroup
 	{
-		private static var xMin = 0.2 * FlxG.width;
-		private static var xMax = 0.8 * FlxG.width;
-		private static var yMin = 0.4 * FlxG.height;
-		private static var yMax = 0.8 * FlxG.height;
+		static var xMin = 0.2 * FlxG.width;
+		static var xMax = 0.8 * FlxG.width;
+		static var yMin = 0.4 * FlxG.height;
+		static var yMax = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
 		
