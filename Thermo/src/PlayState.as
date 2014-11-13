@@ -6,7 +6,10 @@ package {
 	import context.TransitionState;
 	
 	import flash.display.Shape;
+	import flash.events.TimerEvent;
 	import flash.geom.ColorTransform;
+	import flash.geom.Point;
+	import flash.utils.Timer;
 	import flash.utils.getTimer;
 	
 	import levelgen.*;
@@ -29,6 +32,11 @@ package {
 		*/
 		public var logger:Logging;
 		private var startTime:int;
+		private var pullTimer:Timer = new Timer(1000);	
+		public var prevPosition:Point;
+		public var curPosition:Point = new Point(0,0);
+
+
 		
 		// Checking if we have JUST lost
 		public var alreadyLost:Boolean = false;
@@ -89,6 +97,10 @@ package {
 		}
 		
 		override public function create():void {
+			// timer
+			pullTimer.addEventListener(TimerEvent.TIMER, pullTimerListener);
+			pullTimer.start();
+			
 			// Make the background
 			if (background == null)
 				setBackground(0);
@@ -166,6 +178,8 @@ package {
 			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
+			prevPosition = new Point(player.x, player.y);
+			
 			//pb = new PixelBubbleSystem(20, player);
 			//add(pb);
 			add(player);
@@ -194,6 +208,7 @@ package {
 		
 		override public function update():void {
 			super.update();
+
 			
 			bubbles.Update();
 			
@@ -305,7 +320,7 @@ package {
 			// If player has the key and touches the exit, they win
 			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 				player.visible = false;
-				logger.recordEvent(level.levelNum, 3, "v2 $ $ win $ time = " + getTimer().toString());
+				logger.recordEvent(level.levelNum, 3, "v2 $" + player.x +  ", " + player.y + "$ win $ time = " + getTimer().toString());
 				logger.recordLevelEnd();
 				win(exitGroup, player);
 			}
@@ -313,7 +328,7 @@ package {
 			//Check for player lose conditions
 			if (player.y > FlxG.height || FlxG.overlap(player, spikeGroup)) {
 				if(alreadyLost == false){
-				logger.recordEvent(level.levelNum, 4, "v2 $ $ lose $ time =" + (startTime - getTimer()).toString());
+				logger.recordEvent(level.levelNum, 4, "v2 $" + player.x +  ", " + player.y +" $ lose $ time =" + getTimer().toString());
 				logger.recordLevelEnd();
 				alreadyLost == true;
 				}
@@ -321,7 +336,7 @@ package {
 				player.visible = false;
 			}
 			if(FlxG.keys.R){
-				logger.recordEvent(level.levelNum, 5, "v2 $ $ reset $ time =" + (startTime - getTimer()).toString());
+				logger.recordEvent(level.levelNum, 5, "v2 $" + player.x +  ", " + player.y +"$ reset $ time =" + getTimer().toString());
 				logger.recordLevelEnd();
 				ui.BeginExitSequence(reset);
 				player.visible = false;
@@ -329,7 +344,7 @@ package {
 			
 			//Tab for level select
 			if (FlxG.keys.ESCAPE) {
-				logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + (startTime - getTimer()).toString());
+				logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + getTimer().toString());
 				logger.recordLevelEnd();
 				ui.BeginExitSequence(levelSelect);
 			}
@@ -361,6 +376,17 @@ package {
 		/** Level select function **/
 		public function levelSelect():void {
 			FlxG.switchState(new TransitionState(0, logger, level.levelNum));
+		}
+		
+		/** logs at 1 s intervals based on pullTimer 
+		 * Records where the player is and at what time **/
+		public function pullTimerListener(e:TimerEvent):void {
+			curPosition = new Point(player.x, player.y);
+			if(curPosition.x != prevPosition.x && curPosition.y != prevPosition.y){
+				logger.recordEvent(level.levelNum, 7, "v2 $" + player.x +  ", " + player.y + "$  $ time = " + getTimer().toString());
+				prevPosition = curPosition;
+			}
+			
 		}
 		
 		/** Sets the background based on the level index **/
