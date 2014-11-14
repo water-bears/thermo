@@ -12,6 +12,7 @@ package {
 	import levelgen.*;
 	
 	import org.flixel.*;
+	import water.WaterWaves;
 	
 	import uilayer.LevelUI;
 	
@@ -36,6 +37,7 @@ package {
 		
 		// Groups that will allow us to make gate and water tiles
 		public var waterTiles:FlxTilemap;
+		private var waterWaves:WaterWaves;
 		public var groundTiles:FlxTilemap;
 		
 		public var freezeGroup:FlxGroup = new FlxGroup;
@@ -102,11 +104,12 @@ package {
 			
 			//add the ground
 			groundTiles = level.ground;
-			add(groundTiles);
+			// adding the ground after water to make it feel like water does not overlap with ground
 			
 			//add the water
 			waterTiles = level.water;
-			// adding the water after player to make it feel like player is really in the wate
+			waterWaves = new WaterWaves(waterTiles);
+			// adding the water after player to make it feel like player is really in the water
 			
 			//add the gates
 			freezeGroup = level.freezeGates;
@@ -146,9 +149,6 @@ package {
 			
 			add(solidGroup);
 			
-			//add the front sprites
-			add(level.frontSprites);
-			
 			// Display a message that TAB takes you to the level select screen.
 			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen\nPress SPACE to use power");
 			levelSelectMessage.setOriginToCorner();
@@ -163,9 +163,14 @@ package {
 			//pb = new PixelBubbleSystem(20, player);
 			//add(pb);
 			add(player);
-			add(waterTiles);
+			//add(waterTiles);
+			add(waterWaves);
+			add(groundTiles);
 			
 			this.add(iceGroup);
+			
+			//add the front sprites
+			add(level.frontSprites);
 			
 			/*var emitter:ParticleEffects = new ParticleEffects();
 
@@ -190,6 +195,9 @@ package {
 			super.update();
 			
 			bubbles.Update();
+			
+			waterWaves.PlayerPosition.x = player.x + player.width / 2;
+			waterWaves.PlayerPosition.y = player.y + player.height / 2;
 			
 			// Make Player Collide With Level
 			FlxG.collide(groundTiles, player);
