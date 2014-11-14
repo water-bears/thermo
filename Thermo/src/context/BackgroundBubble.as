@@ -45,7 +45,7 @@ package context
 			{
 				bubble.x = start.x + time * (end.x - start.x);
 				bubble.y = start.y + time * (end.y - start.y);
-				bubble.alpha = 0.4 * (1 - Math.pow(2 * time - 1, 2));
+				bubble.alpha = 0.2 * (1 - Math.pow(2 * time - 1, 2));
 			}
 			if (time >= 1)
 			{

@@ -15,9 +15,7 @@ package {
 	import water.WaterWaves;
 	
 	import uilayer.LevelUI;
-	
-	import org.flintparticles.twoD.renderers.DisplayObjectRenderer;
-	
+		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
 		0 = entered a body of water
@@ -171,18 +169,6 @@ package {
 			
 			//add the front sprites
 			add(level.frontSprites);
-			
-			/*var emitter:ParticleEffects = new ParticleEffects();
-
-			var renderer:DisplayObjectRenderer = new DisplayObjectRenderer();
-			renderer.addEmitter(emitter);
-			
-			var rend:FlxSprite = new FlxSprite();
-			rend.framePixels.draw(renderer);
-			emitter.start();
-			emitter.runAhead(10);
-			FlxG.stage.addChild(renderer);*/
-			
 			startTime = getTimer();
 			
 			// Create and add the UI layer
@@ -342,6 +328,7 @@ package {
 		
 		/** Reset function **/
 		public function reset():void {
+			logger.recordEvent(level.levelNum, 4, "version 1 $ $ reset level $ time =" + (startTime - getTimer()).toString());
 			logger.recordLevelEnd();
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}

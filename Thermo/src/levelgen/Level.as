@@ -158,7 +158,7 @@ package levelgen {
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
 					
-					var test = xmlSpriteClass.@file;
+					//var test = xmlSpriteClass.@file;
 					var asset:Class = AS3Embed.GetArtAsset(xmlSpriteClass.@file);
 					sprite.loadGraphic(asset, true, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 					
@@ -233,8 +233,8 @@ package levelgen {
 						break;
 						
 					case "Upspikes":
-						var spike:Spike = new Spike(sprite, true);
-						spikes.add(spike);
+						var spike2:Spike = new Spike(sprite, true);
+						spikes.add(spike2);
 						break;
 					
 					case "MovingPlatform":

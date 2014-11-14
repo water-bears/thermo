@@ -9,7 +9,6 @@
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
 	
-	// Really should use this.value when changing player's internal values...
 	public class Player extends FlxSprite {
 		
 		/* curPow (fake enumeration, as3 has annoying enumerations) 
@@ -148,9 +147,6 @@
 			this.facing = FlxObject.LEFT;
 			this.loadGraphic(Assets.playerSprite, true, true, Assets.playerSpriteX, Assets.playerSpriteY);
 			
-			//setOriginToCorner();
-			//scale.x = 16 / Assets.playerSpriteX;
-			//scale.y = 20 / Assets.playerSpriteY;
 			this.offset.x = 8;
 			this.offset.y = 22;
 			width = 19;
@@ -171,7 +167,7 @@
 			this.playstate = playstate;
 			
 			this.ice = new Array();
-			// Someone please figure out why the <= is necessary - It's driving me insane and I can't figure out why!?
+
 			for (var i:int = 0; i <= 3; i++) {
 				var icePlat:FlxSprite = new FlxSprite();
 				
@@ -215,8 +211,15 @@
 					this.facing = FlxObject.LEFT;
 				}
 			
-				if ((FlxG.keys.W || FlxG.keys.UP) && isTouching(FlxObject.FLOOR))
+				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
 					velocity.y = -maxVelocity.y;
+				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP")) {
+					if (velocity.y < -200 && velocity.y > -100) {
+						velocity.y = -200;
+					} else if (velocity.y < -100) {
+						velocity.y = -100;
+					}
+				}
 			}
 			
 			if (FlxG.keys.justPressed("SPACE") && !bubble && !superBubble && underwater) {
@@ -241,7 +244,7 @@
 			}
 
 			// Kills the ice platforms 
-			if (getTimer() - this.t1 >= 100 && !isTouching(FLOOR)) {
+			if (getTimer() - this.t1 >= 100 && (!isTouching(FLOOR) || FlxG.keys.justPressed("SPACE"))) {
 				this.ice[3].kill();
 			}
 
@@ -268,22 +271,19 @@
 			// Update player's sprite to correct power
 			switch (newPower) {
 				case 0:
-
-					if(curPow != 0){
+					if(curPow != 0) {
 						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + "), $ " + "neutralGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 0;
 					break;
 				case 1:
-
-					if(curPow != 1){
+					if(curPow != 1) {
 						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "freezeGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 1;
 					break;
 				case 2:
-
-					if(curPow != 2){
+					if(curPow != 2) {
 						logger.recordEvent(level.levelNum, 1, "version 1 $ (" + this.x +  ", " + this.y + ") $ " + "heatGate $ time = " + (getTimer() - startTime).toString());
 					}
 					this.curPow = 2;
