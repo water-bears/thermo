@@ -11,7 +11,8 @@ package water
 		private var waterNodes:Vector.<WaterNode>;
 		private var arcNodes:Vector.<FlxPoint>;
 		
-		private var perturbationPosition:FlxPoint = new FlxPoint();
+		public var PerturbationPosition:FlxPoint = new FlxPoint();
+		public var PerturbationDirection:Number = 0;
 		
 		public function WaterModule(points:Vector.<FlxPoint>) 
 		{
@@ -21,7 +22,7 @@ package water
 			var i:uint;
 			for (i = 0; i < points.length; i++)
 			{
-				waterNodes.push(new WaterNode(points[i].x, points[i].y, 0, 1));
+				waterNodes.push(new WaterNode(this, points[i].x, points[i].y, 0, 1));
 				add(waterNodes[i]);
 				if (i > 0)
 				{
@@ -40,31 +41,6 @@ package water
 				waterNodes[i].SetOscillation(60 * i, 0.05, 155);
 				i2 = i;
 			}
-		}
-		
-		public function UpdatePlayerPosition(playerPosition:FlxPoint) : void
-		{
-			perturbationPosition.x = playerPosition.x;
-			perturbationPosition.y = playerPosition.y;
-		}
-		
-		override public function update():void 
-		{
-			var i:uint;
-			for (i = 0; i < waterNodes.length; i++)
-			{
-				var xd:Number = waterNodes[i].Position.x - perturbationPosition.x;
-				var yd:Number = waterNodes[i].Position.y - perturbationPosition.y;
-				var d:Number = Math.sqrt(xd * xd + yd * yd);
-				if (d > 0 && d < 15)
-				{
-					xd /= d;
-					yd /= d;
-					waterNodes[i].Velocity.x = 15 * xd / d;
-					waterNodes[i].Velocity.y = 15 * yd / d;
-				}
-			}
-			super.update();
 		}
 		
 		public function Draw1() : void

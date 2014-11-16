@@ -34,6 +34,20 @@ package uilayer {
 			}
 		}
 		
+		public function Rewind() : void
+		{
+			this.time = 0;
+			this.bracket = 0;
+			complete = false;
+		}
+		
+		public function FastForward() : void
+		{
+			bracket = nodes.length - 1;
+			time = nodes[bracket].t;
+			complete = false;
+		}
+		
 		public function EvaluateAndAdvance(direction:uint=1) : Number
 		{
 			var result:Number = Evaluate();
@@ -43,23 +57,28 @@ package uilayer {
 		
 		public function Advance(direction:uint=1) : void
 		{
-			//direction argument currently does nothing
-			if (bracket < nodes.length - 1)
+			if (direction > 0)
 			{
-				time++;
-				if (time == nodes[bracket+1].t)
+				for (var i:uint = 0; i < direction; i++)
 				{
-					bracket++;
+					if (bracket < nodes.length - 1)
+					{
+						time++;
+						if (time == nodes[bracket+1].t)
+						{
+							bracket++;
+						}
+					}
+					else
+					{
+						complete = true;
+					}
+					if (periodic && bracket == nodes.length - 1)
+					{
+						time = 0;
+						bracket = 0;
+					}
 				}
-			}
-			else
-			{
-				complete = true;
-			}
-			if (periodic && bracket == nodes.length - 1)
-			{
-				time = 0;
-				bracket = 0;
 			}
 		}
 		
@@ -75,13 +94,6 @@ package uilayer {
 				return PiecewiseInterpolationNode.Evaluate(nodes[bracket]);
 			}
 			return PiecewiseInterpolationNode.Evaluate(nodes[bracket], nodes[bracket + 1], time);
-		}
-		
-		public function FastForward() : void
-		{
-			bracket = nodes.length - 1;
-			time = nodes[bracket].t;
-			complete = false;
 		}
 		
 		public function JumpToBracket(num:uint):void
