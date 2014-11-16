@@ -48,34 +48,60 @@ package uilayer {
 			complete = false;
 		}
 		
-		public function EvaluateAndAdvance(direction:uint=1) : Number
+		public function EvaluateAndAdvance(direction:int=1) : Number
 		{
 			var result:Number = Evaluate();
 			Advance(direction);
 			return result;
 		}
 		
-		public function Advance(direction:uint=1) : void
+		public function Advance(direction:int=1) : void
 		{
+			var i:uint; 
 			if (direction > 0)
 			{
-				for (var i:uint = 0; i < direction; i++)
+				for (i = 0; i < direction; i++)
 				{
-					if (bracket < nodes.length - 1)
+					if (time < nodes[nodes.length - 1].t)
 					{
 						time++;
 						if (time == nodes[bracket+1].t)
 						{
 							bracket++;
 						}
+						complete = false;
 					}
 					else
 					{
 						complete = true;
 					}
-					if (periodic && bracket == nodes.length - 1)
+					if (periodic && time == nodes[nodes.length - 1].t)
 					{
 						time = 0;
+						bracket = 0;
+					}
+				}
+			}
+			else
+			{
+				for (i = 0; i < -direction; i++)
+				{
+					if (time > 0)
+					{
+						time--;
+						if (time == nodes[bracket].t - 1)
+						{
+							bracket--;
+						}
+						complete = false;
+					}
+					else
+					{
+						complete = true;
+					}
+					if (periodic && time == 0)
+					{
+						time = nodes[bracket].t;
 						bracket = 0;
 					}
 				}

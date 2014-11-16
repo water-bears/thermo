@@ -32,7 +32,7 @@ package uilayer
 			itemText = new FlxText(Utils.Lerp(xMin, xMax, x / (MenuUI.levelSelectWidth - 1)),
 								   Utils.Lerp(yMin, yMax, y / (MenuUI.levelSelectHeight - 1)),
 								   50, String(levelNum + 1));
-			itemText.alignment = "center";
+			itemText.setFormat(Assets.font_name, 15, 0xffffffff, "center");
 			
 			itemText_x12 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Hermite, 0, 2 * FlxG.width, 0, 0),
@@ -47,12 +47,12 @@ package uilayer
 			super.update();
 			if (selected)
 			{
-				itemText.scale.x = itemText.scale.y = 3;
+				itemText.size = 25;
 				itemText.color = 0xff0000;
 			}
 			else
 			{
-				itemText.scale.x = itemText.scale.y = 2;
+				itemText.size = 15;
 				itemText.color = 0xffffff;
 			}
 			if (state == 0)

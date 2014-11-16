@@ -44,26 +44,15 @@ package uilayer {
 			
 			// Title Text
 			titleText = new FlxText(0, 0, FlxG.width, "Thermo");
-			titleText.alignment = "center";
-			titleText.scale.x = titleText.scale.y = dimensions.x / 64;
-			titleText.color = 0xff0099ff;
-			titleText.shadow = 0xff003399;
-			titleText.alignment = "center";
+			titleText.setFormat(Assets.font_name, 80, 0xff0099ff, "center", 0xff003399);
 			add(titleText);
 			
 			promptText = new FlxText(0, 0, FlxG.width, "Press ENTER");
-			promptText.scale.x = promptText.scale.y = dimensions.x / 160;
-			promptText.color = 0xff0099ff;
-			promptText.shadow = 0xff003399;
-			promptText.alignment = "center";
+			promptText.setFormat(Assets.font_name, 40, 0xff0099ff, "center", 0xff003399);
 			add(promptText);
 			
 			levelSelectText = new FlxText(0, 0, FlxG.width, "Level Select");
-			levelSelectText.alignment = "center";
-			levelSelectText.scale.x = levelSelectText.scale.y = dimensions.x / 64;
-			levelSelectText.color = 0xff0099ff;
-			levelSelectText.shadow = 0xff003399;
-			levelSelectText.alignment = "center";
+			levelSelectText.setFormat(Assets.font_name, 80, 0xff0099ff, "center", 0xff003399);
 			add(levelSelectText);
 			
 			levelSelectItems = new Array(levelSelectWidth);

@@ -126,6 +126,9 @@ package {
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
 		
+		[Embed(source = "../assets/fonts/Exo2-ExtraBold.ttf", fontFamily="Default", embedAsCFF="false")]
+		private static var font_primary:Class;
+		public static var font_name:String = "Default";
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.

@@ -12,15 +12,23 @@ package uilayer {
 		private var dimmer:FlxSprite;
 		private var levelText:FlxText;
 		private var pauseTitleText:FlxText;
+		private var pauseOptionResumeText:FlxText;
+		private var pauseOptionRestartText:FlxText;
+		private var pauseOptionLevelSelectText:FlxText;
 		
 		private var time:Number;
 		
 		private var dimmer_alpha0:PiecewiseInterpolationMachine;
 		private var dimmer_alpha1:PiecewiseInterpolationMachine;
 		private var dimmer_alpha2:PiecewiseInterpolationMachine;
-		private var dimmer_alpha3:PiecewiseInterpolationMachine;
 		private var levelText_alpha0:PiecewiseInterpolationMachine;
 		private var levelText_y0:PiecewiseInterpolationMachine;
+		private var pauseTitleText_alpha2:PiecewiseInterpolationMachine;
+		private var pauseTitleText_y2:PiecewiseInterpolationMachine;
+		private var pauseOptionsText_alpha2:PiecewiseInterpolationMachine;
+		private var pauseOptionResumeText_y2:PiecewiseInterpolationMachine;
+		private var pauseOptionRestartText_y2:PiecewiseInterpolationMachine;
+		private var pauseOptionLevelSelectText_y2:PiecewiseInterpolationMachine;
 		
 		private var state:uint;
 		public var AllowPause:Boolean = false;
@@ -41,9 +49,24 @@ package uilayer {
 			
 			// Level Intro Text
 			levelText = new FlxText(0, 0, FlxG.width, "Level " + levelNum);
-			levelText.alignment = "center";
-			levelText.scale.x = levelText.scale.y = 5;
+			levelText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			add(levelText);
+			
+			pauseTitleText = new FlxText(0, 0, FlxG.width, "Paused");
+			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
+			add(pauseTitleText);
+			
+			pauseOptionResumeText = new FlxText(0, 0, FlxG.width, "Resume");
+			pauseOptionResumeText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
+			add(pauseOptionResumeText);
+			
+			pauseOptionRestartText = new FlxText(0, 0, FlxG.width, "Restart");
+			pauseOptionRestartText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
+			add(pauseOptionRestartText);
+			
+			pauseOptionLevelSelectText = new FlxText(0, 0, FlxG.width, "Level Select");
+			pauseOptionLevelSelectText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
+			add(pauseOptionLevelSelectText);
 			
 			state = 0;
 			
@@ -56,10 +79,7 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 20, 1));
 			dimmer_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
-				new PiecewiseInterpolationNode(null, 10, 0.25));
-			dimmer_alpha3 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0.25),
-				new PiecewiseInterpolationNode(null, 10, 0));
+				new PiecewiseInterpolationNode(null, 30, 0.25));
 			levelText_alpha0 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
 				new PiecewiseInterpolationNode(Utils.Lerp, 30, 1),
@@ -70,6 +90,27 @@ package uilayer {
 				new PiecewiseInterpolationNode(Utils.Lerp, 30, 0.30 * FlxG.height),
 				new PiecewiseInterpolationNode(Utils.ConvexSine, 100, 0.32 * FlxG.height),
 				new PiecewiseInterpolationNode(null, 150, 0.4 * FlxG.height));
+			pauseTitleText_alpha2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
+				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
+				new PiecewiseInterpolationNode(null, 30, 1));
+			pauseTitleText_y2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.2 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.25 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.30 * FlxG.height));
+			pauseOptionsText_alpha2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
+				new PiecewiseInterpolationNode(Utils.Lerp, 20, 0),
+				new PiecewiseInterpolationNode(null, 30, 1));
+			pauseOptionResumeText_y2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.32 * FlxG.height));
+			pauseOptionRestartText_y2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.34 * FlxG.height));
+			pauseOptionLevelSelectText_y2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.36 * FlxG.height));
 		}
 		
 		override public function update():void
@@ -83,6 +124,10 @@ package uilayer {
 				{
 					AllowPause = true;
 				}
+				pauseTitleText.alpha = 0;
+				pauseOptionResumeText.alpha = 0;
+				pauseOptionRestartText.alpha = 0;
+				pauseOptionLevelSelectText.alpha = 0;
 			}
 			if (state == 1)
 			{
@@ -91,14 +136,30 @@ package uilayer {
 			if (state == 2)
 			{
 				dimmer.alpha = dimmer_alpha2.EvaluateAndAdvance();
+				pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance();
+				pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance();
+				pauseOptionResumeText.alpha = pauseOptionsText_alpha2.Evaluate();
+				pauseOptionRestartText.alpha = pauseOptionsText_alpha2.Evaluate();
+				pauseOptionLevelSelectText.alpha = pauseOptionsText_alpha2.EvaluateAndAdvance();
+				pauseOptionResumeText.y = pauseOptionResumeText_y2.EvaluateAndAdvance();
+				pauseOptionRestartText.y = pauseOptionRestartText_y2.EvaluateAndAdvance();
+				pauseOptionLevelSelectText.y = pauseOptionLevelSelectText_y2.EvaluateAndAdvance();
 			}
 			if (state == 3)
 			{
-				dimmer.alpha = dimmer_alpha3.EvaluateAndAdvance();
-				if (dimmer_alpha3.complete)
+				dimmer.alpha = dimmer_alpha2.EvaluateAndAdvance(-1);
+				pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance(-1);
+				pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance(-1);
+				pauseOptionResumeText.alpha = pauseOptionsText_alpha2.Evaluate();
+				pauseOptionRestartText.alpha = pauseOptionsText_alpha2.Evaluate();
+				pauseOptionLevelSelectText.alpha = pauseOptionsText_alpha2.EvaluateAndAdvance(-1);
+				pauseOptionResumeText.y = pauseOptionResumeText_y2.EvaluateAndAdvance(-1);
+				pauseOptionRestartText.y = pauseOptionRestartText_y2.EvaluateAndAdvance(-1);
+				pauseOptionLevelSelectText.y = pauseOptionLevelSelectText_y2.EvaluateAndAdvance(-1);
+				if (dimmer_alpha2.complete)
 				{
-					dimmer_alpha2.Rewind();
-					dimmer_alpha3.Rewind();
+					//dimmer_alpha2.Rewind();
+					//dimmer_alpha3.Rewind();
 					state = 0;
 				}
 			}
