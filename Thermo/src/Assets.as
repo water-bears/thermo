@@ -41,6 +41,8 @@ package {
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
 		public static var iceSprite:Class;
+		[Embed(source = "../assets/objects/long_ice_platform.png")]
+		public static var longSprite:Class;
 		[Embed(source = "../assets/objects/flash_platform.png")]
 		public static var flashSprite:Class;
 		
