@@ -214,7 +214,7 @@ package {
 					player.velocity.y = 0;
 				}
 				
-				if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
+				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 1)) && (!player.bubble && !player.superBubble)) {
 					player.slowSpeed();
 					if(justEntered == false) {
 						justEntered = true;

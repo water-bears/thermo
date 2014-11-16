@@ -103,11 +103,11 @@ package water
 			xd = Position.x - InitialPosition.x;
 			yd = Position.y - InitialPosition.y;
 			d = xd * xd + yd * yd;
-			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize * 0.25)
+			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize * 0.2)
 			{
 				d = Math.sqrt(d);
-				xd *= 0.5 * WaterWaves.BlockSize / d;
-				yd *= 0.5 * WaterWaves.BlockSize / d;
+				xd *= 0.4 * WaterWaves.BlockSize / d;
+				yd *= 0.4 * WaterWaves.BlockSize / d;
 				Position.x = InitialPosition.x + xd;
 				Position.y = InitialPosition.y + yd;
 			}
