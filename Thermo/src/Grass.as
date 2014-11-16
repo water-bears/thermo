@@ -23,19 +23,5 @@ package {
 			
 			play("wave");
 		}
-		
-		/*
-		override public function update():void {
-			this.angle += 5;
-		}
-		*/
-		
-		/*
-		public function open():void {
-			this.loadGraphic(Assets.door1Sprite, false, false, Assets.door1SpriteX, Assets.door1SpriteY);
-			width = 25;
-			height = 25;
-		}
-		*/
 	}
 }

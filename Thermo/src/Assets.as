@@ -73,6 +73,14 @@ package {
 		public static var grassSpriteX:int = 20;
 		public static var grassSpriteY:int = 20;
 		
+		[Embed(source = "../assets/objects/lava.png")]
+		public static var hotLavaSprite:Class;
+		// TODO add a cold lava sprite
+		[Embed(source = "../assets/objects/lava.png")]
+		public static var coldLavaSprite:Class;
+		public static var lavaSpriteX:int = 200;
+		public static var lavaSpriteY:int = 25;
+		
 		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]

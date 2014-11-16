@@ -241,6 +241,16 @@ package levelgen {
 						var grass:Grass = new Grass(sprite);
 						frontSprites.add(grass);
 						break;
+						
+					case "Hot_Lava":
+						var lava:Lava = new Lava(sprite, true);
+						frontSprites.add(lava);
+						break;
+						
+					case "Cold_Lava":
+						var lava2:Lava = new Lava(sprite, false);
+						frontSprites.add(lava2);
+						break;
 					
 					case "MovingPlatform":
 						var startPos:int = sprite.y;
