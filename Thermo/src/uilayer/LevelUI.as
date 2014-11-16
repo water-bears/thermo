@@ -12,9 +12,8 @@ package uilayer {
 		private var dimmer:FlxSprite;
 		private var levelText:FlxText;
 		private var pauseTitleText:FlxText;
-		private var pauseOptionResumeText:FlxText;
-		private var pauseOptionRestartText:FlxText;
-		private var pauseOptionLevelSelectText:FlxText;
+		private var pauseOptions:Vector.<FlxText> = new Vector.<FlxText>();
+		private var callbacks:Vector.<Function> = new Vector.<Function>();
 		
 		private var time:Number;
 		
@@ -25,12 +24,11 @@ package uilayer {
 		private var levelText_y0:PiecewiseInterpolationMachine;
 		private var pauseTitleText_alpha2:PiecewiseInterpolationMachine;
 		private var pauseTitleText_y2:PiecewiseInterpolationMachine;
-		private var pauseOptionsText_alpha2:PiecewiseInterpolationMachine;
-		private var pauseOptionResumeText_y2:PiecewiseInterpolationMachine;
-		private var pauseOptionRestartText_y2:PiecewiseInterpolationMachine;
-		private var pauseOptionLevelSelectText_y2:PiecewiseInterpolationMachine;
+		private var pauseOptions_alpha2:PiecewiseInterpolationMachine;
+		private var pauseOptions_y2:PiecewiseInterpolationMachine;
 		
 		private var state:uint;
+		private var selectedPauseOption:uint = 0;
 		public var AllowPause:Boolean = false;
 		public var Paused:Boolean = false;
 		
@@ -56,17 +54,16 @@ package uilayer {
 			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			add(pauseTitleText);
 			
-			pauseOptionResumeText = new FlxText(0, 0, FlxG.width, "Resume");
-			pauseOptionResumeText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
-			add(pauseOptionResumeText);
+			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Resume"));
+			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Restart"));
+			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Level Select"));
 			
-			pauseOptionRestartText = new FlxText(0, 0, FlxG.width, "Restart");
-			pauseOptionRestartText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
-			add(pauseOptionRestartText);
-			
-			pauseOptionLevelSelectText = new FlxText(0, 0, FlxG.width, "Level Select");
-			pauseOptionLevelSelectText.setFormat(Assets.font_name, 40, 0xffffff, "center", 0x000000);
-			add(pauseOptionLevelSelectText);
+			for (var i:uint = 0; i < 3; i++)
+			{
+				pauseOptions[i].setFormat(Assets.font_name, 15, 0xffffff, "center", 0x000000);
+				add(pauseOptions[i]);
+				callbacks.push(null);
+			}
 			
 			state = 0;
 			
@@ -93,29 +90,43 @@ package uilayer {
 			pauseTitleText_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
-				new PiecewiseInterpolationNode(null, 30, 1));
+				new PiecewiseInterpolationNode(null, 50, 1));
 			pauseTitleText_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.2 * FlxG.height),
-				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.25 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.30 * FlxG.height));
-			pauseOptionsText_alpha2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.1 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.15 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.2 * FlxG.height));
+			pauseOptions_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
-				new PiecewiseInterpolationNode(Utils.Lerp, 20, 0),
-				new PiecewiseInterpolationNode(null, 30, 1));
-			pauseOptionResumeText_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.32 * FlxG.height));
-			pauseOptionRestartText_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.34 * FlxG.height));
-			pauseOptionLevelSelectText_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.15 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.36 * FlxG.height));
+				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
+				new PiecewiseInterpolationNode(null, 50, 1));
+			pauseOptions_y2 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, 0.45 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.4 * FlxG.height));
+		}
+		
+		public function SetSelectCallback(index:uint, f:Function):void
+		{
+			callbacks[index] = f;
 		}
 		
 		override public function update():void
 		{
 			super.update();
+			var i:uint;
+			// set which pause option is red and which are not
+			for (i = 0; i < pauseOptions.length; i++)
+			{
+				if (i == selectedPauseOption)
+				{
+					pauseOptions[i].color = 0xff0000;
+					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 20, 0.5);
+				}
+				else
+				{
+					pauseOptions[i].color = 0xffffff;
+					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 15, 0.5);
+				}
+			}
 			if (state == 0)
 			{
 				// Adjust values depending on time.
@@ -125,46 +136,91 @@ package uilayer {
 					AllowPause = true;
 				}
 				pauseTitleText.alpha = 0;
-				pauseOptionResumeText.alpha = 0;
-				pauseOptionRestartText.alpha = 0;
-				pauseOptionLevelSelectText.alpha = 0;
+				for (i = 0; i < pauseOptions.length; i++)
+				{
+					pauseOptions[i].alpha = 0;
+				}
 			}
 			if (state == 1)
 			{
 				dimmer.alpha = dimmer_alpha1.EvaluateAndAdvance();
+				PauseFadeOut(3);
 			}
 			if (state == 2)
 			{
+				if (FlxG.keys.justPressed("UP"))
+				{
+					if (selectedPauseOption == 0)
+					{
+						selectedPauseOption = pauseOptions.length - 1;
+					}
+					else
+					{
+						selectedPauseOption--;
+					}
+				}
+				if (FlxG.keys.justPressed("DOWN"))
+				{
+					if (selectedPauseOption == pauseOptions.length - 1)
+					{
+						selectedPauseOption = 0;
+					}
+					else
+					{
+						selectedPauseOption++;
+					}
+				}
+				if (FlxG.keys.justPressed("ENTER"))
+				{
+					if (callbacks[selectedPauseOption] != null)
+					{
+						BeginExitSequence(callbacks[selectedPauseOption]);
+					}
+					else
+					{
+						TogglePause();
+					}
+				}
 				dimmer.alpha = dimmer_alpha2.EvaluateAndAdvance();
-				pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance();
-				pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance();
-				pauseOptionResumeText.alpha = pauseOptionsText_alpha2.Evaluate();
-				pauseOptionRestartText.alpha = pauseOptionsText_alpha2.Evaluate();
-				pauseOptionLevelSelectText.alpha = pauseOptionsText_alpha2.EvaluateAndAdvance();
-				pauseOptionResumeText.y = pauseOptionResumeText_y2.EvaluateAndAdvance();
-				pauseOptionRestartText.y = pauseOptionRestartText_y2.EvaluateAndAdvance();
-				pauseOptionLevelSelectText.y = pauseOptionLevelSelectText_y2.EvaluateAndAdvance();
+				PauseFadeIn();
 			}
 			if (state == 3)
 			{
 				dimmer.alpha = dimmer_alpha2.EvaluateAndAdvance(-1);
-				pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance(-1);
-				pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance(-1);
-				pauseOptionResumeText.alpha = pauseOptionsText_alpha2.Evaluate();
-				pauseOptionRestartText.alpha = pauseOptionsText_alpha2.Evaluate();
-				pauseOptionLevelSelectText.alpha = pauseOptionsText_alpha2.EvaluateAndAdvance(-1);
-				pauseOptionResumeText.y = pauseOptionResumeText_y2.EvaluateAndAdvance(-1);
-				pauseOptionRestartText.y = pauseOptionRestartText_y2.EvaluateAndAdvance(-1);
-				pauseOptionLevelSelectText.y = pauseOptionLevelSelectText_y2.EvaluateAndAdvance(-1);
-				if (dimmer_alpha2.complete)
+				PauseFadeOut(1);
+				if (pauseTitleText_alpha2.complete)
 				{
-					//dimmer_alpha2.Rewind();
-					//dimmer_alpha3.Rewind();
 					state = 0;
 				}
 			}
 			levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
 			levelText.y = levelText_y0.EvaluateAndAdvance();
+		}
+		
+		private function PauseFadeIn() : void
+		{
+			pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance();
+			pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance();
+			for (var i:uint = 0; i < pauseOptions.length; i++)
+			{
+				pauseOptions[i].alpha = pauseOptions_alpha2.Evaluate();
+				pauseOptions[i].y = pauseOptions_y2.Evaluate() + 0.1 * FlxG.height * i;
+			}
+			pauseOptions_alpha2.Advance();
+			pauseOptions_y2.Advance();
+		}
+		
+		private function PauseFadeOut(speed:int) : void
+		{
+			pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance(-speed);
+			pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance(-speed);
+			for (var i:uint = 0; i < pauseOptions.length; i++)
+			{
+				pauseOptions[i].alpha = pauseOptions_alpha2.Evaluate();
+				pauseOptions[i].y = pauseOptions_y2.Evaluate() + 0.1 * FlxG.height * i;
+			}
+			pauseOptions_alpha2.Advance(-speed);
+			pauseOptions_y2.Advance(-speed);
 		}
 		
 		public function FastForward():void

@@ -190,6 +190,8 @@ package {
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
 			ui = new LevelUI(level.levelNum);
+			ui.SetSelectCallback(1, reset);
+			ui.SetSelectCallback(2, levelSelect);
 			// add(ui);
 		}
 		
@@ -230,7 +232,7 @@ package {
 					player.velocity.y = 0;
 				}
 				
-				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 1)) && (!player.bubble && !player.superBubble)) {
+				if (waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5)) && (!player.bubble && !player.superBubble)) {
 					player.slowSpeed();
 					if(justEntered == false) {
 						justEntered = true;

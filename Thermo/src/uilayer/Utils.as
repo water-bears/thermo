@@ -33,7 +33,7 @@ package uilayer {
 		public static function SmoothStep(a:Number, b:Number, t:Number) : Number
 		{
 			var num:Number = Clamp(t, 0, 1);
-			return Lerp(a, b, num * num * (3 - 2 * num));
+			return Lerp(a, b, num * num * (3.0 - 2.0 * num));
 		}
 		
 		// Concave quarter-sine interpolation
