@@ -119,9 +119,9 @@ package {
 		private static var b_16:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
 		private static var b_17:Class;
-		[Embed(source = "../assets/backgrounds/nbkgd1.png")]
+		[Embed(source = "../assets/backgrounds/nbkgd1.jpg")]
 		private static var b_18:Class;
-		[Embed(source = "../assets/backgrounds/nbkgd2.png")]
+		[Embed(source = "../assets/backgrounds/nbkgd2.jpg")]
 		private static var b_19:Class;
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
