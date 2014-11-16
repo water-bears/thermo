@@ -50,7 +50,12 @@ package {
 		public var solidGroup:FlxGroup = new FlxGroup;
 		
 		public var spikeGroup:FlxGroup = new FlxGroup;
+		public var hotlavaGroup:FlxGroup = new FlxGroup;
+		public var coldlavaGroup:FlxGroup = new FlxGroup;
+		
 		public var movingGroup:FlxGroup = new FlxGroup;
+		
+		public var windGroup:FlxGroup = new FlxGroup;
 		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
@@ -130,9 +135,16 @@ package {
 			keyGroup = level.keys;
 			add(keyGroup);
 			
-			//spikes
+			//spikes and lava
 			spikeGroup = level.spikes;
 			add(spikeGroup);
+			
+			hotlavaGroup = level.hotlava;
+			add(hotlavaGroup);
+			
+			coldlavaGroup = level.coldlava;
+			add(coldlavaGroup);
+			
 			
 			movingGroup = level.movingplatforms;
 			add(movingGroup);
@@ -144,6 +156,10 @@ package {
 					add(buttonGroup);
 				}
 			}
+			
+			//wiiiiiiind
+			windGroup = level.winds;
+			add(windGroup);
 			
 			add(solidGroup);
 			
@@ -227,66 +243,72 @@ package {
 				
 				var i:int;
 				
-				// Receive key 
 				if (FlxG.overlap(keyGroup, player)) {
-					for (i = 0; i < exitGroup.members.length; i++) {
+					for (i = 0; i < exitGroup.length; i++) {
 						(exitGroup.members[i] as Door).open();
 					}
 					getKey(keyGroup, player);
 				}
 				
-				// Calls getGate function when we touch/cross/etc. a gate
-				for (i = 0; i < freezeGroup.members.length; i++) {
-					if (FlxG.overlap(freezeGroup.members[i], player)) {
-						(freezeGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FREEZE);
-					} else {
-						(freezeGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
-				}
-				
-				for (i = 0; i < heatGroup.members.length; i++) {
-					if (FlxG.overlap(heatGroup.members[i], player)) {
-						(heatGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.HEAT);
-					} else {
-						(heatGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
-				}
-								
-				for (i = 0; i < flashGroup.members.length; i++) {
-					if (FlxG.overlap(flashGroup.members[i], player)) {
-						(flashGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.FLASH);
-					} else {
-						(flashGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
-				}
-								
-				for (i = 0; i < neutralGroup.members.length; i++) {
-					if (FlxG.overlap(neutralGroup.members[i], player)) {
-						(neutralGroup.members[i] as Gate).trigger();
-						player.gateOneTouch = true;
-						player.updatePower(Gate.NEUTRAL);
-					} else {
-						(neutralGroup.members[i] as Gate).untrigger();
-						player.gateOneTouch = false;
-					}
-				}
-								
-				if (FlxG.overlap(buttonGroup, player)) {
-					for (i = 0; i < buttonGroup.members.length; i++) {
-						if (FlxG.overlap(buttonGroup.members[i], player)) {
-							(buttonGroup.members[i] as Button).pushed();
-						}
-					}
-				}
+                // Get affected by winds
+                for (i = 0; i < windGroup.length; i++) {
+                    if (FlxG.overlap(windGroup.members[i], player)) {
+                        (windGroup.members[i] as Wind).blow(player);
+                    }
+                }
+                
+                // Calls getGate function when we touch/cross/etc. a gate
+                for (i = 0; i < freezeGroup.length; i++) {
+                    if (FlxG.overlap(freezeGroup.members[i], player)) {
+                        (freezeGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.FREEZE);
+                    } else {
+                        (freezeGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                
+                for (i = 0; i < heatGroup.length; i++) {
+                    if (FlxG.overlap(heatGroup.members[i], player)) {
+                        (heatGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.HEAT);
+                    } else {
+                        (heatGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                for (i = 0; i < flashGroup.length; i++) {
+                    if (FlxG.overlap(flashGroup.members[i], player)) {
+                        (flashGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.FLASH);
+                    } else {
+                        (flashGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                for (i = 0; i < neutralGroup.length; i++) {
+                    if (FlxG.overlap(neutralGroup.members[i], player)) {
+                        (neutralGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.NEUTRAL);
+                    } else {
+                        (neutralGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                if (FlxG.overlap(buttonGroup, player)) {
+                    for (i = 0; i < buttonGroup.length; i++) {
+                        if (FlxG.overlap(buttonGroup.members[i], player)) {
+                            (buttonGroup.members[i] as Button).pushed();
+                        }
+                    }
+                }
 				
 				if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
 					ui.FastForward();
@@ -304,6 +326,17 @@ package {
 				if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
 					ui.BeginExitSequence(reset);
 					player.visible = false;
+				}
+				
+				//Check for player lose conditions specific for lava
+				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
+					ui.BeginExitSequence(reset);
+					player.visible = false;	
+				}
+				
+				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
+					ui.BeginExitSequence(reset);
+					player.visible = false;	
 				}
 				
 				//Tab for level select

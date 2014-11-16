@@ -70,6 +70,17 @@ package {
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
+		/* TEMPORARY wind sprites */
+		[Embed(source = "../assets/damesprites/wind_left.png")]
+		public static var windleftSprite:Class;
+		public static var windleftSpriteX:int = 20;
+		public static var windleftSpriteY:int = 20;
+		
+		[Embed(source = "../assets/damesprites/wind_right.png")]
+		public static var windrightSprite:Class;
+		public static var windrightSpriteX:int = 20;
+		public static var windrightSpriteY:int = 20;
+
 		[Embed(source = "../assets/objects/grass.png")]
 		public static var grassSprite:Class;
 		public static var grassSpriteX:int = 20;
@@ -81,7 +92,7 @@ package {
 		[Embed(source = "../assets/objects/lava.png")]
 		public static var coldLavaSprite:Class;
 		public static var lavaSpriteX:int = 200;
-		public static var lavaSpriteY:int = 25;
+		public static var lavaSpriteY:int = 20;
 		
 		
 		/* Background sprites */
@@ -105,7 +116,7 @@ package {
 		private static var b_9:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
 		private static var b_10:Class;
-		[Embed(source = "../assets/backgrounds/full_moon.png")]
+		[Embed(source = "../assets/backgrounds/better_moon1.jpg")]
 		private static var b_11:Class;
 		[Embed(source = "../assets/backgrounds/moon2.jpg")]
 		private static var b_12:Class;

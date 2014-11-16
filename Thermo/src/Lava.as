@@ -3,9 +3,12 @@ package {
 	
 	public class Lava extends FlxSprite {
 		
+		public var hot:Boolean;
+		
 		public function Lava(sprite:FlxSprite, hot:Boolean) {
 			super();
 			
+			this.hot = hot;
 			this.x = sprite.x;
 			this.y = sprite.y;
 			angle = sprite.angle;
@@ -14,7 +17,7 @@ package {
 			width = width * scale.x;
 			height = height * scale.y;
 			
-			addAnimation("flow", [0, 1, 2, 3, 4], Assets.FRAME_RATE / 5, true);
+			addAnimation("flow", [0, 1, 2, 1, 0, 4, 5, 4], Assets.FRAME_RATE / 8, true);
 			loadGraphic(hot ? Assets.hotLavaSprite : Assets.coldLavaSprite, true, false, Assets.lavaSpriteX, Assets.lavaSpriteY);
 			
 			play("flow");

@@ -25,10 +25,14 @@ package levelgen {
 		public var keys:FlxGroup = new FlxGroup;
 		
 		public var spikes:FlxGroup = new FlxGroup;
+		public var hotlava:FlxGroup = new FlxGroup;
+		public var coldlava:FlxGroup = new FlxGroup;
 		public var movingplatforms:FlxGroup = new FlxGroup;
 		
 		public var trapdoor:Trapdoor;
 		public var button:Button;
+		
+		public var winds:FlxGroup = new FlxGroup;
 		
 		public var frontSprites:FlxGroup = new FlxGroup;
 		public var backSprites:FlxGroup = new FlxGroup;
@@ -58,7 +62,9 @@ package levelgen {
 			"tutorial_momentum",
 			"hard_00",
 			"hard_01",
-			"hard_02"
+			"hard_02",
+			"wind_test",
+			"tutorial_lava_00"
 		);
 		
 		/**
@@ -242,14 +248,14 @@ package levelgen {
 						frontSprites.add(grass);
 						break;
 						
-					case "Hot_Lava":
+					case "HotLava":
 						var lava:Lava = new Lava(sprite, true);
-						frontSprites.add(lava);
+						hotlava.add(lava);
 						break;
 						
-					case "Cold_Lava":
+					case "ColdLava":
 						var lava2:Lava = new Lava(sprite, false);
-						frontSprites.add(lava2);
+						coldlava.add(lava2);
 						break;
 					
 					case "MovingPlatform":
@@ -290,6 +296,18 @@ package levelgen {
 					case "Trapdoor":
 						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);						
 						break;
+					
+					case "WindLeft":
+						var wind1:Wind = new Wind(sprite);
+						winds.add(wind1);
+						var j:int = winds.length;
+						break;
+						
+					case "WindRight":
+						var wind2:Wind = new Wind(sprite, 2);
+						winds.add(wind2);
+						var k:int = winds.length;
+						break;						
 							
 					default:
 						var frontorback:String = xmlLayer[layerNum].@name;

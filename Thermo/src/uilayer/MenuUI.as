@@ -13,7 +13,7 @@ package uilayer {
 	 */
 	public class MenuUI extends FlxGroup 
 	{
-		public static var levelSelectWidth:uint = 4;
+		public static var levelSelectWidth:uint = 5;
 		public static var levelSelectHeight:uint = 4;
 		public static var levelAdvanceRate:uint = 10;
 		
