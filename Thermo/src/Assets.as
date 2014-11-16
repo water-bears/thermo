@@ -68,6 +68,17 @@ package {
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
+		/* TEMPORARY wind sprites */
+		[Embed(source = "../assets/damesprites/wind_left.png")]
+		public static var windleftSprite:Class;
+		public static var windleftSpriteX:int = 20;
+		public static var windleftSpriteY:int = 20;
+		
+		[Embed(source = "../assets/damesprites/wind_right.png")]
+		public static var windrightSprite:Class;
+		public static var windrightSpriteX:int = 20;
+		public static var windrightSpriteY:int = 20;
+		
 		
 		/* Background sprites */
 		/* Background sprites */

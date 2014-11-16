@@ -30,6 +30,8 @@ package levelgen {
 		public var trapdoor:Trapdoor;
 		public var button:Button;
 		
+		public var winds:FlxGroup = new FlxGroup;
+		
 		public var frontSprites:FlxGroup = new FlxGroup;
 		public var backSprites:FlxGroup = new FlxGroup;
 		
@@ -58,7 +60,8 @@ package levelgen {
 			"tutorial_momentum",
 			"hard_00",
 			"hard_01",
-			"hard_02"
+			"hard_02",
+			"wind_test"
 		);
 		
 		/**
@@ -275,6 +278,18 @@ package levelgen {
 					case "Trapdoor":
 						trapdoor = new Trapdoor(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);						
 						break;
+					
+					case "WindLeft":
+						var wind1:Wind = new Wind(sprite);
+						winds.add(wind1);
+						var j:int = winds.length;
+						break;
+						
+					case "WindRight":
+						var wind2:Wind = new Wind(sprite, 2);
+						winds.add(wind2);
+						var k:int = winds.length;
+						break;						
 							
 					default:
 						var frontorback:String = xmlLayer[layerNum].@name;

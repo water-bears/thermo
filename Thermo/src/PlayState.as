@@ -52,6 +52,8 @@ package {
 		public var spikeGroup:FlxGroup = new FlxGroup;
 		public var movingGroup:FlxGroup = new FlxGroup;
 		
+		public var windGroup:FlxGroup = new FlxGroup;
+		
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
 		
@@ -145,6 +147,10 @@ package {
 				}
 			}
 			
+			//wiiiiiiind
+			windGroup = level.winds;
+			add(windGroup);
+			
 			add(solidGroup);
 			
 			// Display a message that TAB takes you to the level select screen.
@@ -227,14 +233,21 @@ package {
 			
 			// Receive key 
 			if (FlxG.overlap(keyGroup, player)) {
-				for (i = 0; i < exitGroup.members.length; i++) {
+				for (i = 0; i < exitGroup.length; i++) {
 					(exitGroup.members[i] as Door).open();
 				}
 				getKey(keyGroup, player);
 			}
 			
+			// Get affected by winds
+			for (i = 0; i < windGroup.length; i++) {
+				if (FlxG.overlap(windGroup.members[i], player)) {
+					(windGroup.members[i] as Wind).blow(player);
+				}
+			}
+			
 			// Calls getGate function when we touch/cross/etc. a gate
-			for (i = 0; i < freezeGroup.members.length; i++) {
+			for (i = 0; i < freezeGroup.length; i++) {
 				if (FlxG.overlap(freezeGroup.members[i], player)) {
 					(freezeGroup.members[i] as Gate).trigger();
 					player.gateOneTouch = true;
@@ -245,7 +258,7 @@ package {
 				}
 			}
 			
-			for (i = 0; i < heatGroup.members.length; i++) {
+			for (i = 0; i < heatGroup.length; i++) {
 				if (FlxG.overlap(heatGroup.members[i], player)) {
 					(heatGroup.members[i] as Gate).trigger();
 					player.gateOneTouch = true;
@@ -256,7 +269,7 @@ package {
 				}
 			}
 							
-			for (i = 0; i < flashGroup.members.length; i++) {
+			for (i = 0; i < flashGroup.length; i++) {
 				if (FlxG.overlap(flashGroup.members[i], player)) {
 					(flashGroup.members[i] as Gate).trigger();
 					player.gateOneTouch = true;
@@ -267,7 +280,7 @@ package {
 				}
 			}
 							
-			for (i = 0; i < neutralGroup.members.length; i++) {
+			for (i = 0; i < neutralGroup.length; i++) {
 				if (FlxG.overlap(neutralGroup.members[i], player)) {
 					(neutralGroup.members[i] as Gate).trigger();
 					player.gateOneTouch = true;
@@ -279,7 +292,7 @@ package {
 			}
 							
 			if (FlxG.overlap(buttonGroup, player)) {
-				for (i = 0; i < buttonGroup.members.length; i++) {
+				for (i = 0; i < buttonGroup.length; i++) {
 					if (FlxG.overlap(buttonGroup.members[i], player)) {
 						(buttonGroup.members[i] as Button).pushed();
 					}

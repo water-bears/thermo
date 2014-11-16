@@ -38,6 +38,8 @@
 		
 		private var startTime:int;
 		
+		public var wind:FlxPoint = new FlxPoint;
+		
 		public var gateOneTouch:Boolean = false;
 		
 		public function Player(x:Number, y:Number, waterT:FlxTilemap, playstate:PlayState, logger:Logging, level:Level):void{
@@ -263,6 +265,12 @@
 						play("jump" + curPow);
 				}
 			}
+			
+			// Get affected by wind
+			velocity.x += wind.x;
+			velocity.y += wind.y;
+			wind.x = 0;
+			wind.y = 0;
 			
 			super.update();
 		}
