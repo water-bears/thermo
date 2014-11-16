@@ -112,6 +112,13 @@ package uilayer {
 		override public function update():void
 		{
 			super.update();
+			
+			// Set pausing and stuff
+			if (AllowPause && FlxG.keys.justPressed("P"))
+			{
+				TogglePause();
+			}
+			
 			var i:uint;
 			// set which pause option is red and which are not
 			for (i = 0; i < pauseOptions.length; i++)

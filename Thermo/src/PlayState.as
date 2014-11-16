@@ -350,10 +350,6 @@ package {
 				}
 			}
 			ui.update();
-			if (ui.AllowPause && FlxG.keys.justPressed("P"))
-			{
-				ui.TogglePause();
-			}
 		}
 		
 		override public function draw():void 
