@@ -236,6 +236,11 @@ package levelgen {
 						var spike2:Spike = new Spike(sprite, true);
 						spikes.add(spike2);
 						break;
+						
+					case "Grass":
+						var grass:Grass = new Grass(sprite);
+						frontSprites.add(grass);
+						break;
 					
 					case "MovingPlatform":
 						var startPos:int = sprite.y;

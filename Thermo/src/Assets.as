@@ -68,8 +68,12 @@ package {
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
+		[Embed(source = "../assets/objects/grass.png")]
+		public static var grassSprite:Class;
+		public static var grassSpriteX:int = 20;
+		public static var grassSpriteY:int = 20;
 		
-		/* Background sprites */
+		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]
 		private static var b_1:Class;
@@ -91,7 +95,7 @@ package {
 		private static var b_9:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
 		private static var b_10:Class;
-		[Embed(source = "../assets/backgrounds/moon1.jpg")]
+		[Embed(source = "../assets/backgrounds/full_moon.png")]
 		private static var b_11:Class;
 		[Embed(source = "../assets/backgrounds/moon2.jpg")]
 		private static var b_12:Class;
@@ -105,15 +109,23 @@ package {
 		private static var b_16:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
 		private static var b_17:Class;
+		[Embed(source = "../assets/backgrounds/nbkgd1.png")]
+		private static var b_18:Class;
+		[Embed(source = "../assets/backgrounds/nbkgd2.png")]
+		private static var b_19:Class;
+		[Embed(source = "../assets/backgrounds/placeholder.png")]
+		private static var b_REPLACE_ME:Class;
 		
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
-			b_1, b_9, b_3, b_16, 
-			b_15, b_14, b_5, b_17, b_6,
-			b_15, b_10, b_6, b_16, b_13, b_11,
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_16, b_REPLACE_ME, b_14,
+			b_5, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME, b_10, b_REPLACE_ME,
+			b_16, b_13, b_11,
 			b_12
 		];
 		
