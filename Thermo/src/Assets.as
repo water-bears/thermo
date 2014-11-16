@@ -105,7 +105,7 @@ package {
 		private static var b_9:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
 		private static var b_10:Class;
-		[Embed(source = "../assets/backgrounds/full_moon.png")]
+		[Embed(source = "../assets/backgrounds/better_moon1.jpg")]
 		private static var b_11:Class;
 		[Embed(source = "../assets/backgrounds/moon2.jpg")]
 		private static var b_12:Class;
