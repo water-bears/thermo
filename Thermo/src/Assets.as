@@ -92,7 +92,7 @@ package {
 		[Embed(source = "../assets/objects/lava.png")]
 		public static var coldLavaSprite:Class;
 		public static var lavaSpriteX:int = 200;
-		public static var lavaSpriteY:int = 25;
+		public static var lavaSpriteY:int = 20;
 		
 		
 		/* Background sprites */
