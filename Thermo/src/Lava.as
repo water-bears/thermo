@@ -16,6 +16,7 @@ package {
 			scrollFactor = sprite.scrollFactor;
 			width = width * scale.x;
 			height = height * scale.y;
+			this.immovable = true;
 			
 			addAnimation("flow", [0, 1, 2, 1, 0, 4, 5, 4], Assets.FRAME_RATE / 8, true);
 			loadGraphic(hot ? Assets.hotLavaSprite : Assets.coldLavaSprite, true, false, Assets.lavaSpriteX, Assets.lavaSpriteY);

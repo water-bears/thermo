@@ -341,6 +341,9 @@ package {
 					player.visible = false;	
 				}
 				
+				FlxG.collide(hotlavaGroup, player);
+				FlxG.collide(coldlavaGroup, player);
+				
 				//Tab for level select
 				if (FlxG.keys.TAB) {
 					ui.BeginExitSequence(levelSelect);
