@@ -68,8 +68,12 @@ package {
 		[Embed(source = "../assets/objects/movingplatform.png")]
 		public static var movingSprite:Class;
 		
+		[Embed(source = "../assets/objects/grass.png")]
+		public static var grassSprite:Class;
+		public static var grassSpriteX:int = 20;
+		public static var grassSpriteY:int = 20;
 		
-		/* Background sprites */
+		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]
 		private static var b_1:Class;
