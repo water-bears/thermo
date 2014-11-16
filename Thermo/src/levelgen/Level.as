@@ -64,7 +64,8 @@ package levelgen {
 			"hard_01",
 			"hard_02",
 			"wind_test",
-			"tutorial_lava_00"
+			"tutorial_lava_00",
+			"tutorial_wind"
 		);
 		
 		/**
