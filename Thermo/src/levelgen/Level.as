@@ -25,6 +25,8 @@ package levelgen {
 		public var keys:FlxGroup = new FlxGroup;
 		
 		public var spikes:FlxGroup = new FlxGroup;
+		public var hotlava:FlxGroup = new FlxGroup;
+		public var coldlava:FlxGroup = new FlxGroup;
 		public var movingplatforms:FlxGroup = new FlxGroup;
 		
 		public var trapdoor:Trapdoor;
@@ -61,7 +63,8 @@ package levelgen {
 			"hard_00",
 			"hard_01",
 			"hard_02",
-			"wind_test"
+			"wind_test",
+			"tutorial_lava_00"
 		);
 		
 		/**
@@ -245,14 +248,14 @@ package levelgen {
 						frontSprites.add(grass);
 						break;
 						
-					case "Hot_Lava":
+					case "HotLava":
 						var lava:Lava = new Lava(sprite, true);
-						frontSprites.add(lava);
+						hotlava.add(lava);
 						break;
 						
-					case "Cold_Lava":
+					case "ColdLava":
 						var lava2:Lava = new Lava(sprite, false);
-						frontSprites.add(lava2);
+						coldlava.add(lava2);
 						break;
 					
 					case "MovingPlatform":

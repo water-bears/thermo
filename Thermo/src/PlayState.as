@@ -50,6 +50,9 @@ package {
 		public var solidGroup:FlxGroup = new FlxGroup;
 		
 		public var spikeGroup:FlxGroup = new FlxGroup;
+		public var hotlavaGroup:FlxGroup = new FlxGroup;
+		public var coldlavaGroup:FlxGroup = new FlxGroup;
+		
 		public var movingGroup:FlxGroup = new FlxGroup;
 		
 		public var windGroup:FlxGroup = new FlxGroup;
@@ -132,9 +135,16 @@ package {
 			keyGroup = level.keys;
 			add(keyGroup);
 			
-			//spikes
+			//spikes and lava
 			spikeGroup = level.spikes;
 			add(spikeGroup);
+			
+			hotlavaGroup = level.hotlava;
+			add(hotlavaGroup);
+			
+			coldlavaGroup = level.coldlava;
+			add(coldlavaGroup);
+			
 			
 			movingGroup = level.movingplatforms;
 			add(movingGroup);
@@ -233,6 +243,13 @@ package {
 				
 				var i:int;
 				
+				if (FlxG.overlap(keyGroup, player)) {
+					for (i = 0; i < exitGroup.length; i++) {
+						(exitGroup.members[i] as Door).open();
+					}
+					getKey(keyGroup, player);
+				}
+				
                 // Get affected by winds
                 for (i = 0; i < windGroup.length; i++) {
                     if (FlxG.overlap(windGroup.members[i], player)) {
@@ -309,6 +326,17 @@ package {
 				if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
 					ui.BeginExitSequence(reset);
 					player.visible = false;
+				}
+				
+				//Check for player lose conditions specific for lava
+				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
+					ui.BeginExitSequence(reset);
+					player.visible = false;	
+				}
+				
+				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
+					ui.BeginExitSequence(reset);
+					player.visible = false;	
 				}
 				
 				//Tab for level select

@@ -3,9 +3,12 @@ package {
 	
 	public class Lava extends FlxSprite {
 		
+		public var hot:Boolean;
+		
 		public function Lava(sprite:FlxSprite, hot:Boolean) {
 			super();
 			
+			this.hot = hot;
 			this.x = sprite.x;
 			this.y = sprite.y;
 			angle = sprite.angle;
