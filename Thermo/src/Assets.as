@@ -41,6 +41,8 @@ package {
 		/* Ice platform sprites */
 		[Embed(source = "../assets/objects/ice_platform.png")]
 		public static var iceSprite:Class;
+		[Embed(source = "../assets/objects/long_ice_platform.png")]
+		public static var longSprite:Class;
 		[Embed(source = "../assets/objects/flash_platform.png")]
 		public static var flashSprite:Class;
 		
@@ -78,9 +80,21 @@ package {
 		public static var windrightSprite:Class;
 		public static var windrightSpriteX:int = 20;
 		public static var windrightSpriteY:int = 20;
+
+		[Embed(source = "../assets/objects/grass.png")]
+		public static var grassSprite:Class;
+		public static var grassSpriteX:int = 20;
+		public static var grassSpriteY:int = 20;
+		
+		[Embed(source = "../assets/objects/lava.png")]
+		public static var hotLavaSprite:Class;
+		// TODO add a cold lava sprite
+		[Embed(source = "../assets/objects/lava.png")]
+		public static var coldLavaSprite:Class;
+		public static var lavaSpriteX:int = 200;
+		public static var lavaSpriteY:int = 25;
 		
 		
-		/* Background sprites */
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]
 		private static var b_1:Class;
@@ -102,7 +116,7 @@ package {
 		private static var b_9:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
 		private static var b_10:Class;
-		[Embed(source = "../assets/backgrounds/moon1.jpg")]
+		[Embed(source = "../assets/backgrounds/better_moon1.jpg")]
 		private static var b_11:Class;
 		[Embed(source = "../assets/backgrounds/moon2.jpg")]
 		private static var b_12:Class;
@@ -116,15 +130,23 @@ package {
 		private static var b_16:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
 		private static var b_17:Class;
+		[Embed(source = "../assets/backgrounds/nbkgd1.jpg")]
+		private static var b_18:Class;
+		[Embed(source = "../assets/backgrounds/nbkgd2.jpg")]
+		private static var b_19:Class;
+		[Embed(source = "../assets/backgrounds/placeholder.png")]
+		private static var b_REPLACE_ME:Class;
 		
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
-			b_1, b_9, b_3, b_16, 
-			b_15, b_14, b_5, b_17, b_6,
-			b_15, b_10, b_6, b_16, b_13, b_11,
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_16, b_REPLACE_ME, b_14,
+			b_5, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME, b_10, b_REPLACE_ME,
+			b_16, b_13, b_11,
 			b_12
 		];
 		

@@ -15,6 +15,7 @@ package water
 		public static var BlockSize:uint = 20;
 		
 		public var PlayerPosition:FlxPoint = new FlxPoint();
+		public var PlayerInWater:Boolean = false;
 		
 		private var modules:Vector.<WaterModule>;
 		private var fill:FlxSprite = new FlxSprite(0, 0);
@@ -49,7 +50,9 @@ package water
 			var i:uint;
 			for (i = 0; i < modules.length; i++)
 			{
-				modules[i].UpdatePlayerPosition(PlayerPosition);
+				modules[i].PerturbationPosition.x = PlayerPosition.x;
+				modules[i].PerturbationPosition.y = PlayerPosition.y;
+				modules[i].PerturbationDirection = PlayerInWater ? 1 : 0;
 			}
 			super.update();
 			var gfx:Graphics = FlxG.flashGfx;

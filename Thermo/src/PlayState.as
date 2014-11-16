@@ -167,7 +167,7 @@ package {
 			//pb = new PixelBubbleSystem(20, player);
 			//add(pb);
 			add(player);
-			//add(waterTiles);
+			add(waterTiles);
 			add(waterWaves);
 			add(groundTiles);
 			
@@ -180,147 +180,153 @@ package {
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
 			ui = new LevelUI(level.levelNum);
-			add(ui);
+			// add(ui);
 		}
 		
 		override public function update():void {
-			super.update();
-			
-			bubbles.Update();
-			
-			waterWaves.PlayerPosition.x = player.x + player.width / 2;
-			waterWaves.PlayerPosition.y = player.y + player.height / 2;
-			
-			// Make Player Collide With Level
-			FlxG.collide(groundTiles, player);
-			FlxG.collide(iceGroup, player);
-			FlxG.collide(solidGroup, player);
-			FlxG.collide(movingGroup, player);
-			
-			// Make Keys Collide With level
-			FlxG.collide(groundTiles, keyGroup);
-			FlxG.collide(iceGroup, keyGroup);
-			FlxG.collide(solidGroup, keyGroup);
-			
-			// Uncomment this when we have this tileMap set up
-			//FlxG.collide(movingPlatTiles, player);
-			
-			if (player.x < 0) {
-				player.setX(0);
-			} else if (player.x > Thermo.WIDTH-player.width) {
-				player.setX(Thermo.WIDTH-player.width);
-			}
-			
-			if (player.y <= 0 && !player.superBubble && player.bubble) {
-				player.popBubble();
-			} else if (player.y < 0) {
-				player.setY(0);
-				player.velocity.y = 0;
-			}
-			
-			if (player.overlaps(waterTiles) && player.overlapsAt(player.x, player.y + player.getHeight() - 1, waterTiles) && (!player.bubble && !player.superBubble)) {
-				player.slowSpeed();
-				if(justEntered == false) {
-					justEntered = true;
-					logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
+			if (!ui.Paused) {
+				super.update();
+				
+				bubbles.Update();
+				
+				waterWaves.PlayerPosition.x = player.x + player.width / 2;
+				waterWaves.PlayerPosition.y = player.y + player.height / 2;
+				waterWaves.PlayerInWater = player.underwater;
+				
+				// Make Player Collide With Level
+				FlxG.collide(groundTiles, player);
+				FlxG.collide(iceGroup, player);
+				FlxG.collide(solidGroup, player);
+				FlxG.collide(movingGroup, player);
+				
+				// Make Keys Collide With level
+				FlxG.collide(groundTiles, keyGroup);
+				FlxG.collide(iceGroup, keyGroup);
+				FlxG.collide(solidGroup, keyGroup);
+				
+				// Uncomment this when we have this tileMap set up
+				//FlxG.collide(movingPlatTiles, player);
+				
+				if (player.x < 0) {
+					player.setX(0);
+				} else if (player.x > Thermo.WIDTH-player.width) {
+					player.setX(Thermo.WIDTH-player.width);
 				}
-			} else if (!player.bubble && !player.superBubble) {
-				player.normalSpeed();
-				justEntered = false;
-			}
-			
-			var i:int;
-			
-			// Receive key 
-			if (FlxG.overlap(keyGroup, player)) {
-				for (i = 0; i < exitGroup.length; i++) {
-					(exitGroup.members[i] as Door).open();
+				
+				if (player.y <= 0 && !player.superBubble && player.bubble) {
+					player.popBubble();
+				} else if (player.y < 0) {
+					player.setY(0);
+					player.velocity.y = 0;
 				}
-				getKey(keyGroup, player);
-			}
-			
-			// Get affected by winds
-			for (i = 0; i < windGroup.length; i++) {
-				if (FlxG.overlap(windGroup.members[i], player)) {
-					(windGroup.members[i] as Wind).blow(player);
-				}
-			}
-			
-			// Calls getGate function when we touch/cross/etc. a gate
-			for (i = 0; i < freezeGroup.length; i++) {
-				if (FlxG.overlap(freezeGroup.members[i], player)) {
-					(freezeGroup.members[i] as Gate).trigger();
-					player.gateOneTouch = true;
-					player.updatePower(Gate.FREEZE);
-				} else {
-					(freezeGroup.members[i] as Gate).untrigger();
-					player.gateOneTouch = false;
-				}
-			}
-			
-			for (i = 0; i < heatGroup.length; i++) {
-				if (FlxG.overlap(heatGroup.members[i], player)) {
-					(heatGroup.members[i] as Gate).trigger();
-					player.gateOneTouch = true;
-					player.updatePower(Gate.HEAT);
-				} else {
-					(heatGroup.members[i] as Gate).untrigger();
-					player.gateOneTouch = false;
-				}
-			}
-							
-			for (i = 0; i < flashGroup.length; i++) {
-				if (FlxG.overlap(flashGroup.members[i], player)) {
-					(flashGroup.members[i] as Gate).trigger();
-					player.gateOneTouch = true;
-					player.updatePower(Gate.FLASH);
-				} else {
-					(flashGroup.members[i] as Gate).untrigger();
-					player.gateOneTouch = false;
-				}
-			}
-							
-			for (i = 0; i < neutralGroup.length; i++) {
-				if (FlxG.overlap(neutralGroup.members[i], player)) {
-					(neutralGroup.members[i] as Gate).trigger();
-					player.gateOneTouch = true;
-					player.updatePower(Gate.NEUTRAL);
-				} else {
-					(neutralGroup.members[i] as Gate).untrigger();
-					player.gateOneTouch = false;
-				}
-			}
-							
-			if (FlxG.overlap(buttonGroup, player)) {
-				for (i = 0; i < buttonGroup.length; i++) {
-					if (FlxG.overlap(buttonGroup.members[i], player)) {
-						(buttonGroup.members[i] as Button).pushed();
+				
+				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 1)) && (!player.bubble && !player.superBubble)) {
+					player.slowSpeed();
+					if(justEntered == false) {
+						justEntered = true;
+						logger.recordEvent(level.levelNum, 0, "version 1 $ (" + player.x +  ", " + player.y + ") + $ $ time = " + (getTimer() - startTime).toString());
 					}
+				} else if (!player.bubble && !player.superBubble) {
+					player.normalSpeed();
+					justEntered = false;
+				}
+				
+				var i:int;
+				
+                // Get affected by winds
+                for (i = 0; i < windGroup.length; i++) {
+                    if (FlxG.overlap(windGroup.members[i], player)) {
+                        (windGroup.members[i] as Wind).blow(player);
+                    }
+                }
+                
+                // Calls getGate function when we touch/cross/etc. a gate
+                for (i = 0; i < freezeGroup.length; i++) {
+                    if (FlxG.overlap(freezeGroup.members[i], player)) {
+                        (freezeGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.FREEZE);
+                    } else {
+                        (freezeGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                
+                for (i = 0; i < heatGroup.length; i++) {
+                    if (FlxG.overlap(heatGroup.members[i], player)) {
+                        (heatGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.HEAT);
+                    } else {
+                        (heatGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                for (i = 0; i < flashGroup.length; i++) {
+                    if (FlxG.overlap(flashGroup.members[i], player)) {
+                        (flashGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.FLASH);
+                    } else {
+                        (flashGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                for (i = 0; i < neutralGroup.length; i++) {
+                    if (FlxG.overlap(neutralGroup.members[i], player)) {
+                        (neutralGroup.members[i] as Gate).trigger();
+                        player.gateOneTouch = true;
+                        player.updatePower(Gate.NEUTRAL);
+                    } else {
+                        (neutralGroup.members[i] as Gate).untrigger();
+                        player.gateOneTouch = false;
+                    }
+                }
+                                
+                if (FlxG.overlap(buttonGroup, player)) {
+                    for (i = 0; i < buttonGroup.length; i++) {
+                        if (FlxG.overlap(buttonGroup.members[i], player)) {
+                            (buttonGroup.members[i] as Button).pushed();
+                        }
+                    }
+                }
+				
+				if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
+					ui.FastForward();
+				}
+				
+				// If player has the key and touches the exit, they win
+				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+					player.visible = false;
+					logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
+					logger.recordLevelEnd();
+					win(exitGroup, player);
+				}
+				
+				//Check for player lose conditions
+				if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
+					ui.BeginExitSequence(reset);
+					player.visible = false;
+				}
+				
+				//Tab for level select
+				if (FlxG.keys.TAB) {
+					ui.BeginExitSequence(levelSelect);
 				}
 			}
-			
-			if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
-				ui.FastForward();
+			ui.update();
+			if (ui.AllowPause && FlxG.keys.justPressed("P"))
+			{
+				ui.TogglePause();
 			}
-			
-			// If player has the key and touches the exit, they win
-			if (player.hasKey && FlxG.overlap(exitGroup, player)) {
-				player.visible = false;
-				logger.recordEvent(level.levelNum, 3, "version 1 $ $ level completion $ time = " + getTimer().toString());
-				logger.recordLevelEnd();
-				win(exitGroup, player);
-			}
-			
-			//Check for player lose conditions
-			if (player.y > FlxG.height || FlxG.keys.R || FlxG.overlap(player, spikeGroup)) {
-				ui.BeginExitSequence(reset);
-				player.visible = false;
-			}
-			
-			//Tab for level select
-			if (FlxG.keys.TAB) {
-				ui.BeginExitSequence(levelSelect);
-			}
+		}
+		
+		override public function draw():void 
+		{
+			super.draw();
+			ui.draw();
 		}
 		
 		/** when player retrieves key **/

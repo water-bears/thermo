@@ -25,8 +25,11 @@ package water
 		private var amplitude:Number;
 		private var period:Number;
 		
-		public function WaterNode(pos_x:Number, pos_y:Number, tan_x:Number=0, tan_y:Number=0)
+		private var module:WaterModule;
+		
+		public function WaterNode(module:WaterModule, pos_x:Number, pos_y:Number, tan_x:Number=0, tan_y:Number=0)
 		{
+			this.module = module;
 			//deal with position
 			Position.x = InitialPosition.x = pos_x;
 			Position.y = InitialPosition.y = pos_y;
@@ -84,15 +87,27 @@ package water
 			Velocity.x += p * offsetAxis.x;
 			Velocity.y += p * offsetAxis.y;
 			
+			
+			xd = Position.x - module.PerturbationPosition.x;
+			yd = Position.y - module.PerturbationPosition.y;
+			d = Math.sqrt(xd * xd + yd * yd);
+			if (d > 0 && d < 15)
+			{
+				xd /= d;
+				yd /= d;
+				Velocity.x = module.PerturbationDirection * 15 * xd / d;
+				Velocity.y = module.PerturbationDirection * 15 * yd / d;
+			}
+			
 			//HARD LIMIT on position to prevent overlap
 			xd = Position.x - InitialPosition.x;
 			yd = Position.y - InitialPosition.y;
 			d = xd * xd + yd * yd;
-			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize * 0.25)
+			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize * 0.2)
 			{
 				d = Math.sqrt(d);
-				xd *= 0.5 * WaterWaves.BlockSize / d;
-				yd *= 0.5 * WaterWaves.BlockSize / d;
+				xd *= 0.4 * WaterWaves.BlockSize / d;
+				yd *= 0.4 * WaterWaves.BlockSize / d;
 				Position.x = InitialPosition.x + xd;
 				Position.y = InitialPosition.y + yd;
 			}

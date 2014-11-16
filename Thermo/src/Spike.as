@@ -25,7 +25,6 @@ package {
 			width = width * scale.x;
 			height = height * scale.y;
 		}
-		
 	}
 	
 }
