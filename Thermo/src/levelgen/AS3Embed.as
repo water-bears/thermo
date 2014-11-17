@@ -5,15 +5,11 @@ public class AS3Embed
 
 [Embed(source = "../../assets/backgrounds/background.png")] private static var background2:Class;
 [Embed(source = "../../assets/backgrounds/bkgd1.png")] private static var bkgd12:Class;
-[Embed(source = "../../assets/backgrounds/bkgd3.png")] private static var bkgd32:Class;
-[Embed(source = "../../assets/backgrounds/bkgd4.png")] private static var bkgd42:Class;
 [Embed(source = "../../assets/backgrounds/bkgd4_1.png")] private static var bkgd4_12:Class;
-[Embed(source = "../../assets/backgrounds/bkgd5.png")] private static var bkgd52:Class;
 [Embed(source = "../../assets/backgrounds/bkgd5_1.png")] private static var bkgd5_12:Class;
 [Embed(source = "../../assets/backgrounds/bkgd6.png")] private static var bkgd62:Class;
 [Embed(source = "../../assets/backgrounds/bkgd7.png")] private static var bkgd72:Class;
 [Embed(source = "../../assets/backgrounds/bkgd9.png")] private static var bkgd92:Class;
-[Embed(source = "../../assets/backgrounds/full_moon.png")] private static var full_moon2:Class;
 [Embed(source = "../../assets/backgrounds/placeholder.png")] private static var placeholder2:Class;
 [Embed(source = "../../assets/character/character.png")] private static var character3:Class;
 [Embed(source = "../../assets/character/player.png")] private static var player3:Class;
@@ -206,15 +202,11 @@ return "error";
 public static function GetArtAsset(filename:String):Class{
 if(filename == "backgrounds/background.png") { return background2; }
 if(filename == "backgrounds/bkgd1.png") { return bkgd12; }
-if(filename == "backgrounds/bkgd3.png") { return bkgd32; }
-if(filename == "backgrounds/bkgd4.png") { return bkgd42; }
 if(filename == "backgrounds/bkgd4_1.png") { return bkgd4_12; }
-if(filename == "backgrounds/bkgd5.png") { return bkgd52; }
 if(filename == "backgrounds/bkgd5_1.png") { return bkgd5_12; }
 if(filename == "backgrounds/bkgd6.png") { return bkgd62; }
 if(filename == "backgrounds/bkgd7.png") { return bkgd72; }
 if(filename == "backgrounds/bkgd9.png") { return bkgd92; }
-if(filename == "backgrounds/full_moon.png") { return full_moon2; }
 if(filename == "backgrounds/placeholder.png") { return placeholder2; }
 if(filename == "character/character.png") { return character3; }
 if(filename == "character/player.png") { return player3; }

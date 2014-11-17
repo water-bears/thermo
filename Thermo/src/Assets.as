@@ -98,42 +98,28 @@ package {
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/background.png")]
 		private static var b_1:Class;
-		[Embed(source = "../assets/backgrounds/bkgd3.png")]
-		private static var b_2:Class;
-		[Embed(source = "../assets/backgrounds/bkgd4.png")]
-		private static var b_3:Class;
-		[Embed(source = "../assets/backgrounds/bkgd5.png")]
-		private static var b_4:Class;
 		[Embed(source = "../assets/backgrounds/bkgd4_1.png")]
-		private static var b_5:Class;
+		private static var b_2:Class;
 		[Embed(source = "../assets/backgrounds/bkgd5_1.png")]
-		private static var b_6:Class;
+		private static var b_3:Class;
 		[Embed(source = "../assets/backgrounds/bkgd6.png")]
-		private static var b_7:Class;
+		private static var b_4:Class;
 		[Embed(source = "../assets/backgrounds/bkgd7.png")]
-		private static var b_8:Class;
+		private static var b_5:Class;
 		[Embed(source = "../assets/backgrounds/bkgd9.png")]
-		private static var b_9:Class;
+		private static var b_6:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
-		private static var b_10:Class;
-		[Embed(source = "../assets/backgrounds/better_moon1.jpg")]
-		private static var b_11:Class;
-		[Embed(source = "../assets/backgrounds/moon2.jpg")]
-		private static var b_12:Class;
-		[Embed(source = "../assets/backgrounds/moon3.jpg")]
-		private static var b_13:Class;
+		private static var b_7:Class;
 		[Embed(source = "../assets/backgrounds/morecloudz.jpg")]
-		private static var b_14:Class;
-		[Embed(source = "../assets/backgrounds/starstuff.jpg")]
-		private static var b_15:Class;
+		private static var b_8:Class;
 		[Embed(source = "../assets/backgrounds/sunsetcloud.jpg")]
-		private static var b_16:Class;
+		private static var b_9:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
-		private static var b_17:Class;
+		private static var b_10:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd1.jpg")]
-		private static var b_18:Class;
+		private static var b_11:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd2.jpg")]
-		private static var b_19:Class;
+		private static var b_12:Class;
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
 		
@@ -157,11 +143,11 @@ package {
 		 */
 		public static var b_list:Array = [
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_16, b_REPLACE_ME, b_14,
-			b_5, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_10, b_REPLACE_ME,
-			b_16, b_13, b_11,
-			b_12
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
+			b_REPLACE_ME
 		];
 		
 		/* Sounds */
