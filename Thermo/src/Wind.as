@@ -1,9 +1,7 @@
-package  
-{
+package {
 	import org.flixel.FlxSprite;
 	
-	public class Wind extends FlxSprite
-	{
+	public class Wind extends FlxSprite {
 		private var intensity:Number = 20;
 		
 		/* Directions
@@ -14,16 +12,12 @@ package
 		 */
 		private var direction:int;
 		
-		public function Wind(sprite:FlxSprite, direction:int = 1) 
-		{
+		public function Wind(sprite:FlxSprite, direction:int = 1) {
 			super();
 			
-			if (direction == 2)
-			{
+			if (direction == 2) {
 				loadGraphic(Assets.windrightSprite, false, false, Assets.windrightSpriteX, Assets.windrightSpriteY);
-			}
-			else
-			{
+			} else {
 				loadGraphic(Assets.windleftSprite, false, false, Assets.windleftSpriteX, Assets.windleftSpriteY);
 			}
 			
@@ -35,15 +29,11 @@ package
 			scale = sprite.scale;
 			width = width * scale.x;
 			height = height * scale.y;
-			
 		}
 		
-		public function blow(player:Player)
-		{
-			if (player.bubble)
-			{
-				switch(direction) 
-				{						
+		public function blow(player:Player) {
+			if (player.bubble) {
+				switch(direction) {						
 				case 2:
 					player.wind.x += intensity;
 					break;
@@ -57,11 +47,7 @@ package
 					player.wind.x -= intensity;
 					break;
 				}
-				
 			}
-		
 		}
-		
 	}
-
 }

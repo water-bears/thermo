@@ -51,6 +51,7 @@
 			const h:uint = 96;
 			const n:uint = 96 * 3;
 			
+			{ //Animations
 			// Normal
 			this.addAnimation("stand0", [
 				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
@@ -144,11 +145,12 @@
 				h+64, h+65, h+66, h+67, n+68, n+69, n+70, n+71, h+72, h+73, h+74, h+75, n+76,
 				n+77, n+78, n+79, h+80, h+81, h+82, h+83, n+84, n+85, n+86, n+87, h+88, h+89,
 				h+90, h+91, n+92, n+93, n+94, n+95
-			], Assets.FRAME_RATE, true);
+			], Assets.FRAME_RATE, true);}
 			
 			this.facing = FlxObject.LEFT;
 			this.loadGraphic(Assets.playerSprite, true, true, Assets.playerSpriteX, Assets.playerSpriteY);
 			
+			//Set proper bounding box location and size (19x19)
 			this.offset.x = 8;
 			this.offset.y = 22;
 			width = 19;
@@ -200,8 +202,6 @@
 		}
 		
 		override public function update():void {
-			acceleration.x = 0;
-			
 			if (!bubble && !floatUp) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = -maxVelocity.x;

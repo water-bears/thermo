@@ -17,7 +17,6 @@ package {
 		 * 4 - Neutral
 		 */
 		private var type:int;
-		
 		private var triggered:Boolean = false;
 		
 		public function Gate(sprite:FlxSprite, type:int) {
@@ -46,9 +45,7 @@ package {
 		}
 		
 		public function trigger():void {
-			// Play triggered animation
 			triggered = true;
-			//play("trigger");
 		}
 		
 		override public function update():void {
@@ -60,9 +57,7 @@ package {
 		}
 		
 		public function untrigger():void {
-			// Play triggered animation
 			triggered = false;
-			//play("normal");
 		}
 	}
 }

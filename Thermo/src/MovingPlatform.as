@@ -84,6 +84,7 @@ package {
 					direction = 3;
 					break;
 			}
+			
 			velocity.x *= -1;
 			velocity.y *= -1;
 		}

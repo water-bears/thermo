@@ -23,7 +23,6 @@ package {
 			// Change door to open sprite
 			this.solid = false;
 			this.loadGraphic(Assets.trapdoorOpenSprite);
-			//this.kill();
 		}
 	}
 }

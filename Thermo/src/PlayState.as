@@ -64,12 +64,6 @@ package {
 		
 		private var ui:LevelUI;
 		
-		public var BLUE:uint = 0x0000FF;
-		public var RED:uint = 0x00FF00FF;
-		public var GREEN:uint = 0x00FF00;
-		public var WHITE:uint = 0xffffffff;
-		public var BLACK:uint = 0x000000;
-		
 		private var level:Level;
 		
 		private const FREEZE:int = 1;
@@ -77,7 +71,6 @@ package {
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
-		//private var pb:PixelBubbleSystem;
 		
 		public function setLevel(inputLevel:Level): void {
 			level = inputLevel;
@@ -107,12 +100,10 @@ package {
 			
 			//add the ground
 			groundTiles = level.ground;
-			// adding the ground after water to make it feel like water does not overlap with ground
 			
 			//add the water
 			waterTiles = level.water;
 			waterWaves = new WaterWaves(waterTiles);
-			// adding the water after player to make it feel like player is really in the water
 			
 			//add the gates
 			freezeGroup = level.freezeGates;
@@ -169,11 +160,11 @@ package {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
 
+			//Order matters - Add water after player and ground after water for layering effect
 			add(player);
 			add(waterWaves);
 			add(groundTiles);
-			
-			this.add(iceGroup);
+			add(iceGroup);
 			
 			//add the front sprites
 			add(level.frontSprites);
@@ -202,6 +193,8 @@ package {
 				FlxG.collide(iceGroup, player);
 				FlxG.collide(solidGroup, player);
 				FlxG.collide(movingGroup, player);
+				FlxG.collide(hotlavaGroup, player);
+				FlxG.collide(coldlavaGroup, player);
 				
 				// Make Keys Collide With level
 				FlxG.collide(groundTiles, keyGroup);
@@ -329,16 +322,12 @@ package {
 					ui.BeginExitSequence(reset);
 					player.visible = false;	
 				}
-				
-				FlxG.collide(hotlavaGroup, player);
-				FlxG.collide(coldlavaGroup, player);
 			}
 			
 			ui.update();
 		}
 		
-		override public function draw():void 
-		{
+		override public function draw():void {
 			super.draw();
 			ui.draw();
 		}
