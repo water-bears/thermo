@@ -32,7 +32,7 @@ package uilayer {
 		public var AllowPause:Boolean = false;
 		public var Paused:Boolean = false;
 		
-		public function LevelUI(levelNum:uint)
+		public function LevelUI(levelNum:uint, logger:Logging)
 		{
 			super(0);
 			
