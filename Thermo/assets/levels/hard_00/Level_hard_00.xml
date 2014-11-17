@@ -21,7 +21,17 @@
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="623.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="602.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="581.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="560.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="540.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="521.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="500.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="460.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="440.00" y="19.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="60.00" y="9.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="480.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Trapdoor" name="Trapdoor" x="60.00" y="30.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Button" name="Button" x="379.00" y="21.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Spikes" name="Spikes" x="380.00" y="60.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
