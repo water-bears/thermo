@@ -62,8 +62,6 @@ package {
 		// Group for ice blocks
 		public var iceGroup:FlxGroup = new FlxGroup(4);
 		
-		// This is currently being used as a method of debugging
-		public var status:FlxText;
 		private var ui:LevelUI;
 		
 		public var BLUE:uint = 0x0000FF;
@@ -147,7 +145,6 @@ package {
 			coldlavaGroup = level.coldlava;
 			add(coldlavaGroup);
 			
-			
 			movingGroup = level.movingplatforms;
 			add(movingGroup);
 			
@@ -171,10 +168,8 @@ package {
 			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
-			//pb = new PixelBubbleSystem(20, player);
-			//add(pb);
+
 			add(player);
-			add(waterTiles);
 			add(waterWaves);
 			add(groundTiles);
 			
@@ -212,9 +207,6 @@ package {
 				FlxG.collide(groundTiles, keyGroup);
 				FlxG.collide(iceGroup, keyGroup);
 				FlxG.collide(solidGroup, keyGroup);
-				
-				// Uncomment this when we have this tileMap set up
-				//FlxG.collide(movingPlatTiles, player);
 				
 				if (player.x < 0) {
 					player.setX(0);
