@@ -38,7 +38,7 @@ package water
 				arcNodes[i].y = waterNodes[i].Position.y + (waterNodes[i2].Position.y - waterNodes[i].Position.y) / 2;
 				waterNodes[i].PrevNode = waterNodes[i2];
 				waterNodes[i2].NextNode = waterNodes[i];
-				waterNodes[i].SetOscillation(60 * i, 0.05, 155);
+				waterNodes[i].SetOscillation(60 * i, 0.1, 155);
 				i2 = i;
 			}
 		}
