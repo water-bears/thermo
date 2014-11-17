@@ -126,12 +126,12 @@ package uilayer {
 				if (i == selectedPauseOption)
 				{
 					pauseOptions[i].color = 0xff0000;
-					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 20, 0.5);
+					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 20, 0.2);
 				}
 				else
 				{
 					pauseOptions[i].color = 0xffffff;
-					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 15, 0.5);
+					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 15, 0.2);
 				}
 			}
 			if (state == 0)

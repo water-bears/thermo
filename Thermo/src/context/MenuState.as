@@ -7,6 +7,7 @@ package context {
 	import org.flixel.*;
 	
 	import uilayer.MenuUI;
+	import io.ThermoSaves;
 	
 	public class MenuState extends FlxState {
 		
@@ -19,7 +20,7 @@ package context {
 		private var initialLevel:uint;
 		
 		public function MenuState(initialState:uint, initialLevel:uint, logger:Logging)
-		{
+		{			
 			this.initialState = initialState;
 			this.initialLevel = initialLevel;
 			this.logger = logger;

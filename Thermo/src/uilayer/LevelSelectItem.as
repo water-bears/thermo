@@ -1,6 +1,7 @@
 package uilayer 
 {
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
 	
@@ -16,11 +17,14 @@ package uilayer
 		private static var yMax:Number = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
+		//private var lock:FlxSprite;
 		
 		private var itemText_x12:PiecewiseInterpolationMachine;
 		private var itemText_y2:PiecewiseInterpolationMachine;
 		
 		public var levelNum:uint;
+		public var completed:Boolean;
+		public var locked:Boolean;
 		
 		public var selected:Boolean;
 		public var state:uint;
@@ -47,13 +51,24 @@ package uilayer
 			super.update();
 			if (selected)
 			{
-				itemText.size = 25;
+				itemText.size = Utils.Lerp(itemText.size, 25, 0.2);
 				itemText.color = 0xff0000;
 			}
 			else
 			{
-				itemText.size = 15;
-				itemText.color = 0xffffff;
+				itemText.size = Utils.Lerp(itemText.size, 15, 0.2);
+				if (locked)
+				{
+					itemText.color = 0x000000;
+				}
+				else if (completed)
+				{
+					itemText.color = 0x00ff00;
+				}
+				else
+				{
+					itemText.color = 0xffffff;
+				}
 			}
 			if (state == 0)
 			{

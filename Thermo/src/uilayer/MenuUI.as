@@ -6,6 +6,7 @@ package uilayer {
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
 	import context.MenuUtils;
+	import io.ThermoSaves;
 	
 	/**
 	 * ...
@@ -13,9 +14,10 @@ package uilayer {
 	 */
 	public class MenuUI extends FlxGroup 
 	{
-		public static var levelSelectWidth:uint = 5;
-		public static var levelSelectHeight:uint = 4;
-		public static var levelAdvanceRate:uint = 10;
+		public static const levelSelectWidth:uint = 5;
+		public static const levelSelectHeight:uint = 4;
+		public static const NUM_OPEN_LEVELS:uint = 3;
+		private static var levelAdvanceRate:uint = 10;
 		
 		private var dimmer:FlxSprite;
 		private var titleText:FlxText;
@@ -62,6 +64,8 @@ package uilayer {
 				for (var j:uint = 0; j < levelSelectHeight; j++)
 				{
 					levelSelectItems[i][j] = new LevelSelectItem(i, j);
+					levelSelectItems[i][j].completed = ThermoSaves.GetLevelCleared(levelSelectItems[i][j].levelNum + 1);
+					levelSelectItems[i][j].locked = ThermoSaves.GetNumLevelsCleared() + NUM_OPEN_LEVELS <= levelSelectItems[i][j].levelNum;
 					add(levelSelectItems[i][j]);
 				}
 			}

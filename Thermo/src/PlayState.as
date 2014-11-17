@@ -15,6 +15,8 @@ package {
 	import water.WaterWaves;
 	
 	import uilayer.LevelUI;
+	
+	import io.ThermoSaves;
 		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
@@ -367,6 +369,7 @@ package {
 		
 		/** Win function **/
 		public function win(Exit:FlxGroup, player:Player):void {
+			ThermoSaves.MarkLevelAsCleared(level.levelNum);
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		
