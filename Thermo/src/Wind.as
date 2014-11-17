@@ -31,7 +31,7 @@ package {
 			height = height * scale.y;
 		}
 		
-		public function blow(player:Player) {
+		public function blow(player:Player):void {
 			if (player.bubble) {
 				switch(direction) {						
 				case 2:

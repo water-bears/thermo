@@ -37,9 +37,6 @@ package {
 		// Checking if we have JUST lost
 		public var alreadyLost:Boolean = false;
 		
-		// This is for checking when we JUST entered the water
-		public var justEntered:Boolean = false;
-		
 		private var background:FlxSprite;
 		
 		private var player:Player;
@@ -53,19 +50,14 @@ package {
 		public var heatGroup:FlxGroup = new FlxGroup;
 		public var flashGroup:FlxGroup = new FlxGroup;
 		public var neutralGroup:FlxGroup = new FlxGroup;
-
 		public var exitGroup:FlxGroup = new FlxGroup;
 		public var keyGroup:FlxGroup = new FlxGroup;
-		
 		public var buttonGroup:FlxGroup = new FlxGroup;
 		public var solidGroup:FlxGroup = new FlxGroup;
-		
 		public var spikeGroup:FlxGroup = new FlxGroup;
 		public var hotlavaGroup:FlxGroup = new FlxGroup;
 		public var coldlavaGroup:FlxGroup = new FlxGroup;
-		
 		public var movingGroup:FlxGroup = new FlxGroup;
-		
 		public var windGroup:FlxGroup = new FlxGroup;
 		
 		// Group for ice blocks
@@ -81,12 +73,12 @@ package {
 		
 		public var bubbles:BubbleBackground;
 		
-		public function setLevel(inputLevel:Level): void {
+		public function setLevel(inputLevel:Level):void {
 			level = inputLevel;
 		}
 		
 		public function PlayState(logger:Logging) {
-			this.logger=logger;
+			this.logger = logger;
 		}
 		
 		override public function create():void {
@@ -160,7 +152,7 @@ package {
 				}
 			}
 			
-			//wiiiiiiind
+			//wind
 			windGroup = level.winds;
 			add(windGroup);
 			
@@ -231,7 +223,6 @@ package {
 				
 				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5)) && (!player.bubble && !player.superBubble)) {
 					player.slowSpeed();
-
 				} else if (!player.bubble && !player.superBubble) {
 					player.normalSpeed();
 				}
