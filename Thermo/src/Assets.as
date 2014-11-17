@@ -1,4 +1,6 @@
 package {
+	import flash.media.Sound;
+	
 	/**
 	 * Utility class for importing sprites and sounds
 	 */
@@ -137,6 +139,9 @@ package {
 		
 		[Embed(source = "../assets/sfx/option_cycle.mp3")]
 		public static var sfx_option_cycle:Class;
+		[Embed(source = "../assets/sfx/thermo_wip.mp3")]
+		public static var sfx_soundtrack:Class;
+		public static var soundtrack:Sound = new sfx_soundtrack() as Sound;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.

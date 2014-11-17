@@ -2,6 +2,7 @@ package {
 	
 	import context.InitialState;
 	import context.MenuState;
+	import flash.media.SoundChannel;
 	
 	import org.flixel.*;
 	import Logging;
@@ -18,6 +19,9 @@ package {
 			// Optional debug tools
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
+			
+			var channel:SoundChannel = new SoundChannel();
+			channel = Assets.soundtrack.play();
 		}
 	}
 }
