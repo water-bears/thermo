@@ -92,9 +92,9 @@ package uilayer {
 				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
 				new PiecewiseInterpolationNode(null, 50, 1));
 			pauseTitleText_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.1 * FlxG.height),
-				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.15 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.2 * FlxG.height));
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.05 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.10 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.15 * FlxG.height));
 			pauseOptions_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
@@ -165,6 +165,7 @@ package uilayer {
 					{
 						selectedPauseOption--;
 					}
+					FlxG.play(Assets.sfx_option_cycle);
 				}
 				if (FlxG.keys.justPressed("DOWN"))
 				{
@@ -176,6 +177,7 @@ package uilayer {
 					{
 						selectedPauseOption++;
 					}
+					FlxG.play(Assets.sfx_option_cycle);
 				}
 				if (FlxG.keys.justPressed("ENTER"))
 				{

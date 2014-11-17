@@ -195,6 +195,7 @@ package uilayer {
 				{
 					selectedSquare.x += selectedSquareTemp.x;
 					selectedSquare.y += selectedSquareTemp.y;
+					FlxG.play(Assets.sfx_option_cycle);
 				}
 				if (selectedSquare.x < 0)
 				{

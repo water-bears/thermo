@@ -137,9 +137,20 @@ package {
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
 		
+		/*
+		 * Fonts (really just one font, I think)
+		 */ 
+		
 		[Embed(source = "../assets/fonts/Exo2-ExtraBold.ttf", fontFamily="Default", embedAsCFF="false")]
 		private static var font_primary:Class;
 		public static var font_name:String = "Default";
+		
+		/*
+		 * Sound Effects
+		 */ 
+		
+		[Embed(source = "../assets/sfx/option_cycle.mp3")]
+		public static var sfx_option_cycle:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
