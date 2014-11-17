@@ -114,7 +114,7 @@ package uilayer {
 			super.update();
 			
 			// Set pausing and stuff
-			if (AllowPause && FlxG.keys.justPressed("P"))
+			if (AllowPause && FlxG.keys.justPressed("ESCAPE"))
 			{
 				TogglePause();
 			}

@@ -165,11 +165,6 @@ package {
 			
 			add(solidGroup);
 			
-			// Display a message that TAB takes you to the level select screen.
-			var levelSelectMessage:FlxText = new FlxText(0, FlxG.height - 25, 200, "Press TAB to go to level select screen\nPress SPACE to use power");
-			levelSelectMessage.setOriginToCorner();
-			levelSelectMessage.scale = new FlxPoint(1, 1);
-			add(levelSelectMessage);
 			// Create and add the player
 			if (level.player == null) {
 				player = new Player(0, 0, waterTiles, this, logger, level);  //logger);
@@ -345,12 +340,8 @@ package {
 				
 				FlxG.collide(hotlavaGroup, player);
 				FlxG.collide(coldlavaGroup, player);
-				
-				//Tab for level select
-				if (FlxG.keys.TAB) {
-					ui.BeginExitSequence(levelSelect);
-				}
 			}
+			
 			ui.update();
 		}
 		
