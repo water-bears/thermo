@@ -200,8 +200,6 @@ package {
 				FlxG.collide(iceGroup, player);
 				FlxG.collide(solidGroup, player);
 				FlxG.collide(movingGroup, player);
-				FlxG.collide(hotlavaGroup, player);
-				FlxG.collide(coldlavaGroup, player);
 				
 				// Make Keys Collide With level
 				FlxG.collide(groundTiles, keyGroup);
@@ -210,8 +208,8 @@ package {
 				
 				if (player.x < 0) {
 					player.setX(0);
-				} else if (player.x > Thermo.WIDTH-player.width) {
-					player.setX(Thermo.WIDTH-player.width);
+				} else if (player.x > Thermo.WIDTH - player.width) {
+					player.setX(Thermo.WIDTH - player.width);
 				}
 				
 				if (player.y <= 0 && !player.superBubble && player.bubble) {
@@ -318,7 +316,7 @@ package {
 					ui.BeginExitSequence(reset);
 					player.visible = false;
 				}
-				if(FlxG.keys.R){
+				if (FlxG.keys.R){
 					logger.recordEvent(level.levelNum, 5, "v2 $" + player.x +  ", " + player.y +"$ reset $ time =" + getTimer().toString());
 					logger.recordLevelEnd();
 					ui.BeginExitSequence(reset);
@@ -346,6 +344,10 @@ package {
 					player.visible = false;	
 				}
 			}
+			
+			//Needs to be at the bottom so that the player actually dies
+			FlxG.collide(hotlavaGroup, player);
+			FlxG.collide(coldlavaGroup, player);
 			
 			ui.update();
 		}
