@@ -18,7 +18,7 @@ package {
 			height = height * scale.y;
 			this.immovable = true;
 			
-			addAnimation("flow", [0, 1, 2, 1, 0, 4, 5, 4], Assets.FRAME_RATE / 2, true);
+			addAnimation("flow", [0, 1, 2, 3, 4, 3, 2, 1], Assets.FRAME_RATE / 3, true);
 			loadGraphic(hot ? Assets.hotLavaSprite : Assets.coldLavaSprite, true, false, Assets.lavaSpriteX, Assets.lavaSpriteY);
 			
 			play("flow");
