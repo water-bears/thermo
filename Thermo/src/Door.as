@@ -38,6 +38,10 @@ package {
 			*/
 			x = sprite.x - 8;
 			y = sprite.y - 27;
+			width *= .8;
+			height *= .8;
+			scale.x *= .8;
+			scale.y *= .8;
 			
 			play("closed");
 		}
