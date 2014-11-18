@@ -87,10 +87,16 @@ package {
 		public static var windrightSpriteX:int = 20;
 		public static var windrightSpriteY:int = 20;
 
+		/* Decoration assets */
 		[Embed(source = "../assets/objects/grass.png")]
 		public static var grassSprite:Class;
 		public static var grassSpriteX:int = 20;
 		public static var grassSpriteY:int = 20;
+		
+		[Embed(source = "../assets/objects/tree.png")]
+		public static var treeSprite:Class;
+		public static var treeSpriteX:int = 120;
+		public static var treeSpriteY:int = 120;
 		
 		[Embed(source = "../assets/objects/lava.png")]
 		public static var hotLavaSprite:Class;
