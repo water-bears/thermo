@@ -15,7 +15,7 @@ package
 			width = width * scale.x;
 			height = height * scale.y;
 			
-			addAnimation("sway", [0, 1, 2, 3, 2, 1], Assets.FRAME_RATE / 5, true);
+			addAnimation("sway", [0, 1, 2, 3, 2, 1], Assets.FRAME_RATE / 10, true);
 			loadGraphic(Assets.treeSprite, true, false, Assets.treeSpriteX, Assets.treeSpriteY);
 			
 			play("sway");

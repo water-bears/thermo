@@ -66,7 +66,7 @@ package levelgen {
 			"wind_test",
 			"tutorial_lava_00",
 			"tutorial_wind",
-			"test_tree"
+			"hard_100"
 		);
 		
 		/**
@@ -331,8 +331,8 @@ package levelgen {
 						break;						
 							
 					default:
-						var frontorback:String = xmlLayer[layerNum].@name;
-						switch(frontorback)
+						var frontorback_s:String = xmlLayer[layerNum].@name;
+						switch(frontorback_s)
 						{
 						case "Front":
 							frontSprites.add(sprite);
