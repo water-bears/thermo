@@ -208,16 +208,19 @@
 		
 		override public function update():void {
 			if (!bubble && !floatUp) {
+				var buttonDown:Boolean = false;
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
 					velocity.x = Utils.Lerp(velocity.x, -maxVelocity.x, 0.1);
 					this.facing = FlxObject.RIGHT;
+					buttonDown = true;
 				}
 			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
 					velocity.x = Utils.Lerp(velocity.x, maxVelocity.x, 0.1);
 					this.facing = FlxObject.LEFT;
+					buttonDown = true;
 				}
-				if (velocity.x != 0)
+				if (buttonDown)
 				{
 					drag.x = 900;
 				}
