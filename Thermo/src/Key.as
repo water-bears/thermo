@@ -7,15 +7,16 @@ package {
 		
 		public function Key(x:Number, y:Number, gravity:Boolean = false) {
 			super(x, y);
-			loadGraphic(Assets.keySprite, false, false, 32, 32);
+			loadGraphic(Assets.keySprite, false, false, 20, 20);
 			
-			setOriginToCorner();
-			scale.x = 15 / Assets.keySpriteX;
-			scale.y = 15 / Assets.keySpriteY;
-			width = 15;
-			height = 15;
-			this.x = x;
-			this.y = y;
+			
+			//setOriginToCorner();
+			//scale.x = 15 / Assets.keySpriteX;
+			//scale.y = 15 / Assets.keySpriteY;
+			//width = 15;
+			//height = 15;
+			this.x = x - 10;
+			this.y = y - 10;
 			
 			maxVelocity.y = 500;
 			maxVelocity.x = 0;
@@ -24,8 +25,9 @@ package {
 			this.solid = true;
 		}
 		
-		/*override public function update():void {
-			//play animation (glow)?
-		}*/	
+		override public function update():void {
+			super.update();
+			angle += 2;
+		}
 	}
 }

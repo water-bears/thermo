@@ -73,7 +73,7 @@ package uilayer
 			if (selected)
 			{
 				itemText.size = Utils.Lerp(itemText.size, 25, 0.2);
-				//itemText.color = 0xff0000;
+				itemText.color = 0x00ff00;
 			}
 			else
 			{
