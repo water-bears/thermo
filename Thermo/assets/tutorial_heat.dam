@@ -123,7 +123,6 @@
         <sprite guid="F7DB1A93-F8CF-603E-3F49-6E4B6803D3F7" x="229" y="111" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="457FE5DB-5730-3D5C-1BB5-E8E29930AFC3" x="280" y="111" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="5FE340A2-AF9F-4884-CC92-DFD58DEBC424" x="241" y="254" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
-        <sprite guid="3CBFC046-BAEA-4D64-3322-0E44F984C403" x="383" y="250" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="E7A161E8-1413-2DBE-826A-8FEA4FB7CE66" x="251" y="255" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="50ADAAE3-34A8-6609-7A59-6FF21372A486" x="373" y="253" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="49B50695-57A6-9491-F952-DC94891505B5" x="262" y="252" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
