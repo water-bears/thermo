@@ -196,18 +196,24 @@ package {
 		public static var sfx_bubblepop:Class;
 		[Embed(source = "../assets/sfx/ice.mp3")]
 		public static var sfx_ice:Class;
+		[Embed(source = "../assets/sfx/gate.mp3")]
+		public static var sfx_gate:Class;
+		[Embed(source = "../assets/sfx/wave.mp3")]
+		public static var sfx_wave:Class;
+		[Embed(source = "../assets/sfx/key.mp3")]
+		public static var sfx_key:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
-			bright_sunset, b_REPLACE_ME, b_REPLACE_ME,
+			bright_sunset, clouds1, clouds2,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, moon1
+			b_REPLACE_ME, b_REPLACE_ME, sunset,
+			moon5, moon3, moon8,
+			moon6, moon1
 		];
 		
 		/* Sounds */

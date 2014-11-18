@@ -95,6 +95,8 @@ package {
 		}
 		
 		override public function create():void {
+			AudioManager.PlaySound(Assets.sfx_wave);
+			
 			// timer
 			pullTimer.addEventListener(TimerEvent.TIMER, pullTimerListener);
 			pullTimer.start();
@@ -435,6 +437,7 @@ package {
 		/** when player retrieves key **/
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
+			AudioManager.PlaySound(Assets.sfx_key);
 			player.hasKey = true;
 			logger.recordEvent(level.levelNum, 2, "v2 $ $  $ " + getTimer().toString() + "$");
 		}

@@ -291,19 +291,22 @@
 			// Update player's sprite to correct power
 			switch (newPower) {
 				case 0:
-					if(curPow != 0) {
+					if (curPow != 0) {
+						AudioManager.PlaySound(Assets.sfx_gate);
 						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  + getTimer().toString() + "$");
 					}
 					this.curPow = 0;
 					break;
 				case 1:
-					if(curPow != 1) {
+					if (curPow != 1) {
+						AudioManager.PlaySound(Assets.sfx_gate);
 						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 1;
 					break;
 				case 2:
-					if(curPow != 2) {
+					if (curPow != 2) {
+						AudioManager.PlaySound(Assets.sfx_gate);
 						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 2;
@@ -311,15 +314,20 @@
 				case 3:
 					if (this.curPow == 1) {
 						this.curPow = 3;
+						AudioManager.PlaySound(Assets.sfx_gate);
 						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 					}
 					else if (this.curPow == 2) {
+						AudioManager.PlaySound(Assets.sfx_gate);
 						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						this.curPow = 4;
 					}
 					break;
 				case 4:
 					this.curPow = 0;
+					if (this.curPow != 0) {
+						AudioManager.PlaySound(Assets.sfx_gate);
+					}
 					break;
 			}
 		}

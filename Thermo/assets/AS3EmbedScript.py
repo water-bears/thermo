@@ -32,7 +32,7 @@ output += embedstring
 output += "\npublic static function GetTextAsset(filename:String):String{\n"
 output += textassetstring + "\nreturn \"error\";\n}\n"
 output += "\npublic static function GetArtAsset(filename:String):Class{\n"
-output += artassetstring + "\nreturn background2;\n}\n"
+output += artassetstring + "\nreturn null;\n}\n"
 output += "}\n}";
 
 file_object = open("../src/levelgen/AS3Embed.as",'w')
