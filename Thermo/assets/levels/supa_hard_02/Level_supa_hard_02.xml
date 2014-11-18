@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level name="Group1" minx="0" miny="0" maxx="640" maxy="480" bgColor = "0xff777777" >
+	<spriteclasses>
+		<clas name="Player" file="damesprites/character.png" width="20" height="24" index="0" />
+		<clas name="HeatGate" file="damesprites/gates.png" width="10" height="40" index="2" />
+		<clas name="FreezeGate" file="damesprites/gates.png" width="10" height="40" index="1" />
+		<clas name="FlashGate" file="damesprites/gates.png" width="10" height="40" index="3" />
+		<clas name="Key" file="damesprites/door.png" width="20" height="20" index="2" />
+		<clas name="Exit" file="damesprites/door.png" width="20" height="20" index="1" />
+		<clas name="Button" file="damesprites/button.png" width="20" height="20" index="0" />
+		<clas name="Trapdoor" file="objects/trapdoor.png" width="20" height="10" index="0" />
+		<clas name="Spikes" file="objects/spikes.png" width="20" height="10" index="0" />
+		<clas name="Upspikes" file="objects/upspikes.png" width="20" height="10" index="0" />
+		<clas name="MovingPlatform" file="objects/movingplatform.png" width="40" height="10" index="0" />
+		<clas name="Rightspikes" file="objects/rightspikes.png" width="10" height="20" index="0" />
+		<clas name="Leftspikes" file="objects/leftspikes.png" width="10" height="20" index="0" />
+		<clas name="NeutralGate" file="damesprites/gates.png" width="10" height="40" index="4" />
+		<clas name="WindLeft" file="damesprites/wind_left.png" width="20" height="20" index="0" />
+		<clas name="WindRight" file="damesprites/wind_right.png" width="20" height="20" index="0" />
+	</spriteclasses>
+	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="604.00" y="36.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="25.00" y="68.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="354.00" y="93.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindLeft" name="WindLeft" x="153.24" y="36.00" angle="0.00" flip="false" xScale="28.51" yScale="11.55" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="110.00" y="151.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="145.00" y="162.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="229.00" y="208.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Exit" name="Exit" x="278.00" y="234.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="504.00" y="236.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="111.00" y="275.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="433.00" y="303.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FreezeGate" name="FreezeGate" x="22.00" y="314.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FreezeGate" name="FreezeGate" x="556.00" y="381.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindRight" name="WindRight" x="148.78" y="328.00" angle="0.00" flip="false" xScale="11.18" yScale="5.45" >		</sprite>
+	</layer>
+	<layer name="Water" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/supa_hard_02/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/supa_hard_02/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Front" xScroll="1.000" yScroll="1.000" >
+	</layer>
+	<layer name="Back" xScroll="1.000" yScroll="1.000" >
+	</layer>
+</level>
