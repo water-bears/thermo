@@ -285,7 +285,7 @@ if(filename == "tilesheets/ground20.png") { return ground2038; }
 if(filename == "tilesheets/water.png") { return water38; }
 if(filename == "tilesheets/water20.png") { return water2038; }
 
-return placeholder2;
+return null;
 }
 }
 }
