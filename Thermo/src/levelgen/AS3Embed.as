@@ -130,6 +130,7 @@ public class AS3Embed
 [Embed(source = "../../assets/objects/tree3.png")] private static var tree337:Class;
 [Embed(source = "../../assets/objects/tree4.png")] private static var tree437:Class;
 [Embed(source = "../../assets/objects/tree5.png")] private static var tree537:Class;
+[Embed(source = "../../assets/objects/tree6.png")] private static var tree637:Class;
 [Embed(source = "../../assets/objects/upspikes.png")] private static var upspikes37:Class;
 [Embed(source = "../../assets/objects/upspikes2.png")] private static var upspikes237:Class;
 [Embed(source = "../../assets/tilesheets/door.png")] private static var door39:Class;
@@ -274,6 +275,7 @@ if(filename == "objects/tree2.png") { return tree237; }
 if(filename == "objects/tree3.png") { return tree337; }
 if(filename == "objects/tree4.png") { return tree437; }
 if(filename == "objects/tree5.png") { return tree537; }
+if(filename == "objects/tree6.png") { return tree637; }
 if(filename == "objects/upspikes.png") { return upspikes37; }
 if(filename == "objects/upspikes2.png") { return upspikes237; }
 if(filename == "tilesheets/door.png") { return door39; }
