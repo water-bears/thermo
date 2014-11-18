@@ -39,14 +39,44 @@ package levelgen {
 		
 		public var levelNum:uint;
 		
-		private const fileLocation:String = "levels/"
+		private const fileLocation:String = "levels/";
+		
+		public static var AB:Number;
 		
 		/**
 		 * Map of level names, in game order.
 		 * Note, the strings do not need to be numbers (We just happen to use numbers a lot).
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
-		private static var LEVEL_MAP:Array = new Array(
+		private static var LEVEL_MAP_1:Array = new Array(
+			"tutorial_jump_00",//intro row
+			"tutorial_heat",
+			"tutorial_freeze",
+			"easy_00",
+			"supa_hard_01",
+			"tutorial_wind",//element row
+			"wind_helper2",
+			"tutorial_neutral",
+			"wind_test",
+			"test_tree",
+			"tutorial_flashheat",//flashheat row
+			"flashheat_2",
+			"medium_05",
+			"tryna_flashheat",
+			"test_tree",
+			"tutorial_flashfreeze",//flashfreeze row
+			"medium_03", 
+			"medium_04",
+			"medium_01",
+			"test_tree",
+			"tutorial_momentum",//final row
+			"hard_00",
+			"hard_01",
+			"hard_02",
+			"hard_100"			
+		);
+		
+		private static var LEVEL_MAP_2:Array = new Array(
 			"tutorial_jump_00",//intro row
 			"tutorial_heat",
 			"tutorial_freeze",
@@ -77,7 +107,7 @@ package levelgen {
 		/**
 		 * Number of levels in the game
 		 */
-		public static var NUM_LEVELS:uint = LEVEL_MAP.length;
+		public static var NUM_LEVELS:uint = LEVEL_MAP_1.length;
 		
 		/**
 		 * Helper function gets the name of the level that corresponds
@@ -85,7 +115,14 @@ package levelgen {
 		 */
 		private static function levelName(levelNum:uint):String
 		{
-			return LEVEL_MAP[(levelNum - 1) % NUM_LEVELS];
+			if (AB == 1)
+			{
+				return LEVEL_MAP_1[(levelNum - 1) % NUM_LEVELS];
+			}
+			else
+			{
+				return LEVEL_MAP_2[(levelNum - 1) % NUM_LEVELS];
+			}
 		}
 		
 		public function Level(levelNum:uint) 

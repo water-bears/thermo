@@ -17,12 +17,14 @@ package uilayer
 		private static var yMax:Number = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
-		//private var lock:FlxSprite;
+		private var symbol:FlxSprite;
 		
 		private var itemText_x12:PiecewiseInterpolationMachine;
 		private var itemText_y2:PiecewiseInterpolationMachine;
 		
 		public var levelNum:uint;
+		public var levelName:String;
+		public var levelColor:uint;
 		public var completed:Boolean;
 		public var locked:Boolean;
 		
@@ -33,10 +35,16 @@ package uilayer
 		{
 			super();
 			levelNum = MenuUI.levelSelectWidth * y + x;
+			levelName = LevelServices.Translate(levelNum);
+			levelColor = LevelServices.GetColor(levelNum);
+			completed = LevelServices.Completed(levelNum);
+			locked = !LevelServices.Unlocked(levelNum);
 			itemText = new FlxText(Utils.Lerp(xMin, xMax, x / (MenuUI.levelSelectWidth - 1)),
 								   Utils.Lerp(yMin, yMax, y / (MenuUI.levelSelectHeight - 1)),
-								   50, String(levelNum + 1));
+								   50, levelName);
 			itemText.setFormat(Assets.font_name, 15, 0xffffffff, "center");
+			
+			//symbol = 
 			
 			itemText_x12 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Hermite, 0, 2 * FlxG.width, 0, 0),
@@ -52,7 +60,7 @@ package uilayer
 			if (selected)
 			{
 				itemText.size = Utils.Lerp(itemText.size, 25, 0.2);
-				itemText.color = 0xff0000;
+				//itemText.color = 0xff0000;
 			}
 			else
 			{
@@ -61,13 +69,9 @@ package uilayer
 				{
 					itemText.color = 0x000000;
 				}
-				else if (completed)
-				{
-					itemText.color = 0x00ff00;
-				}
 				else
 				{
-					itemText.color = 0xffffff;
+					itemText.color = levelColor;
 				}
 			}
 			if (state == 0)

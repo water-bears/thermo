@@ -62,16 +62,16 @@ package uilayer {
 			add(dimmer);
 			
 			// Level Intro Text
-			levelText = new FlxText(0, 0, FlxG.width, "Level " + level.levelNum);
-			levelText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
+			levelText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
+			levelText.setFormat(Assets.font_name, 80, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
 			add(levelText);
 			
 			pauseTitleText = new FlxText(0, 0, FlxG.width, "Paused");
 			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			add(pauseTitleText);
 			
-			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + level.levelNum);
-			pauseSubtitleText.setFormat(Assets.font_name, 30, 0xffffff, "center", 0x000000);
+			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
+			pauseSubtitleText.setFormat(Assets.font_name, 30, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
 			add(pauseSubtitleText);
 			
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Resume"));
