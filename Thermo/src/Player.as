@@ -246,16 +246,16 @@
 			}
 			
 			// Makes ice platform solid when in any type of bubble
-			/*if(bubble || superBubble){
+			if(bubble || superBubble){
 				for(var i:int = 0; i < 3; i++){
-					this.ice[i].allowCollisions = NONE;
+					this.ice[i].solid = true;
 				}
 			}
 			else{
 				for(var j:int = 0; j < 3; j++){
 					this.ice[j].allowCollisions = UP;
 				}
-			}*/
+			}
 
 			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && (!isTouching(FLOOR) || FlxG.keys.justPressed("SPACE"))) {
