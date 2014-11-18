@@ -37,9 +37,6 @@ package {
 		// Checking if we have JUST lost
 		public var alreadyLost:Boolean = false;
 		
-		// This is for checking when we JUST entered the water
-		public var justEntered:Boolean = false;
-		
 		private var background:FlxSprite;
 		
 		private var player:Player;
@@ -53,19 +50,14 @@ package {
 		public var heatGroup:FlxGroup = new FlxGroup;
 		public var flashGroup:FlxGroup = new FlxGroup;
 		public var neutralGroup:FlxGroup = new FlxGroup;
-
 		public var exitGroup:FlxGroup = new FlxGroup;
 		public var keyGroup:FlxGroup = new FlxGroup;
-		
 		public var buttonGroup:FlxGroup = new FlxGroup;
 		public var solidGroup:FlxGroup = new FlxGroup;
-		
 		public var spikeGroup:FlxGroup = new FlxGroup;
 		public var hotlavaGroup:FlxGroup = new FlxGroup;
 		public var coldlavaGroup:FlxGroup = new FlxGroup;
-		
 		public var movingGroup:FlxGroup = new FlxGroup;
-		
 		public var windGroup:FlxGroup = new FlxGroup;
 		
 		// Group for ice blocks
@@ -81,12 +73,12 @@ package {
 		
 		public var bubbles:BubbleBackground;
 		
-		public function setLevel(inputLevel:Level): void {
+		public function setLevel(inputLevel:Level):void {
 			level = inputLevel;
 		}
 		
 		public function PlayState(logger:Logging) {
-			this.logger=logger;
+			this.logger = logger;
 		}
 		
 		override public function create():void {
@@ -160,7 +152,7 @@ package {
 				}
 			}
 			
-			//wiiiiiiind
+			//wind
 			windGroup = level.winds;
 			add(windGroup);
 			
@@ -208,8 +200,6 @@ package {
 				FlxG.collide(iceGroup, player);
 				FlxG.collide(solidGroup, player);
 				FlxG.collide(movingGroup, player);
-				FlxG.collide(hotlavaGroup, player);
-				FlxG.collide(coldlavaGroup, player);
 				
 				// Make Keys Collide With level
 				FlxG.collide(groundTiles, keyGroup);
@@ -218,8 +208,8 @@ package {
 				
 				if (player.x < 0) {
 					player.setX(0);
-				} else if (player.x > Thermo.WIDTH-player.width) {
-					player.setX(Thermo.WIDTH-player.width);
+				} else if (player.x > Thermo.WIDTH - player.width) {
+					player.setX(Thermo.WIDTH - player.width);
 				}
 				
 				if (player.y <= 0 && !player.superBubble && player.bubble) {
@@ -231,7 +221,6 @@ package {
 				
 				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5)) && (!player.bubble && !player.superBubble)) {
 					player.slowSpeed();
-
 				} else if (!player.bubble && !player.superBubble) {
 					player.normalSpeed();
 				}
@@ -327,7 +316,7 @@ package {
 					ui.BeginExitSequence(reset);
 					player.visible = false;
 				}
-				if(FlxG.keys.R){
+				if (FlxG.keys.R){
 					logger.recordEvent(level.levelNum, 5, "v2 $" + player.x +  ", " + player.y +"$ reset $ time =" + getTimer().toString());
 					logger.recordLevelEnd();
 					ui.BeginExitSequence(reset);
@@ -355,6 +344,10 @@ package {
 					player.visible = false;	
 				}
 			}
+			
+			//Needs to be at the bottom so that the player actually dies
+			FlxG.collide(hotlavaGroup, player);
+			FlxG.collide(coldlavaGroup, player);
 			
 			ui.update();
 		}

@@ -7,7 +7,9 @@ package water
 	 */
 	public class WaterNode extends FlxBasic
 	{
-		private static var dampening:Number = 0.97;
+		private static const WATER_FORCE:Number = 15;
+		
+		private static var decay:Number = .99;
 		// find out what these stand for
 		private static var pwr:Number = 0.025;
 		private static var ent:Number = 0.25;
@@ -58,11 +60,8 @@ package water
 		{
 			super.update();
 			
-			Velocity.x *= dampening;
-			Velocity.y *= dampening;
-			
-			// deal with this later
-			//if (p[n].xs > 11 || p[n].xs < -11) p[n].xs = 11*(p[n].xs<0 ? -1 : 1);
+			Velocity.x *= decay;
+			Velocity.y *= decay;
 			
 			Velocity.x -= (Position.x - InitialPosition.x) * pwr;
 			Velocity.y -= (Position.y - InitialPosition.y) * pwr;
@@ -74,7 +73,7 @@ package water
 			xd = NextNode.Position.x - Position.x;
 			yd = NextNode.Position.y - Position.y;
 			d = xd * xd + yd * yd;
-			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize * 0.25)
+			if (d > WaterWaves.BlockSize * WaterWaves.BlockSize)
 			{
 				d = Math.sqrt(d);
 				Position.x += ent * xd / d;
@@ -87,16 +86,15 @@ package water
 			Velocity.x += p * offsetAxis.x;
 			Velocity.y += p * offsetAxis.y;
 			
-			
 			xd = Position.x - module.PerturbationPosition.x;
 			yd = Position.y - module.PerturbationPosition.y;
 			d = Math.sqrt(xd * xd + yd * yd);
-			if (d > 0 && d < 15)
+			if (d > 0 && d < WATER_FORCE)
 			{
 				xd /= d;
 				yd /= d;
-				Velocity.x = module.PerturbationDirection * 15 * xd / d;
-				Velocity.y = module.PerturbationDirection * 15 * yd / d;
+				Velocity.x = module.PerturbationDirection * WATER_FORCE * xd / d;
+				Velocity.y = module.PerturbationDirection * WATER_FORCE * yd / d;
 			}
 			
 			//HARD LIMIT on position to prevent overlap

@@ -91,7 +91,7 @@ package {
 		[Embed(source = "../assets/objects/lava.png")]
 		public static var hotLavaSprite:Class;
 		// TODO add a cold lava sprite
-		[Embed(source = "../assets/objects/lava.png")]
+		[Embed(source = "../assets/objects/cold_zone.png")]
 		public static var coldLavaSprite:Class;
 		public static var lavaSpriteX:int = 200;
 		public static var lavaSpriteY:int = 20;

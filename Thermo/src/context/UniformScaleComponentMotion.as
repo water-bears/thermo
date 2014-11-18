@@ -33,5 +33,4 @@ package context {
 			scale.y = zoom;
 		}
 	}
-
 }
