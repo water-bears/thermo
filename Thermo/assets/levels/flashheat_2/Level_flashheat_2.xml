@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level name="Group1" minx="0" miny="0" maxx="640" maxy="480" bgColor = "0xff777777" >
+	<spriteclasses>
+		<clas name="Player" file="damesprites/character.png" width="20" height="24" index="0" />
+		<clas name="HeatGate" file="damesprites/gates.png" width="10" height="40" index="2" />
+		<clas name="FreezeGate" file="damesprites/gates.png" width="10" height="40" index="1" />
+		<clas name="FlashGate" file="damesprites/gates.png" width="10" height="40" index="3" />
+		<clas name="Key" file="damesprites/door.png" width="20" height="20" index="2" />
+		<clas name="Exit" file="damesprites/door.png" width="20" height="20" index="1" />
+		<clas name="Button" file="damesprites/button.png" width="20" height="20" index="0" />
+		<clas name="Trapdoor" file="objects/trapdoor.png" width="20" height="10" index="0" />
+		<clas name="Spikes" file="objects/spikes.png" width="20" height="10" index="0" />
+		<clas name="Upspikes" file="objects/upspikes.png" width="20" height="10" index="0" />
+		<clas name="MovingPlatform" file="objects/movingplatform.png" width="40" height="10" index="0" />
+		<clas name="Tree" file="objects/tree.png" width="120" height="120" index="0" />
+		<clas name="Grass" file="objects/grass.png" width="20" height="20" index="0" />
+		<clas name="Fern1" file="objects/fern1.png" width="50" height="50" index="0" />
+		<clas name="Tree6" file="objects/tree6.png" width="360" height="120" index="0" />
+		<clas name="Tree5" file="objects/tree5.png" width="120" height="120" index="0" />
+	</spriteclasses>
+	<layer name="Water" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/flashheat_2/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/flashheat_2/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FlashGate" name="FlashGate" x="244.00" y="108.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Exit" name="Exit" x="619.00" y="259.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="386.00" y="300.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="365.00" y="300.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="344.00" y="300.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="94.00" y="376.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="14.00" y="388.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="586.00" y="413.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="508.00" y="430.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="384.00" y="430.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="446.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="426.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="405.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="363.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="343.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="322.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="302.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="282.00" y="431.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="488.00" y="432.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="467.00" y="432.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="199.00" y="432.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="261.00" y="433.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="242.00" y="433.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="223.00" y="433.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+	</layer>
+	<layer name="Front" xScroll="1.000" yScroll="1.000" >
+	</layer>
+	<layer name="Back" xScroll="1.000" yScroll="1.000" >
+	</layer>
+</level>

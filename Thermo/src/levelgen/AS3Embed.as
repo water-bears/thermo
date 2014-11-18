@@ -10,30 +10,33 @@ public class AS3Embed
 [Embed(source = "../../assets/backgrounds/bkgd7.png")] private static var bkgd72:Class;
 [Embed(source = "../../assets/backgrounds/bkgd9.png")] private static var bkgd92:Class;
 [Embed(source = "../../assets/backgrounds/placeholder.png")] private static var placeholder2:Class;
-[Embed(source = "../../assets/character/character.png")] private static var character4:Class;
-[Embed(source = "../../assets/character/player.png")] private static var player4:Class;
-[Embed(source = "../../assets/damesprites/button.png")] private static var button5:Class;
-[Embed(source = "../../assets/damesprites/character.png")] private static var character5:Class;
-[Embed(source = "../../assets/damesprites/door.png")] private static var door5:Class;
-[Embed(source = "../../assets/damesprites/gates.png")] private static var gates5:Class;
-[Embed(source = "../../assets/damesprites/trapdoor.png")] private static var trapdoor5:Class;
-[Embed(source = "../../assets/damesprites/wind_left.png")] private static var wind_left5:Class;
-[Embed(source = "../../assets/damesprites/wind_right.png")] private static var wind_right5:Class;
-[Embed(source = "../../assets/doodles/sign1.png")] private static var sign16:Class;
-[Embed(source = "../../assets/keys/arrows.png")] private static var arrows8:Class;
-[Embed(source = "../../assets/keys/spacebar.png")] private static var spacebar8:Class;
-[Embed(source = "../../assets/levels/11/Level_11.xml", mimeType="application/octet-stream")] private static var Level_1110:Class;
-[Embed(source = "../../assets/levels/11/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground10:Class;
-[Embed(source = "../../assets/levels/11/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water10:Class;
-[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_811:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
-[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
-[Embed(source = "../../assets/levels/9/Level_9.xml", mimeType="application/octet-stream")] private static var Level_912:Class;
-[Embed(source = "../../assets/levels/9/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground12:Class;
-[Embed(source = "../../assets/levels/9/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water12:Class;
-[Embed(source = "../../assets/levels/easy_00/Level_easy_00.xml", mimeType="application/octet-stream")] private static var Level_easy_0013:Class;
-[Embed(source = "../../assets/levels/easy_00/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground13:Class;
-[Embed(source = "../../assets/levels/easy_00/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water13:Class;
+[Embed(source = "../../assets/character/character.png")] private static var character3:Class;
+[Embed(source = "../../assets/character/player.png")] private static var player3:Class;
+[Embed(source = "../../assets/damesprites/button.png")] private static var button4:Class;
+[Embed(source = "../../assets/damesprites/character.png")] private static var character4:Class;
+[Embed(source = "../../assets/damesprites/door.png")] private static var door4:Class;
+[Embed(source = "../../assets/damesprites/gates.png")] private static var gates4:Class;
+[Embed(source = "../../assets/damesprites/trapdoor.png")] private static var trapdoor4:Class;
+[Embed(source = "../../assets/damesprites/wind_left.png")] private static var wind_left4:Class;
+[Embed(source = "../../assets/damesprites/wind_right.png")] private static var wind_right4:Class;
+[Embed(source = "../../assets/doodles/sign1.png")] private static var sign15:Class;
+[Embed(source = "../../assets/keys/arrows.png")] private static var arrows7:Class;
+[Embed(source = "../../assets/keys/spacebar.png")] private static var spacebar7:Class;
+[Embed(source = "../../assets/levels/11/Level_11.xml", mimeType="application/octet-stream")] private static var Level_119:Class;
+[Embed(source = "../../assets/levels/11/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground9:Class;
+[Embed(source = "../../assets/levels/11/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water9:Class;
+[Embed(source = "../../assets/levels/8/Level_8.xml", mimeType="application/octet-stream")] private static var Level_810:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground10:Class;
+[Embed(source = "../../assets/levels/8/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water10:Class;
+[Embed(source = "../../assets/levels/9/Level_9.xml", mimeType="application/octet-stream")] private static var Level_911:Class;
+[Embed(source = "../../assets/levels/9/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground11:Class;
+[Embed(source = "../../assets/levels/9/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water11:Class;
+[Embed(source = "../../assets/levels/easy_00/Level_easy_00.xml", mimeType="application/octet-stream")] private static var Level_easy_0012:Class;
+[Embed(source = "../../assets/levels/easy_00/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground12:Class;
+[Embed(source = "../../assets/levels/easy_00/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water12:Class;
+[Embed(source = "../../assets/levels/flashheat_2/Level_flashheat_2.xml", mimeType="application/octet-stream")] private static var Level_flashheat_213:Class;
+[Embed(source = "../../assets/levels/flashheat_2/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground13:Class;
+[Embed(source = "../../assets/levels/flashheat_2/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water13:Class;
 [Embed(source = "../../assets/levels/hard_00/Level_hard_00.xml", mimeType="application/octet-stream")] private static var Level_hard_0014:Class;
 [Embed(source = "../../assets/levels/hard_00/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground14:Class;
 [Embed(source = "../../assets/levels/hard_00/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water14:Class;
@@ -145,6 +148,7 @@ public class AS3Embed
 [Embed(source = "../../assets/tilesheets/door.png")] private static var door42:Class;
 [Embed(source = "../../assets/tilesheets/door1.png")] private static var door142:Class;
 [Embed(source = "../../assets/tilesheets/door3.png")] private static var door342:Class;
+[Embed(source = "../../assets/tilesheets/door_vortex.png")] private static var door_vortex42:Class;
 [Embed(source = "../../assets/tilesheets/gates.png")] private static var gates42:Class;
 [Embed(source = "../../assets/tilesheets/ground.png")] private static var ground42:Class;
 [Embed(source = "../../assets/tilesheets/ground20.png")] private static var ground2042:Class;
@@ -152,18 +156,21 @@ public class AS3Embed
 [Embed(source = "../../assets/tilesheets/water20.png")] private static var water2042:Class;
 
 public static function GetTextAsset(filename:String):String{
-if(filename == "levels/11/Level_11.xml") { return new Level_1110; }
-if(filename == "levels/11/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground10; }
-if(filename == "levels/11/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water10; }
-if(filename == "levels/8/Level_8.xml") { return new Level_811; }
-if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
-if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
-if(filename == "levels/9/Level_9.xml") { return new Level_912; }
-if(filename == "levels/9/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground12; }
-if(filename == "levels/9/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water12; }
-if(filename == "levels/easy_00/Level_easy_00.xml") { return new Level_easy_0013; }
-if(filename == "levels/easy_00/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground13; }
-if(filename == "levels/easy_00/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water13; }
+if(filename == "levels/11/Level_11.xml") { return new Level_119; }
+if(filename == "levels/11/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground9; }
+if(filename == "levels/11/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water9; }
+if(filename == "levels/8/Level_8.xml") { return new Level_810; }
+if(filename == "levels/8/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground10; }
+if(filename == "levels/8/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water10; }
+if(filename == "levels/9/Level_9.xml") { return new Level_911; }
+if(filename == "levels/9/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground11; }
+if(filename == "levels/9/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water11; }
+if(filename == "levels/easy_00/Level_easy_00.xml") { return new Level_easy_0012; }
+if(filename == "levels/easy_00/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground12; }
+if(filename == "levels/easy_00/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water12; }
+if(filename == "levels/flashheat_2/Level_flashheat_2.xml") { return new Level_flashheat_213; }
+if(filename == "levels/flashheat_2/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground13; }
+if(filename == "levels/flashheat_2/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water13; }
 if(filename == "levels/hard_00/Level_hard_00.xml") { return new Level_hard_0014; }
 if(filename == "levels/hard_00/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground14; }
 if(filename == "levels/hard_00/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water14; }
@@ -254,18 +261,18 @@ if(filename == "backgrounds/bkgd6.png") { return bkgd62; }
 if(filename == "backgrounds/bkgd7.png") { return bkgd72; }
 if(filename == "backgrounds/bkgd9.png") { return bkgd92; }
 if(filename == "backgrounds/placeholder.png") { return placeholder2; }
-if(filename == "character/character.png") { return character4; }
-if(filename == "character/player.png") { return player4; }
-if(filename == "damesprites/button.png") { return button5; }
-if(filename == "damesprites/character.png") { return character5; }
-if(filename == "damesprites/door.png") { return door5; }
-if(filename == "damesprites/gates.png") { return gates5; }
-if(filename == "damesprites/trapdoor.png") { return trapdoor5; }
-if(filename == "damesprites/wind_left.png") { return wind_left5; }
-if(filename == "damesprites/wind_right.png") { return wind_right5; }
-if(filename == "doodles/sign1.png") { return sign16; }
-if(filename == "keys/arrows.png") { return arrows8; }
-if(filename == "keys/spacebar.png") { return spacebar8; }
+if(filename == "character/character.png") { return character3; }
+if(filename == "character/player.png") { return player3; }
+if(filename == "damesprites/button.png") { return button4; }
+if(filename == "damesprites/character.png") { return character4; }
+if(filename == "damesprites/door.png") { return door4; }
+if(filename == "damesprites/gates.png") { return gates4; }
+if(filename == "damesprites/trapdoor.png") { return trapdoor4; }
+if(filename == "damesprites/wind_left.png") { return wind_left4; }
+if(filename == "damesprites/wind_right.png") { return wind_right4; }
+if(filename == "doodles/sign1.png") { return sign15; }
+if(filename == "keys/arrows.png") { return arrows7; }
+if(filename == "keys/spacebar.png") { return spacebar7; }
 if(filename == "objects/Bubble.png") { return Bubble40; }
 if(filename == "objects/button.png") { return button40; }
 if(filename == "objects/cold_zone.png") { return cold_zone40; }
@@ -299,6 +306,7 @@ if(filename == "objects/upspikes2.png") { return upspikes240; }
 if(filename == "tilesheets/door.png") { return door42; }
 if(filename == "tilesheets/door1.png") { return door142; }
 if(filename == "tilesheets/door3.png") { return door342; }
+if(filename == "tilesheets/door_vortex.png") { return door_vortex42; }
 if(filename == "tilesheets/gates.png") { return gates42; }
 if(filename == "tilesheets/ground.png") { return ground42; }
 if(filename == "tilesheets/ground20.png") { return ground2042; }
