@@ -55,7 +55,7 @@ package uilayer {
 			
 			// Title Text
 			titleText = new FlxText(0, 0, FlxG.width, "Thermo");
-			titleText.setFormat(Assets.font_name, 80, 0xff0099ff, "center", 0xff003399);
+			titleText.setFormat(Assets.font_name, 120, 0xff0099ff, "center", 0xff003399);
 			add(titleText);
 			
 			promptText = new FlxText(0, 0, FlxG.width, "Press ENTER");
