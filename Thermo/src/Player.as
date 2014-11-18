@@ -208,7 +208,6 @@
 					velocity.x = -maxVelocity.x;
 					this.facing = FlxObject.RIGHT;
 				}
-			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
 					velocity.x = maxVelocity.x;
 					this.facing = FlxObject.LEFT;
