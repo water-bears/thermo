@@ -6,7 +6,7 @@ package {
 		public function Door(sprite:FlxSprite) {
 			super();
 			
-			addAnimation("closed", [0, 1, 2, 3, 4, 3, 2, 1], Assets.FRAME_RATE / 2, true);
+			addAnimation("closed", [0, 1, 2, 3, 4, 3, 2, 1], Assets.FRAME_RATE / 4, true);
 			addAnimation("opening", [
 				0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 				10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
@@ -22,7 +22,7 @@ package {
 				110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
 				120, 121, 122, 123, 124, 125, 126, 127
 			], Assets.FRAME_RATE, false);
-			addAnimation("open", [124, 125, 126, 127], Assets.FRAME_RATE, true);
+			addAnimation("open", [124, 125, 126, 127], 16, true);
 			addAnimationCallback(animCallback);
 			loadGraphic(Assets.doorSprite, true, false, Assets.doorSpriteX, Assets.doorSpriteY);
 			
@@ -37,7 +37,7 @@ package {
 			height = 25;
 			*/
 			x = sprite.x - 8;
-			y = sprite.y - 30;
+			y = sprite.y - 27;
 			
 			play("closed");
 		}
