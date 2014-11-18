@@ -21,8 +21,8 @@ package {
 				100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
 				110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
 				120, 121, 122, 123, 124, 125, 126, 127
-			], Assets.FRAME_RATE * 4, false);
-			addAnimation("open", [124, 125, 126, 127], 16, true);
+			], Assets.FRAME_RATE * 2, false);
+			addAnimation("open", [124, 125, 126, 127], 12, true);
 			addAnimationCallback(animCallback);
 			loadGraphic(Assets.doorSprite, true, false, Assets.doorSpriteX, Assets.doorSpriteY);
 			
@@ -37,7 +37,11 @@ package {
 			height = 25;
 			*/
 			x = sprite.x - 8;
-			y = sprite.y - 27;
+			y = sprite.y - 22;
+			width *= 1;
+			height *= 1;
+			scale.x *= 1;
+			scale.y *= 1;
 			
 			play("closed");
 		}
