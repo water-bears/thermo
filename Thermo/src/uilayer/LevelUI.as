@@ -22,6 +22,7 @@ package uilayer {
 		private var dimmer:FlxSprite;
 		private var levelText:FlxText;
 		private var pauseTitleText:FlxText;
+		private var pauseSubtitleText:FlxText;
 		private var pauseOptions:Vector.<FlxText> = new Vector.<FlxText>();
 		private var callbacks:Vector.<Function> = new Vector.<Function>();
 		
@@ -69,6 +70,10 @@ package uilayer {
 			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			add(pauseTitleText);
 			
+			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + level.levelNum);
+			pauseSubtitleText.setFormat(Assets.font_name, 30, 0xffffff, "center", 0x000000);
+			add(pauseSubtitleText);
+			
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Resume"));
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Restart"));
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Level Select"));
@@ -108,15 +113,15 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 50, 1));
 			pauseTitleText_y2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.ConvexSine, 0, 0.05 * FlxG.height),
-				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.10 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConcaveSine, 10, 0.1 * FlxG.height),
 				new PiecewiseInterpolationNode(null, 30, 0.15 * FlxG.height));
 			pauseOptions_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
 				new PiecewiseInterpolationNode(null, 50, 1));
 			pauseOptions_y2 = new PiecewiseInterpolationMachine(false,
-				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, 0.45 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 30, 0.4 * FlxG.height));
+				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, 0.5 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 30, 0.45 * FlxG.height));
 		}
 		
 		public function SetSelectCallback(index:uint, f:Function):void
@@ -158,6 +163,7 @@ package uilayer {
 					AllowPause = true;
 				}
 				pauseTitleText.alpha = 0;
+				pauseSubtitleText.alpha = 0;
 				for (i = 0; i < pauseOptions.length; i++)
 				{
 					pauseOptions[i].alpha = 0;
@@ -233,6 +239,8 @@ package uilayer {
 		
 		private function PauseFadeIn() : void
 		{
+			pauseSubtitleText.alpha = pauseTitleText_alpha2.Evaluate();
+			pauseSubtitleText.y = pauseTitleText_y2.Evaluate() + 85;
 			pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance();
 			pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance();
 			for (var i:uint = 0; i < pauseOptions.length; i++)
@@ -246,6 +254,8 @@ package uilayer {
 		
 		private function PauseFadeOut(speed:int) : void
 		{
+			pauseSubtitleText.alpha = pauseTitleText_alpha2.Evaluate();
+			pauseSubtitleText.y = pauseTitleText_y2.Evaluate() + 85;
 			pauseTitleText.alpha = pauseTitleText_alpha2.EvaluateAndAdvance(-speed);
 			pauseTitleText.y = pauseTitleText_y2.EvaluateAndAdvance(-speed);
 			for (var i:uint = 0; i < pauseOptions.length; i++)
