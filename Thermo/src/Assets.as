@@ -56,6 +56,10 @@ package {
 		public static var spikeSprite:Class;
 		[Embed(source = "../assets/objects/upspikes.png")]
 		public static var upspikeSprite:Class;
+		[Embed(source = "../assets/objects/leftspikes.png")]
+		public static var leftspikeSprite:Class;
+		[Embed(source = "../assets/objects/rightspikes.png")]
+		public static var rightspikeSprite:Class;
 		
 		[Embed(source = "../assets/objects/button.png")]
 		public static var buttonSprite:Class;
