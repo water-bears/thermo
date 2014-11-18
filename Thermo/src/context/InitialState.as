@@ -19,7 +19,7 @@ package context {
 			logger = new Logging(700, 2, true);
 			logger.recordPageLoad();
 			var x:Number = Math.random();
-			x = Math.round(x);
+			x = Math.round(x) + 1;
 			var AB:Number = logger.recordABTestValue(x);
 			Level.ab = AB;
 		}
