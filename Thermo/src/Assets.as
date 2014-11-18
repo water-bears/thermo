@@ -196,6 +196,8 @@ package {
 		public static var sfx_bubblepop:Class;
 		[Embed(source = "../assets/sfx/ice.mp3")]
 		public static var sfx_ice:Class;
+		[Embed(source = "../assets/sfx/gate.mp3")]
+		public static var sfx_gate:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
