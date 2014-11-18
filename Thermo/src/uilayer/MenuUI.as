@@ -28,6 +28,7 @@ package uilayer {
 		private var levelSelectText:FlxText;
 		private var levelSelectItems:Array;
 		
+		private var dimmer_alpha0:PiecewiseInterpolationMachine;
 		private var dimmer_alpha1:PiecewiseInterpolationMachine;
 		private var titleText_y01:PiecewiseInterpolationMachine;
 		private var titleText_y1:PiecewiseInterpolationMachine;
@@ -88,6 +89,9 @@ package uilayer {
 			add(dimmer);
 			
 			dimmer.alpha = 0;
+			dimmer_alpha0 = new PiecewiseInterpolationMachine(false,
+				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
+				new PiecewiseInterpolationNode(null, 30, 0));
 			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(null, 20, 1));
@@ -121,6 +125,7 @@ package uilayer {
 			// TITLE SCREEN
 			if (state == 0)
 			{
+				dimmer.alpha = dimmer_alpha0.EvaluateAndAdvance();
 				titleText.y = titleText_y01.EvaluateAndAdvance();
 				promptText.y = promptText_y01.EvaluateAndAdvance();
 				levelSelectText.alpha = 0;
@@ -144,6 +149,7 @@ package uilayer {
 			// LEVEL SELECT
 			else if (state == 2)
 			{
+				dimmer.alpha = dimmer_alpha0.EvaluateAndAdvance();
 				titleText.alpha = 0;
 				promptText.alpha = 0;
 				levelSelectText.y = levelSelectText_y12.EvaluateAndAdvance();

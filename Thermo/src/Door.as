@@ -37,7 +37,7 @@ package {
 			height = 25;
 			*/
 			x = sprite.x - 8;
-			y = sprite.y - 22;
+			y = sprite.y - 27;
 			width *= 1;
 			height *= 1;
 			scale.x *= 1;
