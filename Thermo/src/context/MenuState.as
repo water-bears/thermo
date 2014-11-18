@@ -37,7 +37,7 @@ package context {
 			bubbles = new BubbleBackground(dimensions, 50, 8, 16);
 			bubbles.Register(this);
 			
-			ui = new MenuUI(initialState, initialLevel, goToNextState);
+			ui = new MenuUI(initialState, initialLevel, goToNextState, logger);
 			add(ui);
 		}
 		

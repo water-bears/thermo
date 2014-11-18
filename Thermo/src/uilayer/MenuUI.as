@@ -1,12 +1,15 @@
 package uilayer {
-	import uilayer.Utils;
+	import context.MenuUtils;
+	
+	import io.ThermoSaves;
+	
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
-	import org.flixel.FlxG;
-	import context.MenuUtils;
-	import io.ThermoSaves;
+	
+	import uilayer.Utils;
 	
 	/**
 	 * ...
@@ -36,11 +39,17 @@ package uilayer {
 		private var state:uint;
 		private var callback:Function;
 		
-		public function MenuUI(initialState:uint, initialLevel:uint, callback:Function)
+		//Robyn
+		public var initialLevel:uint;
+		public var logger:Logging;
+		
+		public function MenuUI(initialState:uint, initialLevel:uint, callback:Function, logger:Logging)
 		{
 			super(0);
 			state = initialState;
 			this.callback = callback;
+			this.initialLevel = initialLevel;
+			this.logger = logger;
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
@@ -145,6 +154,10 @@ package uilayer {
 				selectedLevel = selectedSquare.y * MenuUI.levelSelectWidth + selectedSquare.x;
 				if (FlxG.keys.ENTER)
 				{
+					if(selectedLevel != initialLevel+1){
+						// THIS PERSON SKIPPED A LEVEL
+						logger.recordEvent(initialLevel+1, 8, "v2 $ SKIPPED $ Level: " + initialLevel+1);
+					}
 					state = 3;
 				}
 			}
