@@ -19,25 +19,25 @@ package audio
 		private static var fade:Number = 1;		
 		private static var bgm:Sound = new Assets.sfx_bgm() as Sound;
 		private static var bgm_underwater:Sound = new Assets.sfx_bgm_underwater() as Sound;
-		private static var bgm_blank:Sound = new Assets.sfx_empty() as Sound;
+		//private static var bgm_blank:Sound = new Assets.sfx_empty() as Sound;
 		
 		private static var outsideWater:SoundChannel;// :FlxSound;
 		private static var insideWater:SoundChannel;// :FlxSound;
-		private static var oldOutsideWater:SoundChannel;// :FlxSound;
-		private static var oldInsideWater:SoundChannel;// :FlxSound;
-		private static var blank:SoundChannel;
+		//private static var oldOutsideWater:SoundChannel;// :FlxSound;
+		//private static var oldInsideWater:SoundChannel;// :FlxSound;
+		//private static var blank:SoundChannel;
 		
 		public static function StartMusic(initialFade:Number): void
 		{
 			//
-			outsideWater = bgm.play(0, 0, new SoundTransform(0));
-			insideWater = bgm_underwater.play(0, 0, new SoundTransform(0));
-			blank = bgm_blank.play(0, 0, new SoundTransform(0));
-			blank.addEventListener(Event.SOUND_COMPLETE, onLoopFinish);
+			outsideWater = bgm.play(0, int.MAX_VALUE, new SoundTransform(0));
+			insideWater = bgm_underwater.play(0, int.MAX_VALUE, new SoundTransform(0));
+			//blank = bgm_blank.play(0, 0, new SoundTransform(0));
+			//blank.addEventListener(Event.SOUND_COMPLETE, onLoopFinish);
 			SetFade(initialFade);
 		}
 		
-		private static function onLoopFinish(e:Event) : void
+		/*private static function onLoopFinish(e:Event) : void
 		{
 			if (oldOutsideWater != null)
 			{
@@ -55,7 +55,7 @@ package audio
 			blank = bgm_blank.play(0, 0, new SoundTransform(0));
 			blank.addEventListener(Event.SOUND_COMPLETE, onLoopFinish);
 			SetFade(fade);
-		}
+		}*/
 		
 		public static function GetFade() : Number
 		{
@@ -72,14 +72,14 @@ package audio
 			//outsideWater.volume = Utils.ReverseLerp(INSIDE_WATER, OUTSIDE_WATER, fade);
 			//insideWater.volume = Utils.ReverseLerp(OUTSIDE_WATER, INSIDE_WATER, fade);
 			var iFade:Number = Utils.ReverseLerp(INSIDE_WATER, OUTSIDE_WATER, fade);
-			if (oldOutsideWater != null)
+			/*if (oldOutsideWater != null)
 			{
 				oldInsideWater.soundTransform = new SoundTransform(iFade);
 			}
 			if (oldInsideWater != null)
 			{
 				oldInsideWater.soundTransform = new SoundTransform(1.0 - iFade);
-			}
+			}*/
 			outsideWater.soundTransform = new SoundTransform(iFade);
 			insideWater.soundTransform = new SoundTransform(1.0 - iFade);
 			
