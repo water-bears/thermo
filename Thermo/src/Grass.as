@@ -6,6 +6,8 @@ package {
 		public function Grass(sprite:FlxSprite) {
 			super();
 			
+			setOriginToCorner();
+			
 			this.x = sprite.x;
 			this.y = sprite.y;
 			angle = sprite.angle;
