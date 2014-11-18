@@ -11,6 +11,7 @@
 		<clas name="Grass" file="objects/grass.png" width="20" height="20" index="0" />
 		<clas name="Tree" file="objects/tree.png" width="120" height="120" index="0" />
 		<clas name="Tree2" file="objects/tree2.png" width="120" height="120" index="0" />
+		<clas name="Tree3" file="objects/tree3.png" width="120" height="120" index="0" />
 	</spriteclasses>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/tutorial_heat/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
@@ -21,7 +22,7 @@
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="42.00" y="94.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Tree2" name="Tree2" x="31.00" y="5.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Tree2" name="Tree2" x="38.00" y="7.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="88.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="221.00" y="329.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="277.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
