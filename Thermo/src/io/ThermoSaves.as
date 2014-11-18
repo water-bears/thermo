@@ -22,13 +22,23 @@ package io
 			if (save.data.version == null)
 			{
 				save.data.version = CURRENT_VERSION;
+				save.data.num_levels = NUM_LEVELS;
 				save.data.progress = new Vector.<Boolean>(NUM_LEVELS);
 				for (i = 0; i < NUM_LEVELS; i++)
 				{
 					save.data.progress[i] = false;
 				}
 			}
+			else
+			{
+				for (i = save.data.num_levels; i < NUM_LEVELS; i++)
+				{
+					save.data.progress.push(false);
+				}
+				save.data.num_levels = NUM_LEVELS;
+			}
 			RecalculateNumLevelsCleared();
+			save.flush();
 		}
 		
 		private static function RecalculateNumLevelsCleared() : void
