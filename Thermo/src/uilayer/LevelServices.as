@@ -60,7 +60,7 @@ package uilayer
 		
 		public static function NextLevel(levelNum:uint) : uint
 		{
-			if ((levelNum - 1) % rowSize == rowSize - 2)
+			if ((levelNum - 1) % rowSize >= rowSize - 2)
 			{
 				return 0;
 			}
