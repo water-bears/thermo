@@ -78,29 +78,34 @@ package levelgen {
 		);
 		
 		private static var LEVEL_MAP_2:Array = new Array(
-			"tutorial_jump_00",//intro row
+			//intro row
+			"tutorial_jump_00",
 			"tutorial_heat",
 			"tutorial_freeze",
 			"easy_00",
 			"supa_hard_01",
-			"tutorial_wind",//element row
-			"wind_helper2",
+			//element row
 			"tutorial_neutral",
-			"wind_test",
-			"supa_hard_02",
-			"tutorial_flashheat",//flashheat row
+			"tutorial_flashheat",
 			"flashheat_2",
-			"medium_05",
-			"medium_06",
+			"tutorial_flashfreeze",
 			"tryna_flashheat",
-			"tutorial_flashfreeze",//flashfreeze row
-			"medium_03", 
-			"medium_04",
+			//flashheat row
+			"medium_03",
+			"medium_05",
+			"tutorial_wind",
+			"wind_helper2",
+			"supa_hard_02",
+			//flashfreeze row
+			"wind_test",
+			"medium_06",
 			"medium_01",
+			"medium_04",
 			"supa_hard_04",
-			"tutorial_momentum",//final row
-			"hard_01",
+			//final row
+			"tutorial_momentum",
 			"hard_00",
+			"hard_01",
 			"hard_02",
 			"hard_100"
 		);
