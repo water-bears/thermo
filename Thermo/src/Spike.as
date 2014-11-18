@@ -23,15 +23,18 @@ package {
 				default:
 					loadGraphic(Assets.upspikeSprite);
 					break;
-			}
+            }
+
 			
 			setOriginToCorner();
 			
 			this.x = sprite.x;
 			this.y = sprite.y;
 			scale = sprite.scale;
-			width = width * scale.x;
-			height = height * scale.y;
+			//width = width * scale.x;
+			//height = height * scale.y;
+			width = 18;
+			height = 10;
 		}
 	}
 	

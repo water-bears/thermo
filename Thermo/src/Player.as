@@ -5,9 +5,7 @@
 	import flash.utils.getTimer;
 	
 	import levelgen.*;
-	
-	import audio.AudioManager;	
-	import uilayer.Utils;
+	import audio.AudioManager;
 	
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
@@ -21,8 +19,6 @@
 			3 for flash freeze
 			4 for flash heat
 		*/
-	    private var DRAG:Number = int.MAX_VALUE;
-		
 		public var curPow:int;
 		
 		public var superBubble:Boolean = false;
@@ -168,7 +164,7 @@
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 300;
 			this.acceleration.y = 1000;
-			this.drag.x = DRAG;
+			this.drag.x = int.MAX_VALUE;
 			this.waterTiles = waterT;
 			this.curPow = 0;
 			this.iceCount = 0;
@@ -208,25 +204,13 @@
 		
 		override public function update():void {
 			if (!bubble && !floatUp) {
-				var buttonDown:Boolean = false;
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
-					velocity.x = Utils.Lerp(velocity.x, -maxVelocity.x, 0.1);
+					velocity.x = -maxVelocity.x;
 					this.facing = FlxObject.RIGHT;
-					buttonDown = true;
 				}
-			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
-					velocity.x = Utils.Lerp(velocity.x, maxVelocity.x, 0.1);
+					velocity.x = maxVelocity.x;
 					this.facing = FlxObject.LEFT;
-					buttonDown = true;
-				}
-				if (buttonDown)
-				{
-					drag.x = 900;
-				}
-				else
-				{
-					drag.x = int.MAX_VALUE;
 				}
 			
 				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
@@ -254,11 +238,24 @@
 			if (superBubble && (isTouching(FlxObject.CEILING) || this.y <= 0)) {
 				floatUp = false;
 				acceleration.y = -500;
+				this.drag.x = int.MAX_VALUE;
 
 				if (FlxG.keys.DOWN || FlxG.keys.UP || FlxG.keys.W){
 					velocity.y = maxVelocity.y;
 				}
 			}
+			
+			// Makes ice platform solid when in any type of bubble
+			/*if(bubble || superBubble){
+				for(var i:int = 0; i < 3; i++){
+					this.ice[i].allowCollisions = NONE;
+				}
+			}
+			else{
+				for(var j:int = 0; j < 3; j++){
+					this.ice[j].allowCollisions = UP;
+				}
+			}*/
 
 			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && (!isTouching(FLOOR) || FlxG.keys.justPressed("SPACE"))) {
@@ -295,29 +292,29 @@
 			switch (newPower) {
 				case 0:
 					if(curPow != 0) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + "), $ " + "neutralGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  + getTimer().toString() + "$");
 					}
 					this.curPow = 0;
 					break;
 				case 1:
 					if(curPow != 1) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "freezeGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 1;
 					break;
 				case 2:
 					if(curPow != 2) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "heatGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 2;
 					break;
 				case 3:
 					if (this.curPow == 1) {
 						this.curPow = 3;
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashFreezeGate $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 					}
 					else if (this.curPow == 2) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashHeatGate $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						this.curPow = 4;
 					}
 					break;
@@ -335,7 +332,7 @@
 						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
 						this.maxVelocity.y = -10;
 						playstate.iceGroup.add(this.ice[3]);
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "freeze $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						t1 = getTimer();
 					}
 					break;
@@ -346,7 +343,7 @@
 						acceleration.y = -500;
 						bubble = true;
 						superBubble = false;
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "heat $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 
 					}
 					break;
@@ -382,7 +379,7 @@
 								this.ice[2].play("state1");
 								break;
 						}
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashFreeze $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						iceCount++;
 					}
 					break;
@@ -394,7 +391,7 @@
 						acceleration.y = -500;
 						superBubble = true;
 						floatUp = true;
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashHeat $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 					}
 					break;
 			}
@@ -410,7 +407,7 @@
 		
 		public function enterWater():void {
 			if (!underwater) {
-				AudioManager.PlaySound(Assets.sfx_splash, 0.01 + Math.max(Math.abs(velocity.x) / 400, Math.abs(velocity.y) / 200));
+				AudioManager.PlaySound(Assets.sfx_splash);
 			}
 			underwater = true;
 			if (!bubble && !superBubble) {
@@ -432,14 +429,14 @@
 			this.maxVelocity.x = 250;
 			this.maxVelocity.y = 250;
 			this.acceleration.y = 400;
-			this.drag.x = DRAG;
+			this.drag.x = int.MAX_VALUE;
 		}
 		
 		public function normalSpeed():void {
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 300;
 			this.acceleration.y = 1000;
-			this.drag.x = DRAG;
+			this.drag.x = int.MAX_VALUE;
 		}
 		
 		public function setX(x:int):void {
