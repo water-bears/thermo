@@ -70,8 +70,8 @@ package levelgen {
 			"medium_01",
 			"supa_hard_04",
 			"tutorial_momentum",//final row
-			"hard_00",
 			"hard_01",
+			"hard_00",
 			"hard_02",
 			"hard_100"
 		);
@@ -98,10 +98,10 @@ package levelgen {
 			"medium_01",
 			"supa_hard_04",
 			"tutorial_momentum",//final row
-			"hard_00",
 			"hard_01",
+			"hard_00",
 			"hard_02",
-			"hard_100"			
+			"hard_100"
 		);
 		
 		/**

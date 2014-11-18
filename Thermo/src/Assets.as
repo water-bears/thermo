@@ -167,6 +167,8 @@ package {
 		private static var moon10:Class;
 		[Embed(source = "../assets/backgrounds/bright_sunset.jpg")]
 		private static var bright_sunset:Class;
+		[Embed(source = "../assets/backgrounds/nbkgd6.jpg")]
+		private static var last_scene:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)
@@ -217,13 +219,21 @@ package {
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
-			bright_sunset, clouds1, clouds2,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, sunset,
-			moon5, moon3, moon8,
-			moon6, moon1
+			// Row 1
+			last_scene, last_scene, last_scene, last_scene,
+			moon10,
+			// Row 2
+			bright_sunset, bright_sunset, bright_sunset, bright_sunset,
+			moon5,
+			// Row 3
+			clouds1, clouds1, clouds1, clouds1,
+			moon8,
+			// Row 4
+			clouds2, clouds2, clouds2, clouds2,
+			moon6,
+			// Row 5
+			sunset, sunset, sunset, sunset,
+			moon1
 		];
 		
 		/* Sounds */
