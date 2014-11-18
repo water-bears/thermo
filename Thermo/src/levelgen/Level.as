@@ -239,13 +239,23 @@ package levelgen {
 						break;
 						
 					case "Spikes":
-						var spike:Spike = new Spike(sprite);
+						var spike:Spike = new Spike(sprite, 2);
 						spikes.add(spike);
 						break;
 						
 					case "Upspikes":
-						var spike2:Spike = new Spike(sprite, true);
+						var spike2:Spike = new Spike(sprite, 1);
 						spikes.add(spike2);
+						break;
+						
+					case "Leftspikes":
+						var spike3:Spike = new Spike(sprite, 3);
+						spikes.add(spike3);
+						break;
+						
+					case "Rightspikes":
+						var spike4:Spike = new Spike(sprite, 4);
+						spikes.add(spike4);
 						break;
 						
 					case "Grass":

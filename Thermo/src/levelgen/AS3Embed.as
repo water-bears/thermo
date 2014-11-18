@@ -2,8 +2,6 @@ package levelgen
 {
 public class AS3Embed
 {
-
-[Embed(source = "../../assets/backgrounds/background.png")] private static var background2:Class;
 [Embed(source = "../../assets/backgrounds/bkgd1.png")] private static var bkgd12:Class;
 [Embed(source = "../../assets/backgrounds/bkgd4_1.png")] private static var bkgd4_12:Class;
 [Embed(source = "../../assets/backgrounds/bkgd5_1.png")] private static var bkgd5_12:Class;
@@ -225,7 +223,6 @@ return "error";
 }
 
 public static function GetArtAsset(filename:String):Class{
-if(filename == "backgrounds/background.png") { return background2; }
 if(filename == "backgrounds/bkgd1.png") { return bkgd12; }
 if(filename == "backgrounds/bkgd4_1.png") { return bkgd4_12; }
 if(filename == "backgrounds/bkgd5_1.png") { return bkgd5_12; }
@@ -279,7 +276,7 @@ if(filename == "tilesheets/ground20.png") { return ground2038; }
 if(filename == "tilesheets/water.png") { return water38; }
 if(filename == "tilesheets/water20.png") { return water2038; }
 
-return background2;
+return placeholder2;
 }
 }
 }

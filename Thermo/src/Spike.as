@@ -3,16 +3,28 @@ package {
 	import org.flixel.FlxSprite;
 	//import data.Library;
 	
+	//direction: 1 = up, 2 = down, 3 = left, 4 = right;
+	
 	public class Spike extends FlxSprite {
 		
-		public function Spike(sprite:FlxSprite, up:Boolean = false) {
+		public function Spike(sprite:FlxSprite, direction:int = 1) {
 			super();
 			
-			if (up) {
-				loadGraphic(Assets.upspikeSprite);
-			} else {
-				loadGraphic(Assets.spikeSprite);
-			}
+			switch(direction) {
+				case 2:
+					loadGraphic(Assets.spikeSprite);
+					break;
+				case 3:
+					loadGraphic(Assets.leftspikeSprite);
+					break;
+				case 4:
+					loadGraphic(Assets.rightspikeSprite);
+					break;
+				default:
+					loadGraphic(Assets.upspikeSprite);
+					break;
+            }
+
 			
 			setOriginToCorner();
 			

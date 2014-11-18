@@ -56,6 +56,10 @@ package {
 		public static var spikeSprite:Class;
 		[Embed(source = "../assets/objects/upspikes.png")]
 		public static var upspikeSprite:Class;
+		[Embed(source = "../assets/objects/leftspikes.png")]
+		public static var leftspikeSprite:Class;
+		[Embed(source = "../assets/objects/rightspikes.png")]
+		public static var rightspikeSprite:Class;
 		
 		[Embed(source = "../assets/objects/button.png")]
 		public static var buttonSprite:Class;
@@ -117,32 +121,52 @@ package {
 		
 		
 		/* Background sprites */
-		[Embed(source = "../assets/backgrounds/background.png")]
-		private static var b_1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd4_1.png")]
-		private static var b_2:Class;
+		private static var red1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd5_1.png")]
-		private static var b_3:Class;
+		private static var yellow1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd6.png")]
-		private static var b_4:Class;
+		private static var purple1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd7.png")]
-		private static var b_5:Class;
+		private static var pink1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd9.png")]
-		private static var b_6:Class;
+		private static var yellow2:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
-		private static var b_7:Class;
+		private static var clouds1:Class;
 		[Embed(source = "../assets/backgrounds/morecloudz.jpg")]
-		private static var b_8:Class;
+		private static var clouds2:Class;
 		[Embed(source = "../assets/backgrounds/sunsetcloud.jpg")]
-		private static var b_9:Class;
+		private static var sunset:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
-		private static var b_10:Class;
+		private static var blue1:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd1.jpg")]
-		private static var b_11:Class;
+		private static var green1:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd2.jpg")]
-		private static var b_12:Class;
+		private static var orange1:Class;
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
+		[Embed(source = "../assets/backgrounds/moon1.jpg")]
+		private static var moon1:Class;
+		[Embed(source = "../assets/backgrounds/moon2.jpg")]
+		private static var moon2:Class;
+		[Embed(source = "../assets/backgrounds/moon3.jpg")]
+		private static var moon3:Class;
+		[Embed(source = "../assets/backgrounds/moon4.jpg")]
+		private static var moon4:Class;
+		[Embed(source = "../assets/backgrounds/moon5.jpg")]
+		private static var moon5:Class;
+		[Embed(source = "../assets/backgrounds/moon6.jpg")]
+		private static var moon6:Class;
+		[Embed(source = "../assets/backgrounds/moon7.jpg")]
+		private static var moon7:Class;
+		[Embed(source = "../assets/backgrounds/moon8.jpg")]
+		private static var moon8:Class;
+		[Embed(source = "../assets/backgrounds/moon9.jpg")]
+		private static var moon9:Class;
+		[Embed(source = "../assets/backgrounds/moon10.jpg")]
+		private static var moon10:Class;
+		[Embed(source = "../assets/backgrounds/bright_sunset.jpg")]
+		private static var bright_sunset:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)
@@ -171,12 +195,13 @@ package {
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
+			bright_sunset, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME
+			b_REPLACE_ME, moon1
 		];
 		
 		/* Sounds */
