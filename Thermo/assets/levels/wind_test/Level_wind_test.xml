@@ -26,7 +26,6 @@
 		<sprite clas="Exit" name="Exit" x="593.00" y="139.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="WindLeft" name="WindLeft" x="522.00" y="121.49" angle="0.00" flip="false" xScale="2.77" yScale="5.89" >		</sprite>
 		<sprite clas="Player" name="Player" x="277.00" y="214.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="WindRight" name="WindRight" x="72.00" y="37.00" angle="0.00" flip="false" xScale="6.14" yScale="19.51" >		</sprite>
 		<sprite clas="Key" name="Key" x="600.00" y="320.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FreezeGate" name="FreezeGate" x="197.00" y="355.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="WindLeft" name="WindLeft" x="522.53" y="322.40" angle="0.00" flip="false" xScale="2.74" yScale="5.77" >		</sprite>

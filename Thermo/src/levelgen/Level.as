@@ -58,12 +58,12 @@ package levelgen {
 			"medium_03", // tutorial_trapdoor
 			"medium_04",
 			"medium_01",
-			"medium_02",
+			"wind_test", // "medium_02",
 			"tutorial_momentum",
 			"hard_00",
 			"hard_01",
 			"hard_02",
-			"wind_test",
+			// "wind_test",
 			"tutorial_lava_00",
 			"tutorial_wind",
 			"hard_100"

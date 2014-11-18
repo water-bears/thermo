@@ -2,7 +2,7 @@
 <project>
   <version>3.1.6</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="48" y="21"/>
+  <viewPos x="0" y="0"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="12">
     <sprite name="Player" idx="1" className="Player" image="damesprites/character.png" width="20" height="24" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="24" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false"/>
@@ -19,7 +19,7 @@
   </spriteEntries>
   <layers>
     <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Water" id="0" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/water20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+      <maplayer name="Water" id="0" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/water20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -30,8 +30,8 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,1,1,1,1</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,1,1,9</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,1,9</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0</row>
@@ -43,21 +43,21 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1,1,9,0,0,0,1,1,1,1,0,0</row>
         <row>0,0,0,0,0,0,6,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0</row>
         <row>0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,8,9,0,0,0</row>
-        <row>0,0,0,0,0,0,0,1,1,1,1,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <maplayer name="Ground" id="1" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/ground20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Ground" id="1" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/ground20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+        <row>1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1,1,1,1,7</row>
+        <row>0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,9</row>
+        <row>0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,8,1,1,1,1,1,1,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1,1,1,1,7</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,9</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,8,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,9,0,8,1,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,9,0,0,0,8,1,9</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0</row>
@@ -68,8 +68,8 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>6,1,1,1,1,7,0,0,0,0,0,0,0,0,6,1,1,1,1,1,1,1,1,1,1,7,0,0,0,0,6,7</row>
-        <row>1,1,1,1,1,1,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,8,1,9,0,0,8,1,9</row>
-        <row>8,1,1,1,1,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,9,0,0,8,1,9</row>
+        <row>8,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1</row>
         <tileProperties>
           <properties/>
         </tileProperties>
@@ -89,28 +89,28 @@
     </group>
   </layers>
   <layerTemplates/>
-  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/ground.png">
+  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/water20.png">
     <row>
-      <tile>6</tile>
-      <tile>1</tile>
-      <tile>7</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
     </row>
     <row>
-      <tile>1</tile>
-      <tile>1</tile>
-      <tile>1</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
     </row>
     <row>
-      <tile>8</tile>
-      <tile>1</tile>
-      <tile>9</tile>
+      <tile>0</tile>
+      <tile>0</tile>
+      <tile>0</tile>
     </row>
     <specialConnections>
       <sets/>
       <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/ground.png">
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/water20.png">
     <tiles>0,0,0,0,0,0,0,0,0</tiles>
   </tileMatrixData>
   <tileBrushes/>
@@ -160,8 +160,8 @@
   </options>
   <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\xmlThermoExporter.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="false" useProjectExporterOnly="false">
     <setting name="ExportOnlyCSV">false</setting>
-    <setting name="DataDir">C:\Users\Danny\Documents\Assignments\Fall2014\CS4154\Thermo\thermo\Thermo\assets</setting>
-    <setting name="LevelDir">C:\Users\Danny\Documents\Assignments\Fall2014\CS4154\Thermo\thermo\Thermo\assets\levels</setting>
+    <setting name="DataDir">C:\Users\Andy\Documents\School\Fall 2014\CS 4154\thermo\Thermo\assets</setting>
+    <setting name="LevelDir">C:\Users\Andy\Documents\School\Fall 2014\CS 4154\thermo\Thermo\assets\levels</setting>
   </exporter>
   <customPropertyTypes/>
   <guides>
