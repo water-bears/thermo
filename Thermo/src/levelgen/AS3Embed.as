@@ -2,6 +2,7 @@ package levelgen
 {
 public class AS3Embed
 {
+
 [Embed(source = "../../assets/backgrounds/bkgd1.png")] private static var bkgd12:Class;
 [Embed(source = "../../assets/backgrounds/bkgd4_1.png")] private static var bkgd4_12:Class;
 [Embed(source = "../../assets/backgrounds/bkgd5_1.png")] private static var bkgd5_12:Class;
@@ -114,8 +115,10 @@ public class AS3Embed
 [Embed(source = "../../assets/objects/lava.png")] private static var lava36:Class;
 [Embed(source = "../../assets/objects/lava1.png")] private static var lava136:Class;
 [Embed(source = "../../assets/objects/lava2.png")] private static var lava236:Class;
+[Embed(source = "../../assets/objects/leftspikes.png")] private static var leftspikes36:Class;
 [Embed(source = "../../assets/objects/long_ice_platform.png")] private static var long_ice_platform36:Class;
 [Embed(source = "../../assets/objects/movingplatform.png")] private static var movingplatform36:Class;
+[Embed(source = "../../assets/objects/rightspikes.png")] private static var rightspikes36:Class;
 [Embed(source = "../../assets/objects/spikes.png")] private static var spikes36:Class;
 [Embed(source = "../../assets/objects/spikes2.png")] private static var spikes236:Class;
 [Embed(source = "../../assets/objects/trapdoor.png")] private static var trapdoor36:Class;
@@ -125,6 +128,8 @@ public class AS3Embed
 [Embed(source = "../../assets/objects/tree1.png")] private static var tree136:Class;
 [Embed(source = "../../assets/objects/tree2.png")] private static var tree236:Class;
 [Embed(source = "../../assets/objects/tree3.png")] private static var tree336:Class;
+[Embed(source = "../../assets/objects/tree4.png")] private static var tree436:Class;
+[Embed(source = "../../assets/objects/tree5.png")] private static var tree536:Class;
 [Embed(source = "../../assets/objects/upspikes.png")] private static var upspikes36:Class;
 [Embed(source = "../../assets/objects/upspikes2.png")] private static var upspikes236:Class;
 [Embed(source = "../../assets/tilesheets/door.png")] private static var door38:Class;
@@ -254,8 +259,10 @@ if(filename == "objects/key.png") { return key36; }
 if(filename == "objects/lava.png") { return lava36; }
 if(filename == "objects/lava1.png") { return lava136; }
 if(filename == "objects/lava2.png") { return lava236; }
+if(filename == "objects/leftspikes.png") { return leftspikes36; }
 if(filename == "objects/long_ice_platform.png") { return long_ice_platform36; }
 if(filename == "objects/movingplatform.png") { return movingplatform36; }
+if(filename == "objects/rightspikes.png") { return rightspikes36; }
 if(filename == "objects/spikes.png") { return spikes36; }
 if(filename == "objects/spikes2.png") { return spikes236; }
 if(filename == "objects/trapdoor.png") { return trapdoor36; }
@@ -265,6 +272,8 @@ if(filename == "objects/tree.png") { return tree36; }
 if(filename == "objects/tree1.png") { return tree136; }
 if(filename == "objects/tree2.png") { return tree236; }
 if(filename == "objects/tree3.png") { return tree336; }
+if(filename == "objects/tree4.png") { return tree436; }
+if(filename == "objects/tree5.png") { return tree536; }
 if(filename == "objects/upspikes.png") { return upspikes36; }
 if(filename == "objects/upspikes2.png") { return upspikes236; }
 if(filename == "tilesheets/door.png") { return door38; }
