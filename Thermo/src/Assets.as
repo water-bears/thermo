@@ -207,13 +207,13 @@ package {
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
-			bright_sunset, b_REPLACE_ME, b_REPLACE_ME,
+			bright_sunset, clouds1, clouds2,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME, moon1
+			b_REPLACE_ME, b_REPLACE_ME, sunset,
+			moon5, moon3, moon8,
+			moon6, moon1
 		];
 		
 		/* Sounds */
