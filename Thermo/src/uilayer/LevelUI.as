@@ -200,12 +200,12 @@ package uilayer {
 					{
 						if(selectedPauseOption == 1){
 							//reset
-							logger.recordEvent(level.levelNum, 5, "v2 $ $ reset $ time =" + getTimer().toString());
+							logger.recordEvent(level.levelNum, 5, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						else if(selectedPauseOption == 2){
 							// levelselect 
-							logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + getTimer().toString());
+							logger.recordEvent(level.levelNum, 6, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						BeginExitSequence(callbacks[selectedPauseOption]);

@@ -244,6 +244,18 @@
 					velocity.y = maxVelocity.y;
 				}
 			}
+			
+			// Makes ice platform solid when in any type of bubble
+			/*if(bubble || superBubble){
+				for(var i:int = 0; i < 3; i++){
+					this.ice[i].allowCollisions = NONE;
+				}
+			}
+			else{
+				for(var j:int = 0; j < 3; j++){
+					this.ice[j].allowCollisions = UP;
+				}
+			}*/
 
 			// Kills the ice platforms 
 			if (getTimer() - this.t1 >= 100 && (!isTouching(FLOOR) || FlxG.keys.justPressed("SPACE"))) {
@@ -280,29 +292,29 @@
 			switch (newPower) {
 				case 0:
 					if(curPow != 0) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + "), $ " + "neutralGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  + getTimer().toString() + "$");
 					}
 					this.curPow = 0;
 					break;
 				case 1:
 					if(curPow != 1) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "freezeGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 1;
 					break;
 				case 2:
 					if(curPow != 2) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "heatGate $ time = " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString() + "$");
 					}
 					this.curPow = 2;
 					break;
 				case 3:
 					if (this.curPow == 1) {
 						this.curPow = 3;
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashFreezeGate $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 					}
 					else if (this.curPow == 2) {
-						logger.recordEvent(level.levelNum, 1, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashHeatGate $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 1, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						this.curPow = 4;
 					}
 					break;
@@ -320,7 +332,7 @@
 						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
 						this.maxVelocity.y = -10;
 						playstate.iceGroup.add(this.ice[3]);
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "freeze $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						t1 = getTimer();
 					}
 					break;
@@ -331,7 +343,7 @@
 						acceleration.y = -500;
 						bubble = true;
 						superBubble = false;
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "heat $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 
 					}
 					break;
@@ -367,7 +379,7 @@
 								this.ice[2].play("state1");
 								break;
 						}
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashFreeze $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 						iceCount++;
 					}
 					break;
@@ -379,7 +391,7 @@
 						acceleration.y = -500;
 						superBubble = true;
 						floatUp = true;
-						logger.recordEvent(level.levelNum, 0, "v2 $ (" + this.x +  ", " + this.y + ") $ " + "flashHeat $ time= " + (getTimer() - startTime).toString());
+						logger.recordEvent(level.levelNum, 0, "v2 $ " + this.x +  "$ " + this.y + " $ "  +  getTimer().toString()+ "$");
 					}
 					break;
 			}

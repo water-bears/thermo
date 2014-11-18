@@ -8,12 +8,9 @@ package {
 		public function Spike(sprite:FlxSprite, up:Boolean = false) {
 			super();
 			
-			if (up)
-			{
+			if (up) {
 				loadGraphic(Assets.upspikeSprite);
-			}
-			else
-			{
+			} else {
 				loadGraphic(Assets.spikeSprite);
 			}
 			
@@ -22,8 +19,10 @@ package {
 			this.x = sprite.x;
 			this.y = sprite.y;
 			scale = sprite.scale;
-			width = width * scale.x;
-			height = height * scale.y;
+			//width = width * scale.x;
+			//height = height * scale.y;
+			width = 18;
+			height = 10;
 		}
 	}
 	
