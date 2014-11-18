@@ -198,6 +198,14 @@ package {
 		public static var sfx_ice:Class;
 		[Embed(source = "../assets/sfx/gate.mp3")]
 		public static var sfx_gate:Class;
+		[Embed(source = "../assets/sfx/heatgate.mp3")]
+		public static var sfx_heatgate:Class;
+		[Embed(source = "../assets/sfx/freezegate.mp3")]
+		public static var sfx_freezegate:Class;
+		[Embed(source = "../assets/sfx/flashgate.mp3")]
+		public static var sfx_flashgate:Class;
+		[Embed(source = "../assets/sfx/neutralgate.mp3")]
+		public static var sfx_neutralgate:Class;
 		[Embed(source = "../assets/sfx/wave.mp3")]
 		public static var sfx_wave:Class;
 		[Embed(source = "../assets/sfx/key.mp3")]
