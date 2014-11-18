@@ -314,7 +314,7 @@ package {
 				// If player has the key and touches the exit, they win
 				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 					player.visible = false;
-					logger.recordEvent(level.levelNum, 3, "v2 $" + player.x +  ", " + player.y + "$ win $ time = " + getTimer().toString());
+					logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					win(exitGroup, player);
 				}
@@ -322,7 +322,7 @@ package {
 				//Check for player lose conditions
 				if (player.y > FlxG.height || FlxG.overlap(player, spikeGroup)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $" + player.x +  ", " + player.y +" $ lose $ time =" + getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -330,7 +330,7 @@ package {
 					player.visible = false;
 				}
 				if (FlxG.keys.R){
-					logger.recordEvent(level.levelNum, 5, "v2 $" + player.x +  ", " + player.y +"$ reset $ time =" + getTimer().toString());
+					logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					ui.BeginExitSequence(reset);
 					player.visible = false;
@@ -339,7 +339,7 @@ package {
 				//Check for player lose conditions specific for lava
 				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $" + player.x +  ", " + player.y +" $ lose $ time =" + getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -349,7 +349,7 @@ package {
 				
 				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $" + player.x +  ", " + player.y +" $ lose $ time =" + getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -435,7 +435,7 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, "v2 $ $ key retreival $ time = " + getTimer().toString());
+			logger.recordEvent(level.levelNum, 2, "v2 $ $  $ " + getTimer().toString() + "$");
 		}
 		
 		/** Win function **/
@@ -464,7 +464,7 @@ package {
 		public function pullTimerListener(e:TimerEvent):void {
 			curPosition = new Point(player.x, player.y);
 			if(curPosition.x != prevPosition.x && curPosition.y != prevPosition.y){
-				logger.recordEvent(level.levelNum, 7, "v2 $" + player.x +  ", " + player.y + "$  $ time = " + getTimer().toString());
+				logger.recordEvent(level.levelNum, 7, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 				prevPosition = curPosition;
 			}
 			
