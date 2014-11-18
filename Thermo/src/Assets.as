@@ -21,10 +21,10 @@ package {
 		public static var playerSpriteY:int = 42;
 		
 		/* Door closed */
-		[Embed(source = "../assets/tilesheets/door.png")]
+		[Embed(source = "../assets/tilesheets/door_vortex.png")]
 		public static var doorSprite:Class;
-		public static var doorSpriteX:int = 128;
-		public static var doorSpriteY:int = 128;
+		public static var doorSpriteX:int = 50;
+		public static var doorSpriteY:int = 50;
 		
 		/* Door open */
 		[Embed(source = "../assets/tilesheets/door1.png")]
