@@ -54,6 +54,7 @@ package levelgen {
 			"tutorial_neutral",
 			"tutorial_flashheat",
 			"medium_05",
+			"wind_helper",
 			"tutorial_flashfreeze",
 			"medium_03", // tutorial_trapdoor
 			"medium_04",
@@ -66,8 +67,7 @@ package levelgen {
 			// "wind_test",
 			"tutorial_lava_00",
 			"tutorial_wind",
-			"hard_100",
-			"wind_helper"
+			"hard_100"
 			//"test_tree"
 			
 		);
