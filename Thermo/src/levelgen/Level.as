@@ -60,7 +60,7 @@ package levelgen {
 			"tutorial_flashheat",//flashheat row
 			"flashheat_2",
 			"medium_05",
-			"test_tree",
+			"tryna_flashheat",
 			"test_tree",
 			"tutorial_flashfreeze",//flashfreeze row
 			"medium_03", 
