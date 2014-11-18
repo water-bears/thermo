@@ -1,5 +1,6 @@
 package levelgen {
 	import flash.events.Event;
+	
 	import org.flixel.*;
 
 	public class Level 
@@ -41,7 +42,7 @@ package levelgen {
 		
 		private const fileLocation:String = "levels/";
 		
-		public static var AB:Number;
+		public static var ab:Number;
 		
 		/**
 		 * Map of level names, in game order.
@@ -58,7 +59,7 @@ package levelgen {
 			"wind_helper2",
 			"tutorial_neutral",
 			"wind_test",
-			"test_tree",
+			"supa_hard_02",
 			"tutorial_flashheat",//flashheat row
 			"flashheat_2",
 			"medium_05",
@@ -70,8 +71,8 @@ package levelgen {
 			"medium_01",
 			"supa_hard_04",
 			"tutorial_momentum",//final row
-			"hard_00",
 			"hard_01",
+			"hard_00",
 			"hard_02",
 			"hard_100"
 		);
@@ -98,10 +99,10 @@ package levelgen {
 			"medium_01",
 			"supa_hard_04",
 			"tutorial_momentum",//final row
-			"hard_00",
 			"hard_01",
+			"hard_00",
 			"hard_02",
-			"hard_100"			
+			"hard_100"
 		);
 		
 		/**
@@ -115,7 +116,7 @@ package levelgen {
 		 */
 		private static function levelName(levelNum:uint):String
 		{
-			if (AB == 1)
+			if (ab == 1)
 			{
 				return LEVEL_MAP_1[(levelNum - 1) % NUM_LEVELS];
 			}
@@ -128,6 +129,8 @@ package levelgen {
 		public function Level(levelNum:uint) 
 		{
 			this.levelNum = levelNum;
+			//if(AB != null) this.AB = AB;
+			
 			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			

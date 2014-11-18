@@ -4,7 +4,7 @@
   <bgColor>0x777777</bgColor>
   <viewPos x="0" y="0"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="14">
+  <spriteEntries currentId="18">
     <sprite name="Player" idx="1" className="Player" image="damesprites/character.png" width="20" height="24" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="24" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false"/>
     <sprite name="HeatGate" idx="2" className="HeatGate" image="damesprites/gates.png" width="10" height="40" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="2" canEditFrames="true" lockRotation="false"/>
     <sprite name="FreezeGate" idx="3" className="FreezeGate" image="damesprites/gates.png" width="10" height="40" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="1" canEditFrames="true" lockRotation="false"/>
@@ -17,7 +17,11 @@
     <sprite name="Upspikes" idx="10" className="Upspikes" image="objects/upspikes.png" width="20" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="MovingPlatform" idx="11" className="MovingPlatform" image="objects/movingplatform.png" width="40" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="40" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
     <sprite name="WindLeft" idx="12" className="WindLeft" image="damesprites/wind_left.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
-    <sprite name="WindRight" idx="13" className="WindRight" image="damesprites/wind_right.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
+    <sprite name="WindRight" idx="13" className="WindRight" image="damesprites/wind_right.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Grass" idx="14" className="Grass" image="objects/grass.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
+    <sprite name="Tree" idx="15" className="Tree" image="objects/tree.png" width="120" height="120" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="120" boundsHeight="120" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Tree2" idx="16" className="Tree2" image="objects/tree2.png" width="120" height="120" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="120" boundsHeight="120" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Tree3" idx="17" className="Tree3" image="objects/tree4.png" width="120" height="120" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="120" boundsHeight="120" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
   </spriteEntries>
   <layers>
     <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
@@ -80,11 +84,37 @@
         <sprite guid="573E0D1F-FDD5-9B70-D872-429AA8AD37FC" x="-579" y="-186" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
         <sprite guid="BCC03813-0DE7-5F4A-AC65-72DEAA685CA6" x="593" y="139" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
         <sprite guid="3A3500F1-B314-0127-6942-916F4EA7DBF8" x="522" y="121.49" Z="0" angle="0" scaleX="2.77" scaleY="5.89" flipped="false" idx="12"/>
-        <sprite guid="31F83602-D383-735D-A9BF-396BAC781DBA" x="277" y="214" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
+        <sprite guid="31F83602-D383-735D-A9BF-396BAC781DBA" x="277" y="217" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
+        <sprite guid="49024A1C-BDAB-C140-E9E2-282D3766B1E4" x="244" y="228" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="49CB4543-D351-2ACF-1BC4-D9919B029354" x="316" y="229" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="191994D6-488B-F1FE-EABF-86A2B91363C7" x="276" y="230" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="4415F908-5871-1458-6BB9-007FB6A0A361" x="326" y="231" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="ACFF15EE-F650-F879-67DE-B9CCA3051EA7" x="254" y="231" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="CD027B3E-AD45-7642-07EE-E3D3052B4118" x="304" y="232" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="73BD3124-8E86-1B66-1650-99E5BE4F5976" x="289" y="233" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="F31D0FDF-8834-B38F-B96B-E0F8A0DAE648" x="265" y="233" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="EA914FB1-0665-8FF2-35AA-C6B1114EA23B" x="338" y="233" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
         <sprite guid="89518D9E-DFA4-F2CF-EB6D-86F1E4077640" x="600" y="320" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
         <sprite guid="6566E602-A8BD-8FEB-098F-29B1194D0374" x="197" y="355" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3" frame="1"/>
         <sprite guid="D3B4A388-6236-2FDD-8CA7-680B77A3486C" x="522.53" y="322.4" Z="0" angle="0" scaleX="2.74" scaleY="5.77" flipped="false" idx="12"/>
         <sprite guid="03FB2EF6-B3B4-89B6-F9A1-88125A96066E" x="16" y="394" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2" frame="2"/>
+        <sprite guid="F64C1D41-ED73-DA7A-AAE0-334AAD54C71C" x="286" y="427" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="A92B0397-4981-64D0-0801-FCF078008A9D" x="262" y="428" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="450D68DD-8D24-3AA3-13AE-8A0BFA033032" x="319" y="429" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="672C9030-26DC-77C4-5906-C524D47C110F" x="310" y="430" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="B4C194B6-CAA8-60FA-65D8-F72FF9F70BAD" x="240" y="430" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="C8CF010A-DCAC-CD17-9264-326F42233E95" x="297" y="430" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="36D24216-AD9B-2220-7607-74225E77F785" x="272" y="430" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="CD4DA757-4920-D572-69D1-A0397B3B02B9" x="46" y="430" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="0F59AA8B-E54C-1315-012D-EE499A88A449" x="334" y="431" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="F28386B7-3E96-0CAB-E3C3-1BFCA654015D" x="250" y="431" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="8A341774-F8E9-F5D2-BE40-64D5CC7A6CDA" x="22" y="431" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="F87FF2EC-A9A4-33F5-46E8-5E7F38E44D67" x="79" y="432" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="648A60FF-89D4-C421-FEDC-C7D74EEB7D6B" x="32" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="EF15DCDD-881F-54C5-432A-2A0614DFCD26" x="57" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="6AB31368-4758-EF84-822D-394E9A25CE74" x="0" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="DCFE0AB3-EBDF-F146-CD6D-5D56AFD44F28" x="70" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
+        <sprite guid="09EBB09F-64A0-56C3-A85D-08CF5D9E6610" x="10" y="434" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="14"/>
       </spritelayer>
       <spritelayer name="Front" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
       <spritelayer name="Back" id="4" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
