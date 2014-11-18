@@ -89,13 +89,13 @@ package levelgen {
 			"tutorial_flashheat",
 			"flashheat_2",
 			"tutorial_flashfreeze",
-			"supa_hard_02",
+			"tryna_flashheat",
 			//flashheat row
 			"medium_03",
 			"medium_05",
 			"tutorial_wind",
 			"wind_helper2",
-			"tryna_flashheat",
+			"supa_hard_02",
 			//flashfreeze row
 			"wind_test",
 			"medium_06",
