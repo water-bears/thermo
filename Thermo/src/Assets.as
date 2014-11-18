@@ -73,10 +73,14 @@ package {
 		public static var movingSprite:Class;
 		
 		/* TEMPORARY wind sprites */
+		/*
 		[Embed(source = "../assets/damesprites/wind_left.png")]
 		public static var windleftSprite:Class;
 		public static var windleftSpriteX:int = 20;
 		public static var windleftSpriteY:int = 20;
+		*/
+		[Embed(source = "../assets/objects/bubble.png")]
+		public static var bubbleSprite:Class;
 		
 		[Embed(source = "../assets/damesprites/wind_right.png")]
 		public static var windrightSprite:Class;
@@ -95,6 +99,12 @@ package {
 		public static var coldLavaSprite:Class;
 		public static var lavaSpriteX:int = 200;
 		public static var lavaSpriteY:int = 20;
+		
+		/* Keys */
+		[Embed(source = "../assets/keys/spacebar.png")]
+		public static var spacebarSprite:Class;
+		[Embed(source = "../assets/keys/arrows.png")]
+		public static var arrowsSprite:Class;
 		
 		
 		/* Background sprites */

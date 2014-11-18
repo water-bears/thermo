@@ -58,7 +58,7 @@ package {
 				var bubble:FlxSprite = new FlxSprite(main_sprite.x + Math.random() * (main_sprite.width - BUBBLE_DIAMETER),
 					main_sprite.y + Math.random() * (main_sprite.height - BUBBLE_DIAMETER));
 					
-				bubble.makeGraphic(BUBBLE_DIAMETER, BUBBLE_DIAMETER, COLOR);
+				bubble.loadGraphic(Assets.bubbleSprite);
 					
 				
 				switch(direction) {
