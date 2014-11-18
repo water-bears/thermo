@@ -15,7 +15,7 @@ package {
 			//scale.y = 15 / Assets.keySpriteY;
 			//width = 15;
 			//height = 15;
-			this.x = x - 10;
+			this.x = x;
 			this.y = y - 10;
 			
 			maxVelocity.y = 500;
