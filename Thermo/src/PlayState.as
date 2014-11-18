@@ -193,6 +193,8 @@ package {
 			add(level.frontSprites);
 			startTime = getTimer();
 			
+			if (level.levelNum == 1) logger.recordEvent(1, 9, "$ $ $ $ " + Level.ab);
+			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
 			ui = new LevelUI(level, logger);
