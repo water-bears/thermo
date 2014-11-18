@@ -66,8 +66,10 @@ package levelgen {
 			// "wind_test",
 			"tutorial_lava_00",
 			"tutorial_wind",
-			"hard_100"
+			"hard_100",
+			"wind_helper"
 			//"test_tree"
+			
 		);
 		
 		/**
