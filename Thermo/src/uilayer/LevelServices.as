@@ -57,6 +57,18 @@ package uilayer
 				return ThermoSaves.GetLevelCleared(levelNum + 1 - 1);
 			}
 		}
+		
+		public static function NextLevel(levelNum:uint) : uint
+		{
+			if ((levelNum - 1) % rowSize == rowSize - 2)
+			{
+				return 0;
+			}
+			else
+			{
+				return levelNum + 1;
+			}
+		}
 	}
 
 }

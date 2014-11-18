@@ -20,6 +20,7 @@ package {
 	
 	import uilayer.LevelUI;
 	import uilayer.Utils;
+	import uilayer.LevelServices;
 	
 	import io.ThermoSaves;
 		
@@ -449,12 +450,11 @@ package {
 		}
 		
 		public function goToNextLevel() : void {
-			FlxG.switchState(new TransitionState(level.levelNum + 1, logger, level.levelNum));
+			FlxG.switchState(new TransitionState(LevelServices.NextLevel(level.levelNum), logger, level.levelNum));
 		}
 		
 		/** Reset function **/
 		public function reset():void {
-
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}
 		

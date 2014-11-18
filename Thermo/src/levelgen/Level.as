@@ -63,18 +63,18 @@ package levelgen {
 			"tutorial_flashheat",//flashheat row
 			"flashheat_2",
 			"medium_05",
+			"medium_06",
 			"tryna_flashheat",
-			"test_tree",
 			"tutorial_flashfreeze",//flashfreeze row
 			"medium_03", 
 			"medium_04",
 			"medium_01",
-			"test_tree",
+			"supa_hard_04",
 			"tutorial_momentum",//final row
 			"hard_00",
 			"hard_01",
 			"hard_02",
-			"hard_100"			
+			"hard_100"
 		);
 		
 		private static var LEVEL_MAP_2:Array = new Array(
@@ -97,7 +97,7 @@ package levelgen {
 			"medium_03", 
 			"medium_04",
 			"medium_01",
-			"test_tree",
+			"supa_hard_04",
 			"tutorial_momentum",//final row
 			"hard_00",
 			"hard_01",

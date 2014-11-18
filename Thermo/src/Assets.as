@@ -168,6 +168,12 @@ package {
 		[Embed(source = "../assets/backgrounds/bright_sunset.jpg")]
 		private static var bright_sunset:Class;
 		
+		[Embed(source = "../assets/ui/star.png")]
+		public static var starSprite:Class;
+		
+		[Embed(source = "../assets/ui/lock.png")]
+		public static var lockSprite:Class;
+		
 		/*
 		 * Fonts (really just one font, I think)
 		 */ 
