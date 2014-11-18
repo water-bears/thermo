@@ -1,6 +1,8 @@
 package context {
 	import Logging;
 	
+	import flash.sensors.Accelerometer;
+	
 	import levelgen.Level;
 	
 	import org.flixel.FlxG;
@@ -16,7 +18,7 @@ package context {
 		override public function create():void 
 		{
 			super.create();
-			logger = new Logging(700, 2, true);
+			logger = new Logging(700, 2, false);
 			logger.recordPageLoad();
 			var x:Number = Math.random();
 			x = Math.round(x) + 1;
