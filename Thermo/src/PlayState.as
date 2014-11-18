@@ -33,6 +33,7 @@ package {
 		5 = reset
 		6 = level select
 		7 = 1s pulling
+		8 = skipped level
 		*/
 		
 		public var logger:Logging;
