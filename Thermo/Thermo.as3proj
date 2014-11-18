@@ -17,7 +17,6 @@
   <classpaths>
     <class path="src" />
     <class path="..\Flixel" />
-    <class path="..\Flint_4_0_1_src" />
   </classpaths>
   <!-- Build options -->
   <build>

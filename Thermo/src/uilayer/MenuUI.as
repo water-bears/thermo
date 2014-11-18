@@ -156,7 +156,7 @@ package uilayer {
 				{
 					if(selectedLevel != initialLevel+1){
 						// THIS PERSON SKIPPED A LEVEL
-						logger.recordEvent(initialLevel+1, 8, "v2 $ SKIPPED $ Level: " + initialLevel+1);
+						logger.recordEvent(initialLevel+1, 8, "v2 $ $ $ $ " + initialLevel+1);
 					}
 					state = 3;
 				}

@@ -12,6 +12,7 @@ bin-release/
 
 Flixel/
 obj/
+aup/
 
 Flint_4_0_1_src/
 
@@ -20,3 +21,4 @@ Flint_4_0_1_swc/
 *.old
 *.bak
 *.DS_Store
+*.wav

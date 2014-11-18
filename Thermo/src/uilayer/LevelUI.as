@@ -10,8 +10,12 @@ package uilayer {
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxText;
+	import org.flixel.FlxG;
+	import context.MenuUtils;
+	import Logging;
+	import audio.AudioManager;
+	
 	import flash.utils.getTimer;
-
 	
 	public class LevelUI extends FlxGroup
 	{
@@ -80,8 +84,8 @@ package uilayer {
 			
 			dimmer_alpha0 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
-				new PiecewiseInterpolationNode(Utils.Lerp, 50, 1),
-				new PiecewiseInterpolationNode(null, 150, 0));
+				new PiecewiseInterpolationNode(Utils.Lerp, 30, 1),
+				new PiecewiseInterpolationNode(null, 60, 0));
 			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(null, 20, 1));
@@ -91,13 +95,13 @@ package uilayer {
 			levelText_alpha0 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 1),
 				new PiecewiseInterpolationNode(Utils.Lerp, 30, 1),
-				new PiecewiseInterpolationNode(Utils.Lerp, 100, 1),
-				new PiecewiseInterpolationNode(null, 150, 0));
+				new PiecewiseInterpolationNode(Utils.Lerp, 50, 1),
+				new PiecewiseInterpolationNode(null, 80, 0));
 			levelText_y0 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.ConcaveSine, 0, 0.25 * FlxG.height),
-				new PiecewiseInterpolationNode(Utils.Lerp, 30, 0.30 * FlxG.height),
-				new PiecewiseInterpolationNode(Utils.ConvexSine, 100, 0.32 * FlxG.height),
-				new PiecewiseInterpolationNode(null, 150, 0.4 * FlxG.height));
+				new PiecewiseInterpolationNode(Utils.Lerp, 20, 0.30 * FlxG.height),
+				new PiecewiseInterpolationNode(Utils.ConvexSine, 50, 0.32 * FlxG.height),
+				new PiecewiseInterpolationNode(null, 80, 0.4 * FlxG.height));
 			pauseTitleText_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(Utils.Lerp, 10, 0),
@@ -176,7 +180,7 @@ package uilayer {
 					{
 						selectedPauseOption--;
 					}
-					FlxG.play(Assets.sfx_option_cycle);
+					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
 				if (FlxG.keys.justPressed("DOWN"))
 				{
@@ -188,7 +192,7 @@ package uilayer {
 					{
 						selectedPauseOption++;
 					}
-					FlxG.play(Assets.sfx_option_cycle);
+					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
 				if (FlxG.keys.justPressed("ENTER"))
 				{
@@ -196,12 +200,12 @@ package uilayer {
 					{
 						if(selectedPauseOption == 1){
 							//reset
-							logger.recordEvent(level.levelNum, 5, "v2 $ $ reset $ time =" + getTimer().toString());
+							logger.recordEvent(level.levelNum, 5, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						else if(selectedPauseOption == 2){
 							// levelselect 
-							logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + getTimer().toString());
+							logger.recordEvent(level.levelNum, 6, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						BeginExitSequence(callbacks[selectedPauseOption]);

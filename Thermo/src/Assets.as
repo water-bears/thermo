@@ -1,5 +1,8 @@
 package {
+	import flash.display.BitmapDataChannel;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	
 	/**
 	 * Utility class for importing sprites and sounds
@@ -155,9 +158,14 @@ package {
 		
 		[Embed(source = "../assets/sfx/option_cycle.mp3")]
 		public static var sfx_option_cycle:Class;
+		[Embed(source = "../assets/sfx/splash.mp3")]
+		public static var sfx_splash:Class;
+		[Embed(source = "../assets/sfx/splash_out.mp3")]
+		public static var sfx_splash_out:Class;
 		[Embed(source = "../assets/sfx/thermo_wip.mp3")]
-		public static var sfx_soundtrack:Class;
-		public static var soundtrack:Sound = new sfx_soundtrack() as Sound;
+		public static var sfx_bgm:Class;
+		[Embed(source = "../assets/sfx/thermo_uw.mp3")]
+		public static var sfx_bgm_underwater:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
