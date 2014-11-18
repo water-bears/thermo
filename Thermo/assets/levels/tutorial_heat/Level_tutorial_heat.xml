@@ -86,8 +86,8 @@
 		<sprite clas="Grass" name="Grass" x="120.00" y="232.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="330.00" y="254.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="105.00" y="234.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Tree4" name="Tree4" x="525.00" y="-16.00" angle="0.00" flip="false" xScale="0.87" yScale="0.87" >		</sprite>
 		<sprite clas="Fern1" name="Fern1" x="295.00" y="225.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Fern1" name="Fern1" x="106.00" y="85.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Grass" name="Grass" x="572.00" y="71.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 </level>
