@@ -167,6 +167,8 @@ public class AS3Embed
 [Embed(source = "../../assets/tilesheets/key.png")] private static var key46:Class;
 [Embed(source = "../../assets/tilesheets/water.png")] private static var water46:Class;
 [Embed(source = "../../assets/tilesheets/water20.png")] private static var water2046:Class;
+[Embed(source = "../../assets/ui/lock.png")] private static var lock47:Class;
+[Embed(source = "../../assets/ui/star.png")] private static var star47:Class;
 
 public static function GetTextAsset(filename:String):String{
 if(filename == "levels/11/Level_11.xml") { return new Level_119; }
@@ -338,6 +340,8 @@ if(filename == "tilesheets/ground20.png") { return ground2046; }
 if(filename == "tilesheets/key.png") { return key46; }
 if(filename == "tilesheets/water.png") { return water46; }
 if(filename == "tilesheets/water20.png") { return water2046; }
+if(filename == "ui/lock.png") { return lock47; }
+if(filename == "ui/star.png") { return star47; }
 
 return null;
 }
