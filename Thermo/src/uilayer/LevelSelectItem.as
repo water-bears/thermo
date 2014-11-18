@@ -23,6 +23,7 @@ package uilayer
 		private var itemText_y2:PiecewiseInterpolationMachine;
 		
 		public var levelNum:uint;
+		public var levelName:String;
 		public var completed:Boolean;
 		public var locked:Boolean;
 		
@@ -33,9 +34,10 @@ package uilayer
 		{
 			super();
 			levelNum = MenuUI.levelSelectWidth * y + x;
+			levelName = LevelNameTranslator.Translate(levelNum);
 			itemText = new FlxText(Utils.Lerp(xMin, xMax, x / (MenuUI.levelSelectWidth - 1)),
 								   Utils.Lerp(yMin, yMax, y / (MenuUI.levelSelectHeight - 1)),
-								   50, String(levelNum + 1));
+								   50, levelName);
 			itemText.setFormat(Assets.font_name, 15, 0xffffffff, "center");
 			
 			itemText_x12 = new PiecewiseInterpolationMachine(false,
