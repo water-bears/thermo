@@ -163,6 +163,8 @@ package {
 		private static var moon8:Class;
 		[Embed(source = "../assets/backgrounds/moon9.jpg")]
 		private static var moon9:Class;
+		[Embed(source = "../assets/backgrounds/moon10.jpg")]
+		private static var moon10:Class;
 		[Embed(source = "../assets/backgrounds/bright_sunset.jpg")]
 		private static var bright_sunset:Class;
 		
