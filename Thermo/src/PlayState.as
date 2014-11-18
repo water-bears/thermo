@@ -23,11 +23,16 @@ package {
 		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
-		0 = entered a body of water
+		0 = used power
 		1 = went through a power gate
 		2 = retrieved a key
 		3 = completed the level
+		4 = lose
+		5 = reset
+		6 = level select
+		7 = 1s pulling
 		*/
+		
 		public var logger:Logging;
 		private var startTime:int;
 		private var pullTimer:Timer = new Timer(1000);	
@@ -179,7 +184,7 @@ package {
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
-			ui = new LevelUI(level.levelNum, logger);
+			ui = new LevelUI(level, logger);
 			ui.SetSelectCallback(1, reset);
 			ui.SetSelectCallback(2, levelSelect);
 			// add(ui);
