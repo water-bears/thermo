@@ -59,7 +59,7 @@ package levelgen {
 			"wind_helper2",
 			"tutorial_neutral",
 			"wind_test",
-			"test_tree",
+			"supa_hard_02",
 			"tutorial_flashheat",//flashheat row
 			"flashheat_2",
 			"medium_05",
