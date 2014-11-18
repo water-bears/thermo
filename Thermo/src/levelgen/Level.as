@@ -66,7 +66,7 @@ package levelgen {
 			"medium_03", 
 			"medium_04",
 			"medium_01",
-			"test_tree",
+			"supa_hard_04",
 			"tutorial_momentum",//final row
 			"hard_00",
 			"hard_01",
