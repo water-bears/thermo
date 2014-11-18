@@ -147,6 +147,26 @@ package {
 		private static var b_12:Class;
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
+		[Embed(source = "../assets/backgrounds/moon1.jpg")]
+		private static var moon1:Class;
+		[Embed(source = "../assets/backgrounds/moon2.jpg")]
+		private static var moon2:Class;
+		[Embed(source = "../assets/backgrounds/moon3.jpg")]
+		private static var moon3:Class;
+		[Embed(source = "../assets/backgrounds/moon4.jpg")]
+		private static var moon4:Class;
+		[Embed(source = "../assets/backgrounds/moon5.jpg")]
+		private static var moon5:Class;
+		[Embed(source = "../assets/backgrounds/moon6.jpg")]
+		private static var moon6:Class;
+		[Embed(source = "../assets/backgrounds/moon7.jpg")]
+		private static var moon7:Class;
+		[Embed(source = "../assets/backgrounds/moon8.jpg")]
+		private static var moon8:Class;
+		[Embed(source = "../assets/backgrounds/moon9.jpg")]
+		private static var moon9:Class;
+		[Embed(source = "../assets/backgrounds/bright_sunset.jpg")]
+		private static var bright_sunset:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)
@@ -175,12 +195,13 @@ package {
 		 * List of backgrounds in the order that they appear in the game.
 		 */
 		public static var b_list:Array = [
+			bright_sunset, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
 			b_REPLACE_ME, b_REPLACE_ME, b_REPLACE_ME,
-			b_REPLACE_ME
+			b_REPLACE_ME, moon1
 		];
 		
 		/* Sounds */
