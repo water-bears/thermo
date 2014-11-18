@@ -117,11 +117,11 @@ package levelgen {
 		{
 			if (AB == 1)
 			{
-				LEVEL_MAP_1[(levelNum - 1) % NUM_LEVELS];
+				return LEVEL_MAP_1[(levelNum - 1) % NUM_LEVELS];
 			}
 			else
 			{
-				LEVEL_MAP_2[(levelNum - 1) % NUM_LEVELS];
+				return LEVEL_MAP_2[(levelNum - 1) % NUM_LEVELS];
 			}
 		}
 		
