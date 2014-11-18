@@ -22,15 +22,16 @@
 		<map csv="levels/tutorial_wind/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindRight" name="WindRight" x="-166.00" y="81.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FreezeGate" name="FreezeGate" x="5.00" y="161.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="447.00" y="214.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindRight" name="WindRight" x="-234.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="309.00" y="316.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="48.00" y="321.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Player" name="Player" x="6.00" y="348.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindRight" name="WindRight" x="367.00" y="261.00" angle="0.00" flip="false" xScale="13.66" yScale="7.94" >		</sprite>
+		<sprite clas="Player" name="Player" x="10.00" y="356.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="609.00" y="360.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="WindLeft" name="WindLeft" x="145.00" y="229.00" angle="0.00" flip="false" xScale="5.38" yScale="8.16" >		</sprite>
-		<sprite clas="WindRight" name="WindRight" x="366.04" y="264.35" angle="0.00" flip="false" xScale="9.50" yScale="6.60" >		</sprite>
+		<sprite clas="WindLeft" name="WindLeft" x="100.00" y="164.00" angle="0.00" flip="false" xScale="11.36" yScale="12.85" >		</sprite>
 	</layer>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >
 		<map csv="levels/tutorial_wind/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
