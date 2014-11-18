@@ -365,12 +365,32 @@ package {
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
 					this.add(key_spacebar);
 					spacebar_playing = true;
-				} else if (spacebar_playing && !player.bubble && player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 2 && spacebar_playing && !player.bubble && player.overlaps(waterTiles)) {
 					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
-				} else if (spacebar_playing && player.bubble) {
+				} else if (level.levelNum == 2 && spacebar_playing && player.bubble) {
 					//key_spacebar.kill();
 					this.remove(key_spacebar);
+					spacebar_playing = false;
+				}
+				
+				/**
+				 * Flash the spacebar above the player's head if we meet the correct conditions
+				 */
+				if (level.levelNum == 3 && player.curPow == 1 && !spacebar_playing && player.overlaps(waterTiles)) {
+					key_spacebar.addAnimation("flash", [0, 0, 1], Assets.FRAME_RATE / 10, true);
+					key_spacebar.loadGraphic(Assets.spacebarSprite, true, false, 64, 20);
+					key_spacebar.play("flash");
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+					this.add(key_spacebar);
+					spacebar_playing = true;
+				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length == 0 && player.overlaps(waterTiles)) {
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length > 0) {
+					key_spacebar.kill();
+					//this.remove(key_spacebar);
 					spacebar_playing = false;
 				}
 				
@@ -385,10 +405,10 @@ package {
 					key_arrows.y = player.y - player.height - key_spacebar.height;
 					this.add(key_arrows);
 					arrows_playing = true;
-				} else if (arrows_playing && !player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 1 && arrows_playing && !player.overlaps(waterTiles)) {
 					key_arrows.x = player.x + player.width/2 - key_arrows.width/2;
 					key_arrows.y = player.y - player.height - key_arrows.height;
-				} else if (arrows_playing && player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 1 && arrows_playing && player.overlaps(waterTiles)) {
 					key_arrows.kill();
 					//this.remove(key_arrows);
 					arrows_playing = false;
