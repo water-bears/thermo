@@ -23,9 +23,8 @@
 		<sprite clas="Exit" name="Exit" x="611.00" y="60.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="42.00" y="94.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Tree2" name="Tree2" x="31.00" y="5.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Exit" name="Exit" x="88.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="HeatGate" name="HeatGate" x="221.00" y="329.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Key" name="Key" x="277.00" y="353.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="66.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="267.00" y="324.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 	<layer name="Front" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Grass" name="Grass" x="42.00" y="107.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
