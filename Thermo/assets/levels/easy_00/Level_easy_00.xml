@@ -24,7 +24,7 @@
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="9.00" y="39.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Key" name="Key" x="562.00" y="100.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="579.00" y="100.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="136.00" y="105.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="172.00" y="106.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="72.00" y="108.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
@@ -44,7 +44,6 @@
 		<sprite clas="Grass" name="Grass" x="574.00" y="112.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="584.00" y="112.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="180.00" y="113.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Fern1" name="Fern1" x="528.00" y="87.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="576.00" y="189.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="482.00" y="224.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="563.00" y="226.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
@@ -98,6 +97,7 @@
 		<sprite clas="Grass" name="Grass" x="107.00" y="106.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="119.00" y="111.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="128.00" y="111.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Grass" name="Grass" x="547.00" y="113.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="66.00" y="113.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Tree2" name="Tree2" x="156.00" y="227.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
