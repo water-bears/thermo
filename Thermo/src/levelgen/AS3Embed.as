@@ -73,9 +73,6 @@ public class AS3Embed
 [Embed(source = "../../assets/levels/medium_06/Level_medium_06.xml", mimeType="application/octet-stream")] private static var Level_medium_0625:Class;
 [Embed(source = "../../assets/levels/medium_06/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground25:Class;
 [Embed(source = "../../assets/levels/medium_06/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water25:Class;
-[Embed(source = "../../assets/levels/simple_level/Level_simple_level.xml", mimeType="application/octet-stream")] private static var Level_simple_level26:Class;
-[Embed(source = "../../assets/levels/simple_level/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground26:Class;
-[Embed(source = "../../assets/levels/simple_level/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water26:Class;
 [Embed(source = "../../assets/levels/supa_hard_01/Level_supa_hard_01.xml", mimeType="application/octet-stream")] private static var Level_supa_hard_0127:Class;
 [Embed(source = "../../assets/levels/supa_hard_01/mapCSV_Group1_Ground.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Ground27:Class;
 [Embed(source = "../../assets/levels/supa_hard_01/mapCSV_Group1_Water.csv", mimeType="application/octet-stream")] private static var mapCSV_Group1_Water27:Class;
@@ -225,9 +222,6 @@ if(filename == "levels/medium_05/mapCSV_Group1_Water.csv") { return new mapCSV_G
 if(filename == "levels/medium_06/Level_medium_06.xml") { return new Level_medium_0625; }
 if(filename == "levels/medium_06/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground25; }
 if(filename == "levels/medium_06/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water25; }
-if(filename == "levels/simple_level/Level_simple_level.xml") { return new Level_simple_level26; }
-if(filename == "levels/simple_level/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground26; }
-if(filename == "levels/simple_level/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water26; }
 if(filename == "levels/supa_hard_01/Level_supa_hard_01.xml") { return new Level_supa_hard_0127; }
 if(filename == "levels/supa_hard_01/mapCSV_Group1_Ground.csv") { return new mapCSV_Group1_Ground27; }
 if(filename == "levels/supa_hard_01/mapCSV_Group1_Water.csv") { return new mapCSV_Group1_Water27; }
