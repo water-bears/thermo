@@ -210,24 +210,24 @@
 			if (!bubble && !floatUp) {
 				var buttonDown:Boolean = false;
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
-					velocity.x = Utils.Lerp(velocity.x, -maxVelocity.x, 0.1);
+					velocity.x = -maxVelocity.x;
+					//velocity.x = Utils.Lerp(velocity.x, -maxVelocity.x, 0.1);
 					this.facing = FlxObject.RIGHT;
 					buttonDown = true;
 				}
 			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
-					velocity.x = Utils.Lerp(velocity.x, maxVelocity.x, 0.1);
+					velocity.x = maxVelocity.x;
+					//velocity.x = Utils.Lerp(velocity.x, maxVelocity.x, 0.1);
 					this.facing = FlxObject.LEFT;
 					buttonDown = true;
 				}
-				if (buttonDown)
-				{
+				
+				/*if (buttonDown) {
 					drag.x = 900;
-				}
-				else
-				{
+				} else {
 					drag.x = int.MAX_VALUE;
-				}
+				}*/
 			
 				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
 					velocity.y = -maxVelocity.y;
