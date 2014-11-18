@@ -27,7 +27,6 @@ package context {
 			this.initialLevel = initialLevel;
 			this.logger = logger;
 			
-			logger.recordPageLoad();
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
