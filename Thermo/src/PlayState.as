@@ -201,7 +201,6 @@ package {
 		override public function update():void {
 			if (!ui.Paused) {
 				super.update();
-				
 				bubbles.Update();
 				
 				waterWaves.PlayerPosition.x = player.x + player.width / 2;
@@ -232,7 +231,8 @@ package {
 					player.velocity.y = 0;
 				}
 				
-				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5))) {
+				var playerPowerPoint:FlxPoint = new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 1);
+				if (player.overlaps(waterTiles) && playerPowerPoint.y < 480 && waterTiles.overlapsPoint(playerPowerPoint)) {
 					player.enterWater();
 				} else {
 					player.exitWater();

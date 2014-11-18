@@ -395,7 +395,7 @@
 		
 		public function enterWater():void {
 			if (!underwater) {
-				AudioManager.PlaySound(Assets.sfx_splash, 0.01 + Math.max(Math.abs(velocity.x) / 400, Math.abs(velocity.y) / 200));
+				AudioManager.PlaySound(Assets.sfx_splash);
 			}
 			underwater = true;
 			if (!bubble && !superBubble) {
