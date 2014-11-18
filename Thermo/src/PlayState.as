@@ -321,7 +321,7 @@ package {
 				}
 				
 				//Check for player lose conditions
-				if (player.y > (FlxG.height + 25) || FlxG.overlap(player, spikeGroup)) {
+				if (player.y > (FlxG.height + 50) || FlxG.overlap(player, spikeGroup)) {
 					if(alreadyLost == false){
 						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 						logger.recordLevelEnd();
