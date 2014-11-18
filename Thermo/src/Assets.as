@@ -190,6 +190,8 @@ package {
 		public static var sfx_bgm:Class;
 		[Embed(source = "../assets/sfx/thermo_uw.mp3")]
 		public static var sfx_bgm_underwater:Class;
+		[Embed(source = "../assets/sfx/thermo_blank.mp3")]
+		public static var sfx_empty:Class;
 		[Embed(source = "../assets/sfx/bubble.mp3")]
 		public static var sfx_bubble:Class;
 		[Embed(source = "../assets/sfx/bubblepop.mp3")]
