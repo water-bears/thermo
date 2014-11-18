@@ -121,30 +121,28 @@ package {
 		
 		
 		/* Background sprites */
-		[Embed(source = "../assets/backgrounds/background.png")]
-		private static var b_1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd4_1.png")]
-		private static var b_2:Class;
+		private static var red1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd5_1.png")]
-		private static var b_3:Class;
+		private static var yellow1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd6.png")]
-		private static var b_4:Class;
+		private static var purple1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd7.png")]
-		private static var b_5:Class;
+		private static var pink1:Class;
 		[Embed(source = "../assets/backgrounds/bkgd9.png")]
-		private static var b_6:Class;
+		private static var yellow2:Class;
 		[Embed(source = "../assets/backgrounds/blueclouds.jpg")]
-		private static var b_7:Class;
+		private static var clouds1:Class;
 		[Embed(source = "../assets/backgrounds/morecloudz.jpg")]
-		private static var b_8:Class;
+		private static var clouds2:Class;
 		[Embed(source = "../assets/backgrounds/sunsetcloud.jpg")]
-		private static var b_9:Class;
+		private static var sunset:Class;
 		[Embed(source = "../assets/backgrounds/bkgd1.png")]
-		private static var b_10:Class;
+		private static var blue1:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd1.jpg")]
-		private static var b_11:Class;
+		private static var green1:Class;
 		[Embed(source = "../assets/backgrounds/nbkgd2.jpg")]
-		private static var b_12:Class;
+		private static var orange1:Class;
 		[Embed(source = "../assets/backgrounds/placeholder.png")]
 		private static var b_REPLACE_ME:Class;
 		[Embed(source = "../assets/backgrounds/moon1.jpg")]
