@@ -1,3 +1,5 @@
 splash.wav: https://www.freesound.org/people/tran5ient/sounds/190080/
 ice.mp3: http://soundbible.com/1545-Ice-Cubes-In-Cup.html
 bubble.mp3: http://soundbible.com/1982-Gum-Bubble-Pop.html
+gate.mp3: http://soundbible.com/1815-A-Tone.html
+wave.mp3: http://soundbible.com/1936-Crisp-Ocean-Waves.html
