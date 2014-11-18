@@ -84,6 +84,7 @@
         </tileProperties>
       </maplayer>
       <spritelayer name="Objects" id="2" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
+        <sprite guid="5675B80C-9F60-BCAB-917F-FDB16ADD92C6" x="322" y="-1" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="EE8F5B74-B593-6AA0-D6AB-B5712317129B" x="342" y="-1" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="544168BB-EF9A-4A50-C6AE-3515F2213F33" x="362" y="-1" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="F929B5E8-A25E-444C-D752-EA76C647F860" x="381" y="0" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
@@ -95,7 +96,6 @@
         <sprite guid="C8793E24-67F9-B8C7-AD12-C15486F97AE9" x="500" y="0" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="BA9D2B7F-9095-1F06-103D-94F59DAC278E" x="520" y="0" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="125E72C4-505A-2D0F-D064-A89D895208FE" x="540" y="0" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
-        <sprite guid="5675B80C-9F60-BCAB-917F-FDB16ADD92C6" x="322" y="1" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="9"/>
         <sprite guid="2D855BC6-E45C-CDD0-17A2-1F64AE475C25" x="12" y="23" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5" frame="2"/>
         <sprite guid="14F32AE3-77E4-ACCB-4900-C0CF29DDB262" x="13" y="43" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="8"/>
         <sprite guid="D3DE7F57-227A-4DBA-B6CB-8C61740DE764" x="323" y="70" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
@@ -104,6 +104,7 @@
         <sprite guid="1DF64C8D-CD0D-9028-5026-7656C19CCFBD" x="445" y="70" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="76379F26-7BC6-B2CC-20DD-5CAB7971A6EA" x="484" y="70" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="DC94803F-C8C9-8188-D21D-33EE75BD4C99" x="589" y="60" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+        <sprite guid="66F7B2FD-14D5-71CB-CC9E-90E8197F6819" x="545" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="F0027760-821D-EFF1-684A-2206D2DD3CFE" x="283" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="3E21A6BE-5588-8028-202B-B8213376985E" x="302" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="2F33D2AA-31B6-8220-47CB-57E28B6F46FA" x="362" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
@@ -112,7 +113,6 @@
         <sprite guid="D2A4CC18-374B-C893-5EBD-2FEB0AC044CB" x="465" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="7097A1D8-ED37-B91D-FCB6-F6DC6300BDE2" x="525" y="71" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="D2E4FC09-A50B-3236-D3C1-5E4E6B6DEBB8" x="505" y="72" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
-        <sprite guid="66F7B2FD-14D5-71CB-CC9E-90E8197F6819" x="545" y="73" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10" frame="0"/>
         <sprite guid="B72E00BC-3643-537A-9D27-BD49C6A1C6A2" x="322" y="155" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3" frame="1"/>
         <sprite guid="F2DE2742-D0DD-9585-99EF-ADF50EEFB9AE" x="294" y="155" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4"/>
         <sprite guid="1366436B-B18D-D1E8-7B26-75973D97EBF4" x="285" y="216" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
