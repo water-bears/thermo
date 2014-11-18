@@ -1,4 +1,11 @@
 package uilayer {
+	import Logging;
+	
+	import context.MenuUtils;
+	
+	import levelgen.Level;
+	
+	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
@@ -35,9 +42,14 @@ package uilayer {
 		public var AllowPause:Boolean = false;
 		public var Paused:Boolean = false;
 		
-		public function LevelUI(levelNum:uint, logger:Logging)
+		public var logger:Logging;
+		public var level:Level;
+		
+		public function LevelUI(level:Level, logger:Logging)
 		{
 			super(0);
+			this.logger = logger;
+			this.level = level;
 			
 			var dimensions:FlxPoint = new FlxPoint(FlxG.width, FlxG.height);
 			
@@ -49,7 +61,7 @@ package uilayer {
 			add(dimmer);
 			
 			// Level Intro Text
-			levelText = new FlxText(0, 0, FlxG.width, "Level " + levelNum);
+			levelText = new FlxText(0, 0, FlxG.width, "Level " + level.levelNum);
 			levelText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			add(levelText);
 			
@@ -117,7 +129,7 @@ package uilayer {
 			super.update();
 			
 			// Set pausing and stuff
-			if (AllowPause && FlxG.keys.justPressed("ESCAPE"))
+			if (AllowPause && (FlxG.keys.justPressed("ESCAPE") || FlxG.keys.R))
 			{
 				TogglePause();
 			}
@@ -186,6 +198,16 @@ package uilayer {
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{
+						if(selectedPauseOption == 1){
+							//reset
+							logger.recordEvent(level.levelNum, 5, "v2 $ $ reset $ time =" + getTimer().toString());
+							logger.recordLevelEnd();
+						}
+						else if(selectedPauseOption == 2){
+							// levelselect 
+							logger.recordEvent(level.levelNum, 6, "v2 $ $ levelSelect $ time =" + getTimer().toString());
+							logger.recordLevelEnd();
+						}
 						BeginExitSequence(callbacks[selectedPauseOption]);
 					}
 					else

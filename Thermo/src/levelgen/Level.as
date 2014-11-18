@@ -65,7 +65,8 @@ package levelgen {
 			"hard_02",
 			"wind_test",
 			"tutorial_lava_00",
-			"tutorial_wind"
+			"tutorial_wind",
+			"hard_100"
 		);
 		
 		/**
@@ -161,9 +162,11 @@ package levelgen {
 				//iterate over all sprites
 				for (var spriteNum:int = 0; spriteNum < numSprites; spriteNum++)
 				{
-					var xmlSpriteClass:XML = classMap[xmlSprite[spriteNum].@clas]
+					var xmlSpriteClass:XML = classMap[xmlSprite[spriteNum].@clas];
 					
 					var sprite:FlxSprite = new FlxSprite(xmlSprite[spriteNum].@x, xmlSprite[spriteNum].@y);
+					
+					var frontorback:String = xmlLayer[layerNum].@name;
 					
 					//var test = xmlSpriteClass.@file;
 					var asset:Class = AS3Embed.GetArtAsset(xmlSpriteClass.@file);
@@ -246,7 +249,24 @@ package levelgen {
 						
 					case "Grass":
 						var grass:Grass = new Grass(sprite);
-						frontSprites.add(grass);
+						switch(frontorback)
+						{
+						case "Front":
+							frontSprites.add(grass);
+						default:
+							backSprites.add(grass);
+						}
+						break;
+						
+					case "Tree":
+						var tree:Tree = new Tree(sprite);
+						switch(frontorback)
+						{
+						case "Front":
+							frontSprites.add(tree);
+						default:
+							backSprites.add(tree);
+						}
 						break;
 						
 					case "HotLava":
@@ -311,8 +331,8 @@ package levelgen {
 						break;						
 							
 					default:
-						var frontorback:String = xmlLayer[layerNum].@name;
-						switch(frontorback)
+						var frontorback_s:String = xmlLayer[layerNum].@name;
+						switch(frontorback_s)
 						{
 						case "Front":
 							frontSprites.add(sprite);

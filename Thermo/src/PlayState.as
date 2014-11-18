@@ -25,11 +25,16 @@ package {
 		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
-		0 = entered a body of water
+		0 = used power
 		1 = went through a power gate
 		2 = retrieved a key
 		3 = completed the level
+		4 = lose
+		5 = reset
+		6 = level select
+		7 = 1s pulling
 		*/
+		
 		public var logger:Logging;
 		private var startTime:int;
 		private var pullTimer:Timer = new Timer(1000);	
@@ -74,6 +79,11 @@ package {
 		private const FLASH:int = 3;
 		
 		public var bubbles:BubbleBackground;
+		
+		private var key_spacebar:FlxSprite = new FlxSprite();
+		private var spacebar_playing:Boolean = false;
+		private var key_arrows:FlxSprite = new FlxSprite();
+		private var arrows_playing:Boolean = false;
 		
 		public function setLevel(inputLevel:Level):void {
 			level = inputLevel;
@@ -181,7 +191,7 @@ package {
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
-			ui = new LevelUI(level.levelNum, logger);
+			ui = new LevelUI(level, logger);
 			ui.SetSelectCallback(1, reset);
 			ui.SetSelectCallback(2, levelSelect);
 			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
@@ -345,6 +355,66 @@ package {
 					}
 					ui.BeginExitSequence(reset);
 					player.visible = false;	
+				}
+				
+				/**
+				 * Flash the spacebar above the player's head if we meet the correct conditions
+				 */
+				if (level.levelNum == 2 && player.curPow == 2 && !player.bubble && !spacebar_playing && player.overlaps(waterTiles)) {
+					key_spacebar.addAnimation("flash", [0, 0, 1], Assets.FRAME_RATE / 10, true);
+					key_spacebar.loadGraphic(Assets.spacebarSprite, true, false, 64, 20);
+					key_spacebar.play("flash");
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+					this.add(key_spacebar);
+					spacebar_playing = true;
+				} else if (level.levelNum == 2 && spacebar_playing && !player.bubble && player.overlaps(waterTiles)) {
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+				} else if (level.levelNum == 2 && spacebar_playing && player.bubble) {
+					//key_spacebar.kill();
+					this.remove(key_spacebar);
+					spacebar_playing = false;
+				}
+				
+				/**
+				 * Flash the spacebar above the player's head if we meet the correct conditions
+				 */
+				if (level.levelNum == 3 && player.curPow == 1 && !spacebar_playing && player.overlaps(waterTiles)) {
+					key_spacebar.addAnimation("flash", [0, 0, 1], Assets.FRAME_RATE / 10, true);
+					key_spacebar.loadGraphic(Assets.spacebarSprite, true, false, 64, 20);
+					key_spacebar.play("flash");
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+					this.add(key_spacebar);
+					spacebar_playing = true;
+				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length == 0 && player.overlaps(waterTiles)) {
+					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_spacebar.y = player.y - player.height - key_spacebar.height;
+				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length > 0) {
+					key_spacebar.kill();
+					//this.remove(key_spacebar);
+					spacebar_playing = false;
+				}
+				
+				/**
+				 * Flash the arrows above the player's head if we meet the correct conditions
+				 */
+				if (level.levelNum == 1 && !arrows_playing) {
+					key_arrows.addAnimation("flash", [0, 0, 2, 1, 1, 2], Assets.FRAME_RATE / 10, true);
+					key_arrows.loadGraphic(Assets.arrowsSprite, true, false, 60, 40);
+					key_arrows.play("flash");
+					key_arrows.x = player.x + player.width/2 - key_spacebar.width/2;
+					key_arrows.y = player.y - player.height - key_spacebar.height;
+					this.add(key_arrows);
+					arrows_playing = true;
+				} else if (level.levelNum == 1 && arrows_playing && !player.overlaps(waterTiles)) {
+					key_arrows.x = player.x + player.width/2 - key_arrows.width/2;
+					key_arrows.y = player.y - player.height - key_arrows.height;
+				} else if (level.levelNum == 1 && arrows_playing && player.overlaps(waterTiles)) {
+					key_arrows.kill();
+					//this.remove(key_arrows);
+					arrows_playing = false;
 				}
 			}
 			
