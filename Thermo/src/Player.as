@@ -329,6 +329,7 @@
 				// Freeze
 				case 1:
 					if (!isTouching(FLOOR)) {
+						AudioManager.PlaySound(Assets.sfx_ice);
 						if (!this.ice[3].exists) this.ice[3].reset(this.x, this.y + this.height);
 						this.maxVelocity.y = -10;
 						playstate.iceGroup.add(this.ice[3]);
@@ -339,6 +340,7 @@
 				// Heat
 				case 2:
 					if (!bubble) {
+						AudioManager.PlaySound(Assets.sfx_bubble);
 						player.drag.x = 900;
 						acceleration.y = -500;
 						bubble = true;
@@ -350,6 +352,7 @@
 				// Flash Freeze
 				case 3:
 					if (!isTouching(FLOOR)) {
+						AudioManager.PlaySound(Assets.sfx_ice);
 						switch (iceCount % 3) {
 							case 0:
 								this.ice[0].x = this.x;
@@ -386,6 +389,7 @@
 				// Flash Heat
 				case 4:
 					if (!superBubble) {
+						AudioManager.PlaySound(Assets.sfx_bubble);
 						bubble = false;
 						player.drag.x = 900;
 						acceleration.y = -500;
@@ -398,6 +402,7 @@
 		}
 		
 		public function popBubble():void {
+			AudioManager.PlaySound(Assets.sfx_bubblepop);
 			velocity.y = 0;
 			acceleration.y = 600;
 			superBubble = false;

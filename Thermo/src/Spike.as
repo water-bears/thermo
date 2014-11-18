@@ -13,15 +13,23 @@ package {
 			switch(direction) {
 				case 2:
 					loadGraphic(Assets.spikeSprite);
+					width = 18;
+					height = 10;
 					break;
 				case 3:
 					loadGraphic(Assets.leftspikeSprite);
+					width = 10;
+					height = 18;
 					break;
 				case 4:
 					loadGraphic(Assets.rightspikeSprite);
+					width = 10;
+					height = 18;
 					break;
 				default:
 					loadGraphic(Assets.upspikeSprite);
+					width = 18;
+					height = 10;
 					break;
             }
 
@@ -31,10 +39,6 @@ package {
 			this.x = sprite.x;
 			this.y = sprite.y;
 			scale = sprite.scale;
-			//width = width * scale.x;
-			//height = height * scale.y;
-			width = 18;
-			height = 10;
 		}
 	}
 	

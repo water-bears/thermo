@@ -190,6 +190,12 @@ package {
 		public static var sfx_bgm:Class;
 		[Embed(source = "../assets/sfx/thermo_uw.mp3")]
 		public static var sfx_bgm_underwater:Class;
+		[Embed(source = "../assets/sfx/bubble.mp3")]
+		public static var sfx_bubble:Class;
+		[Embed(source = "../assets/sfx/bubblepop.mp3")]
+		public static var sfx_bubblepop:Class;
+		[Embed(source = "../assets/sfx/ice.mp3")]
+		public static var sfx_ice:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
