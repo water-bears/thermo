@@ -170,6 +170,12 @@ package {
 		[Embed(source = "../assets/backgrounds/nbkgd6.jpg")]
 		private static var last_scene:Class;
 		
+		[Embed(source = "../assets/ui/star.png")]
+		public static var starSprite:Class;
+		
+		[Embed(source = "../assets/ui/lock.png")]
+		public static var lockSprite:Class;
+		
 		/*
 		 * Fonts (really just one font, I think)
 		 */ 

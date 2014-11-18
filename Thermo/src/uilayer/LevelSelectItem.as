@@ -2,6 +2,7 @@ package uilayer
 {
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxState;
 	import org.flixel.FlxText;
 	import org.flixel.FlxG;
 	
@@ -44,7 +45,19 @@ package uilayer
 								   50, levelName);
 			itemText.setFormat(Assets.font_name, 15, 0xffffffff, "center");
 			
-			//symbol = 
+			if (completed)
+			{
+				symbol = new FlxSprite(0, 0, Assets.starSprite);
+			}
+			if (locked)
+			{
+				symbol = new FlxSprite(0, 0, Assets.lockSprite);
+			}
+			
+			if (symbol != null)
+			{
+				add(symbol);
+			}
 			
 			itemText_x12 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Hermite, 0, 2 * FlxG.width, 0, 0),
@@ -88,6 +101,11 @@ package uilayer
 				itemText_x12.FastForward();
 				itemText.x = itemText_x12.Evaluate();
 				itemText.y = itemText_y2.EvaluateAndAdvance();
+			}
+			if (symbol != null)
+			{
+				symbol.x = itemText.x + 5;
+				symbol.y = itemText.y + 5;
 			}
 		}
 	}
