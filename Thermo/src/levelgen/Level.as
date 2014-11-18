@@ -47,30 +47,31 @@ package levelgen {
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
 		private static var LEVEL_MAP:Array = new Array(
-			"tryna_flashheat",
-			//"tutorial_jump_00",
+			"tutorial_jump_00",//intro row
 			"tutorial_heat",
 			"tutorial_freeze",
 			"easy_00",
-			"tutorial_neutral",
-			"tutorial_flashheat",
-			"medium_05",
+			"supa_hard_01",
+			"tutorial_wind",//element row
 			"wind_helper2",
-			"tutorial_flashfreeze",
-			"medium_03", // tutorial_trapdoor
+			"tutorial_neutral",
+			"wind_test",
+			"test_tree",
+			"tutorial_flashheat",//flashheat row
+			"flashheat_2",
+			"medium_05",
+			"tryna_flashheat",
+			"test_tree",
+			"tutorial_flashfreeze",//flashfreeze row
+			"medium_03", 
 			"medium_04",
 			"medium_01",
-			"wind_test", // "medium_02",
-			"tutorial_momentum",
+			"test_tree",
+			"tutorial_momentum",//final row
 			"hard_00",
 			"hard_01",
 			"hard_02",
-			// "wind_test",
-			"tutorial_lava_00",
-			"tutorial_wind",
-			"hard_100"
-			//"test_tree"
-			
+			"hard_100"			
 		);
 		
 		/**
