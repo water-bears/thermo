@@ -1,4 +1,5 @@
 package {
+	import audio.AudioManager;
 	import Logging;
 	
 	import context.BubbleBackground;
@@ -18,6 +19,7 @@ package {
 	import water.WaterWaves;
 	
 	import uilayer.LevelUI;
+	import uilayer.Utils;
 	
 	import io.ThermoSaves;
 		
@@ -182,6 +184,7 @@ package {
 			ui = new LevelUI(level.levelNum, logger);
 			ui.SetSelectCallback(1, reset);
 			ui.SetSelectCallback(2, levelSelect);
+			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 			// add(ui);
 		}
 		
@@ -219,10 +222,10 @@ package {
 					player.velocity.y = 0;
 				}
 				
-				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5)) && (!player.bubble && !player.superBubble)) {
-					player.slowSpeed();
-				} else if (!player.bubble && !player.superBubble) {
-					player.normalSpeed();
+				if (player.overlaps(waterTiles) && waterTiles.overlapsPoint(new FlxPoint(player.x + player.width / 2, player.y + player.getHeight() - 5))) {
+					player.enterWater();
+				} else {
+					player.exitWater();
 				}
 				
 				var i:int;
@@ -350,6 +353,7 @@ package {
 			FlxG.collide(coldlavaGroup, player);
 			
 			ui.update();
+			AudioManager.SetFade(AudioManager.GetFade() + (player.underwater ? AudioManager.INSIDE_WATER : AudioManager.OUTSIDE_WATER) * 0.1);
 		}
 		
 		override public function draw():void {

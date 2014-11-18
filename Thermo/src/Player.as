@@ -6,6 +6,9 @@
 	
 	import levelgen.*;
 	
+	import audio.AudioManager;	
+	import uilayer.Utils;
+	
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
 	
@@ -18,6 +21,8 @@
 			3 for flash freeze
 			4 for flash heat
 		*/
+	    private var DRAG:Number = int.MAX_VALUE;
+		
 		public var curPow:int;
 		
 		public var superBubble:Boolean = false;
@@ -163,7 +168,7 @@
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 300;
 			this.acceleration.y = 1000;
-			this.drag.x = int.MAX_VALUE;
+			this.drag.x = DRAG;
 			this.waterTiles = waterT;
 			this.curPow = 0;
 			this.iceCount = 0;
@@ -204,13 +209,21 @@
 		override public function update():void {
 			if (!bubble && !floatUp) {
 				if (FlxG.keys.LEFT || FlxG.keys.A) {
-					velocity.x = -maxVelocity.x;
+					velocity.x = Utils.Lerp(velocity.x, -maxVelocity.x, 0.1);
 					this.facing = FlxObject.RIGHT;
 				}
 			
 				if (FlxG.keys.RIGHT || FlxG.keys.D) {
-					velocity.x = maxVelocity.x;
+					velocity.x = Utils.Lerp(velocity.x, maxVelocity.x, 0.1);
 					this.facing = FlxObject.LEFT;
+				}
+				if (velocity.x != 0)
+				{
+					drag.x = 900;
+				}
+				else
+				{
+					drag.x = int.MAX_VALUE;
 				}
 			
 				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
@@ -238,7 +251,6 @@
 			if (superBubble && (isTouching(FlxObject.CEILING) || this.y <= 0)) {
 				floatUp = false;
 				acceleration.y = -500;
-				this.drag.x = int.MAX_VALUE;
 
 				if (FlxG.keys.DOWN || FlxG.keys.UP || FlxG.keys.W){
 					velocity.y = maxVelocity.y;
@@ -393,20 +405,38 @@
 			floatUp = false;
 		}
 		
+		public function enterWater():void {
+			if (!underwater) {
+				AudioManager.PlaySound(Assets.sfx_splash, 0.01 + Math.max(Math.abs(velocity.x) / 400, Math.abs(velocity.y) / 200));
+			}
+			underwater = true;
+			if (!bubble && !superBubble) {
+				slowSpeed();
+			}
+		}
+		
+		public function exitWater():void {
+			if (underwater) {
+				AudioManager.PlaySound(Assets.sfx_splash_out);
+			}
+			underwater = false;
+			if (!bubble && !superBubble) {
+				normalSpeed();
+			}
+		}
+		
 		public function slowSpeed():void {
 			this.maxVelocity.x = 250;
 			this.maxVelocity.y = 250;
 			this.acceleration.y = 400;
-			this.underwater = true;
-			this.drag.x = int.MAX_VALUE;
+			this.drag.x = DRAG;
 		}
 		
 		public function normalSpeed():void {
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 300;
 			this.acceleration.y = 1000;
-			this.underwater = false;
-			this.drag.x = int.MAX_VALUE;
+			this.drag.x = DRAG;
 		}
 		
 		public function setX(x:int):void {

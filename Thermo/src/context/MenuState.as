@@ -4,6 +4,8 @@ package context {
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	
+	import audio.AudioManager;
+	
 	import org.flixel.*;
 	
 	import uilayer.MenuUI;
@@ -39,6 +41,7 @@ package context {
 			
 			ui = new MenuUI(initialState, initialLevel, goToNextState);
 			add(ui);
+			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 		}
 		
 		override public function update():void {

@@ -1,8 +1,8 @@
 package {
 	
+	import audio.AudioManager;
 	import context.InitialState;
 	import context.MenuState;
-	import flash.media.SoundChannel;
 	
 	import org.flixel.*;
 	import Logging;
@@ -20,8 +20,7 @@ package {
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
 			
-			var channel:SoundChannel = new SoundChannel();
-			channel = Assets.soundtrack.play();
+			AudioManager.StartMusic(AudioManager.OUTSIDE_WATER);
 		}
 	}
 }
