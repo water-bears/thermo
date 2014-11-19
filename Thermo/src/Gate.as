@@ -1,4 +1,5 @@
 package {
+	import adobe.utils.CustomActions;
 	import org.flixel.FlxSprite;
 	
 	public class Gate extends FlxSprite {
@@ -18,6 +19,7 @@ package {
 		 */
 		private var type:int;
 		private var triggered:Boolean = false;
+		private var timer:uint;
 		
 		public function Gate(sprite:FlxSprite, type:int) {
 			super();
@@ -33,12 +35,21 @@ package {
 		
 			this.type = type;
 			
+			var slow:uint = 20;
+			var fast:uint = 32;
+			
 			if (type == FLASH) {
-				addAnimation("normal", [type, SHEET_WIDTH], Assets.FRAME_RATE / 5 / 2, true);
-				addAnimation("trigger", [type+SHEET_WIDTH, type], Assets.FRAME_RATE / 5, false);
-			} else {
-				addAnimation("normal", [type]);
-				addAnimation("trigger", [type+SHEET_WIDTH, type, SHEET_WIDTH, type], Assets.FRAME_RATE / 5, false);
+				addAnimation("normal", constructAlternatingArray(156, 208, 52, 4), slow, true);
+				//addAnimation("trigger", constructAlternatingArray(156, 0, 52, 6), fast, true);
+			} else if (type == FREEZE) {
+				addAnimation("normal", constructArray(104, 52), slow);
+				//addAnimation("trigger", constructAlternatingArray(104, 0, 52, 6), fast, true);
+			} else if (type == HEAT) {
+				addAnimation("normal", constructArray(52, 52), slow);
+				//addAnimation("trigger", constructAlternatingArray(52, 0, 52, 6), fast, true);
+			} else /*if (type == NEUTRAL)*/ {
+				addAnimation("normal", constructArray(0, 52), slow);
+				//addAnimation("trigger", constructArray(0, 52), fast, true);
 			}
 			
 			play("normal");
@@ -50,14 +61,42 @@ package {
 		
 		override public function update():void {
 			// Play standard animation (needed in update?)
+			timer++;
 			if (triggered)
-				play("trigger");
+				alpha = Math.sin(timer / 4) / 2 + 0.5;
+				//play("trigger");
 			else
-				play("normal");
+				alpha = 1;
+				//play("normal");
 		}
 		
 		public function untrigger():void {
 			triggered = false;
+		}
+		
+		private static function constructArray(start:uint, numFrames:uint):Array {
+			var a:Array = new Array();
+			for (var i:uint = 0; i < numFrames; i++)
+			{
+				a.push(i + start);
+			}
+			return a;
+		}
+		
+		private static function constructAlternatingArray(start:uint, start2:uint, numFrames:uint, altEvery:uint):Array {
+			var a:Array = new Array();
+			for (var i:uint = 0; i < numFrames; i++)
+			{
+				if (i % (2 * altEvery) < altEvery)
+				{
+					a.push(i + start);
+				}
+				else
+				{
+					a.push(i + start2);
+				}
+			}
+			return a;
 		}
 	}
 }

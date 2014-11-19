@@ -33,7 +33,7 @@ package {
 		public static var door1SpriteY:int = 128;
 		
 		/* Gate sprite sheet */
-		[Embed(source = "../assets/tilesheets/gates.png")]
+		[Embed(source = "../assets/tilesheets/gates_new.png")]
 		public static var gateSprite:Class;
 		public static var gateSpriteX:int = 10;
 		public static var gateSpriteY:int = 40;

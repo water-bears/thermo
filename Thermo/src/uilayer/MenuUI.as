@@ -137,6 +137,7 @@ package uilayer {
 			// TITLE SCREEN OUT, LEVEL SELECT IN
 			else if (state == 1)
 			{
+				dimmer.alpha = dimmer_alpha0.EvaluateAndAdvance();
 				titleText.y = titleText_y01.EvaluateAndAdvance() + titleText_y1.EvaluateAndAdvance();
 				promptText.y = promptText_y01.EvaluateAndAdvance() + promptText_y1.EvaluateAndAdvance();
 				levelSelectText.y = levelSelectText_y1.EvaluateAndAdvance() + levelSelectText_y12.EvaluateAndAdvance();
