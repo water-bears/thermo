@@ -69,22 +69,36 @@ package uilayer
 		
 		override public function update():void 
 		{
-			super.update();
 			if (selected)
 			{
-				itemText.size = Utils.Lerp(itemText.size, 25, 0.2);
-				itemText.color = 0x00ff00;
+				if (Math.abs(itemText.size - 25) > 0.1)
+				{
+					itemText.size = Utils.Lerp(itemText.size, 25, 0.2);
+				}
+				if (itemText.color != 0x00ff00)
+				{
+					itemText.color = 0x00ff00;
+				}
 			}
 			else
 			{
-				itemText.size = Utils.Lerp(itemText.size, 15, 0.2);
+				if (Math.abs(itemText.size - 15) > 0.1)
+				{
+					itemText.size = Utils.Lerp(itemText.size, 15, 0.2);
+				}
 				if (locked)
 				{
-					itemText.color = 0x000000;
+					if (itemText.color != 0x000000)
+					{
+						itemText.color = 0x000000;
+					}
 				}
 				else
 				{
-					itemText.color = levelColor;
+					if (itemText.color != levelColor)
+					{
+						itemText.color = levelColor;
+					}
 				}
 			}
 			if (state == 0)
