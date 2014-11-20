@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\Thermo.swf" />
     <movie fps="60" />
-    <movie width="500" />
-    <movie height="300" />
+    <movie width="640" />
+    <movie height="480" />
     <movie version="14" />
     <movie minorVersion="0" />
     <movie platform="Flash Player" />
@@ -55,6 +55,7 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="Logging.swc" />
+    <element path="MonsterDebugger.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

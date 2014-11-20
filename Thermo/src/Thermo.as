@@ -3,11 +3,13 @@ package {
 	import audio.AudioManager;
 	import context.InitialState;
 	import context.MenuState;
+	//import com.demonsters.debugger.MonsterDebugger;
 	
 	import org.flixel.*;
 	import Logging;
 	[SWF(width="640", height="480", backgroundColor="#000000")]
 	//[SWF(width="2560", height="1920", backgroundColor="#000000")]
+	[Frame(factoryClass="Preloader")]
 	
 	public class Thermo extends FlxGame {
 		public static const WIDTH:int = 640;
@@ -19,6 +21,9 @@ package {
 			// Optional debug tools
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
+			
+			// This can be used for memory profiling
+			//MonsterDebugger.initialize(this);
 			
 			AudioManager.StartMusic(AudioManager.OUTSIDE_WATER);
 		}
