@@ -13,6 +13,7 @@ package uilayer {
 		private var bracket:uint;
 		private var completionCallback:Function;
 		public var complete:Boolean;
+		private var prevDirection:int;
 		// Believe it or not this might speed things up
 		private var cachedValue:Number = 0;
 		private var cachedValid:Boolean = false;
@@ -35,6 +36,7 @@ package uilayer {
 					nodes[i].NullifyInterpolationMethod();
 				}
 			}
+			prevDirection = 0;
 		}
 		
 		public function Rewind() : void
@@ -54,7 +56,7 @@ package uilayer {
 		public function EvaluateAndAdvance(direction:int=1) : Number
 		{
 			var result:Number = Evaluate();
-			if (periodic || !complete)
+			if (periodic || !complete || direction != prevDirection)
 			{
 				Advance(direction);
 			}
@@ -112,6 +114,7 @@ package uilayer {
 					}
 				}
 			}
+			prevDirection = direction;
 		}
 		
 		public function Evaluate() : Number

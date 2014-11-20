@@ -2,6 +2,7 @@ package io
 {
 	import org.flixel.FlxSave;
 	import uilayer.MenuUI;
+	import uilayer.LevelServices;
 	/**
 	 * ...
 	 * @author KJin
@@ -56,14 +57,16 @@ package io
 		
 		public static function MarkLevelAsCleared(levelNum:uint) : void
 		{
-			save.data.progress[levelNum - 1] = true;
+			var realLevelNum:uint = LevelServices.TranslateFromOldScheme(levelNum) - 1;
+			save.data.progress[realLevelNum] = true;
 			RecalculateNumLevelsCleared();
 			save.flush();
 		}
 		
 		public static function GetLevelCleared(levelNum:uint) : Boolean
 		{
-			return save.data.progress[levelNum - 1];
+			var realLevelNum:uint = LevelServices.TranslateFromOldScheme(levelNum) - 1;
+			return save.data.progress[realLevelNum];
 		}
 		
 		public static function GetNumLevelsCleared() : uint

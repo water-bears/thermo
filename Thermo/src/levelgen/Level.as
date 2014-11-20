@@ -2,6 +2,7 @@ package levelgen {
 	import flash.events.Event;
 	
 	import org.flixel.*;
+	import uilayer.LevelServices;
 
 	public class Level 
 	{
@@ -133,7 +134,9 @@ package levelgen {
 		
 		public function Level(levelNum:uint) 
 		{
+			// This is so horrible. Must not be here during Kong release.
 			this.levelNum = levelNum;
+			levelNum = LevelServices.TranslateFromOldScheme(levelNum);
 			//if(AB != null) this.AB = AB;
 			
 			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";

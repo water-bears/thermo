@@ -10,27 +10,35 @@ package uilayer
 	{
 		private static const rowSize:uint = 5;
 		
-		/*
-		 *  0  1  2  3  4 ->  1  2  3  4 S1
-		 *  5  6  7  8  9 ->  5  6  7  8 S2
-		 * 10 11 12 13 14 ->  9 10 11 12 S3
-		 * ... and so on and so forth.
-		 */
 		public static function Translate(levelNum:uint) : String
 		{
-			if (levelNum % rowSize != rowSize - 1)
+			if (levelNum < ThermoSaves.NUM_LEVELS - rowSize)
 			{
-				return String((rowSize - 1) * uint(levelNum / rowSize) + (levelNum % rowSize) + 1);
+				return String(levelNum + 1);
 			}
 			else
 			{
-				return "S" + String((levelNum + 1) / rowSize);
+				return "S" + String(levelNum % rowSize + 1);
 			}
+		}
+		
+		public static function TranslateFromOldScheme(levelNum:uint) : uint
+		{
+			var realLevelNum:Number = levelNum - 1;
+			if (realLevelNum < ThermoSaves.NUM_LEVELS - rowSize)
+			{
+				realLevelNum += uint(realLevelNum / (rowSize - 1));
+			}
+			else
+			{
+				realLevelNum = (realLevelNum - ThermoSaves.NUM_LEVELS + rowSize + 1) * 5 - 1;
+			}
+			return realLevelNum + 1;
 		}
 		
 		public static function GetColor(levelNum:uint) : uint
 		{
-			if (levelNum % rowSize != rowSize - 1)
+			if (levelNum < ThermoSaves.NUM_LEVELS - rowSize)
 			{
 				return 0xffffff;
 			}
@@ -48,19 +56,12 @@ package uilayer
 		public static function Unlocked(levelNum:uint) : Boolean
 		{
 			if (levelNum == 0) return true;
-			else if (levelNum % rowSize == 0)
-			{
-				return ThermoSaves.GetLevelCleared(levelNum + 1 - 2);
-			}
-			else
-			{
-				return ThermoSaves.GetLevelCleared(levelNum + 1 - 1);
-			}
+			return ThermoSaves.GetLevelCleared(levelNum);
 		}
 		
 		public static function NextLevel(levelNum:uint) : uint
 		{
-			if ((levelNum - 1) % rowSize >= rowSize - 2)
+			if (levelNum == ThermoSaves.NUM_LEVELS - 1)
 			{
 				return 0;
 			}

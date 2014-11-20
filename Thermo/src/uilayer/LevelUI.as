@@ -142,6 +142,10 @@ package uilayer {
 			{
 				pauseTitleText.draw();
 			}
+			if (pauseSubtitleText.alpha > 0)
+			{
+				pauseSubtitleText.draw();
+			}
 			for (var i:uint = 0; i < 3; i++)
 			{
 				if (pauseOptions[i].alpha > 0)
