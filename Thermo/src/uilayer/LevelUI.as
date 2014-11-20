@@ -17,6 +17,9 @@ package uilayer {
 	
 	import flash.utils.getTimer;
 	
+	/*
+	 * A class that represents the pause menu and other ui components during a level.
+	 */
 	public class LevelUI extends FlxGroup
 	{
 		private var dimmer:FlxSprite;
@@ -59,20 +62,20 @@ package uilayer {
 			// methods are atrocious.
 			// 
 			dimmer = MenuUtils.CreateSolid(new FlxPoint(dimensions.x + 1, dimensions.y), 0x000000);
-			add(dimmer);
+			//add(dimmer);
 			
 			// Level Intro Text
 			levelText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
 			levelText.setFormat(Assets.font_name, 80, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
-			add(levelText);
+
 			
 			pauseTitleText = new FlxText(0, 0, FlxG.width, "Paused");
 			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
-			add(pauseTitleText);
+			//add(pauseTitleText);
 			
 			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
 			pauseSubtitleText.setFormat(Assets.font_name, 30, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
-			add(pauseSubtitleText);
+			//add(pauseSubtitleText);
 			
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Resume"));
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Restart"));
@@ -81,7 +84,7 @@ package uilayer {
 			for (var i:uint = 0; i < 3; i++)
 			{
 				pauseOptions[i].setFormat(Assets.font_name, 15, 0xffffff, "center", 0x000000);
-				add(pauseOptions[i]);
+				//add(pauseOptions[i]);
 				callbacks.push(null);
 			}
 			
@@ -124,6 +127,30 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 30, 0.45 * FlxG.height));
 		}
 		
+		override public function draw():void 
+		{
+			super.draw();
+			if (dimmer.alpha > 0)
+			{
+				dimmer.draw();
+			}
+			if (levelText.alpha > 0)
+			{
+				levelText.draw();
+			}
+			if (pauseTitleText.alpha > 0)
+			{
+				pauseTitleText.draw();
+			}
+			for (var i:uint = 0; i < 3; i++)
+			{
+				if (pauseOptions[i].alpha > 0)
+				{
+					pauseOptions[i].draw();
+				}
+			}
+		}
+		
 		public function SetSelectCallback(index:uint, f:Function):void
 		{
 			callbacks[index] = f;
@@ -132,28 +159,13 @@ package uilayer {
 		override public function update():void
 		{
 			super.update();
-			
+			var i:uint;
 			// Set pausing and stuff
 			if (AllowPause && (FlxG.keys.justPressed("ESCAPE") || FlxG.keys.R))
 			{
 				TogglePause();
 			}
 			
-			var i:uint;
-			// set which pause option is red and which are not
-			for (i = 0; i < pauseOptions.length; i++)
-			{
-				if (i == selectedPauseOption)
-				{
-					pauseOptions[i].color = 0xff0000;
-					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 20, 0.2);
-				}
-				else
-				{
-					pauseOptions[i].color = 0xffffff;
-					pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 15, 0.2);
-				}
-			}
 			if (state == 0)
 			{
 				// Adjust values depending on time.
@@ -168,6 +180,8 @@ package uilayer {
 				{
 					pauseOptions[i].alpha = 0;
 				}
+				levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
+				levelText.y = levelText_y0.EvaluateAndAdvance();
 			}
 			if (state == 1)
 			{
@@ -221,6 +235,20 @@ package uilayer {
 						TogglePause();
 					}
 				}
+				// set which pause option is red and which are not
+				for (i = 0; i < pauseOptions.length; i++)
+				{
+					if (i == selectedPauseOption)
+					{
+						pauseOptions[i].color = 0xff0000;
+						pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 20, 0.2);
+					}
+					else
+					{
+						pauseOptions[i].color = 0xffffff;
+						pauseOptions[i].size = Utils.Lerp(pauseOptions[i].size, 15, 0.2);
+					}
+				}
 				dimmer.alpha = dimmer_alpha2.EvaluateAndAdvance();
 				PauseFadeIn();
 			}
@@ -233,8 +261,6 @@ package uilayer {
 					state = 0;
 				}
 			}
-			levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
-			levelText.y = levelText_y0.EvaluateAndAdvance();
 		}
 		
 		private function PauseFadeIn() : void

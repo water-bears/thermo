@@ -3,7 +3,6 @@ package {
 	import audio.AudioManager;
 	import context.InitialState;
 	import context.MenuState;
-	//import com.demonsters.debugger.MonsterDebugger;
 	
 	import org.flixel.*;
 	import Logging;
@@ -21,9 +20,6 @@ package {
 			// Optional debug tools
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
-			
-			// This can be used for memory profiling
-			//MonsterDebugger.initialize(this);
 			
 			AudioManager.StartMusic(AudioManager.OUTSIDE_WATER);
 		}

@@ -55,7 +55,6 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="Logging.swc" />
-    <element path="MonsterDebugger.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

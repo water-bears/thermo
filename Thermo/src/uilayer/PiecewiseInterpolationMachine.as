@@ -13,6 +13,9 @@ package uilayer {
 		private var bracket:uint;
 		private var completionCallback:Function;
 		public var complete:Boolean;
+		// Believe it or not this might speed things up
+		private var cachedValue:Number = 0;
+		private var cachedValid:Boolean = false;
 		
 		public function PiecewiseInterpolationMachine(periodic:Boolean, ... args)
 		{
@@ -51,13 +54,16 @@ package uilayer {
 		public function EvaluateAndAdvance(direction:int=1) : Number
 		{
 			var result:Number = Evaluate();
-			Advance(direction);
+			if (periodic || !complete)
+			{
+				Advance(direction);
+			}
 			return result;
 		}
 		
 		public function Advance(direction:int=1) : void
 		{
-			var i:uint; 
+			var i:uint;
 			if (direction > 0)
 			{
 				for (i = 0; i < direction; i++)
@@ -110,16 +116,24 @@ package uilayer {
 		
 		public function Evaluate() : Number
 		{
-			if (bracket == nodes.length - 1)
+			if (!cachedValid)
 			{
-				if (completionCallback != null)
+				if (bracket == nodes.length - 1)
 				{
-					completionCallback();
-					completionCallback = null;
+					if (completionCallback != null)
+					{
+						completionCallback();
+						completionCallback = null;
+					}
+					cachedValue = PiecewiseInterpolationNode.Evaluate(nodes[bracket]);
 				}
-				return PiecewiseInterpolationNode.Evaluate(nodes[bracket]);
+				else
+				{
+					cachedValue = PiecewiseInterpolationNode.Evaluate(nodes[bracket], nodes[bracket + 1], time);
+				}
 			}
-			return PiecewiseInterpolationNode.Evaluate(nodes[bracket], nodes[bracket + 1], time);
+			cachedValid = complete;
+			return cachedValue;
 		}
 		
 		public function JumpToBracket(num:uint):void
