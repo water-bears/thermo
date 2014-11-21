@@ -136,7 +136,7 @@ package levelgen {
 		{
 			// This is so horrible. Must not be here during Kong release.
 			this.levelNum = levelNum;
-			levelNum = LevelServices.TranslateFromOldScheme(levelNum);
+			levelNum = LevelServices.TranslateToOldScheme(levelNum);
 			//if(AB != null) this.AB = AB;
 			
 			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";

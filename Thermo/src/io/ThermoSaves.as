@@ -12,7 +12,7 @@ package io
 		private static var save:FlxSave;
 		InitializeSave();
 		private static var levelsBeaten:uint = 0;
-		private static const CURRENT_VERSION:uint = 1;
+		private static const CURRENT_VERSION:uint = 2;
 		public static const NUM_LEVELS:uint = MenuUI.levelSelectWidth * MenuUI.levelSelectHeight;
 		
 		private static function InitializeSave() : void
@@ -37,6 +37,20 @@ package io
 					save.data.progress.push(false);
 				}
 				save.data.num_levels = NUM_LEVELS;
+				if (save.data.version == 1)
+				{
+					// translate all to new
+					var a:Vector.<Boolean> = new Vector.<Boolean>();
+					for (i = 0; i < NUM_LEVELS; i++)
+					{
+						a.push(save.data.progress[i]);
+					}
+					for (i = 0; i < NUM_LEVELS; i++)
+					{
+						save.data.progress[LevelServices.TranslateToNewScheme(i + 1) - 1] = a[i];
+					}
+					save.data.version = CURRENT_VERSION;
+				}
 			}
 			RecalculateNumLevelsCleared();
 			save.flush();
@@ -57,16 +71,14 @@ package io
 		
 		public static function MarkLevelAsCleared(levelNum:uint) : void
 		{
-			var realLevelNum:uint = LevelServices.TranslateFromOldScheme(levelNum) - 1;
-			save.data.progress[realLevelNum] = true;
+			save.data.progress[levelNum - 1] = true;
 			RecalculateNumLevelsCleared();
 			save.flush();
 		}
 		
 		public static function GetLevelCleared(levelNum:uint) : Boolean
 		{
-			var realLevelNum:uint = LevelServices.TranslateFromOldScheme(levelNum) - 1;
-			return save.data.progress[realLevelNum];
+			return save.data.progress[levelNum - 1];
 		}
 		
 		public static function GetNumLevelsCleared() : uint

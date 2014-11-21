@@ -478,7 +478,7 @@ package {
 		
 		/** Sets the background based on the level index **/
 		public function setBackground(level:int):void {
-			level = LevelServices.TranslateFromOldScheme(level);
+			level = LevelServices.TranslateToOldScheme(level);
 			level = (level - 1) % Assets.b_list.length;
 			
 			if (background == null) {

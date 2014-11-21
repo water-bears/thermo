@@ -22,18 +22,34 @@ package uilayer
 			}
 		}
 		
-		public static function TranslateFromOldScheme(levelNum:uint) : uint
+		public static function TranslateToOldScheme(levelNum:uint) : uint
 		{
 			var realLevelNum:Number = levelNum - 1;
-			if (realLevelNum < ThermoSaves.NUM_LEVELS - rowSize)
+			if (realLevelNum < 25 - rowSize)
 			{
 				realLevelNum += uint(realLevelNum / (rowSize - 1));
 			}
 			else
 			{
-				realLevelNum = (realLevelNum - ThermoSaves.NUM_LEVELS + rowSize + 1) * 5 - 1;
+				realLevelNum = (realLevelNum - 25 + rowSize + 1) * 5 - 1;
 			}
 			return realLevelNum + 1;
+		}
+		
+		// To preserve save files
+		public static function TranslateToNewScheme(levelNum:uint) : uint
+		{
+			var realLevelNum:Number = levelNum;
+			if (realLevelNum % 5 == 0)
+			{
+				realLevelNum = uint(realLevelNum / 5) + 25 - rowSize;
+			}
+			else
+			{
+				realLevelNum = realLevelNum - uint(realLevelNum / 5);
+			}
+			trace(levelNum, realLevelNum);
+			return realLevelNum;
 		}
 		
 		public static function GetColor(levelNum:uint) : uint
@@ -56,7 +72,14 @@ package uilayer
 		public static function Unlocked(levelNum:uint) : Boolean
 		{
 			if (levelNum == 0) return true;
-			return ThermoSaves.GetLevelCleared(levelNum);
+			if (levelNum < 20)
+			{
+				return ThermoSaves.GetLevelCleared(levelNum);
+			}
+			else
+			{
+				return ThermoSaves.GetLevelCleared((levelNum - 19) * 4);
+			}
 		}
 		
 		public static function NextLevel(levelNum:uint) : uint
