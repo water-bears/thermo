@@ -224,12 +224,12 @@ package uilayer {
 					{
 						if(selectedPauseOption == 1){
 							//reset
-							logger.recordEvent(level.levelNum, 5, "v2 $ $ $" + getTimer().toString()+ "$");
+							logger.recordEvent(LevelServices.TranslateToOldScheme(level.levelNum), 5, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						else if(selectedPauseOption == 2){
 							// levelselect 
-							logger.recordEvent(level.levelNum, 6, "v2 $ $ $" + getTimer().toString()+ "$");
+							logger.recordEvent(LevelServices.TranslateToOldScheme(level.levelNum), 6, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						BeginExitSequence(callbacks[selectedPauseOption]);

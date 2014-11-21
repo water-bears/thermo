@@ -87,6 +87,8 @@ package {
 		private var key_arrows:FlxSprite = new FlxSprite();
 		private var arrows_playing:Boolean = false;
 		
+		private var recordedLevel:uint;
+		
 		public function setLevel(inputLevel:Level):void {
 			level = inputLevel;
 		}
@@ -202,6 +204,9 @@ package {
 			ui.SetSelectCallback(2, levelSelect);
 			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 			// add(ui);
+			
+			// translate level to old level number so logging isn't messed up
+			recordedLevel = LevelServices.TranslateToOldScheme(level.levelNum);
 		}
 		
 		override public function update():void {
@@ -320,7 +325,7 @@ package {
 				// If player has the key and touches the exit, they win
 				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 					player.visible = false;
-					logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+					logger.recordEvent(recordedLevel, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					win(exitGroup, player);
 				}
@@ -328,7 +333,7 @@ package {
 				//Check for player lose conditions
 				if (player.y > (FlxG.height + 50) || FlxG.overlap(player, spikeGroup)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -336,7 +341,7 @@ package {
 					player.visible = false;
 				}
 				if (FlxG.keys.R){
-					logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+					logger.recordEvent(recordedLevel, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					ui.BeginExitSequence(reset);
 					player.visible = false;
@@ -345,7 +350,7 @@ package {
 				//Check for player lose conditions specific for lava
 				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -355,7 +360,7 @@ package {
 				
 				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
 					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -442,7 +447,7 @@ package {
 			key.kill();
 			AudioManager.PlaySound(Assets.sfx_key);
 			player.hasKey = true;
-			logger.recordEvent(level.levelNum, 2, "v2 $ $  $ " + getTimer().toString() + "$");
+			logger.recordEvent(recordedLevel, 2, "v2 $ $  $ " + getTimer().toString() + "$");
 		}
 		
 		/** Win function **/
@@ -470,7 +475,7 @@ package {
 		public function pullTimerListener(e:TimerEvent):void {
 			curPosition = new Point(player.x, player.y);
 			if(curPosition.x != prevPosition.x && curPosition.y != prevPosition.y){
-				logger.recordEvent(level.levelNum, 7, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+				logger.recordEvent(recordedLevel, 7, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 				prevPosition = curPosition;
 			}
 			
