@@ -49,7 +49,7 @@ package context {
 		}
 		
 		public function goToNextState():void {
-			var p : FlxState = new TransitionState(ui.selectedLevel + 1, logger, ui.selectedLevel + 1);
+			var p : FlxState = new TransitionState(ui.selectedLevel, logger, ui.selectedLevel);
 			FlxG.switchState(p);
 		}
 	}

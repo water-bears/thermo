@@ -36,8 +36,8 @@ package uilayer
 		{
 			super();
 			levelNum = MenuUI.levelSelectWidth * y + x;
-			levelName = LevelServices.Translate(levelNum);
-			levelColor = LevelServices.GetColor(levelNum);
+			levelName = LevelServices.GetHumanReadableLevelName(levelNum);
+			levelColor = LevelServices.GetLevelSelectColor(levelNum);
 			completed = LevelServices.Completed(levelNum);
 			locked = !LevelServices.Unlocked(levelNum);
 			itemText = new FlxText(Utils.Lerp(xMin, xMax, x / (MenuUI.levelSelectWidth - 1)),

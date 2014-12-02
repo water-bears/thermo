@@ -45,104 +45,22 @@ package levelgen {
 		
 		public static var ab:Number;
 		
-		/**
-		 * Map of level names, in game order.
-		 * Note, the strings do not need to be numbers (We just happen to use numbers a lot).
-		 * The name of the level corresponds to the name of the .dam file.
-		 */
-		/*
-		private static var LEVEL_MAP_1:Array = new Array(
-			"tutorial_jump_00",//intro row
-			"tutorial_heat",
-			"tutorial_freeze",
-			"easy_00",
-			"supa_hard_01",
-			"tutorial_wind",//element row
-			"wind_helper2",
-			"tutorial_neutral",
-			"wind_test",
-			"supa_hard_02",
-			"tutorial_flashheat",//flashheat row
-			"flashheat_2",
-			"medium_05",
-			"medium_06",
-			"tryna_flashheat",
-			"tutorial_flashfreeze",//flashfreeze row
-			"medium_03", 
-			"medium_04",
-			"medium_01",
-			"supa_hard_04",
-			"tutorial_momentum",//final row
-			"hard_01",
-			"hard_00",
-			"hard_02",
-			"hard_100"
-		);*/
-		
-		private static var LEVEL_MAP:Array = new Array(
-			//intro row
-			"tutorial_jump_00",
-			"tutorial_heat",
-			"tutorial_freeze",
-			"easy_00",
-			"supa_hard_01",
-			//element row
-			"tutorial_neutral",
-			"tutorial_flashheat",
-			"flashheat_2",
-			"tutorial_flashfreeze",
-			"tryna_flashheat",
-			//flashheat row
-			"medium_03",
-			"medium_05",
-			"tutorial_wind",
-			"wind_helper2",
-			"supa_hard_02",
-			//flashfreeze row
-			"wind_test",
-			"medium_06",
-			"medium_01",
-			"medium_04",
-			"supa_hard_04",
-			//final row
-			"tutorial_momentum",
-			"hard_00",
-			"hard_01",
-			"hard_02",
-			"hard_100",
-			//adding levels
-			"medium_07"
-		);
-		
-		/**
-		 * Number of levels in the game
-		 */
-		public static var NUM_LEVELS:uint = LEVEL_MAP.length;
-		
-		/**
-		 * Helper function gets the name of the level that corresponds
-		 * to the given index, based on the LEVEL_MAP
-		 */
-		private static function levelName(levelNum:uint):String
-		{
-			return LEVEL_MAP[(levelNum - 1) % NUM_LEVELS];
-		}
-		
 		public function Level(levelNum:uint) 
 		{
 			// This is so horrible. Must not be here during Kong release.
 			this.levelNum = levelNum;
+			var levelName:String = LevelServices.GetInternalLevelName(levelNum);
 			//levelNum = LevelServices.TranslateToOldScheme(levelNum);
 			//if(AB != null) this.AB = AB;
 			
-			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
+			var file:String = fileLocation + levelName + "/" + "Level_" + levelName + ".xml";
 			var xmlFile:XML = new XML(AS3Embed.GetTextAsset(file));
 			
 			//if we can't find the xml file, just use level 1
 			if (AS3Embed.GetTextAsset(file) == "error")
 			{
 				levelNum = 1;
-				file = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";
+				file = fileLocation + levelName + "/" + "Level_" + levelName + ".xml";
 				xmlFile = new XML(AS3Embed.GetTextAsset(file));
 			}
 			

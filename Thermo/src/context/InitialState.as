@@ -18,7 +18,7 @@ package context {
 		override public function create():void 
 		{
 			super.create();
-			logger = new Logging(700, 2, false);
+			logger = new Logging(700, 3, true); // set to false later!!
 			logger.recordPageLoad();
 			var x:Number = Math.random();
 			x = Math.round(x) + 1;

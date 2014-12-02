@@ -3,58 +3,86 @@ package uilayer
 	import io.ThermoSaves;
 	
 	/**
-	 * ...
+	 * A class that gives various level info based
+	 * on a level number.
+	 * 
+	 * The S levelNums pick up where the normal
+	 * levelNums leave off.
 	 * @author KJin
 	 */
 	public class LevelServices 
 	{
+		private static var LEVEL_NAMES:Array = new Array(
+			//intro row
+			"tutorial_jump_00",
+			"tutorial_heat",
+			"tutorial_freeze",
+			"easy_00",
+			//element row
+			"tutorial_neutral",
+			"tutorial_flashheat",
+			"flashheat_2",
+			"tutorial_flashfreeze",
+			//flashheat row
+			"medium_03",
+			"medium_05",
+			"tutorial_wind",
+			"wind_helper2",
+			//flashfreeze row
+			"wind_test",
+			"medium_06",
+			"medium_01",
+			"medium_04",
+			//final row
+			"tutorial_momentum",
+			"hard_00",
+			"hard_01",
+			"hard_02",
+			//adding levels
+			"medium_07"
+		);
+		
+		private static var S_LEVEL_NAMES:Array = new Array(
+			"supa_hard_01",
+			"tryna_flashheat",
+			"supa_hard_02",
+			"supa_hard_04",
+			"hard_100"
+		);
+		
+		public static const NUM_LEVELS:int = LEVEL_NAMES.length;
+		public static const NUM_S_LEVELS:int = S_LEVEL_NAMES.length;
+		public static const NUM_TOTAL_LEVELS:int = NUM_LEVELS + NUM_S_LEVELS;
+		
 		private static const rowSize:uint = 5;
 		
-		public static function Translate(levelNum:uint) : String
+		public static function GetHumanReadableLevelName(levelNum:uint) : String
 		{
-			if (levelNum < ThermoSaves.NUM_LEVELS - rowSize)
+			if (levelNum < NUM_LEVELS)
 			{
 				return String(levelNum + 1);
 			}
 			else
 			{
-				return "S" + String(levelNum % rowSize + 1);
+				return "S" + String(levelNum - NUM_LEVELS + 1);
 			}
 		}
 		
-		public static function TranslateToOldScheme(levelNum:uint) : uint
+		public static function GetInternalLevelName(levelNum:uint) : String
 		{
-			var realLevelNum:Number = levelNum - 1;
-			if (realLevelNum < 25 - rowSize)
+			if (levelNum < NUM_LEVELS)
 			{
-				realLevelNum += uint(realLevelNum / (rowSize - 1));
+				return LEVEL_NAMES[levelNum];
 			}
 			else
 			{
-				realLevelNum = (realLevelNum - 25 + rowSize + 1) * 5 - 1;
+				return S_LEVEL_NAMES[levelNum - NUM_LEVELS];
 			}
-			return realLevelNum + 1;
 		}
 		
-		// To preserve save files
-		public static function TranslateToNewScheme(levelNum:uint) : uint
+		public static function GetLevelSelectColor(levelNum:uint) : uint
 		{
-			var realLevelNum:Number = levelNum;
-			if (realLevelNum % 5 == 0)
-			{
-				realLevelNum = uint(realLevelNum / 5) + 25 - rowSize;
-			}
-			else
-			{
-				realLevelNum = realLevelNum - uint(realLevelNum / 5);
-			}
-			trace(levelNum, realLevelNum);
-			return realLevelNum;
-		}
-		
-		public static function GetColor(levelNum:uint) : uint
-		{
-			if (levelNum < ThermoSaves.NUM_LEVELS - rowSize)
+			if (levelNum < NUM_LEVELS)
 			{
 				return 0xffffff;
 			}
@@ -66,34 +94,17 @@ package uilayer
 		
 		public static function Completed(levelNum:uint) : Boolean
 		{
-			return ThermoSaves.GetLevelCleared(levelNum + 1);
+			return ThermoSaves.GetLevelCleared(levelNum);
 		}
 		
 		public static function Unlocked(levelNum:uint) : Boolean
 		{
-			/*
-			if (levelNum == 0) return true;
-			if (levelNum < 20)
-			{
-				return ThermoSaves.GetLevelCleared(levelNum);
-			}
-			else
-			{
-				return ThermoSaves.GetLevelCleared((levelNum - 19) * 4);
-			}*/
 			return true;
 		}
 		
 		public static function NextLevel(levelNum:uint) : uint
 		{
-			if (levelNum == ThermoSaves.NUM_LEVELS - 1)
-			{
-				return 0;
-			}
-			else
-			{
-				return levelNum + 1;
-			}
+			return levelNum + 1;
 		}
 	}
 

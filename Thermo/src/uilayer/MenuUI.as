@@ -159,9 +159,9 @@ package uilayer {
 				selectedLevel = selectedSquare.y * MenuUI.levelSelectWidth + selectedSquare.x;
 				if (FlxG.keys.ENTER && LevelServices.Unlocked(selectedLevel))
 				{
-					if(selectedLevel != initialLevel+1){
+					if(selectedLevel != initialLevel){
 						// THIS PERSON SKIPPED A LEVEL
-						logger.recordEvent(initialLevel+1, 8, "v2 $ $ $ $ " + initialLevel+1);
+						logger.recordEvent(initialLevel, 8, "v2 $ $ $ $ " + initialLevel);
 					}
 					state = 3;
 				}

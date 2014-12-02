@@ -87,8 +87,6 @@ package {
 		private var key_arrows:FlxSprite = new FlxSprite();
 		private var arrows_playing:Boolean = false;
 		
-		private var recordedLevel:uint;
-		
 		public function setLevel(inputLevel:Level):void {
 			level = inputLevel;
 		}
@@ -115,7 +113,7 @@ package {
 			
 			//load the level
 			if (level == null) {
-				level = new Level(1);
+				level = new Level(0);
 			}
 
 			//add the background sprites
@@ -195,7 +193,7 @@ package {
 			add(level.frontSprites);
 			startTime = getTimer();
 			
-			if (level.levelNum == 1) logger.recordEvent(1, 9, "$ $ $ $ " + Level.ab);
+			if (level.levelNum == 0) logger.recordEvent(0, 9, "$ $ $ $ " + Level.ab);
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
@@ -204,9 +202,6 @@ package {
 			ui.SetSelectCallback(2, levelSelect);
 			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 			// add(ui);
-			
-			// translate level to old level number so logging isn't messed up
-			recordedLevel = LevelServices.TranslateToOldScheme(level.levelNum);
 		}
 		
 		override public function update():void {
@@ -325,7 +320,7 @@ package {
 				// If player has the key and touches the exit, they win
 				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 					player.visible = false;
-					logger.recordEvent(recordedLevel, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+					logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					win(exitGroup, player);
 				}
@@ -333,7 +328,7 @@ package {
 				//Check for player lose conditions
 				if (player.y > (FlxG.height + 50) || FlxG.overlap(player, spikeGroup)) {
 					if(alreadyLost == false){
-						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -341,7 +336,7 @@ package {
 					player.visible = false;
 				}
 				if (FlxG.keys.R){
-					logger.recordEvent(recordedLevel, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+					logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
 					ui.BeginExitSequence(reset);
 					player.visible = false;
@@ -350,7 +345,7 @@ package {
 				//Check for player lose conditions specific for lava
 				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
 					if(alreadyLost == false){
-						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -360,7 +355,7 @@ package {
 				
 				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
 					if(alreadyLost == false){
-						logger.recordEvent(recordedLevel, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
@@ -371,7 +366,7 @@ package {
 				/**
 				 * Flash the spacebar above the player's head if we meet the correct conditions
 				 */
-				if (level.levelNum == 2 && player.curPow == 2 && !player.bubble && !spacebar_playing && player.overlaps(waterTiles)) {
+				if (level.levelNum == 1 && player.curPow == 2 && !player.bubble && !spacebar_playing && player.overlaps(waterTiles)) {
 					key_spacebar.addAnimation("flash", [0, 0, 1], Assets.FRAME_RATE / 10, true);
 					key_spacebar.loadGraphic(Assets.spacebarSprite, true, false, 64, 20);
 					key_spacebar.play("flash");
@@ -379,10 +374,10 @@ package {
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
 					this.add(key_spacebar);
 					spacebar_playing = true;
-				} else if (level.levelNum == 2 && spacebar_playing && !player.bubble && player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 1 && spacebar_playing && !player.bubble && player.overlaps(waterTiles)) {
 					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
-				} else if (level.levelNum == 2 && spacebar_playing && player.bubble) {
+				} else if (level.levelNum == 1 && spacebar_playing && player.bubble) {
 					//key_spacebar.kill();
 					this.remove(key_spacebar);
 					spacebar_playing = false;
@@ -391,7 +386,7 @@ package {
 				/**
 				 * Flash the spacebar above the player's head if we meet the correct conditions
 				 */
-				if (level.levelNum == 3 && player.curPow == 1 && !spacebar_playing && player.overlaps(waterTiles)) {
+				if (level.levelNum == 2 && player.curPow == 1 && !spacebar_playing && player.overlaps(waterTiles)) {
 					key_spacebar.addAnimation("flash", [0, 0, 1], Assets.FRAME_RATE / 10, true);
 					key_spacebar.loadGraphic(Assets.spacebarSprite, true, false, 64, 20);
 					key_spacebar.play("flash");
@@ -399,10 +394,10 @@ package {
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
 					this.add(key_spacebar);
 					spacebar_playing = true;
-				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length == 0 && player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 2 && spacebar_playing && iceGroup.length == 0 && player.overlaps(waterTiles)) {
 					key_spacebar.x = player.x + player.width/2 - key_spacebar.width/2;
 					key_spacebar.y = player.y - player.height - key_spacebar.height;
-				} else if (level.levelNum == 3 && spacebar_playing && iceGroup.length > 0) {
+				} else if (level.levelNum == 2 && spacebar_playing && iceGroup.length > 0) {
 					key_spacebar.kill();
 					//this.remove(key_spacebar);
 					spacebar_playing = false;
@@ -411,7 +406,7 @@ package {
 				/**
 				 * Flash the arrows above the player's head if we meet the correct conditions
 				 */
-				if (level.levelNum == 1 && !arrows_playing) {
+				if (level.levelNum == 0 && !arrows_playing) {
 					key_arrows.addAnimation("flash", [0, 0, 2, 1, 1, 2], Assets.FRAME_RATE / 10, true);
 					key_arrows.loadGraphic(Assets.arrowsSprite, true, false, 60, 40);
 					key_arrows.play("flash");
@@ -419,10 +414,10 @@ package {
 					key_arrows.y = player.y - player.height - key_spacebar.height;
 					this.add(key_arrows);
 					arrows_playing = true;
-				} else if (level.levelNum == 1 && arrows_playing && !player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 0 && arrows_playing && !player.overlaps(waterTiles)) {
 					key_arrows.x = player.x + player.width/2 - key_arrows.width/2;
 					key_arrows.y = player.y - player.height - key_arrows.height;
-				} else if (level.levelNum == 1 && arrows_playing && player.overlaps(waterTiles)) {
+				} else if (level.levelNum == 0 && arrows_playing && player.overlaps(waterTiles)) {
 					key_arrows.kill();
 					//this.remove(key_arrows);
 					arrows_playing = false;
@@ -447,7 +442,7 @@ package {
 			key.kill();
 			AudioManager.PlaySound(Assets.sfx_key);
 			player.hasKey = true;
-			logger.recordEvent(recordedLevel, 2, "v2 $ $  $ " + getTimer().toString() + "$");
+			logger.recordEvent(level.levelNum, 2, "v2 $ $  $ " + getTimer().toString() + "$");
 		}
 		
 		/** Win function **/
@@ -467,7 +462,7 @@ package {
 		
 		/** Level select function **/
 		public function levelSelect():void {
-			FlxG.switchState(new TransitionState(0, logger, level.levelNum));
+			FlxG.switchState(new TransitionState(-1, logger, level.levelNum));
 		}
 		
 		/** logs at 1 s intervals based on pullTimer 
@@ -475,7 +470,7 @@ package {
 		public function pullTimerListener(e:TimerEvent):void {
 			curPosition = new Point(player.x, player.y);
 			if(curPosition.x != prevPosition.x && curPosition.y != prevPosition.y){
-				logger.recordEvent(recordedLevel, 7, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
+				logger.recordEvent(level.levelNum, 7, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
 				prevPosition = curPosition;
 			}
 			
@@ -483,8 +478,7 @@ package {
 		
 		/** Sets the background based on the level index **/
 		public function setBackground(level:int):void {
-			level = LevelServices.TranslateToOldScheme(level);
-			level = (level - 1) % Assets.b_list.length;
+			level = level % Assets.b_list.length;
 			
 			if (background == null) {
 				background = new FlxSprite(0, 0);

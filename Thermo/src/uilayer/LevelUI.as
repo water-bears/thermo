@@ -65,16 +65,16 @@ package uilayer {
 			//add(dimmer);
 			
 			// Level Intro Text
-			levelText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
-			levelText.setFormat(Assets.font_name, 80, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
+			levelText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.GetHumanReadableLevelName(level.levelNum));
+			levelText.setFormat(Assets.font_name, 80, LevelServices.GetLevelSelectColor(level.levelNum), "center", 0x000000);
 
 			
 			pauseTitleText = new FlxText(0, 0, FlxG.width, "Paused");
 			pauseTitleText.setFormat(Assets.font_name, 80, 0xffffff, "center", 0x000000);
 			//add(pauseTitleText);
 			
-			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.Translate(level.levelNum - 1));
-			pauseSubtitleText.setFormat(Assets.font_name, 30, LevelServices.GetColor(level.levelNum - 1), "center", 0x000000);
+			pauseSubtitleText = new FlxText(0, 0, FlxG.width, "Level " + LevelServices.GetHumanReadableLevelName(level.levelNum));
+			pauseSubtitleText.setFormat(Assets.font_name, 30, LevelServices.GetLevelSelectColor(level.levelNum), "center", 0x000000);
 			//add(pauseSubtitleText);
 			
 			pauseOptions.push(new FlxText(0, 0, FlxG.width, "Resume"));
@@ -224,12 +224,12 @@ package uilayer {
 					{
 						if(selectedPauseOption == 1){
 							//reset
-							logger.recordEvent(LevelServices.TranslateToOldScheme(level.levelNum), 5, "v2 $ $ $" + getTimer().toString()+ "$");
+							logger.recordEvent(level.levelNum, 5, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						else if(selectedPauseOption == 2){
 							// levelselect 
-							logger.recordEvent(LevelServices.TranslateToOldScheme(level.levelNum), 6, "v2 $ $ $" + getTimer().toString()+ "$");
+							logger.recordEvent(level.levelNum, 6, "v2 $ $ $" + getTimer().toString()+ "$");
 							logger.recordLevelEnd();
 						}
 						BeginExitSequence(callbacks[selectedPauseOption]);

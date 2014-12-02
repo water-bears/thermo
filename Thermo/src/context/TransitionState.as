@@ -4,6 +4,7 @@ package context
 	
 	import org.flixel.FlxG;
 	import org.flixel.FlxState;
+	import uilayer.LevelServices;
 	
 	/**
 	 * ...
@@ -11,12 +12,11 @@ package context
 	 */
 	public class TransitionState extends FlxState
 	{
-		private var level:uint;
-		public static const numLevels:uint =  Level.NUM_LEVELS;
+		private var level:int;
 		public var logger:Logging;
-		private var currentLevel:uint;
+		private var currentLevel:int;
 		
-		public function TransitionState(level:uint,logger:Logging,currentLevel:uint=0)
+		public function TransitionState(level:int,logger:Logging,currentLevel:int=0)
 		{
 			this.level = level;
 			this.logger = logger;
@@ -25,7 +25,7 @@ package context
 		
 		override public function update():void
 		{
-			if (level > 0 && level <= numLevels)
+			if (level >= 0 && level < LevelServices.NUM_TOTAL_LEVELS)
 			{
 				var p:PlayState = new PlayState(logger);
 				p.setLevel(new Level(level));
