@@ -1,8 +1,10 @@
 package uilayer {
 	import context.MenuUtils;
+	import org.flintparticles.common.displayObjects.Rect;
 	
 	import io.ThermoSaves;
 	
+	import flash.geom.Rectangle;
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxPoint;
@@ -129,7 +131,7 @@ package uilayer {
 				titleText.y = titleText_y01.EvaluateAndAdvance();
 				promptText.y = promptText_y01.EvaluateAndAdvance();
 				levelSelectText.alpha = 0;
-				if (FlxG.keys.ENTER)
+				if (FlxG.keys.ENTER || FlxG.mouse.justPressed())
 				{
 					state = 1;
 				}
@@ -157,7 +159,7 @@ package uilayer {
 				// choose yer level
 				chooseLevel();
 				selectedLevel = selectedSquare.y * MenuUI.levelSelectWidth + selectedSquare.x;
-				if (FlxG.keys.ENTER && LevelServices.Unlocked(selectedLevel))
+				if ((FlxG.keys.ENTER || FlxG.mouse.justPressed()) && LevelServices.Unlocked(selectedLevel))
 				{
 					if(selectedLevel != initialLevel){
 						// THIS PERSON SKIPPED A LEVEL
@@ -178,67 +180,97 @@ package uilayer {
 		private var selectedSquarePrev:FlxPoint = new FlxPoint();
 		public var selectedLevel:uint;
 		private var keyFramesDown:uint;
+		private var prevMousePosition:FlxPoint = new FlxPoint();
+		private var currMousePosition:FlxPoint = new FlxPoint();
 		
 		private function chooseLevel():void
 		{
-			var selectedSquareTemp:FlxPoint = new FlxPoint();
-			var keyDirectionTemp:uint = 0;
-			if (FlxG.keys.LEFT)
+			FlxG.mouse.getScreenPosition(null, currMousePosition);
+			var mouseMoved:Boolean = prevMousePosition.x == currMousePosition.x || prevMousePosition.y == currMousePosition.y;
+			if (mouseMoved)
 			{
-				selectedSquareTemp.x--;
-			}
-			if (FlxG.keys.RIGHT)
-			{
-				selectedSquareTemp.x++;
-			}
-			if (FlxG.keys.UP)
-			{
-				selectedSquareTemp.y--;
-			}
-			if (FlxG.keys.DOWN)
-			{
-				selectedSquareTemp.y++;
-			}
-			if (selectedSquareTemp.x != 0 || selectedSquareTemp.y != 0)
-			{
-				if (selectedSquarePrev.x == selectedSquareTemp.x && selectedSquarePrev.y == selectedSquareTemp.y)
+				var r:Rectangle = levelSelectItems[selectedSquare.x][selectedSquare.y].MouseOverRectangle;
+				// The mouse moved out of the current selected level number rectangle
+				if (!r.contains(currMousePosition.x, currMousePosition.y))
 				{
-					keyFramesDown++;
+					for (var i:uint = 0; i < levelSelectWidth; i++)
+					{
+						for (var j:uint = 0; j < levelSelectHeight; j++)
+						{
+							r = levelSelectItems[i][j].MouseOverRectangle;
+							if (r.contains(currMousePosition.x, currMousePosition.y))
+							{
+								selectedSquare.x = i;
+								selectedSquare.y = j;
+								break;
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				var selectedSquareTemp:FlxPoint = new FlxPoint();
+				var keyDirectionTemp:uint = 0;
+				if (FlxG.keys.LEFT)
+				{
+					selectedSquareTemp.x--;
+				}
+				if (FlxG.keys.RIGHT)
+				{
+					selectedSquareTemp.x++;
+				}
+				if (FlxG.keys.UP)
+				{
+					selectedSquareTemp.y--;
+				}
+				if (FlxG.keys.DOWN)
+				{
+					selectedSquareTemp.y++;
+				}
+				if (selectedSquareTemp.x != 0 || selectedSquareTemp.y != 0)
+				{
+					if (selectedSquarePrev.x == selectedSquareTemp.x && selectedSquarePrev.y == selectedSquareTemp.y)
+					{
+						keyFramesDown++;
+					}
+					else
+					{
+						keyFramesDown = 0;
+					}
+					if (keyFramesDown % levelAdvanceRate == 0)
+					{
+						selectedSquare.x += selectedSquareTemp.x;
+						selectedSquare.y += selectedSquareTemp.y;
+						FlxG.play(Assets.sfx_option_cycle);
+					}
+					if (selectedSquare.x < 0)
+					{
+						selectedSquare.x += MenuUI.levelSelectWidth;
+					}
+					if (selectedSquare.x >= MenuUI.levelSelectWidth)
+					{
+						selectedSquare.x -= MenuUI.levelSelectWidth;
+					}
+					if (selectedSquare.y < 0)
+					{
+						selectedSquare.y += MenuUI.levelSelectHeight;
+					}
+					if (selectedSquare.y >= MenuUI.levelSelectHeight)
+					{
+						selectedSquare.y -= MenuUI.levelSelectHeight;
+					}
+					selectedSquarePrev.x = selectedSquareTemp.x;
+					selectedSquarePrev.y = selectedSquareTemp.y;
 				}
 				else
 				{
 					keyFramesDown = 0;
+					selectedSquarePrev.x = selectedSquarePrev.y = 0;
 				}
-				if (keyFramesDown % levelAdvanceRate == 0)
-				{
-					selectedSquare.x += selectedSquareTemp.x;
-					selectedSquare.y += selectedSquareTemp.y;
-					FlxG.play(Assets.sfx_option_cycle);
-				}
-				if (selectedSquare.x < 0)
-				{
-					selectedSquare.x += MenuUI.levelSelectWidth;
-				}
-				if (selectedSquare.x >= MenuUI.levelSelectWidth)
-				{
-					selectedSquare.x -= MenuUI.levelSelectWidth;
-				}
-				if (selectedSquare.y < 0)
-				{
-					selectedSquare.y += MenuUI.levelSelectHeight;
-				}
-				if (selectedSquare.y >= MenuUI.levelSelectHeight)
-				{
-					selectedSquare.y -= MenuUI.levelSelectHeight;
-				}
-				selectedSquarePrev.x = selectedSquareTemp.x;
-				selectedSquarePrev.y = selectedSquareTemp.y;
 			}
-			else
-			{
-				keyFramesDown = 0;
-				selectedSquarePrev.x = selectedSquarePrev.y = 0;
-			}
+			prevMousePosition.x = currMousePosition.x;
+			prevMousePosition.y = currMousePosition.y;
 		}
 	}
 

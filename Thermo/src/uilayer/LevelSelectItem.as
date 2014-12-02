@@ -1,5 +1,6 @@
 package uilayer 
 {
+	import flash.geom.Rectangle;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
@@ -32,6 +33,8 @@ package uilayer
 		public var selected:Boolean;
 		public var state:uint;
 		
+		public var MouseOverRectangle:Rectangle;
+		
 		public function LevelSelectItem(x:uint, y:uint) 
 		{
 			super();
@@ -63,6 +66,7 @@ package uilayer
 				new PiecewiseInterpolationNode(Utils.Hermite, 0, 2 * FlxG.width, 0, 0),
 				new PiecewiseInterpolationNode(null, 80, itemText.x));
 			itemText_y2 = Utils.CreatePeriodic(itemText.y, 5, 100);
+			MouseOverRectangle = new Rectangle(itemText.x, itemText.y, itemText.width, itemText.height);
 			
 			add(itemText);
 		}
@@ -121,6 +125,8 @@ package uilayer
 				symbol.x = itemText.x + 5;
 				symbol.y = itemText.y + 5;
 			}
+			MouseOverRectangle.x = itemText.x;
+			MouseOverRectangle.y = itemText.y;
 		}
 	}
 

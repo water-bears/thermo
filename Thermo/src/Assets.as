@@ -172,9 +172,10 @@ package {
 		
 		[Embed(source = "../assets/ui/star.png")]
 		public static var starSprite:Class;
-		
 		[Embed(source = "../assets/ui/lock.png")]
 		public static var lockSprite:Class;
+		[Embed(source = "../assets/ui/cursor.png")]
+		public static var cursorSprite:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)
