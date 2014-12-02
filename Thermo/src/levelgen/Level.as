@@ -50,6 +50,7 @@ package levelgen {
 		 * Note, the strings do not need to be numbers (We just happen to use numbers a lot).
 		 * The name of the level corresponds to the name of the .dam file.
 		 */
+		/*
 		private static var LEVEL_MAP_1:Array = new Array(
 			"tutorial_jump_00",//intro row
 			"tutorial_heat",
@@ -76,9 +77,9 @@ package levelgen {
 			"hard_00",
 			"hard_02",
 			"hard_100"
-		);
+		);*/
 		
-		private static var LEVEL_MAP_2:Array = new Array(
+		private static var LEVEL_MAP:Array = new Array(
 			//intro row
 			"tutorial_jump_00",
 			"tutorial_heat",
@@ -108,13 +109,15 @@ package levelgen {
 			"hard_00",
 			"hard_01",
 			"hard_02",
-			"hard_100"
+			"hard_100",
+			//adding levels
+			"medium_07"
 		);
 		
 		/**
 		 * Number of levels in the game
 		 */
-		public static var NUM_LEVELS:uint = LEVEL_MAP_1.length;
+		public static var NUM_LEVELS:uint = LEVEL_MAP.length;
 		
 		/**
 		 * Helper function gets the name of the level that corresponds
@@ -122,21 +125,14 @@ package levelgen {
 		 */
 		private static function levelName(levelNum:uint):String
 		{
-			if (ab == 1)
-			{
-				return LEVEL_MAP_1[(levelNum - 1) % NUM_LEVELS];
-			}
-			else
-			{
-				return LEVEL_MAP_2[(levelNum - 1) % NUM_LEVELS];
-			}
+			return LEVEL_MAP[(levelNum - 1) % NUM_LEVELS];
 		}
 		
 		public function Level(levelNum:uint) 
 		{
 			// This is so horrible. Must not be here during Kong release.
 			this.levelNum = levelNum;
-			levelNum = LevelServices.TranslateToOldScheme(levelNum);
+			//levelNum = LevelServices.TranslateToOldScheme(levelNum);
 			//if(AB != null) this.AB = AB;
 			
 			var file:String = fileLocation + levelName(levelNum) + "/" + "Level_" + levelName(levelNum) + ".xml";

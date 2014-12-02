@@ -71,6 +71,7 @@ package uilayer
 		
 		public static function Unlocked(levelNum:uint) : Boolean
 		{
+			/*
 			if (levelNum == 0) return true;
 			if (levelNum < 20)
 			{
@@ -79,7 +80,8 @@ package uilayer
 			else
 			{
 				return ThermoSaves.GetLevelCleared((levelNum - 19) * 4);
-			}
+			}*/
+			return true;
 		}
 		
 		public static function NextLevel(levelNum:uint) : uint
