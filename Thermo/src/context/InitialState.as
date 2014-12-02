@@ -20,10 +20,10 @@ package context {
 			super.create();
 			logger = new Logging(700, 3, true); // set to false later!!
 			logger.recordPageLoad();
-			var x:Number = Math.random();
-			x = Math.round(x) + 1;
-			var AB:Number = logger.recordABTestValue(x);
-			Level.ab = AB;
+			//var x:Number = Math.random();
+			//x = Math.round(x) + 1;
+			//var AB:Number = logger.recordABTestValue(x);
+			//Level.ab = AB;
 		}
 		
 		override public function update():void 
