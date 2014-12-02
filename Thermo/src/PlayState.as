@@ -1,28 +1,30 @@
 package {
-	import audio.AudioManager;
 	import Logging;
+	
+	import audio.AudioManager;
 	
 	import context.BubbleBackground;
 	import context.LevelSelectState;
 	import context.TransitionState;
 	
 	import flash.display.Shape;
+	import flash.events.TimerEvent;
 	import flash.geom.ColorTransform;
-	import flash.utils.getTimer;
 	import flash.geom.Point;
 	import flash.utils.Timer;
-	import flash.events.TimerEvent;
+	import flash.utils.getTimer;
+	
+	import io.ThermoSaves;
 	
 	import levelgen.*;
 	
 	import org.flixel.*;
-	import water.WaterWaves;
 	
+	import uilayer.LevelServices;
 	import uilayer.LevelUI;
 	import uilayer.Utils;
-	import uilayer.LevelServices;
 	
-	import io.ThermoSaves;
+	import water.WaterWaves;
 		
 	public class PlayState extends FlxState {
 		/* Action identifiers for //logger:
@@ -193,7 +195,7 @@ package {
 			add(level.frontSprites);
 			startTime = getTimer();
 			
-			if (level.levelNum == 0) logger.recordEvent(0, 9, "$ $ $ $ " + Level.ab);
+			//if (level.levelNum == 0) logger.recordEvent(0, 9, "$ $ $ $ " + Level.ab);
 			
 			// Create and add the UI layer
 			// This NEEDS to be last. Otherwise objects will linger when the screen fades out.
@@ -332,12 +334,14 @@ package {
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
+					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 					ui.BeginExitSequence(reset);
 					player.visible = false;
 				}
 				if (FlxG.keys.R){
 					logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
+					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 					ui.BeginExitSequence(reset);
 					player.visible = false;
 				}
@@ -349,6 +353,7 @@ package {
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
+					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 					ui.BeginExitSequence(reset);
 					player.visible = false;	
 				}
@@ -359,6 +364,7 @@ package {
 						logger.recordLevelEnd();
 						alreadyLost == true;
 					}
+					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 					ui.BeginExitSequence(reset);
 					player.visible = false;	
 				}
@@ -452,16 +458,19 @@ package {
 		}
 		
 		public function goToNextLevel() : void {
+			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 			FlxG.switchState(new TransitionState(LevelServices.NextLevel(level.levelNum), logger, level.levelNum));
 		}
 		
 		/** Reset function **/
 		public function reset():void {
+			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}
 		
 		/** Level select function **/
 		public function levelSelect():void {
+			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 			FlxG.switchState(new TransitionState(-1, logger, level.levelNum));
 		}
 		

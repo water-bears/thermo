@@ -23,10 +23,10 @@ package context {
 			// IF YOU ARE WORKING ON A NEW THING FOR THE GAME, USE "TRUE" --> DEBUG MODE
 			logger = new Logging(700, 3, true);
 			logger.recordPageLoad();
-			var x:Number = Math.random();
-			x = Math.round(x) + 1;
-			var AB:Number = logger.recordABTestValue(x);
-			Level.ab = AB;
+			//var x:Number = Math.random();
+			//x = Math.round(x) + 1;
+			//var AB:Number = logger.recordABTestValue(x);
+			//Level.ab = AB;
 			
 			// Enable mouse
 			FlxG.mouse.show(Assets.cursorSprite, 1);
