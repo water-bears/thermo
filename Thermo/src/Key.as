@@ -5,7 +5,7 @@ package {
 		
 		private var gravity:Boolean;
 		
-		public function Key(x:Number, y:Number, gravity:Boolean = false) {
+		public function Key(x:Number, y:Number, gravity:Boolean = true) {
 			super(x, y);
 			loadGraphic(Assets.keySprite, false, false, 20, 20);
 			
@@ -20,8 +20,11 @@ package {
 			
 			maxVelocity.y = 500;
 			maxVelocity.x = 0;
-			acceleration.y = 1000;
-			this.gravity = gravity;
+			
+			if (gravity)
+			{
+				acceleration.y = 1000;
+			}
 			this.solid = true;
 		}
 		

@@ -44,7 +44,7 @@ package levelgen {
 		private const fileLocation:String = "levels/";
 		
 		public static var ab:Number;
-		
+
 		public function Level(levelNum:uint) 
 		{
 			// This is so horrible. Must not be here during Kong release.
@@ -177,7 +177,7 @@ package levelgen {
 					case "Key":
 						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 						sprite.frame = 2;
-						var gravity:Boolean = false;
+						var gravity:Boolean = true;
 						
 						numProps = xmlSprite[spriteNum].prop.length();
 						xmlProp = xmlSprite[spriteNum].prop;
@@ -187,7 +187,7 @@ package levelgen {
 							switch(proptype)
 							{
 							case "gravity":
-								gravity = xmlProp[propNum].@value;
+								gravity = (xmlProp[propNum].@value == "true")
 								break;
 							default:
 								break;

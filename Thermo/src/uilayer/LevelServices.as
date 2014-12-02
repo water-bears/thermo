@@ -39,7 +39,8 @@ package uilayer
 			"hard_01",
 			"hard_02",
 			//adding levels
-			"medium_07"
+			"medium_07",
+			"hard_03"
 		);
 		
 		private static var S_LEVEL_NAMES:Array = new Array(

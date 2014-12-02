@@ -35,7 +35,7 @@ package context
 			}
 			else
 			{
-				FlxG.switchState(new MenuState(2, currentLevel - 1, logger));
+				FlxG.switchState(new MenuState(2, currentLevel, logger));
 			}
 		}
 	}
