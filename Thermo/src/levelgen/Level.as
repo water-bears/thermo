@@ -111,7 +111,8 @@ package levelgen {
 			"hard_02",
 			"hard_100",
 			//adding levels
-			"medium_07"
+			"medium_07",
+			"hard_03"
 		);
 		
 		/**
@@ -259,7 +260,7 @@ package levelgen {
 					case "Key":
 						sprite.loadGraphic(doorAsset, false, false, xmlSpriteClass.@width, xmlSpriteClass.@height);
 						sprite.frame = 2;
-						var gravity:Boolean = false;
+						var gravity:Boolean = true;
 						
 						numProps = xmlSprite[spriteNum].prop.length();
 						xmlProp = xmlSprite[spriteNum].prop;
@@ -269,7 +270,7 @@ package levelgen {
 							switch(proptype)
 							{
 							case "gravity":
-								gravity = xmlProp[propNum].@value;
+								gravity = (xmlProp[propNum].@value == "true")
 								break;
 							default:
 								break;
