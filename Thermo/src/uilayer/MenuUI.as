@@ -186,7 +186,7 @@ package uilayer {
 		private function chooseLevel():void
 		{
 			FlxG.mouse.getScreenPosition(null, currMousePosition);
-			var mouseMoved:Boolean = prevMousePosition.x == currMousePosition.x || prevMousePosition.y == currMousePosition.y;
+			var mouseMoved:Boolean = prevMousePosition.x != currMousePosition.x || prevMousePosition.y != currMousePosition.y;
 			if (mouseMoved)
 			{
 				var r:Rectangle = levelSelectItems[selectedSquare.x][selectedSquare.y].MouseOverRectangle;
@@ -202,6 +202,7 @@ package uilayer {
 							{
 								selectedSquare.x = i;
 								selectedSquare.y = j;
+								FlxG.play(Assets.sfx_option_cycle);
 								break;
 							}
 						}

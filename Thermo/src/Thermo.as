@@ -3,6 +3,7 @@ package {
 	import audio.AudioManager;
 	import context.InitialState;
 	import context.MenuState;
+    //import com.demonsters.debugger.MonsterDebugger;
 	
 	import org.flixel.*;
 	import Logging;
@@ -20,6 +21,9 @@ package {
 			// Optional debug tools
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
+			
+			//MonsterDebugger.initialize(this);
+            //MonsterDebugger.trace(this, "Hello World!");
 			
 			AudioManager.StartMusic(AudioManager.OUTSIDE_WATER);
 		}

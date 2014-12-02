@@ -27,9 +27,6 @@ package context {
 			//x = Math.round(x) + 1;
 			//var AB:Number = logger.recordABTestValue(x);
 			//Level.ab = AB;
-			
-			// Enable mouse
-			FlxG.mouse.show(Assets.cursorSprite, 1);
 		}
 		
 		override public function update():void 

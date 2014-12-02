@@ -3,6 +3,7 @@ package context {
 	import flash.display.Shape;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
+	import flash.ui.MouseCursor;
 	
 	import audio.AudioManager;
 	
@@ -40,6 +41,9 @@ package context {
 			
 			ui = new MenuUI(initialState, initialLevel, goToNextState, logger);
 			add(ui);
+			
+			add(new MouseSprite(false));
+			
 			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 		}
 		
