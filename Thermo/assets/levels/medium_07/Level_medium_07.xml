@@ -45,12 +45,13 @@
 		<sprite clas="Spikes" name="Spikes" x="259.00" y="80.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Spikes" name="Spikes" x="211.00" y="80.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Spikes" name="Spikes" x="188.00" y="80.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="309.00" y="149.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >
+			<prop name="gravity" value="false" />
+		</sprite>
+		<sprite clas="NeutralGate" name="NeutralGate" x="585.00" y="149.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FlashGate" name="FlashGate" x="144.00" y="157.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FreezeGate" name="FreezeGate" x="129.00" y="157.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="86.00" y="174.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Key" name="Key" x="314.00" y="266.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >
-			<prop name="gravity" value="false" />
-		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="514.00" y="250.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FlashGate" name="FlashGate" x="604.00" y="255.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="618.00" y="255.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
