@@ -42,7 +42,7 @@ package uilayer
 			"hard_03", //explores flash freeze w/ flash heat, changing state in bubble
 			
 			//row 5: hard levels with everything
-			"tutorial_momentum", //explores flash heat w/ momentum and freeze (hard)
+			"grace3", //explores flash heat w/ momentum and freeze (hard)
 			"hard_04", //explores trapdoor as blockade, flash freeze w/ flash heat (hard)
 			"hard_00", //explores flash freeze, flash heat, trapdoor (hard)
 			"hard_01", //explores flash freeze w/ heat, momentum (hard)
