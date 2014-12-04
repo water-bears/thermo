@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <version>3.1.6</version>
+  <bgColor>0x777777</bgColor>
+  <viewPos x="13" y="22"/>
+  <firstLayersTop>false</firstLayersTop>
+  <spriteEntries currentId="21">
+    <sprite name="Player" idx="1" className="Player" image="damesprites/character.png" width="20" height="24" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="24" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false"/>
+    <sprite name="HeatGate" idx="2" className="HeatGate" image="damesprites/gates.png" width="10" height="40" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="2" canEditFrames="true" lockRotation="false"/>
+    <sprite name="FreezeGate" idx="3" className="FreezeGate" image="damesprites/gates.png" width="10" height="40" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="FlashGate" idx="4" className="FlashGate" image="damesprites/gates.png" width="10" height="40" preview="3" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Key" idx="5" className="Key" image="damesprites/door.png" width="20" height="20" preview="2" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Exit" idx="6" className="Exit" image="damesprites/door.png" width="20" height="20" preview="1" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Button" idx="7" className="Button" image="damesprites/button.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Trapdoor" idx="8" className="Trapdoor" image="objects/trapdoor.png" width="20" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Spikes" idx="9" className="Spikes" image="objects/spikes1.png" width="20" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Upspikes" idx="10" className="Upspikes" image="objects/upspikes1.png" width="20" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="MovingPlatform" idx="11" className="MovingPlatform" image="objects/movingplatform.png" width="40" height="10" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="40" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="NeutralGate" idx="12" className="NeutralGate" image="damesprites/gates.png" width="10" height="40" preview="4" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="40" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="WindLeft" idx="13" className="WindLeft" image="damesprites/wind_left.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="WindRight" idx="14" className="WindRight" image="damesprites/wind_right.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="HotLava" idx="15" className="HotLava" image="objects/lava.png" width="200" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="200" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="ColdLava" idx="16" className="ColdLava" image="objects/lava.png" width="200" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="200" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Grass" idx="17" className="Grass" image="objects/grass.png" width="20" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="20" boundsHeight="20" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Tree" idx="18" className="Tree" image="objects/tree.png" width="120" height="120" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="120" boundsHeight="120" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Rightspikes" idx="19" className="Rightspikes" image="objects/rightspikes1.png" width="10" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
+    <sprite name="Leftspikes" idx="20" className="Leftspikes" image="objects/leftspikes1.png" width="10" height="20" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="10" boundsHeight="10" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false" selected="true"/>
+  </spriteEntries>
+  <layers>
+    <group name="Group1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+      <maplayer name="Water" id="0" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/water20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      </maplayer>
+      <maplayer name="Ground" id="1" xScroll="1" yScroll="1" x="0" y="0" width="32" height="24" tileset="tilesheets/ground20.png" tileWidth="20" tileHeight="20" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="20" tileSpacingY="20" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,6,7,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,6,1,7,0,0,0,1,0,0,0,1,0,0,0,0,0,0,6,1,1,1,1,1,13,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,9,0,0,0,0,6,1,1,1,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,11,1,1</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0,6,1,1,1,1,1,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,6,1,1,1,1,1,1,1,1,1,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,1,1,1,0,0,0,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0</row>
+        <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
+        <row>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</row>
+        <tileProperties>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <spritelayer name="Objects" id="2" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
+        <sprite guid="CACC0DB3-D64B-C806-64CF-E19F3E5CBF6A" x="310" y="0" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="8040AE19-416A-0844-8F07-9A1ED3487CFF" x="310" y="20" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="EE1779E5-53B5-1893-C389-BE993C581D64" x="310" y="40" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="BB9CCDAC-C2B6-7AB0-98B3-A8B56B731D98" x="310" y="60" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="2FE2BD2A-0216-2637-6CB8-24D463613DA5" x="260" y="60" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="9E60F3A8-344C-CD53-D6F3-4870EBE501C2" x="310" y="80" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="A1CB4A51-2F0D-9E09-A79A-EDED774073FE" x="260" y="80" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="3A33D5FE-EC2D-5F42-EF53-487F95C74E83" x="310" y="100" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="F546E8E6-40E8-06A9-720C-7FC2893357F9" x="260" y="100" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="9571E68E-D5B3-0A03-4707-D8FA8C802B10" x="310" y="120" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="14D5E7EE-ED3B-0974-BEAE-3D7BC65C06DD" x="260" y="120" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="2901F8E2-6F45-7745-E0EA-743E096B3C27" x="259" y="139" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="FFCF7476-6F43-2A9F-DA54-DAEB3588A821" x="310" y="140" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="B23EB64D-E0F2-77E9-1F82-45DBBE06F505" x="260" y="159" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="49958A41-309A-659E-AF9E-9E5611361BA5" x="310" y="160" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="D67458A8-56EA-1049-7A6A-10F762CDDAD4" x="260" y="179" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="E0CD76D5-833B-AA52-B35A-998C5E75FDDF" x="310" y="180" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="442FC1B7-3555-6671-4DC5-50A595E3518C" x="260" y="199" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="C4647237-B856-AE64-1731-CD3C09E403B4" x="310" y="200" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="76B83295-738E-0E1B-AB84-C5DFE04279C2" x="260" y="219" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="9B0AA7C1-B44A-A879-B721-138F180AF297" x="310" y="220" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="AB1A0D4F-3A78-8BEB-9146-0C3AA67F3D5F" x="260" y="239" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="495C8729-06A6-D3B1-B69E-1FACC091709F" x="310" y="240" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="D474D324-7618-F45D-909E-4B906D89ACCD" x="260" y="259" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="FAF10C23-A7EF-F2C9-CD84-606428778522" x="310" y="260" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="087898CD-31F5-6150-B835-3206959EA425" x="139" y="260" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5"/>
+        <sprite guid="71CAF9CF-D023-7E2B-FFC2-7F9D51F321E3" x="260" y="279" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="5480FA17-C9FF-DD3C-C3FB-DBD44E1D32C7" x="310" y="280" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="D5ED0F1C-810A-45EB-212E-BD713490954D" x="260" y="299" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="923F475A-D028-8BAE-8A4D-9E742D1B1738" x="310" y="300" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="B3E78B71-8197-EC57-555C-8199C2CD7A8F" x="260" y="319" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="853ED7DB-A7D9-5A4C-DEF9-B0FC589917E2" x="310" y="320" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="20"/>
+        <sprite guid="0825749C-C508-56A3-5D44-101A4D392DA0" x="260" y="339" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="3A69D371-078E-D0D2-243A-0D0F73F4BFEC" x="260" y="359" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="9EFDB983-EF3B-DC54-6F30-91D124EB81E1" x="260" y="379" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="0F18995A-58E9-E0C7-B3BF-C1DEBDD14BBD" x="260" y="399" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="1F1EEEC4-0C7B-5479-4712-287C07A10D2D" x="260" y="419" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+        <sprite guid="4D1483D8-CD27-E8C5-0A06-EF2F7EE01250" x="2" y="416" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
+        <sprite guid="0527396A-183B-0D97-1E72-BBCE39AB07F4" x="68" y="400" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3" frame="1"/>
+        <sprite guid="E92DA05F-187C-0441-87EB-BC3D5818A27B" x="207" y="400" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2" frame="2"/>
+        <sprite guid="9FEDA25D-6CB9-85E4-90B0-5ACE5C601B80" x="562" y="420" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+        <sprite guid="87A80CD6-1E1E-6DEA-2EF4-5A0CF3D86A33" x="260" y="439" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="19"/>
+      </spritelayer>
+      <spritelayer name="Front" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
+    </group>
+  </layers>
+  <layerTemplates/>
+  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/ground20.png">
+    <row>
+      <tile>6</tile>
+      <tile>1</tile>
+      <tile>7</tile>
+    </row>
+    <row>
+      <tile>1</tile>
+      <tile>1</tile>
+      <tile>1</tile>
+    </row>
+    <row>
+      <tile>8</tile>
+      <tile>1</tile>
+      <tile>9</tile>
+    </row>
+    <specialConnections>
+      <sets/>
+      <rows/>
+    </specialConnections>
+  </tileMatrix>
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="tilesheets/ground20.png">
+    <tiles>0,0,0,0,0,0,0,0,0</tiles>
+  </tileMatrixData>
+  <tileBrushes/>
+  <colorSwatches/>
+  <bookmarks>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+    <bookmark enabled="false"/>
+  </bookmarks>
+  <colourGrid>
+    <colour>0x000000</colour>
+    <colour>0x9c9c9c</colour>
+    <colour>0xffffff</colour>
+    <colour>0xbe2532</colour>
+    <colour>0xe06e8a</colour>
+    <colour>0x483b2a</colour>
+    <colour>0xa36323</colour>
+    <colour>0xeb8833</colour>
+    <colour>0xf6e16d</colour>
+    <colour>0x2e474d</colour>
+    <colour>0x42881e</colour>
+    <colour>0xa2cd2e</colour>
+    <colour>0x1a2531</colour>
+    <colour>0x025683</colour>
+    <colour>0x33a2f1</colour>
+    <colour>0xb2dcee</colour>
+  </colourGrid>
+  <options>
+    <AllowEditingTemplateLayerList>true</AllowEditingTemplateLayerList>
+    <ForceAddingTemplatedMapsOnly>false</ForceAddingTemplatedMapsOnly>
+    <ForceAddingTemplatedLayersOnly>false</ForceAddingTemplatedLayersOnly>
+    <PreventEditingMapTileset>false</PreventEditingMapTileset>
+    <PreventEditingSprites>false</PreventEditingSprites>
+    <SaveSpritesSeparately>false</SaveSpritesSeparately>
+    <SavePropertyTypesSeparately>false</SavePropertyTypesSeparately>
+    <SaveLayerTemplatesSeparately>false</SaveLayerTemplatesSeparately>
+    <SaveTileMatrixSeparately>false</SaveTileMatrixSeparately>
+    <SaveTileBrushesSeparately>false</SaveTileBrushesSeparately>
+    <SaveGuidesSeparately>false</SaveGuidesSeparately>
+    <ForceTilemapPositionChangesInUnits>false</ForceTilemapPositionChangesInUnits>
+  </options>
+  <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\xmlThermoExporter.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="false" useProjectExporterOnly="false">
+    <setting name="ExportOnlyCSV">false</setting>
+    <setting name="DataDir">C:\Users\Andy\Documents\School\Fall 2014\CS 4154\thermo\Thermo\assets</setting>
+    <setting name="LevelDir">C:\Users\Andy\Documents\School\Fall 2014\CS 4154\thermo\Thermo\assets\levels</setting>
+  </exporter>
+  <customPropertyTypes/>
+  <guides>
+    <snap>false</snap>
+    <visible>false</visible>
+    <x>0</x>
+    <y>0</y>
+    <xspace>30</xspace>
+    <yspace>30</yspace>
+    <gridcolour>0x77ff0000</gridcolour>
+    <snaptype>Anchor</snaptype>
+    <paintcontinuous>false</paintcontinuous>
+    <showgameregion>false</showgameregion>
+    <gameregionwidth>400</gameregionwidth>
+    <gameregionheight>400</gameregionheight>
+    <gameregionopacity>0.5</gameregionopacity>
+    <gameregioncentered>false</gameregioncentered>
+    <minGridSpace>10</minGridSpace>
+    <showregiongrid>false</showregiongrid>
+    <regiongridx>0</regiongridx>
+    <regiongridy>0</regiongridy>
+    <regiongridcolour>0xccffffff</regiongridcolour>
+  </guides>
+</project>
