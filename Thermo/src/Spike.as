@@ -14,22 +14,22 @@ package {
 				case 2:
 					loadGraphic(Assets.spikeSprite);
 					width = 18;
-					height = 10;
+					height = 9;
 					break;
 				case 3:
 					loadGraphic(Assets.leftspikeSprite);
-					width = 10;
+					width = 9;
 					height = 18;
 					break;
 				case 4:
 					loadGraphic(Assets.rightspikeSprite);
-					width = 10;
+					width = 9;
 					height = 18;
 					break;
 				default:
 					loadGraphic(Assets.upspikeSprite);
 					width = 18;
-					height = 10;
+					height = 9;
 					break;
             }
 
