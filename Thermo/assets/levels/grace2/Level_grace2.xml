@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level name="Group1" minx="0" miny="0" maxx="640" maxy="480" bgColor = "0xff777777" >
+	<spriteclasses>
+		<clas name="Player" file="damesprites/character.png" width="20" height="24" index="0" />
+		<clas name="HeatGate" file="damesprites/gates.png" width="10" height="40" index="2" />
+		<clas name="FreezeGate" file="damesprites/gates.png" width="10" height="40" index="1" />
+		<clas name="FlashGate" file="damesprites/gates.png" width="10" height="40" index="3" />
+		<clas name="Key" file="damesprites/door.png" width="20" height="20" index="2" />
+		<clas name="Exit" file="damesprites/door.png" width="20" height="20" index="1" />
+		<clas name="Button" file="damesprites/button.png" width="20" height="20" index="0" />
+		<clas name="Trapdoor" file="objects/trapdoor.png" width="20" height="10" index="0" />
+		<clas name="Spikes" file="objects/spikes1.png" width="20" height="10" index="0" />
+		<clas name="Upspikes" file="objects/upspikes1.png" width="20" height="10" index="0" />
+		<clas name="MovingPlatform" file="objects/movingplatform.png" width="40" height="10" index="0" />
+		<clas name="NeutralGate" file="damesprites/gates.png" width="10" height="40" index="4" />
+		<clas name="WindLeft" file="damesprites/wind_left.png" width="20" height="20" index="0" />
+		<clas name="WindRight" file="damesprites/wind_right.png" width="20" height="20" index="0" />
+		<clas name="HotLava" file="objects/lava.png" width="200" height="20" index="0" />
+		<clas name="ColdLava" file="objects/lava.png" width="200" height="20" index="0" />
+		<clas name="Grass" file="objects/grass.png" width="20" height="20" index="0" />
+		<clas name="Tree" file="objects/tree.png" width="120" height="120" index="0" />
+		<clas name="Rightspikes" file="objects/rightspikes1.png" width="10" height="20" index="0" />
+		<clas name="Leftspikes" file="objects/leftspikes1.png" width="10" height="20" index="0" />
+	</spriteclasses>
+	<layer name="Water" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/grace2/mapCSV_Group1_Water.csv" tiles="tilesheets/water20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Ground" xScroll="1.000" yScroll="1.000" >
+		<map csv="levels/grace2/mapCSV_Group1_Ground.csv" tiles="tilesheets/ground20.png" x="0.000" y="0.000" tileWidth="20" tileHeight="20" hasHits="false" collIdx="1" drawIdx="1" />
+	</layer>
+	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="0.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="40.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="60.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="60.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="80.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="80.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="100.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="100.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="120.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="120.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="259.00" y="139.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="140.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="159.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="160.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="179.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="180.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="199.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="200.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="219.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="239.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="240.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="259.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="260.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Key" name="Key" x="139.00" y="260.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="279.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="280.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="299.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="300.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="319.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Leftspikes" name="Leftspikes" x="310.00" y="320.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="339.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="359.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="379.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="399.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="419.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="2.00" y="416.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FreezeGate" name="FreezeGate" x="68.00" y="400.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="HeatGate" name="HeatGate" x="207.00" y="400.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Exit" name="Exit" x="562.00" y="420.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Rightspikes" name="Rightspikes" x="260.00" y="439.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+	</layer>
+	<layer name="Front" xScroll="1.000" yScroll="1.000" >
+	</layer>
+</level>
