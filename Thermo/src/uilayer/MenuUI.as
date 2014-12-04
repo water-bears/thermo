@@ -42,6 +42,8 @@ package uilayer {
 		private var state:uint;
 		private var callback:Function;
 		
+		private var mouseValidRectangle:Rectangle;
+		
 		//Robyn
 		public var initialLevel:uint;
 		public var logger:Logging;
@@ -112,6 +114,7 @@ package uilayer {
 			levelSelectText_y12 = Utils.CreatePeriodic(0.05 * dimensions.y, 10, 400);
 			
 			add(new MouseLayer(false));
+			mouseValidRectangle = new Rectangle(LevelSelectItem.xMin, LevelSelectItem.yMin, LevelSelectItem.xMax - LevelSelectItem.xMin + 40, LevelSelectItem.yMax - LevelSelectItem.yMin + 40);
 		}
 		
 		override public function update():void 
@@ -161,7 +164,7 @@ package uilayer {
 				// choose yer level
 				chooseLevel();
 				selectedLevel = selectedSquare.y * MenuUI.levelSelectWidth + selectedSquare.x;
-				if ((FlxG.keys.ENTER || FlxG.mouse.justPressed()) && LevelServices.Unlocked(selectedLevel))
+				if ((FlxG.keys.ENTER || (FlxG.mouse.justPressed() && mouseValidRectangle.contains(FlxG.mouse.x, FlxG.mouse.y))) && LevelServices.Unlocked(selectedLevel))
 				{
 					if(selectedLevel != initialLevel){
 						// THIS PERSON SKIPPED A LEVEL

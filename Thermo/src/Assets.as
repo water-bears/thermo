@@ -176,6 +176,10 @@ package {
 		public static var lockSprite:Class;
 		[Embed(source = "../assets/ui/cursor.png")]
 		public static var cursorSprite:Class;
+		[Embed(source = "../assets/ui/pause.png")]
+		public static var pauseSprite:Class;
+		[Embed(source = "../assets/ui/mute.png")]
+		public static var muteSprite:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)

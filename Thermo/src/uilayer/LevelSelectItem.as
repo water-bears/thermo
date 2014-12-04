@@ -13,10 +13,10 @@ package uilayer
 	 */
 	public class LevelSelectItem extends FlxGroup
 	{
-		private static var xMin:Number = 0.2 * FlxG.width;
-		private static var xMax:Number = 0.8 * FlxG.width;
-		private static var yMin:Number = 0.4 * FlxG.height;
-		private static var yMax:Number = 0.8 * FlxG.height;
+		public static var xMin:Number = 0.2 * FlxG.width;
+		public static var xMax:Number = 0.8 * FlxG.width;
+		public static var yMin:Number = 0.4 * FlxG.height;
+		public static var yMax:Number = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
 		private var symbol:FlxSprite;
@@ -66,12 +66,13 @@ package uilayer
 				new PiecewiseInterpolationNode(Utils.Hermite, 0, 2 * FlxG.width, 0, 0),
 				new PiecewiseInterpolationNode(null, 80, itemText.x));
 			itemText_y2 = Utils.CreatePeriodic(itemText.y, 5, 100);
-			MouseOverRectangle = new Rectangle(itemText.x, itemText.y, itemText.width, itemText.height);
+			MouseOverRectangle = new Rectangle(itemText.x, itemText.y, itemText.width - 20, itemText.height);
+			MouseOverRectangle.inflate(30, 10);
 			
 			add(itemText);
 		}
 		
-		override public function update():void 
+		override public function update():void
 		{
 			if (selected)
 			{
