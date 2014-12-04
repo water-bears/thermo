@@ -110,6 +110,8 @@ package uilayer {
 				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, -500),
 				new PiecewiseInterpolationNode(null, 40, 0));
 			levelSelectText_y12 = Utils.CreatePeriodic(0.05 * dimensions.y, 10, 400);
+			
+			add(new MouseLayer(false));
 		}
 		
 		override public function update():void 

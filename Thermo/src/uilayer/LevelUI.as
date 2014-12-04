@@ -49,6 +49,8 @@ package uilayer {
 		public var logger:Logging;
 		public var level:Level;
 		
+		private var mouseLayer:MouseLayer;
+		
 		public function LevelUI(level:Level, logger:Logging)
 		{
 			super(0);
@@ -125,6 +127,10 @@ package uilayer {
 			pauseOptions_y2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, 0.5 * FlxG.height),
 				new PiecewiseInterpolationNode(null, 30, 0.45 * FlxG.height));
+			
+			mouseLayer = new MouseLayer(true);
+			add(mouseLayer);
+			mouseLayer.visible = false;
 		}
 		
 		override public function draw():void 
@@ -152,6 +158,10 @@ package uilayer {
 				{
 					pauseOptions[i].draw();
 				}
+			}
+			if (mouseLayer.alpha > 0)
+			{
+				mouseLayer.draw();
 			}
 		}
 		
@@ -319,10 +329,12 @@ package uilayer {
 			if (Paused)
 			{
 				state = 2;
+				mouseLayer.AutoFade = false;
 			}
 			else
 			{
 				state = 3;
+				mouseLayer.AutoFade = true;
 			}
 		}
 	}
