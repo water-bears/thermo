@@ -517,7 +517,7 @@ package {
 				// Row 2
 				0x00DDAAFF, // Purple
 				// Row 3
-				0x00BBFFCC, // Green
+				0x00DDFFEE, // Green
 				// Row 4
 				0x00FFFFBB, // Yellow
 				// Row 5
