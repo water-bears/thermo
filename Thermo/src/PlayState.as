@@ -511,6 +511,23 @@ package {
 			
 			background.loadGraphic(Assets.b_list[level]);
 			
+			var tints:Array = [
+				// Row 1
+				0x00BBBBBB, // Black
+				// Row 2
+				0x00DDAAFF, // Purple
+				// Row 3
+				0x00DDFFEE, // Green
+				// Row 4
+				0x00FFFFBB, // Yellow
+				// Row 5
+				0x00FFFFFF, // No change
+				// Row S
+				0x00FFFFFF, // No change
+			];
+				
+			background.color = tints[(int)(level / 5)];
+			
 			// Scale and reposition background
 			background.x -= background.width / 2;
 			background.y -= background.height / 2;
