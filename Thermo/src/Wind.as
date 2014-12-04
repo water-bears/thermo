@@ -4,7 +4,7 @@ package {
 	import org.flixel.FlxBasic;
 	
 	public class Wind extends FlxGroup {
-		private var intensity:Number = 20;
+		private var intensity:Number = 30;
 		
 		private static const BUBBLE_DIAMETER:int = 3;
 		
