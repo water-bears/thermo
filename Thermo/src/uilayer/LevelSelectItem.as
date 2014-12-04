@@ -138,13 +138,13 @@ package uilayer
 			}
 			if (symbol != null)
 			{
-				symbol.x = itemText.x + 5;
-				symbol.y = itemText.y + 5;
+				symbol.x = itemText.x + 0;
+				symbol.y = itemText.y + 0;
 			}
 			if (lockedNumber != null)
 			{
-				lockedNumber.x = itemText.x + 4;
-				lockedNumber.y = itemText.y + 12.5;
+				lockedNumber.x = itemText.x - 2;
+				lockedNumber.y = itemText.y + 9;
 			}
 			MouseOverRectangle.x = itemText.x;
 			MouseOverRectangle.y = itemText.y;
