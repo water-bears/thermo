@@ -216,7 +216,7 @@
 				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
 					velocity.y = -maxVelocity.y;
 				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP")) {
-					if (velocity.y < -200 && velocity.y > -100) {
+					if (velocity.y > -200 && velocity.y < -100) {
 						velocity.y = -200;
 					} else if (velocity.y < -100) {
 						velocity.y = -100;
@@ -235,13 +235,21 @@
 			}
 			
 			// Reverses gravity in superbubble on ceiling
-			if (superBubble && (isTouching(FlxObject.CEILING) || this.y <= 0)) {
-				floatUp = false;
-				acceleration.y = -500;
-				this.drag.x = int.MAX_VALUE;
-
-				if (FlxG.keys.DOWN || FlxG.keys.UP || FlxG.keys.W){
-					velocity.y = maxVelocity.y;
+			if (superBubble) {
+				if(isTouching(FlxObject.CEILING) || this.y <= 0) {
+					floatUp = false;
+					acceleration.y = -500;
+					this.drag.x = int.MAX_VALUE;
+				
+					if (FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP") || FlxG.keys.justPressed("DOWN") || FlxG.keys.justPressed("S")) {
+						velocity.y = maxVelocity.y;
+					}
+				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP") || FlxG.keys.justReleased("DOWN") || FlxG.keys.justReleased("S")) {
+					if (velocity.y < 200 && velocity.y > 100) {
+						velocity.y = 200;
+					} else if (velocity.y > 100) {
+						velocity.y = 100;
+					}
 				}
 			}
 			
