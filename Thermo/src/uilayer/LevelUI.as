@@ -49,6 +49,8 @@ package uilayer {
 		public var logger:Logging;
 		public var level:Level;
 		
+		private var mouseLayer:MouseLayer;
+		
 		public function LevelUI(level:Level, logger:Logging)
 		{
 			super(0);
@@ -125,6 +127,10 @@ package uilayer {
 			pauseOptions_y2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.SmoothStep, 0, 0.5 * FlxG.height),
 				new PiecewiseInterpolationNode(null, 30, 0.45 * FlxG.height));
+			
+			mouseLayer = new MouseLayer(true);
+			add(mouseLayer);
+			mouseLayer.visible = false;
 		}
 		
 		override public function draw():void 
@@ -152,6 +158,10 @@ package uilayer {
 				{
 					pauseOptions[i].draw();
 				}
+			}
+			if (mouseLayer.alpha > 0)
+			{
+				mouseLayer.draw();
 			}
 		}
 		
@@ -186,6 +196,9 @@ package uilayer {
 				}
 				levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
 				levelText.y = levelText_y0.EvaluateAndAdvance();
+				if (FlxG.keys.SPACE || FlxG.keys.ENTER || FlxG.mouse.justPressed()) {
+					FastForward();
+				}
 			}
 			if (state == 1)
 			{
@@ -194,6 +207,19 @@ package uilayer {
 			}
 			if (state == 2)
 			{
+				// If the mouse is moving, get where the mouse is and select
+				// an option based on that.
+				if (mouseLayer.liveMouse)
+				{
+					for (i = 0; i < pauseOptions.length; i++)
+					{
+						if (pauseOptions[i].overlapsPoint(mouseLayer.mousePosition))
+						{
+							selectedPauseOption = i;
+							break;
+						}
+					}
+				}
 				if (FlxG.keys.justPressed("UP"))
 				{
 					if (selectedPauseOption == 0)
@@ -218,7 +244,7 @@ package uilayer {
 					}
 					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
-				if (FlxG.keys.justPressed("ENTER"))
+				if (FlxG.keys.justPressed("ENTER") || FlxG.mouse.justPressed())
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{
@@ -319,10 +345,12 @@ package uilayer {
 			if (Paused)
 			{
 				state = 2;
+				mouseLayer.AutoFade = false;
 			}
 			else
 			{
 				state = 3;
+				mouseLayer.AutoFade = true;
 			}
 		}
 	}

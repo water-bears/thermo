@@ -1,5 +1,4 @@
 package {
-	import context.MouseSprite;
 	import Logging;
 	
 	import audio.AudioManager;
@@ -203,7 +202,6 @@ package {
 			ui = new LevelUI(level, logger);
 			ui.SetSelectCallback(1, reset);
 			ui.SetSelectCallback(2, levelSelect);
-			add(new MouseSprite(true));
 			AudioManager.SetFade(AudioManager.OUTSIDE_WATER);
 			// add(ui);
 		}
@@ -316,10 +314,6 @@ package {
                         }
                     }
                 }
-				
-				if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
-					ui.FastForward();
-				}
 				
 				// If player has the key and touches the exit, they win
 				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
