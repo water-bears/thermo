@@ -123,7 +123,6 @@ package {
 		[Embed(source = "../assets/keys/arrows.png")]
 		public static var arrowsSprite:Class;
 		
-		
 		/* Background sprites */
 		[Embed(source = "../assets/backgrounds/bkgd4_1.png")]
 		private static var red1:Class;
@@ -184,6 +183,10 @@ package {
 		public static var pauseSprite:Class;
 		[Embed(source = "../assets/ui/mute.png")]
 		public static var muteSprite:Class;
+		[Embed(source = "../assets/ui/info.png")]
+		public static var infoSprite:Class;
+		[Embed(source = "../assets/ui/credits.png")]
+		public static var creditsSprite:Class;
 		
 		/*
 		 * Fonts (really just one font, I think)

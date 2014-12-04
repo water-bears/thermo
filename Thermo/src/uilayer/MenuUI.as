@@ -43,6 +43,7 @@ package uilayer {
 		private var callback:Function;
 		
 		private var mouseValidRectangle:Rectangle;
+		private var mouseLayer:MouseLayer;
 		
 		//Robyn
 		public var initialLevel:uint;
@@ -113,7 +114,7 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 40, 0));
 			levelSelectText_y12 = Utils.CreatePeriodic(0.05 * dimensions.y, 10, 400);
 			
-			add(new MouseLayer(false));
+			add(mouseLayer = new MouseLayer(false));
 			mouseValidRectangle = new Rectangle(LevelSelectItem.xMin, LevelSelectItem.yMin, LevelSelectItem.xMax - LevelSelectItem.xMin + 40, LevelSelectItem.yMax - LevelSelectItem.yMin + 40);
 		}
 		
@@ -136,7 +137,7 @@ package uilayer {
 				titleText.y = titleText_y01.EvaluateAndAdvance();
 				promptText.y = promptText_y01.EvaluateAndAdvance();
 				levelSelectText.alpha = 0;
-				if (FlxG.keys.ENTER || (FlxG.mouse.justPressed() && FlxG.mouse.x < FlxG.width - 25 && FlxG.mouse.y > 25))
+				if (FlxG.keys.ENTER || (FlxG.mouse.justPressed() && !mouseLayer.isMouseDisabled() && FlxG.mouse.x < FlxG.width - 50 && FlxG.mouse.y > 25))
 				{
 					state = 1;
 				}
@@ -164,7 +165,7 @@ package uilayer {
 				// choose yer level
 				chooseLevel();
 				selectedLevel = selectedSquare.y * MenuUI.levelSelectWidth + selectedSquare.x;
-				if ((FlxG.keys.ENTER || (FlxG.mouse.justPressed() && mouseValidRectangle.contains(FlxG.mouse.x, FlxG.mouse.y))) && LevelServices.Unlocked(selectedLevel))
+				if ((FlxG.keys.ENTER || (FlxG.mouse.justPressed() && !mouseLayer.isMouseDisabled() && mouseValidRectangle.contains(FlxG.mouse.x, FlxG.mouse.y))) && LevelServices.Unlocked(selectedLevel))
 				{
 					if(selectedLevel != initialLevel){
 						// THIS PERSON SKIPPED A LEVEL

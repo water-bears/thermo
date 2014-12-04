@@ -185,6 +185,8 @@ package {
 			}
 			goldenBubble = new FlxSprite(player.x, player.y, Assets.goldenBubbleSprite);
 			goldenBubble.alpha = 0.5;
+			goldenBubble.visible = false;
+			
 			prevPosition = new Point(player.x, player.y);
 
 

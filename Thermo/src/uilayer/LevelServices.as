@@ -108,7 +108,7 @@ package uilayer
 		
 		public static function Unlocked(levelNum:uint) : Boolean
 		{
-			/*if (levelNum == 0)
+			if (levelNum == 0)
 			{
 				return true;
 			}
@@ -119,8 +119,7 @@ package uilayer
 			else
 			{
 				return Completed(S_LEVEL_UNLOCKED_AFTER[levelNum - NUM_LEVELS]);
-			}*/
-			return true;
+			}
 		}
 		
 		public static function NextLevel(levelNum:uint) : uint

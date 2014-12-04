@@ -198,7 +198,7 @@ package uilayer {
 				}
 				levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
 				levelText.y = levelText_y0.EvaluateAndAdvance();
-				if (FlxG.keys.SPACE || FlxG.keys.ENTER || FlxG.mouse.justPressed()) {
+				if (FlxG.keys.SPACE || FlxG.keys.ENTER || (FlxG.mouse.justPressed() && !mouseLayer.isMouseDisabled())) {
 					FastForward();
 				}
 			}
@@ -246,7 +246,7 @@ package uilayer {
 					}
 					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
-				if (FlxG.keys.justPressed("ENTER") || (FlxG.mouse.justPressed() && framesSincePause > 0))
+				if (FlxG.keys.justPressed("ENTER") || (FlxG.mouse.justPressed() && framesSincePause > 0 && !mouseLayer.isMouseDisabled()))
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{

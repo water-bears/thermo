@@ -20,7 +20,7 @@ package io
 			save = new FlxSave();
 			var i:uint;
 			save.bind("Thermo");
-			if (save.data.version == null)
+			if (save.data.version == null || save.data.version < CURRENT_VERSION)
 			{
 				save.data.version = CURRENT_VERSION;
 				save.data.num_levels = NUM_LEVELS;
@@ -37,24 +37,6 @@ package io
 					save.data.progress.push(false);
 				}
 				save.data.num_levels = NUM_LEVELS;
-				if (save.data.version == 1)
-				{
-					// translate all to ver. 2
-					var a:Vector.<Boolean> = new Vector.<Boolean>();
-					for (i = 0; i < NUM_LEVELS; i++)
-					{
-						a.push(save.data.progress[i]);
-					}
-					for (i = 0; i < NUM_LEVELS; i++)
-					{
-						save.data.progress[i] = a[i];
-					}
-					save.data.version++;
-				}
-				if (save.data.version == 2)
-				{
-					save.data.version++;
-				}
 			}
 			RecalculateNumLevelsCleared();
 			save.flush();
