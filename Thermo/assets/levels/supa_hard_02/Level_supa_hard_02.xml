@@ -23,11 +23,11 @@
 		<sprite clas="Key" name="Key" x="604.00" y="36.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="25.00" y="68.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="354.00" y="93.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="WindLeft" name="WindLeft" x="153.24" y="36.00" angle="0.00" flip="false" xScale="28.51" yScale="11.55" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="110.00" y="151.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="145.00" y="162.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="229.00" y="208.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="278.00" y="234.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindLeft" name="WindLeft" x="153.24" y="36.00" angle="0.00" flip="false" xScale="28.51" yScale="11.55" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="504.00" y="236.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="111.00" y="275.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="NeutralGate" name="NeutralGate" x="433.00" y="303.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
