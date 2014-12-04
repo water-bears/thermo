@@ -13,42 +13,48 @@ package uilayer
 	public class LevelServices 
 	{
 		private static var LEVEL_NAMES:Array = new Array(
-			//intro row
-			"tutorial_jump_00",
-			"tutorial_heat",
-			"tutorial_freeze",
-			"easy_00",
-			//element row
-			"tutorial_neutral",
-			"tutorial_flashheat",
-			"flashheat_2",
-			"tutorial_flashfreeze",
-			//flashheat row
-			"medium_03",
-			"medium_05",
-			"tutorial_wind",
-			"wind_helper2",
-			//flashfreeze row
-			"wind_test",
-			"medium_06",
-			"medium_01",
-			"medium_04",
-			//final row
-			"tutorial_momentum",
-			"hard_00",
-			"hard_01",
-			"hard_02",
-			//adding levels
-			"medium_07",
-			"hard_03"
+			//row 1: introduces platforming, heat, freeze, and neutral gates
+			"tutorial_jump_00", //teaches platforming, door/key
+			"tutorial_heat", //teaches heat
+			"tutorial_freeze", //teaches freeze
+			"easy_00", //compares heat and freeze
+			"tutorial_neutral", //introduces neutral gate
+			
+			//row 2: introduces flash abilities (and trapdoor)
+			"tutorial_flashheat", //introduces flash gate, flash heat (introduces spikes)
+			"flashheat_2", //more flash heat depth (upside down platforming)
+			"tutorial_flashfreeze", //introduces flash freeze w/ neutral gate
+			"medium_03", //introduces flash freeze w/ trapdoor
+			"medium_01", //explores flash heat w/ flash freeze and neutral
+			
+			//row 3: introduces wind, momentum, and ability reversion
+			"tutorial_wind", //introduces wind
+			"wind_helper2", //more wind depth
+			"medium_08", //introduces momentum w/ flash heat
+			"medium_04", //introduces undoing flash freeze w/ freeze
+			"medium_05", //introduces undoing flash heat w/ heat
+			
+			//row 4: explores relations between abilities, changing abilities while using another
+			"wind_test", //introduces changing state while inside bubble
+			"medium_09", //introduces flash freeze w/ neutral gate & trapdoor
+			"medium_07", //introduces flash freeze w/ flash heat
+			"medium_06", //explores flash heat and momentum (hard)
+			"hard_03", //explores flash freeze w/ flash heat, changing state in bubble
+			
+			//row 5: hard levels with everything
+			"tutorial_momentum", //explores flash heat w/ momentum and freeze (hard)
+			"hard_04", //explores trapdoor as blockade, flash freeze w/ flash heat (hard)
+			"hard_00", //explores flash freeze, flash heat, trapdoor (hard)
+			"hard_01", //explores flash freeze w/ heat, momentum (hard)
+			"hard_02" //explores flash heat, neutral, and freeze (hard)
 		);
 		
 		private static var S_LEVEL_NAMES:Array = new Array(
-			"supa_hard_01",
-			"tryna_flashheat",
-			"supa_hard_02",
-			"supa_hard_04",
-			"hard_100"
+			"supa_hard_01", //unlocked after level 4 (easy_00)
+			"tryna_flashheat", //unlocked after level 7 (flashheat_2)
+			"supa_hard_04", //unlocked after level 9 (medium_03)
+			"supa_hard_02", //unlocked after level 12 (wind_helper2)
+			"hard_100" //unlocked after 20 (arbitrary to keep this level near the end)
 		);
 		
 		public static const NUM_LEVELS:int = LEVEL_NAMES.length;

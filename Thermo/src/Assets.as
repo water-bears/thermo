@@ -52,13 +52,13 @@ package {
 		public static var flashSprite:Class;
 		
 		/* Other stuff */
-		[Embed(source = "../assets/objects/spikes.png")]
+		[Embed(source = "../assets/objects/spikes1.png")]
 		public static var spikeSprite:Class;
-		[Embed(source = "../assets/objects/upspikes.png")]
+		[Embed(source = "../assets/objects/upspikes1.png")]
 		public static var upspikeSprite:Class;
-		[Embed(source = "../assets/objects/leftspikes.png")]
+		[Embed(source = "../assets/objects/leftspikes1.png")]
 		public static var leftspikeSprite:Class;
-		[Embed(source = "../assets/objects/rightspikes.png")]
+		[Embed(source = "../assets/objects/rightspikes1.png")]
 		public static var rightspikeSprite:Class;
 		
 		[Embed(source = "../assets/objects/button.png")]

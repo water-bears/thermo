@@ -30,9 +30,9 @@
 		<sprite clas="WindRight" name="WindRight" x="-234.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="309.00" y="316.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="HeatGate" name="HeatGate" x="48.00" y="321.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="WindRight" name="WindRight" x="367.00" y="261.00" angle="0.00" flip="false" xScale="13.66" yScale="7.94" >		</sprite>
 		<sprite clas="Player" name="Player" x="10.00" y="356.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="609.00" y="360.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="WindRight" name="WindRight" x="367.00" y="261.00" angle="0.00" flip="false" xScale="13.66" yScale="7.94" >		</sprite>
 		<sprite clas="WindLeft" name="WindLeft" x="100.00" y="164.00" angle="0.00" flip="false" xScale="11.36" yScale="12.85" >		</sprite>
 	</layer>
 	<layer name="Water" xScroll="1.000" yScroll="1.000" >

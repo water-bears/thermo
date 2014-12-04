@@ -9,8 +9,8 @@
 		<clas name="Exit" file="damesprites/door.png" width="20" height="20" index="1" />
 		<clas name="Button" file="damesprites/button.png" width="20" height="20" index="0" />
 		<clas name="Trapdoor" file="objects/trapdoor.png" width="20" height="10" index="0" />
-		<clas name="Spikes" file="objects/spikes.png" width="20" height="10" index="0" />
-		<clas name="Upspikes" file="objects/upspikes.png" width="20" height="10" index="0" />
+		<clas name="Spikes" file="objects/spikes1.png" width="20" height="10" index="0" />
+		<clas name="Upspikes" file="objects/upspikes1.png" width="20" height="10" index="0" />
 		<clas name="MovingPlatform" file="objects/movingplatform.png" width="40" height="10" index="0" />
 		<clas name="Tree" file="objects/tree.png" width="120" height="120" index="0" />
 		<clas name="Grass" file="objects/grass.png" width="20" height="20" index="0" />
@@ -26,24 +26,24 @@
 	</layer>
 	<layer name="Objects" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Key" name="Key" x="-579.00" y="-186.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="294.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Spikes" name="Spikes" x="275.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Spikes" name="Spikes" x="256.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Spikes" name="Spikes" x="314.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Spikes" name="Spikes" x="293.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Spikes" name="Spikes" x="273.00" y="20.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FlashGate" name="FlashGate" x="518.00" y="47.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Upspikes" name="Upspikes" x="441.00" y="90.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="156.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="136.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Upspikes" name="Upspikes" x="116.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Upspikes" name="Upspikes" x="402.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Upspikes" name="Upspikes" x="421.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Upspikes" name="Upspikes" x="138.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Upspikes" name="Upspikes" x="117.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Upspikes" name="Upspikes" x="96.00" y="91.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Upspikes" name="Upspikes" x="159.00" y="92.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Key" name="Key" x="346.00" y="220.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Trapdoor" name="Trapdoor" x="346.00" y="245.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="FreezeGate" name="FreezeGate" x="123.00" y="352.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="FreezeGate" name="FreezeGate" x="87.00" y="348.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Button" name="Button" x="174.00" y="380.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Player" name="Player" x="94.00" y="376.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Exit" name="Exit" x="610.00" y="380.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Player" name="Player" x="109.00" y="377.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 	<layer name="Front" xScroll="1.000" yScroll="1.000" >
 		<sprite clas="Tree5" name="Tree5" x="481.00" y="284.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
@@ -73,7 +73,5 @@
 		<sprite clas="Grass" name="Grass" x="615.00" y="391.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 	<layer name="Back" xScroll="1.000" yScroll="1.000" >
-		<sprite clas="Tree5" name="Tree5" x="71.00" y="301.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Tree5" name="Tree5" x="93.00" y="310.00" angle="32.73" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 	</layer>
 </level>

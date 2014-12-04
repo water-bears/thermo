@@ -49,7 +49,7 @@
 		<sprite clas="Grass" name="Grass" x="81.00" y="134.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="623.00" y="134.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Grass" name="Grass" x="198.00" y="134.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
-		<sprite clas="Fern1" name="Fern1" x="127.00" y="111.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
+		<sprite clas="Fern1" name="Fern1" x="127.00" y="109.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="FreezeGate" name="FreezeGate" x="342.00" y="275.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Player" name="Player" x="58.00" y="376.00" angle="0.00" flip="false" xScale="1.00" yScale="1.00" >		</sprite>
 		<sprite clas="Tree6" name="Tree6" x="-24.00" y="289.00" angle="0.00" flip="false" xScale="0.96" yScale="0.96" >		</sprite>
