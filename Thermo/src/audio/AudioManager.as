@@ -27,6 +27,8 @@ package audio
 		//private static var oldInsideWater:SoundChannel;// :FlxSound;
 		//private static var blank:SoundChannel;
 		
+		private static var mute:Boolean = false;
+		
 		public static function StartMusic(initialFade:Number): void
 		{
 			//
@@ -80,14 +82,18 @@ package audio
 			{
 				oldInsideWater.soundTransform = new SoundTransform(1.0 - iFade);
 			}*/
-			outsideWater.soundTransform = new SoundTransform(iFade);
-			insideWater.soundTransform = new SoundTransform(1.0 - iFade);
+			outsideWater.soundTransform = new SoundTransform((mute ? 0 : 1) * iFade);
+			insideWater.soundTransform = new SoundTransform((mute ? 0 : 1) * (1.0 - iFade));
 			
 		}
 		
 		public static function PlaySound(sound:Class, fadeTime:Number=0) : void
 		{
 			// This abstraction allows for muting
+			if (mute)
+			{
+				return;
+			}
 			var f:FlxSound = FlxG.play(sound);
 			if (fadeTime > 0)
 			{
@@ -95,6 +101,16 @@ package audio
 				f.fadeOut(fadeTime);
 			}
 		}
+		
+		public static function GetMute() : Boolean
+		{
+			return mute;
+		}
+		
+		public static function SetMute(mute:Boolean) : void
+		{
+			AudioManager.mute = mute;
+			SetFade(fade);
+		}
 	}
-
 }

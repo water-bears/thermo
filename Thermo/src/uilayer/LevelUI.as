@@ -130,6 +130,7 @@ package uilayer {
 			
 			mouseLayer = new MouseLayer(true);
 			add(mouseLayer);
+			mouseLayer.SetTogglePauseCallback(TogglePause);
 			mouseLayer.visible = false;
 		}
 		
@@ -244,7 +245,7 @@ package uilayer {
 					}
 					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
-				if (FlxG.keys.justPressed("ENTER") || FlxG.mouse.justPressed())
+				if (FlxG.keys.justPressed("ENTER"))
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{
