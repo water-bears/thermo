@@ -225,20 +225,22 @@ package {
 		 */
 		public static var b_list:Array = [
 			// Row 1
-			last_scene, last_scene, last_scene, last_scene,
-			moon10,
+			last_scene, last_scene, last_scene, last_scene, last_scene,
+			
 			// Row 2
-			bright_sunset, bright_sunset, bright_sunset, bright_sunset,
-			moon5,
+			bright_sunset, bright_sunset, bright_sunset, bright_sunset, bright_sunset,
+			
 			// Row 3
-			clouds1, clouds1, clouds1, clouds1,
-			moon8,
+			clouds1, clouds1, clouds1, clouds1, clouds1,
+			
 			// Row 4
-			clouds2, clouds2, clouds2, clouds2,
-			moon6,
+			clouds2, clouds2, clouds2, clouds2, clouds2,
+			
 			// Row 5
-			sunset, sunset, sunset, sunset,
-			moon1
+			sunset, sunset, sunset, sunset, sunset,
+			
+			// Row S
+			moon10, moon5, moon8, moon6, moon1
 		];
 		
 		/* Sounds */
