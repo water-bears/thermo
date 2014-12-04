@@ -213,7 +213,7 @@ package {
 		}
 		
 		override public function update():void {
-			if (!ui.Paused) {
+			if (!ui.IsPaused()) {
 				super.update();
 				bubbles.Update();
 				

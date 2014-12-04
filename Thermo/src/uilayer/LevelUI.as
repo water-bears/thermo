@@ -44,7 +44,7 @@ package uilayer {
 		private var state:uint;
 		private var selectedPauseOption:uint = 0;
 		public var AllowPause:Boolean = false;
-		public var Paused:Boolean = false;
+		private var Paused:Boolean = false;
 		
 		public var logger:Logging;
 		public var level:Level;
@@ -356,6 +356,11 @@ package uilayer {
 				mouseLayer.AutoFade = true;
 			}
 			framesSincePause = 0;
+		}
+		
+		public function IsPaused():Boolean
+		{
+			return Paused || mouseLayer.isMouseDisabled();
 		}
 	}
 
