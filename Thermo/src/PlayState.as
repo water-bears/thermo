@@ -460,6 +460,7 @@ package {
 		public function getKey(key:FlxGroup, player:Player):void {
 			key.kill();
 			AudioManager.PlaySound(Assets.sfx_key);
+			AudioManager.PlaySound(Assets.sfx_door);
 			player.hasKey = true;
 			logger.recordEvent(level.levelNum, 2, "v2 $ $  $ " + getTimer().toString() + "$");
 		}
