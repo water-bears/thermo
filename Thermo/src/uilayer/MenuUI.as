@@ -4,6 +4,8 @@ package uilayer {
 	
 	import io.ThermoSaves;
 	
+	import audio.AudioManager;
+	
 	import flash.geom.Rectangle;
 	import org.flixel.FlxG;
 	import org.flixel.FlxGroup;
@@ -208,7 +210,7 @@ package uilayer {
 							{
 								selectedSquare.x = i;
 								selectedSquare.y = j;
-								FlxG.play(Assets.sfx_option_cycle);
+								AudioManager.PlaySound(Assets.sfx_option_cycle);
 								break;
 							}
 						}
@@ -249,7 +251,7 @@ package uilayer {
 					{
 						selectedSquare.x += selectedSquareTemp.x;
 						selectedSquare.y += selectedSquareTemp.y;
-						FlxG.play(Assets.sfx_option_cycle);
+						AudioManager.PlaySound(Assets.sfx_option_cycle);
 					}
 					if (selectedSquare.x < 0)
 					{
