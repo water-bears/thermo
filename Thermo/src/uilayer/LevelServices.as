@@ -118,7 +118,7 @@ package uilayer
 			}
 			else
 			{
-				return Completed(S_LEVEL_UNLOCKED_AFTER[levelNum - NUM_LEVELS]);
+				return Completed(S_LEVEL_UNLOCKED_AFTER[levelNum - NUM_LEVELS] - 1);
 			}
 		}
 		
