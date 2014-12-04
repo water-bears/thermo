@@ -136,7 +136,7 @@ package uilayer {
 				titleText.y = titleText_y01.EvaluateAndAdvance();
 				promptText.y = promptText_y01.EvaluateAndAdvance();
 				levelSelectText.alpha = 0;
-				if (FlxG.keys.ENTER || FlxG.mouse.justPressed())
+				if (FlxG.keys.ENTER || (FlxG.mouse.justPressed() && FlxG.mouse.x < FlxG.width - 25 && FlxG.mouse.y > 25))
 				{
 					state = 1;
 				}
