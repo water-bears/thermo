@@ -1,6 +1,7 @@
 package uilayer {
 	import flash.geom.Rectangle;
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxG;
 	
@@ -23,6 +24,8 @@ package uilayer {
 		private var mute:FlxSprite;
 		
 		public var alpha:Number;
+		public var liveMouse:Boolean;
+		public var mousePosition:FlxPoint;
 		
 		public function MouseLayer(autoFade:Boolean, fadeTime:uint = 120)
 		{
@@ -31,16 +34,19 @@ package uilayer {
 			add(cursor = new FlxSprite(0, 0, Assets.cursorSprite));
 			add(mute = new FlxSprite(0, 0, Assets.cursorSprite));
 			cursor.alpha = mute.alpha = alpha = 0;
+			mousePosition = new FlxPoint();
 		}
 		
 		override public function update():void 
 		{
 			super.update();
+			liveMouse = false;
 			if (FlxG.mouse.screenX != cursor.x || FlxG.mouse.screenY != cursor.y || FlxG.mouse.justPressed())
 			{
+				liveMouse = true;
 				// set sprite position to mouse position
-				cursor.x = FlxG.mouse.screenX;
-				cursor.y = FlxG.mouse.screenY;
+				mousePosition.x = cursor.x = FlxG.mouse.screenX;
+				mousePosition.y = cursor.y = FlxG.mouse.screenY;
 				counter = 0;
 				alpha = 1 - (1 - alpha) * dampening2;
 			}

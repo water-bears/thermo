@@ -196,6 +196,9 @@ package uilayer {
 				}
 				levelText.alpha = levelText_alpha0.EvaluateAndAdvance();
 				levelText.y = levelText_y0.EvaluateAndAdvance();
+				if (FlxG.keys.SPACE || FlxG.keys.ENTER || FlxG.mouse.justPressed()) {
+					FastForward();
+				}
 			}
 			if (state == 1)
 			{
@@ -204,6 +207,19 @@ package uilayer {
 			}
 			if (state == 2)
 			{
+				// If the mouse is moving, get where the mouse is and select
+				// an option based on that.
+				if (mouseLayer.liveMouse)
+				{
+					for (i = 0; i < pauseOptions.length; i++)
+					{
+						if (pauseOptions[i].overlapsPoint(mouseLayer.mousePosition))
+						{
+							selectedPauseOption = i;
+							break;
+						}
+					}
+				}
 				if (FlxG.keys.justPressed("UP"))
 				{
 					if (selectedPauseOption == 0)
@@ -228,7 +244,7 @@ package uilayer {
 					}
 					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
-				if (FlxG.keys.justPressed("ENTER"))
+				if (FlxG.keys.justPressed("ENTER") || FlxG.mouse.justPressed())
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{

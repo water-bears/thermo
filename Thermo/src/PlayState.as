@@ -315,10 +315,6 @@ package {
                     }
                 }
 				
-				if (FlxG.keys.SPACE || FlxG.keys.ENTER) {
-					ui.FastForward();
-				}
-				
 				// If player has the key and touches the exit, they win
 				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
 					player.visible = false;
