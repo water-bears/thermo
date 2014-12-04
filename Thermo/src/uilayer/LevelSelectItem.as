@@ -19,6 +19,7 @@ package uilayer
 		public static var yMax:Number = 0.8 * FlxG.height;
 		
 		private var itemText:FlxText;
+		private var lockedNumber:FlxText;
 		private var symbol:FlxSprite;
 		
 		private var itemText_x12:PiecewiseInterpolationMachine;
@@ -55,11 +56,25 @@ package uilayer
 			if (locked)
 			{
 				symbol = new FlxSprite(0, 0, Assets.lockSprite);
+				if (levelNum >= LevelServices.NUM_LEVELS)
+				{
+					lockedNumber = new FlxText(0, 0, 20, String(LevelServices.S_LEVEL_UNLOCKED_AFTER[levelNum - LevelServices.NUM_LEVELS]));
+					lockedNumber.setFormat(Assets.font_name, 10, 0xff9999, "center");
+					symbol.color = 0xff0000;
+				}
 			}
 			
 			if (symbol != null)
 			{
 				add(symbol);
+			}
+			if (lockedNumber != null)
+			{
+				add(lockedNumber);
+			}
+			else if (symbol != null)
+			{
+				symbol.scale.x = symbol.scale.y = 0.5;
 			}
 			
 			itemText_x12 = new PiecewiseInterpolationMachine(false,
@@ -125,6 +140,11 @@ package uilayer
 			{
 				symbol.x = itemText.x + 5;
 				symbol.y = itemText.y + 5;
+			}
+			if (lockedNumber != null)
+			{
+				lockedNumber.x = itemText.x + 4;
+				lockedNumber.y = itemText.y + 12.5;
 			}
 			MouseOverRectangle.x = itemText.x;
 			MouseOverRectangle.y = itemText.y;

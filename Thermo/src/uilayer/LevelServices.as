@@ -57,7 +57,7 @@ package uilayer
 			"hard_100" //unlocked after 20 (arbitrary to keep this level near the end)
 		);
 		
-		private static var S_LEVEL_UNLOCKED_AFTER:Array = new Array(4, 7, 9, 12, 20);
+		public static var S_LEVEL_UNLOCKED_AFTER:Array = new Array(4, 7, 9, 12, 20);
 		
 		public static const NUM_LEVELS:int = LEVEL_NAMES.length;
 		public static const NUM_S_LEVELS:int = S_LEVEL_NAMES.length;
