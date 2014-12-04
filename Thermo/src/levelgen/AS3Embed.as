@@ -164,7 +164,6 @@ public class AS3Embed
 [Embed(source = "../../assets/objects/rightspikes2.png")] private static var rightspikes250:Class;
 [Embed(source = "../../assets/objects/spikes.png")] private static var spikes50:Class;
 [Embed(source = "../../assets/objects/spikes1.png")] private static var spikes150:Class;
-[Embed(source = "../../assets/objects/spikes1a.png")] private static var spikes1a50:Class;
 [Embed(source = "../../assets/objects/spikes2.png")] private static var spikes250:Class;
 [Embed(source = "../../assets/objects/trapdoor.png")] private static var trapdoor50:Class;
 [Embed(source = "../../assets/objects/trapdoor_closed.png")] private static var trapdoor_closed50:Class;
@@ -361,7 +360,6 @@ if(filename == "objects/rightspikes1.png") { return rightspikes150; }
 if(filename == "objects/rightspikes2.png") { return rightspikes250; }
 if(filename == "objects/spikes.png") { return spikes50; }
 if(filename == "objects/spikes1.png") { return spikes150; }
-if(filename == "objects/spikes1a.png") { return spikes1a50; }
 if(filename == "objects/spikes2.png") { return spikes250; }
 if(filename == "objects/trapdoor.png") { return trapdoor50; }
 if(filename == "objects/trapdoor_closed.png") { return trapdoor_closed50; }
