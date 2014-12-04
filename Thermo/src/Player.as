@@ -216,7 +216,7 @@
 				if ((FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP")) && isTouching(FlxObject.FLOOR)) {
 					velocity.y = -maxVelocity.y;
 				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP")) {
-					if (velocity.y > -200 && velocity.y < -100) {
+					if (velocity.y < -200 && velocity.y > -100) {
 						velocity.y = -200;
 					} else if (velocity.y < -100) {
 						velocity.y = -100;
@@ -248,7 +248,7 @@
 					this.offset.y += (-this.offset.y) / 2;
 					this.scale.y += (-1 - this.scale.y) / 2;
 				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP") || FlxG.keys.justReleased("DOWN") || FlxG.keys.justReleased("S")) {
-					if (velocity.y < 200 && velocity.y > 100) {
+					if (velocity.y > 200 && velocity.y < 100) {
 						velocity.y = 200;
 					} else if (velocity.y > 100) {
 						velocity.y = 100;

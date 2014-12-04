@@ -230,6 +230,8 @@ package {
 		public static var sfx_wave:Class;
 		[Embed(source = "../assets/sfx/key.mp3")]
 		public static var sfx_key:Class;
+		[Embed(source = "../assets/sfx/door.mp3")]
+		public static var sfx_door:Class;
 		
 		/**
 		 * List of backgrounds in the order that they appear in the game.
