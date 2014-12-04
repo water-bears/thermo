@@ -22,6 +22,7 @@
 		public var curPow:int;
 		
 		public var superBubble:Boolean = false;
+		public var upsideDown:Boolean = false;
 		public var bubble:Boolean = false;
 		public var underwater:Boolean = false;
 		public var floatUp:Boolean = false;
@@ -240,13 +241,10 @@
 					floatUp = false;
 					acceleration.y = -500;
 					this.drag.x = int.MAX_VALUE;
-				
+					upsideDown = true;
 					if (FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP") || FlxG.keys.justPressed("DOWN") || FlxG.keys.justPressed("S")) {
 						velocity.y = maxVelocity.y;
 					}
-					// converge to -1 scale if super bubble hit the ceiling
-					this.offset.y += (-this.offset.y) / 2;
-					this.scale.y += (-1 - this.scale.y) / 2;
 				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP") || FlxG.keys.justReleased("DOWN") || FlxG.keys.justReleased("S")) {
 					if (velocity.y > 200 && velocity.y < 100) {
 						velocity.y = 200;
@@ -254,9 +252,16 @@
 						velocity.y = 100;
 					}
 				}
+				if (upsideDown)
+				{					
+					// converge to -1 scale if super bubble hit the ceiling
+					this.offset.y += (-this.offset.y) / 2;
+					this.scale.y += (-1 - this.scale.y) / 2;
+				}
 			}
 			else
 			{
+				upsideDown = false;
 				// converge back to +1 scale
 				this.offset.y += (22 - this.offset.y) / 2;
 				this.scale.y += (1 - this.scale.y) / 2;

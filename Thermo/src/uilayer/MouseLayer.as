@@ -84,7 +84,7 @@ package uilayer {
 				mousePosition.y = cursor.y = FlxG.mouse.screenY;
 				counter = 0;
 			}
-			else if (AutoFade)
+			else if (AutoFade && !credits)
 			{
 				counter++;
 				//if (!interior.contains(cursor.x, cursor.y))
