@@ -110,6 +110,12 @@ package audio
 		public static function SetMute(mute:Boolean) : void
 		{
 			AudioManager.mute = mute;
+			if (mute)
+			{
+				FlxG.pauseSounds();
+				FlxG.sounds.kill();
+				FlxG.sounds.clear();
+			}
 			SetFade(fade);
 		}
 	}

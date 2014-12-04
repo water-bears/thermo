@@ -50,6 +50,7 @@ package uilayer {
 		public var level:Level;
 		
 		private var mouseLayer:MouseLayer;
+		private var framesSincePause:uint = 0;
 		
 		public function LevelUI(level:Level, logger:Logging)
 		{
@@ -245,7 +246,7 @@ package uilayer {
 					}
 					AudioManager.PlaySound(Assets.sfx_option_cycle);
 				}
-				if (FlxG.keys.justPressed("ENTER"))
+				if (FlxG.keys.justPressed("ENTER") || (FlxG.mouse.justPressed() && framesSincePause > 0))
 				{
 					if (callbacks[selectedPauseOption] != null)
 					{
@@ -292,6 +293,7 @@ package uilayer {
 					state = 0;
 				}
 			}
+			framesSincePause = 1; // doesn't matter if it's above 1
 		}
 		
 		private function PauseFadeIn() : void
@@ -353,6 +355,7 @@ package uilayer {
 				state = 3;
 				mouseLayer.AutoFade = true;
 			}
+			framesSincePause = 0;
 		}
 	}
 

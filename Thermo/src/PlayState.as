@@ -51,6 +51,7 @@ package {
 		private var background:FlxSprite;
 		
 		private var player:Player;
+		private var goldenBubble:FlxSprite;
 		
 		// Groups that will allow us to make gate and water tiles
 		public var waterTiles:FlxTilemap;
@@ -182,11 +183,14 @@ package {
 			} else {
 				player = new Player(level.player.x, level.player.y, waterTiles, this, logger, level); //logger);
 			}
+			goldenBubble = new FlxSprite(player.x, player.y, Assets.goldenBubbleSprite);
+			goldenBubble.alpha = 0.5;
 			prevPosition = new Point(player.x, player.y);
 
 
 			//Order matters - Add water after player and ground after water for layering effect
 			add(player);
+			add(goldenBubble);
 			add(waterWaves);
 			add(groundTiles);
 			add(iceGroup);
@@ -306,7 +310,20 @@ package {
                         player.gateOneTouch = false;
                     }
                 }
-                                
+				
+				// comment this out if we want the superbubble to have this overlay
+				/*if (player.superBubble)
+				{
+					goldenBubble.visible = true;
+					goldenBubble.x = player.x - player.offset.x;
+					goldenBubble.y = player.y - player.offset.y;
+					goldenBubble.scale.y = player.scale.y;
+				}
+				else
+				{
+					goldenBubble.visible = false;
+				}*/
+                
                 if (FlxG.overlap(buttonGroup, player)) {
                     for (i = 0; i < buttonGroup.length; i++) {
                         if (FlxG.overlap(buttonGroup.members[i], player)) {

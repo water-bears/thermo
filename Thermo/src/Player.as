@@ -244,6 +244,9 @@
 					if (FlxG.keys.justPressed("W") || FlxG.keys.justPressed("UP") || FlxG.keys.justPressed("DOWN") || FlxG.keys.justPressed("S")) {
 						velocity.y = maxVelocity.y;
 					}
+					// converge to -1 scale if super bubble hit the ceiling
+					this.offset.y += (-this.offset.y) / 2;
+					this.scale.y += (-1 - this.scale.y) / 2;
 				} else if (FlxG.keys.justReleased("W") || FlxG.keys.justReleased("UP") || FlxG.keys.justReleased("DOWN") || FlxG.keys.justReleased("S")) {
 					if (velocity.y < 200 && velocity.y > 100) {
 						velocity.y = 200;
@@ -251,6 +254,12 @@
 						velocity.y = 100;
 					}
 				}
+			}
+			else
+			{
+				// converge back to +1 scale
+				this.offset.y += (22 - this.offset.y) / 2;
+				this.scale.y += (1 - this.scale.y) / 2;
 			}
 			
 			// Makes ice platform solid when in any type of bubble

@@ -20,6 +20,10 @@ package {
 		public static var playerSpriteX:int = 35;
 		public static var playerSpriteY:int = 42;
 		
+		/* Character sprite sheet */
+		[Embed(source = "../assets/character/goldenbubble.png")]
+		public static var goldenBubbleSprite:Class;
+		
 		/* Door closed */
 		[Embed(source = "../assets/tilesheets/door_vortex.png")]
 		public static var doorSprite:Class;
