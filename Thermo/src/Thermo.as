@@ -22,6 +22,8 @@ package {
 			// FlxG.debug = true;
 			// FlxG.visualDebug = true;
 			
+			this.useSoundHotKeys = false;
+			
 			//MonsterDebugger.initialize(this);
             //MonsterDebugger.trace(this, "Hello World!");
 			

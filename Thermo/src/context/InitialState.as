@@ -21,7 +21,7 @@ package context {
 			// ****** IMPORTANT ******
 			// IF YOU ARE UPLOADING THE GAME TO THE SITE, USE "FALSE" --> LOGGING MODE
 			// IF YOU ARE WORKING ON A NEW THING FOR THE GAME, USE "TRUE" --> DEBUG MODE
-			logger = new Logging(700, 3, true);
+			logger = new Logging(700, 4, false);
 			logger.recordPageLoad();
 			//var x:Number = Math.random();
 			//x = Math.round(x) + 1;
