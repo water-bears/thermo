@@ -335,7 +335,7 @@ package {
                 }
 				
 				// If player has the key and touches the exit, they win
-				if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+				if (player.hasKey && player.visible && FlxG.overlap(exitGroup, player)) {
 					player.visible = false;
 					logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
 					logger.recordLevelEnd();
