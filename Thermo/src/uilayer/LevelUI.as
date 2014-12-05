@@ -99,7 +99,8 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 60, 0));
 			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
-				new PiecewiseInterpolationNode(null, 20, 1));
+				new PiecewiseInterpolationNode(Utils.Lerp, 20, 1),
+				new PiecewiseInterpolationNode(null, 21, 1));
 			dimmer_alpha2 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
 				new PiecewiseInterpolationNode(null, 30, 0.25));

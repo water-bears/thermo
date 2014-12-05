@@ -334,54 +334,38 @@ package {
                     }
                 }
 				
-				// If player has the key and touches the exit, they win
-				if (player.hasKey && player.visible && FlxG.overlap(exitGroup, player)) {
-					player.visible = false;
-					logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
-					logger.recordLevelEnd();
-					win(exitGroup, player);
-				}
-				
-				//Check for player lose conditions
-				if (player.y > (FlxG.height + 50) || FlxG.overlap(player, spikeGroup)) {
-					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
-						logger.recordLevelEnd();
-						alreadyLost == true;
+				if (player.visible)
+				{
+					// If player has the key and touches the exit, they win
+					if (player.hasKey && FlxG.overlap(exitGroup, player)) {
+						player.visible = false;
+						win(exitGroup, player);
 					}
-					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
-					ui.BeginExitSequence(reset);
-					player.visible = false;
-				}
-				if (FlxG.keys.R){
-					logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
-					logger.recordLevelEnd();
-					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
-					ui.BeginExitSequence(reset);
-					player.visible = false;
-				}
-				
-				//Check for player lose conditions specific for lava
-				if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
-					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
-						logger.recordLevelEnd();
-						alreadyLost == true;
+					
+					//Check for player lose conditions
+					if (player.y > (FlxG.height + 50) || FlxG.overlap(player, spikeGroup)) {
+						pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
+						ui.BeginExitSequence(lose);
+						player.visible = false;
 					}
-					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
-					ui.BeginExitSequence(reset);
-					player.visible = false;	
-				}
-				
-				if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
-					if(alreadyLost == false){
-						logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  + getTimer().toString());
-						logger.recordLevelEnd();
-						alreadyLost == true;
+					if (FlxG.keys.R && player.visible){
+						pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
+						ui.BeginExitSequence(reset);
+						player.visible = false;
 					}
-					pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
-					ui.BeginExitSequence(reset);
-					player.visible = false;	
+					
+					//Check for player lose conditions specific for lava
+					if (FlxG.overlap(player, hotlavaGroup) && (player.curPow != 2 && player.curPow != 4)) {
+						pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
+						ui.BeginExitSequence(lose);
+						player.visible = false;	
+					}
+					
+					if (FlxG.overlap(player, coldlavaGroup) && (player.curPow != 1 && player.curPow != 3)) {
+						pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
+						ui.BeginExitSequence(lose);
+						player.visible = false;	
+					}
 				}
 				
 				/**
@@ -473,13 +457,25 @@ package {
 			ui.BeginExitSequence(goToNextLevel);
 		}
 		
-		public function goToNextLevel() : void {
+		public function goToNextLevel() : void {			
+			logger.recordEvent(level.levelNum, 3, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+			logger.recordLevelEnd();
 			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 			FlxG.switchState(new TransitionState(LevelServices.NextLevel(level.levelNum), logger, level.levelNum));
 		}
 		
 		/** Reset function **/
+		public function lose():void {
+			logger.recordEvent(level.levelNum, 4, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+			logger.recordLevelEnd();
+			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
+			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
+		}
+		
+		/** Reset function **/
 		public function reset():void {
+			logger.recordEvent(level.levelNum, 5, "v2 $ " + player.x +  "$ " + player.y + " $ "  +  getTimer().toString());
+			logger.recordLevelEnd();
 			pullTimer.removeEventListener(TimerEvent.TIMER, pullTimerListener);
 			FlxG.switchState(new TransitionState(level.levelNum, logger, level.levelNum));
 		}

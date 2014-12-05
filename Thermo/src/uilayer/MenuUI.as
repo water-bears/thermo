@@ -101,7 +101,8 @@ package uilayer {
 				new PiecewiseInterpolationNode(null, 30, 0));
 			dimmer_alpha1 = new PiecewiseInterpolationMachine(false,
 				new PiecewiseInterpolationNode(Utils.Lerp, 0, 0),
-				new PiecewiseInterpolationNode(null, 20, 1));
+				new PiecewiseInterpolationNode(Utils.Lerp, 20, 1),
+				new PiecewiseInterpolationNode(null, 22, 1));
 			
 			titleText_y01 = Utils.CreatePeriodic(0.2 * dimensions.y, 20, 400);
 			promptText_y01 = Utils.CreatePeriodic(0.7 * dimensions.y, 10, 200);
@@ -180,7 +181,10 @@ package uilayer {
 			else if (state == 3)
 			{
 				dimmer.alpha = dimmer_alpha1.EvaluateAndAdvance();
-				dimmer_alpha1.CallUponCompletion(callback);
+				if (dimmer_alpha1.completionCallback == null)
+				{
+					dimmer_alpha1.CallUponCompletion(callback);
+				}
 			}
 		}
 		

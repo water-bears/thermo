@@ -11,7 +11,7 @@ package uilayer {
 		private var periodic:Boolean;
 		private var time:uint;
 		private var bracket:uint;
-		private var completionCallback:Function;
+		public var completionCallback:Function;
 		public var complete:Boolean;
 		private var prevDirection:int;
 		// Believe it or not this might speed things up
