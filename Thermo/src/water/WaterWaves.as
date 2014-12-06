@@ -10,7 +10,7 @@ package water
 	 */
 	public class WaterWaves extends FlxGroup 
 	{
-		private static var waterColor:uint = 0x6666CCff;
+		private static var waterColor:uint = 0x660099FF;
 		private static var rect:Rectangle = new Rectangle(0, 0, 640, 480);
 		public static var BlockSize:uint = 20;
 		
