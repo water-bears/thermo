@@ -13,23 +13,23 @@ package {
 			switch(direction) {
 				case 2:
 					loadGraphic(Assets.spikeSprite);
-					width = 18;
-					height = 9;
+					width = 17;
+					height = 7;
 					break;
 				case 3:
 					loadGraphic(Assets.leftspikeSprite);
-					width = 9;
-					height = 18;
+					width = 7;
+					height = 17;
 					break;
 				case 4:
 					loadGraphic(Assets.rightspikeSprite);
-					width = 9;
-					height = 18;
+					width = 7;
+					height = 17;
 					break;
 				default:
 					loadGraphic(Assets.upspikeSprite);
-					width = 18;
-					height = 9;
+					width = 17;
+					height = 7;
 					break;
             }
 
